@@ -92,8 +92,8 @@ namespace TestingNewGui {
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			this->panelBoot = (gcnew System::Windows::Forms::Panel());
 			this->buttonVideo = (gcnew System::Windows::Forms::Button());
-			this->bgpicturebox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->borderPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->bgpicturebox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->loadingLabel = (gcnew System::Windows::Forms::Label());
 			this->loadingPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->timerLoading = (gcnew System::Windows::Forms::Timer(this->components));
@@ -101,8 +101,8 @@ namespace TestingNewGui {
 			this->timerVideo = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelLogin->SuspendLayout();
 			this->panelBoot->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->borderPictureBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->loadingPictureBox))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -166,17 +166,6 @@ namespace TestingNewGui {
 			this->buttonVideo->UseVisualStyleBackColor = false;
 			this->buttonVideo->Click += gcnew System::EventHandler(this, &MyForm::buttonVideo_Click_1);
 			// 
-			// bgpicturebox3
-			// 
-			this->bgpicturebox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bgpicturebox3.Image")));
-			this->bgpicturebox3->Location = System::Drawing::Point(1016, 510);
-			this->bgpicturebox3->Name = L"bgpicturebox3";
-			this->bgpicturebox3->Size = System::Drawing::Size(243, 169);
-			this->bgpicturebox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->bgpicturebox3->TabIndex = 10;
-			this->bgpicturebox3->TabStop = false; //image can be found at: https://gifer.com/en/7GW5
-			this->bgpicturebox3->Click += gcnew System::EventHandler(this, &MyForm::bgpicturebox3_Click);
-			// 
 			// borderPictureBox
 			// 
 			this->borderPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"borderPictureBox.Image")));
@@ -186,6 +175,18 @@ namespace TestingNewGui {
 			this->borderPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->borderPictureBox->TabIndex = 7;
 			this->borderPictureBox->TabStop = false;
+			this->borderPictureBox->Visible = false;
+			// 
+			// bgpicturebox3
+			// 
+			this->bgpicturebox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bgpicturebox3.Image")));
+			this->bgpicturebox3->Location = System::Drawing::Point(1016, 510);
+			this->bgpicturebox3->Name = L"bgpicturebox3";
+			this->bgpicturebox3->Size = System::Drawing::Size(243, 169);
+			this->bgpicturebox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->bgpicturebox3->TabIndex = 10;
+			this->bgpicturebox3->TabStop = false;
+			this->bgpicturebox3->Click += gcnew System::EventHandler(this, &MyForm::bgpicturebox3_Click);
 			// 
 			// loadingLabel
 			// 
@@ -247,8 +248,8 @@ namespace TestingNewGui {
 			this->panelLogin->PerformLayout();
 			this->panelBoot->ResumeLayout(false);
 			this->panelBoot->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->borderPictureBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->loadingPictureBox))->EndInit();
 			this->ResumeLayout(false);
 
@@ -269,8 +270,10 @@ private: System::Void buttonVideo_Click_1(System::Object^ sender, System::EventA
 		this->timerVideo->Enabled = true;
 		this->timerVideo->Start();
 		this->videoPlayed = true;
+		this->borderPictureBox->Visible = true;
 	}
 	else {
+		PlaySound(NULL, NULL, 0);
 		PlaySound(TEXT("assets\\Mouse Click Sound Effect.wav"), NULL, SND_FILENAME | SND_SYNC);
 		this->buttonVideo->Hide();
 		this->loadingPictureBox->Visible = true;
@@ -328,7 +331,7 @@ private: System::Void timerGoToLogin_Tick(System::Object^ sender, System::EventA
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void timerVideo_Tick(System::Object^ sender, System::EventArgs^ e) {
-	PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	PlaySound(TEXT("assets\\Crystal Glow Sound Effect.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	this->timerVideo->Stop();
 	this->timerVideo->Enabled = false;
 }
