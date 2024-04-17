@@ -173,7 +173,7 @@ namespace TestingNewGui {
 			this->bgpicturebox3->Size = System::Drawing::Size(243, 169);
 			this->bgpicturebox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->bgpicturebox3->TabIndex = 10;
-			this->bgpicturebox3->TabStop = false;
+			this->bgpicturebox3->TabStop = false; //image can be found at: https://gifer.com/en/7GW5
 			this->bgpicturebox3->Click += gcnew System::EventHandler(this, &MyForm::bgpicturebox3_Click);
 			// 
 			// borderPictureBox
