@@ -51,6 +51,7 @@ namespace TestingNewGui {
 
 	protected:
 		bool videoPlayed = false;
+		int parity = 0;
 	private: System::Windows::Forms::PictureBox^ loadingPictureBox;
 	private: System::Windows::Forms::Label^ loadingLabel;
 	private: System::Windows::Forms::Timer^ timerLoading;
@@ -332,6 +333,14 @@ private: System::Void timerVideo_Tick(System::Object^ sender, System::EventArgs^
 	this->timerVideo->Enabled = false;
 }
 private: System::Void bgpicturebox3_Click(System::Object^ sender, System::EventArgs^ e) {
+	parity = (parity + 1) % 2;
+	if (parity%2==1) {
+		this->bgpicturebox3->Load(L"assets\\bggif3.gif");
+	}
+	else {
+		this->bgpicturebox3->Load(L"assets\\bggif1.gif");
+	}
+	
 }
 };
 }
