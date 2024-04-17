@@ -56,6 +56,13 @@ namespace TestingNewGui {
 	private: System::Windows::Forms::Timer^ timerLoading;
 	private: System::Windows::Forms::Timer^ timerGoToLogin;
 	private: System::Windows::Forms::Timer^ timerVideo;
+	private: System::Windows::Forms::PictureBox^ borderPictureBox;
+	private: System::Windows::Forms::PictureBox^ bgpicturebox3;
+
+
+
+
+
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -83,14 +90,18 @@ namespace TestingNewGui {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			this->panelBoot = (gcnew System::Windows::Forms::Panel());
-			this->loadingLabel = (gcnew System::Windows::Forms::Label());
 			this->buttonVideo = (gcnew System::Windows::Forms::Button());
+			this->bgpicturebox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->borderPictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->loadingLabel = (gcnew System::Windows::Forms::Label());
 			this->loadingPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->timerLoading = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerGoToLogin = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerVideo = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelLogin->SuspendLayout();
 			this->panelBoot->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->borderPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->loadingPictureBox))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -130,13 +141,50 @@ namespace TestingNewGui {
 			// 
 			this->panelBoot->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->panelBoot->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panelBoot->Controls->Add(this->loadingLabel);
 			this->panelBoot->Controls->Add(this->buttonVideo);
+			this->panelBoot->Controls->Add(this->borderPictureBox);
+			this->panelBoot->Controls->Add(this->bgpicturebox3);
+			this->panelBoot->Controls->Add(this->loadingLabel);
 			this->panelBoot->Controls->Add(this->loadingPictureBox);
 			this->panelBoot->Location = System::Drawing::Point(0, 0);
 			this->panelBoot->Name = L"panelBoot";
 			this->panelBoot->Size = System::Drawing::Size(1280, 720);
 			this->panelBoot->TabIndex = 3;
+			// 
+			// buttonVideo
+			// 
+			this->buttonVideo->BackColor = System::Drawing::Color::Black;
+			this->buttonVideo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"buttonVideo.BackgroundImage")));
+			this->buttonVideo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->buttonVideo->ForeColor = System::Drawing::Color::Transparent;
+			this->buttonVideo->Location = System::Drawing::Point(457, 162);
+			this->buttonVideo->Margin = System::Windows::Forms::Padding(0);
+			this->buttonVideo->Name = L"buttonVideo";
+			this->buttonVideo->Size = System::Drawing::Size(341, 323);
+			this->buttonVideo->TabIndex = 4;
+			this->buttonVideo->UseVisualStyleBackColor = false;
+			this->buttonVideo->Click += gcnew System::EventHandler(this, &MyForm::buttonVideo_Click_1);
+			// 
+			// bgpicturebox3
+			// 
+			this->bgpicturebox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bgpicturebox3.Image")));
+			this->bgpicturebox3->Location = System::Drawing::Point(1016, 510);
+			this->bgpicturebox3->Name = L"bgpicturebox3";
+			this->bgpicturebox3->Size = System::Drawing::Size(243, 169);
+			this->bgpicturebox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->bgpicturebox3->TabIndex = 10;
+			this->bgpicturebox3->TabStop = false;
+			this->bgpicturebox3->Click += gcnew System::EventHandler(this, &MyForm::bgpicturebox3_Click);
+			// 
+			// borderPictureBox
+			// 
+			this->borderPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"borderPictureBox.Image")));
+			this->borderPictureBox->Location = System::Drawing::Point(452, 158);
+			this->borderPictureBox->Name = L"borderPictureBox";
+			this->borderPictureBox->Size = System::Drawing::Size(353, 332);
+			this->borderPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->borderPictureBox->TabIndex = 7;
+			this->borderPictureBox->TabStop = false;
 			// 
 			// loadingLabel
 			// 
@@ -152,20 +200,6 @@ namespace TestingNewGui {
 			this->loadingLabel->Text = L"Requesting Access...";
 			this->loadingLabel->Visible = false;
 			this->loadingLabel->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
-			// 
-			// buttonVideo
-			// 
-			this->buttonVideo->BackColor = System::Drawing::Color::Black;
-			this->buttonVideo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"buttonVideo.BackgroundImage")));
-			this->buttonVideo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->buttonVideo->ForeColor = System::Drawing::Color::Transparent;
-			this->buttonVideo->Location = System::Drawing::Point(457, 162);
-			this->buttonVideo->Margin = System::Windows::Forms::Padding(0);
-			this->buttonVideo->Name = L"buttonVideo";
-			this->buttonVideo->Size = System::Drawing::Size(341, 323);
-			this->buttonVideo->TabIndex = 4;
-			this->buttonVideo->UseVisualStyleBackColor = false;
-			this->buttonVideo->Click += gcnew System::EventHandler(this, &MyForm::buttonVideo_Click_1);
 			// 
 			// loadingPictureBox
 			// 
@@ -212,6 +246,8 @@ namespace TestingNewGui {
 			this->panelLogin->PerformLayout();
 			this->panelBoot->ResumeLayout(false);
 			this->panelBoot->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->borderPictureBox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->loadingPictureBox))->EndInit();
 			this->ResumeLayout(false);
 
@@ -254,6 +290,8 @@ private: System::Void timerLoading_Tick(System::Object^ sender, System::EventArg
 	int x = p.X;
 	int y = p.Y;
 	this->loadingLabel->Location = Point(x+1, y);
+	borderPictureBox->Visible = false;
+	this->bgpicturebox3->Visible = false;
 	if (x == 420 && loadingLabel->Text == L"Requesting Access...") {
 		x = 214;
 		this->loadingLabel->Location = Point(x + 1, y);
@@ -280,6 +318,7 @@ private: System::Void timerGoToLogin_Tick(System::Object^ sender, System::EventA
 	timerGoToLogin->Enabled = false;
 	timerVideo->Stop();
 	timerVideo->Enabled = false;
+
 	this->panelLogin->Visible = true;
 	this->panelBoot->Visible = false;
 	this->Text = L"Spy Login";			//login background can be found at https://www.wallpaperflare.com/red-and-black-world-map-handprints-map-technology-streaks-wallpaper-195790
@@ -291,6 +330,8 @@ private: System::Void timerVideo_Tick(System::Object^ sender, System::EventArgs^
 	PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	this->timerVideo->Stop();
 	this->timerVideo->Enabled = false;
+}
+private: System::Void bgpicturebox3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
