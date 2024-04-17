@@ -170,9 +170,9 @@ namespace TestingNewGui {
 			// loadingPictureBox
 			// 
 			this->loadingPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"loadingPictureBox.Image")));
-			this->loadingPictureBox->Location = System::Drawing::Point(0, 0);
+			this->loadingPictureBox->Location = System::Drawing::Point(-1, -1);
 			this->loadingPictureBox->Name = L"loadingPictureBox";
-			this->loadingPictureBox->Size = System::Drawing::Size(1280, 720);
+			this->loadingPictureBox->Size = System::Drawing::Size(1260, 680);
 			this->loadingPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->loadingPictureBox->TabIndex = 5;
 			this->loadingPictureBox->TabStop = false;
@@ -248,31 +248,33 @@ private: System::Void loadingPictureBox_Click(System::Object^ sender, System::Ev
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-	private: System::Void timerLoading_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Point p = this->loadingLabel->Location;
-		int x = p.X;
-		int y = p.Y;
-		this->loadingLabel->Location = Point(x+1, y);
-		if (x == 420 && loadingLabel->Text == L"Requesting Access...") {
-			x = 214;
-			this->loadingLabel->Location = Point(x + 1, y);
-			loadingLabel->Text = L"Loading Spy Resources...";
-		}
 
-		if (x == 360 && loadingLabel->Text == L"Loading Spy Resources...") {
-			timerLoading->Stop();
-			timerLoading->Enabled = false;
-			x = 356;
-			this->loadingLabel->Location = Point(x + 1, y);
-			timerGoToLogin->Enabled = true;
-			loadingLabel->Text = L"Guest Access Granted.";
-			PlaySound(NULL, NULL, 0);
-			this->loadingPictureBox->Load(L"assets\\loadinggifstatic.png");  //loading gif can be found at: https://gifer.com/en/7SJe
-			PlaySound(TEXT("assets\\chime"), NULL, SND_FILENAME | SND_ASYNC);
-			timerGoToLogin->Start();
-
-		}
+private: System::Void timerLoading_Tick(System::Object^ sender, System::EventArgs^ e) {
+	Point p = this->loadingLabel->Location;
+	int x = p.X;
+	int y = p.Y;
+	this->loadingLabel->Location = Point(x+1, y);
+	if (x == 420 && loadingLabel->Text == L"Requesting Access...") {
+		x = 214;
+		this->loadingLabel->Location = Point(x + 1, y);
+		loadingLabel->Text = L"Loading Spy Resources...";
 	}
+
+	if (x == 360 && loadingLabel->Text == L"Loading Spy Resources...") {
+		timerLoading->Stop();
+		timerLoading->Enabled = false;
+		x = 356;
+		this->loadingLabel->Location = Point(x + 1, y);
+		timerGoToLogin->Enabled = true;
+		loadingLabel->Text = L"Guest Access Granted.";
+		PlaySound(NULL, NULL, 0);
+		this->loadingPictureBox->Load(L"assets\\loadinggifstatic.png");  //loading gif can be found at: https://gifer.com/en/7SJe
+		PlaySound(TEXT("assets\\chime"), NULL, SND_FILENAME | SND_ASYNC);
+		timerGoToLogin->Start();
+
+	}
+}
+
 private: System::Void timerGoToLogin_Tick(System::Object^ sender, System::EventArgs^ e) {
 	timerGoToLogin->Stop();
 	timerGoToLogin->Enabled = false;
