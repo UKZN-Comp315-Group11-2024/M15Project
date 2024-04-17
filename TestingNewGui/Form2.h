@@ -42,7 +42,9 @@ namespace TestingNewGui {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ buttonVideo;
+	protected:
+
 
 
 
@@ -65,22 +67,22 @@ namespace TestingNewGui {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form2::typeid));
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->buttonVideo = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// button1
+			// buttonVideo
 			// 
-			this->button1->BackColor = System::Drawing::Color::Black;
-			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
-			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->button1->ForeColor = System::Drawing::Color::Transparent;
-			this->button1->Location = System::Drawing::Point(444, 180);
-			this->button1->Margin = System::Windows::Forms::Padding(0);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(341, 323);
-			this->button1->TabIndex = 3;
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &Form2::button1_Click);
+			this->buttonVideo->BackColor = System::Drawing::Color::Black;
+			this->buttonVideo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"buttonVideo.BackgroundImage")));
+			this->buttonVideo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->buttonVideo->ForeColor = System::Drawing::Color::Transparent;
+			this->buttonVideo->Location = System::Drawing::Point(444, 180);
+			this->buttonVideo->Margin = System::Windows::Forms::Padding(0);
+			this->buttonVideo->Name = L"buttonVideo";
+			this->buttonVideo->Size = System::Drawing::Size(341, 323);
+			this->buttonVideo->TabIndex = 3;
+			this->buttonVideo->UseVisualStyleBackColor = false;
+			this->buttonVideo->Click += gcnew System::EventHandler(this, &Form2::buttonVideo_Click);
 			// 
 			// Form2
 			// 
@@ -88,7 +90,7 @@ namespace TestingNewGui {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->ClientSize = System::Drawing::Size(1264, 681);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->buttonVideo);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Form2";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -97,7 +99,7 @@ namespace TestingNewGui {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void buttonVideo_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->videoPlayed) {
 			TCHAR szPath[] = TEXT("assets\\Welcome, human.mp4");
 
