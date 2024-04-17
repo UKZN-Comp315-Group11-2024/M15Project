@@ -169,9 +169,9 @@ namespace TestingNewGui {
 			// borderPictureBox
 			// 
 			this->borderPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"borderPictureBox.Image")));
-			this->borderPictureBox->Location = System::Drawing::Point(452, 158);
+			this->borderPictureBox->Location = System::Drawing::Point(393, 102);
 			this->borderPictureBox->Name = L"borderPictureBox";
-			this->borderPictureBox->Size = System::Drawing::Size(353, 332);
+			this->borderPictureBox->Size = System::Drawing::Size(467, 441);
 			this->borderPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->borderPictureBox->TabIndex = 7;
 			this->borderPictureBox->TabStop = false;
@@ -180,7 +180,7 @@ namespace TestingNewGui {
 			// bgpicturebox3
 			// 
 			this->bgpicturebox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bgpicturebox3.Image")));
-			this->bgpicturebox3->Location = System::Drawing::Point(1016, 510);
+			this->bgpicturebox3->Location = System::Drawing::Point(988, 510);
 			this->bgpicturebox3->Name = L"bgpicturebox3";
 			this->bgpicturebox3->Size = System::Drawing::Size(243, 169);
 			this->bgpicturebox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -195,7 +195,7 @@ namespace TestingNewGui {
 			this->loadingLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 32.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->loadingLabel->ForeColor = System::Drawing::Color::Transparent;
-			this->loadingLabel->Location = System::Drawing::Point(270, 319);
+			this->loadingLabel->Location = System::Drawing::Point(214, 319);
 			this->loadingLabel->Name = L"loadingLabel";
 			this->loadingLabel->Size = System::Drawing::Size(540, 46);
 			this->loadingLabel->TabIndex = 6;
@@ -258,7 +258,7 @@ namespace TestingNewGui {
 
 private: System::Void buttonVideo_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	if (!this->videoPlayed) {
-		PlaySound(NULL, NULL, 0);
+		PlaySound(NULL, NULL, 0);								//get rid of existing sound and play video
 		TCHAR szPath[] = TEXT("assets\\Welcome, human.mp4");  //voice for video can be found at https://elevenlabs.io/
 		HINSTANCE hRet = ShellExecute(					      //glowing orb can be found at https://pixabay.com/videos/astronomy-glow-ray-science-star-140671/
 			HWND_DESKTOP, //Parent window	
@@ -270,13 +270,14 @@ private: System::Void buttonVideo_Click_1(System::Object^ sender, System::EventA
 		this->timerVideo->Enabled = true;
 		this->timerVideo->Start();
 		this->videoPlayed = true;
-		this->borderPictureBox->Visible = true;
+		this->borderPictureBox->Visible = true;				//once video is played the player can access the boot by pressing the button
 	}
 	else {
+		//switches from initial screen to boot screen
 		PlaySound(NULL, NULL, 0);
 		PlaySound(TEXT("assets\\Mouse Click Sound Effect.wav"), NULL, SND_FILENAME | SND_SYNC);
 		this->buttonVideo->Hide();
-		this->loadingPictureBox->Visible = true;
+		this->loadingPictureBox->Visible = true;			
 		this->loadingLabel->Parent = this->loadingPictureBox;
 		this->loadingLabel->Visible = true;
 		this->timerLoading->Enabled = true;
@@ -290,19 +291,35 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 }
 
 private: System::Void timerLoading_Tick(System::Object^ sender, System::EventArgs^ e) {
+	//code to slide loading label across the screen
 	Point p = this->loadingLabel->Location;
 	int x = p.X;
 	int y = p.Y;
 	this->loadingLabel->Location = Point(x+1, y);
+	if (x < 325) {
+		//rand() % 2 stuff is for the random flickering
+		if (rand() % 2 == 0) {
+			this->loadingLabel->Visible = false;
+		}
+		else{
+			this->loadingLabel->Visible = true;
+		}
+		 
+	}
+	else {
+		this->loadingLabel->Visible = true;
+	}
 	borderPictureBox->Visible = false;
 	this->bgpicturebox3->Visible = false;
+	
 	if (x == 420 && loadingLabel->Text == L"Requesting Access...") {
 		x = 214;
 		this->loadingLabel->Location = Point(x + 1, y);
 		loadingLabel->Text = L"Loading Spy Resources...";
 	}
 
-	if (x == 360 && loadingLabel->Text == L"Loading Spy Resources...") {
+	//once it reaches a point it changes to "Loading Spy Resources..."
+	if (x == 420 && loadingLabel->Text == L"Loading Spy Resources...") {
 		timerLoading->Stop();
 		timerLoading->Enabled = false;
 		x = 356;
@@ -316,13 +333,12 @@ private: System::Void timerLoading_Tick(System::Object^ sender, System::EventArg
 
 	}
 }
-
+	//after 3 seconds the timer to go to login switches panels from boot to login
 private: System::Void timerGoToLogin_Tick(System::Object^ sender, System::EventArgs^ e) {
 	timerGoToLogin->Stop();
 	timerGoToLogin->Enabled = false;
 	timerVideo->Stop();
 	timerVideo->Enabled = false;
-
 	this->panelLogin->Visible = true;
 	this->panelBoot->Visible = false;
 	this->Text = L"Spy Login";			//login background can be found at https://www.wallpaperflare.com/red-and-black-world-map-handprints-map-technology-streaks-wallpaper-195790
@@ -336,13 +352,20 @@ private: System::Void timerVideo_Tick(System::Object^ sender, System::EventArgs^
 	this->timerVideo->Enabled = false;
 }
 private: System::Void bgpicturebox3_Click(System::Object^ sender, System::EventArgs^ e) {
-	parity = (parity + 1) % 2;
+	int x;
+	//fun minigame on very first screen where the gif moves around the screen randomly 
+	//but kept in bounds and doesn't overlap with main button
+	parity = rand() % 2;
 	if (parity%2==1) {
 		this->bgpicturebox3->Load(L"assets\\bggif3.gif");
+		x = rand() % 150;
 	}
 	else {
 		this->bgpicturebox3->Load(L"assets\\bggif1.gif");
+		x = (rand() % 170) + 830;
 	}
+	int y = rand() % 500;
+	bgpicturebox3->Location = Point(x, y);
 	
 }
 };
