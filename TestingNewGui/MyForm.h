@@ -96,7 +96,7 @@ namespace TestingNewGui {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(166, 29);
+			this->textBox1->Location = System::Drawing::Point(116, 346);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(193, 20);
 			this->textBox1->TabIndex = 0;
@@ -107,7 +107,7 @@ namespace TestingNewGui {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 30, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(290, 61);
+			this->label1->Location = System::Drawing::Point(448, 320);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(386, 55);
 			this->label1->TabIndex = 1;
