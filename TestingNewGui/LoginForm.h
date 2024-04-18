@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <msclr/marshal_cppstd.h>
+#include <string>
 
 namespace TestingNewGui {
 
@@ -39,16 +42,18 @@ namespace TestingNewGui {
 			}
 		}
 	private: System::Windows::Forms::Panel^ panelLogin;
+	private: System::Windows::Forms::Label^ lblSuggestor;
 	protected:
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::TextBox^ tbSpyName;
 	private: System::Windows::Forms::Label^ lblSpyName;
+	private: System::Windows::Forms::Label^ lblWarning;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -59,7 +64,8 @@ namespace TestingNewGui {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lblWarning = (gcnew System::Windows::Forms::Label());
+			this->lblSuggestor = (gcnew System::Windows::Forms::Label());
 			this->tbSpyName = (gcnew System::Windows::Forms::TextBox());
 			this->lblSpyName = (gcnew System::Windows::Forms::Label());
 			this->panelLogin->SuspendLayout();
@@ -68,62 +74,83 @@ namespace TestingNewGui {
 			// panelLogin
 			// 
 			this->panelLogin->BackColor = System::Drawing::Color::Transparent;
-			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));////login background can be found at https://www.wallpaperflare.com/red-and-black-world-map-handprints-map-technology-streaks-wallpaper-195790
+			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->panelLogin->Controls->Add(this->label1);
+			this->panelLogin->Controls->Add(this->lblWarning);
+			this->panelLogin->Controls->Add(this->lblSuggestor);
 			this->panelLogin->Controls->Add(this->tbSpyName);
 			this->panelLogin->Controls->Add(this->lblSpyName);
-			this->panelLogin->Location = System::Drawing::Point(-8, -20);
+			this->panelLogin->Location = System::Drawing::Point(-10, -25);
+			this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(1280, 720);
+			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 3;
 			// 
-			// label1
+			// lblWarning
 			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::White;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblWarning->AutoSize = true;
+			this->lblWarning->BackColor = System::Drawing::Color::Transparent;
+			this->lblWarning->Font = (gcnew System::Drawing::Font(L"Determination Mono Web", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(570, 506);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(62, 44);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"try";
+			this->lblWarning->ForeColor = System::Drawing::Color::Red;
+			this->lblWarning->Location = System::Drawing::Point(680, 552);
+			this->lblWarning->Name = L"lblWarning";
+			this->lblWarning->Size = System::Drawing::Size(477, 61);
+			this->lblWarning->TabIndex = 3;
+			this->lblWarning->Text = L"Start typing...";
+			// 
+			// lblSuggestor
+			// 
+			this->lblSuggestor->AutoSize = true;
+			this->lblSuggestor->BackColor = System::Drawing::Color::Transparent;
+			this->lblSuggestor->Enabled = false;
+			this->lblSuggestor->Font = (gcnew System::Drawing::Font(L"Determination Mono Web", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblSuggestor->ForeColor = System::Drawing::Color::Red;
+			this->lblSuggestor->Location = System::Drawing::Point(680, 641);
+			this->lblSuggestor->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lblSuggestor->Name = L"lblSuggestor";
+			this->lblSuggestor->Size = System::Drawing::Size(357, 61);
+			this->lblSuggestor->TabIndex = 2;
+			this->lblSuggestor->Text = L"Suggestion:";
 			// 
 			// tbSpyName
 			// 
 			this->tbSpyName->BackColor = System::Drawing::Color::Firebrick;
 			this->tbSpyName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->tbSpyName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 72, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->tbSpyName->Font = (gcnew System::Drawing::Font(L"Determination Mono Web", 72, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tbSpyName->Location = System::Drawing::Point(544, 306);
+			this->tbSpyName->Location = System::Drawing::Point(680, 382);
+			this->tbSpyName->Margin = System::Windows::Forms::Padding(4);
 			this->tbSpyName->MaxLength = 10;
 			this->tbSpyName->Name = L"tbSpyName";
-			this->tbSpyName->Size = System::Drawing::Size(541, 109);
+			this->tbSpyName->Size = System::Drawing::Size(676, 123);
 			this->tbSpyName->TabIndex = 0;
 			this->tbSpyName->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tbSpyName->TextChanged += gcnew System::EventHandler(this, &LoginForm::tbSpyName_TextChanged);
 			// 
 			// lblSpyName
 			// 
-			this->lblSpyName->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 40.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblSpyName->BackColor = System::Drawing::Color::Transparent;
+			this->lblSpyName->Font = (gcnew System::Drawing::Font(L"Determination Mono Web", 55.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblSpyName->Location = System::Drawing::Point(50, 320);
+			this->lblSpyName->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->lblSpyName->Location = System::Drawing::Point(107, 392);
+			this->lblSpyName->Margin = System::Windows::Forms::Padding(0);
 			this->lblSpyName->Name = L"lblSpyName";
-			this->lblSpyName->Size = System::Drawing::Size(337, 87);
+			this->lblSpyName->Size = System::Drawing::Size(339, 109);
 			this->lblSpyName->TabIndex = 1;
-			this->lblSpyName->Text = L"Spy Name:";
+			this->lblSpyName->Text = L"Alias:";
 			// 
 			// LoginForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1264, 681);
+			this->ClientSize = System::Drawing::Size(1580, 851);
 			this->Controls->Add(this->panelLogin);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"LoginForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Spy Login";
@@ -137,53 +164,113 @@ namespace TestingNewGui {
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 	}
-private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	//Creates a name for the user incase they're struggling to create one
-	System::String^ username = tbSpyName->Text;
-	System::String^ suggestedName = "";
-	bool isLastCharDigit = false;
-	char temp = ' ';
 
-	if (username->Length >= 3 && username->Length <= 7) { //adding on a number to the name
-		suggestedName = username + "007";
-		//if (!usernameExists(suggestedName)) { //suggestedName is unique
-		//	username = suggestedName;
-		//	return username;
-		//}
-		label1->Text = suggestedName;
+	//@jaedon: original code
+	//@avesh: edited and adpated
+	private: bool LoginForm::usernameExists(System::String^ s)
+	{
+		// Create a marshal context
+		msclr::interop::marshal_context context;
+
+		// Convert System::String^ to std::string
+		std::string stdString = context.marshal_as<std::string>(s);
+
+		std::ifstream file("textfiles/Leaderboard.txt");
+		std::string line;
+
+		if (file.is_open())
+		{
+			while (getline(file, line))
+			{
+				int pos = line.find('$');
+
+				if (pos != -1 && line.substr(0, pos) == stdString)
+				{
+
+					return true;
+				}
+			}
+			return false;
+		}
+
 	}
 
-	/*if (username.length() == 10) { //max chars
-		if (!isdigit(username[username.length() - 1])) {  //last char isn't a Number
 
-			username.pop_back(); //removes last char
+	//@archan: original code
+	//@avesh: edited and adpated
+	private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		//Creates a name for the user incase they're struggling to create one
+		System::String^ username = tbSpyName->Text;
+		System::String^ suggestedName = "";
+		bool isLastCharDigit = false;
+		char temp = ' ';
+
+		if (username->Length < 3) {
+			lblWarning->Text = "TOO SHORT";
+			return;
 		}
-		else { // last char is a number
-			temp = username[username.length() - 1]; // keeping last digit
-			//cout << temp;
-			isLastCharDigit = true;
-			username.pop_back();
-			username.pop_back();
 
+		if (username->Length == 0) {
+			lblWarning->Text = "Start typing...";
+			return;
 		}
 
+		if (usernameExists(username))
+		{
+			lblWarning->Text = "TAKEN";
+			if (username->Length >= 3 && username->Length <= 7) { //adding on a number to the name
+				if (!usernameExists(username + "007") && usernameExists(username)) { //suggestedName is unique
+					lblSuggestor->Enabled = true;
+					lblSuggestor->Text = "Suggestion: " + username + "007";
+
+					return;
+				}
+
+			}
+
+			//if (username->Length == 10) { //max chars
+			if (!isdigit(username[username->Length - 1])) {  //last char isn't a Number
+
+				username = username->Substring(0, username->Length - 1); //removes last char
+			}
+			else { // last char is a number
+				temp = username[username->Length - 1]; // keeping last digit
+				//cout << temp;
+				isLastCharDigit = true;
+				username = username->Substring(0, username->Length - 1);
+				username = username->Substring(0, username->Length - 1);
+
+			}
+
+			//appending name with numbers
+			for (int i = 1; i <= 9; i++) {
+
+				username += i.ToString();
+
+				if (isLastCharDigit) {
+					username += temp - '0'; //returning the original digit this had at the end
+				}
+				if (!usernameExists(username)) { //username is unique
+					isLastCharDigit = false;
+					lblSuggestor->Enabled = true;
+					lblSuggestor->Text = "Suggestion: " + username;
+					return;
+				}
+				else {
+					username = username->Substring(0, username->Length - 1);
+					username = username->Substring(0, username->Length - 1);
+					temp = i + '0';
+					isLastCharDigit = true;
+				}
+			}
+
+		}
+		else
+		{
+			lblWarning->Text = "Accept state";
+			lblSuggestor->Enabled = false;
+			lblSuggestor->Text = "Suggestion:";
+		}
 	}
-	//appending name with numbers
-	for (int i = 1; i <= 9; i++) {
-		username += to_string(i);
-
-		if (isLastCharDigit) {
-			username += temp; //returning the original digit this had at the end
-		}
-		if (!usernameExists(username)) { //username is unique
-			isLastCharDigit = false;
-			return username;
-		}
-		else {
-			username.pop_back();
-			username.pop_back();
-		}
-	}*/
-}
 };
 }
