@@ -48,6 +48,8 @@ namespace TestingNewGui {
 	private: System::Windows::Forms::TextBox^ tbSpyName;
 	private: System::Windows::Forms::Label^ lblSpyName;
 	private: System::Windows::Forms::Label^ lblWarning;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 	private:
 		/// <summary>
@@ -64,18 +66,21 @@ namespace TestingNewGui {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->lblWarning = (gcnew System::Windows::Forms::Label());
 			this->lblSuggestor = (gcnew System::Windows::Forms::Label());
 			this->tbSpyName = (gcnew System::Windows::Forms::TextBox());
 			this->lblSpyName = (gcnew System::Windows::Forms::Label());
 			this->panelLogin->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panelLogin
 			// 
 			this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
-			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->panelLogin->Controls->Add(this->pictureBox1);
 			this->panelLogin->Controls->Add(this->lblWarning);
 			this->panelLogin->Controls->Add(this->lblSuggestor);
 			this->panelLogin->Controls->Add(this->tbSpyName);
@@ -85,6 +90,16 @@ namespace TestingNewGui {
 			this->panelLogin->Name = L"panelLogin";
 			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 3;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(447, 96);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(149, 174);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 4;
+			this->pictureBox1->TabStop = false;
 			// 
 			// lblWarning
 			// 
@@ -128,6 +143,7 @@ namespace TestingNewGui {
 			this->tbSpyName->TabIndex = 0;
 			this->tbSpyName->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tbSpyName->TextChanged += gcnew System::EventHandler(this, &LoginForm::tbSpyName_TextChanged);
+			this->tbSpyName->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::tbSpyName_KeyDown);
 			// 
 			// lblSpyName
 			// 
@@ -157,16 +173,29 @@ namespace TestingNewGui {
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+
+		// Used to rotate images - might be useful at some point
+		//@archan: plane rotation
+		//@avesh: adapted and edited
+		// Create an image from the picturebox
+		//System::Drawing::Image^ down_img = pictureBox1->Image;
+
+		// Rotate the image
+		//down_img->RotateFlip(System::Drawing::RotateFlipType::Rotate90FlipNone);
+
+		// Set the rotated image to PictureBox
+		//this->pictureBox1->Image = down_img;
 	}
 
 	//@jaedon: original code
-	//@avesh: edited and adpated
+	//@avesh: edited and adapted
 	private: bool LoginForm::usernameExists(System::String^ s)
 	{
 		// Create a marshal context
@@ -197,7 +226,7 @@ namespace TestingNewGui {
 
 
 	//@archan: original code
-	//@avesh: edited and adpated
+	//@avesh: edited and adapted
 	private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		//Creates a name for the user incase they're struggling to create one
 		System::String^ username = tbSpyName->Text;
@@ -272,5 +301,16 @@ namespace TestingNewGui {
 			lblSuggestor->Text = "Suggestion:";
 		}
 	}
+
+//@avesh: to move to next form after getting an acceptable alias (sound notification)
+private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyCode == Keys::Enter && lblWarning->Text == "Accept state") {
+		// Show a message to indicate that the next form will be displayed
+		e->SuppressKeyPress = true;
+		
+		//std::cout<<"Show next form";
+		//MessageBox::Show("Show next form", "Next Form", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+}
 };
 }
