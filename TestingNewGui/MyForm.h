@@ -7,6 +7,9 @@
 #include <thread>
 #include <windows.h>
 #include <process.h>
+#include <string>
+#include "LoginForm.h"
+
 
 namespace TestingNewGui {
 
@@ -23,6 +26,7 @@ namespace TestingNewGui {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
+		bool userClosed = false;
 		MyForm(void)
 		{
 			PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);  //music can be found here https://pixabay.com/music/beats-dark-cinematic-ambient-beat-173058/
@@ -43,8 +47,11 @@ namespace TestingNewGui {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ tbSpyName;
+	protected:
+
+	private: System::Windows::Forms::Label^ lblSpyName;
+
 	private: System::Windows::Forms::Panel^ panelLogin;
 	private: System::Windows::Forms::Panel^ panelBoot;
 	private: System::Windows::Forms::Button^ buttonVideo;
@@ -59,6 +66,7 @@ namespace TestingNewGui {
 	private: System::Windows::Forms::Timer^ timerVideo;
 	private: System::Windows::Forms::PictureBox^ borderPictureBox;
 	private: System::Windows::Forms::PictureBox^ bgpicturebox3;
+	private: System::Windows::Forms::Label^ label1;
 
 
 
@@ -87,9 +95,10 @@ namespace TestingNewGui {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->tbSpyName = (gcnew System::Windows::Forms::TextBox());
+			this->lblSpyName = (gcnew System::Windows::Forms::Label());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panelBoot = (gcnew System::Windows::Forms::Panel());
 			this->buttonVideo = (gcnew System::Windows::Forms::Button());
 			this->borderPictureBox = (gcnew System::Windows::Forms::PictureBox());
@@ -106,37 +115,58 @@ namespace TestingNewGui {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->loadingPictureBox))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// textBox1
+			// tbSpyName
 			// 
-			this->textBox1->Location = System::Drawing::Point(116, 346);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(193, 20);
-			this->textBox1->TabIndex = 0;
-			this->textBox1->Text = L"BRUH";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 30, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->tbSpyName->BackColor = System::Drawing::Color::Firebrick;
+			this->tbSpyName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbSpyName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 72, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(448, 320);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(386, 55);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"THIS IS A LABEL";
+			this->tbSpyName->Location = System::Drawing::Point(680, 382);
+			this->tbSpyName->Margin = System::Windows::Forms::Padding(4);
+			this->tbSpyName->MaxLength = 10;
+			this->tbSpyName->Name = L"tbSpyName";
+			this->tbSpyName->Size = System::Drawing::Size(676, 136);
+			this->tbSpyName->TabIndex = 0;
+			this->tbSpyName->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->tbSpyName->TextChanged += gcnew System::EventHandler(this, &MyForm::tbSpyName_TextChanged);
+			this->tbSpyName->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::tbSpyName_KeyPress);
+			// 
+			// lblSpyName
+			// 
+			this->lblSpyName->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 40.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblSpyName->Location = System::Drawing::Point(63, 400);
+			this->lblSpyName->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblSpyName->Name = L"lblSpyName";
+			this->lblSpyName->Size = System::Drawing::Size(421, 109);
+			this->lblSpyName->TabIndex = 1;
+			this->lblSpyName->Text = L"Spy Name:";
 			// 
 			// panelLogin
 			// 
 			this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->panelLogin->Controls->Add(this->textBox1);
-			this->panelLogin->Controls->Add(this->label1);
+			this->panelLogin->Controls->Add(this->tbSpyName);
+			this->panelLogin->Controls->Add(this->lblSpyName);
 			this->panelLogin->Location = System::Drawing::Point(0, 0);
+			this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(1280, 720);
+			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 2;
 			this->panelLogin->Visible = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::White;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(629, 639);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(76, 54);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"try";
 			// 
 			// panelBoot
 			// 
@@ -148,8 +178,9 @@ namespace TestingNewGui {
 			this->panelBoot->Controls->Add(this->loadingLabel);
 			this->panelBoot->Controls->Add(this->loadingPictureBox);
 			this->panelBoot->Location = System::Drawing::Point(0, 0);
+			this->panelBoot->Margin = System::Windows::Forms::Padding(4);
 			this->panelBoot->Name = L"panelBoot";
-			this->panelBoot->Size = System::Drawing::Size(1280, 720);
+			this->panelBoot->Size = System::Drawing::Size(1600, 900);
 			this->panelBoot->TabIndex = 3;
 			// 
 			// buttonVideo
@@ -158,10 +189,10 @@ namespace TestingNewGui {
 			this->buttonVideo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"buttonVideo.BackgroundImage")));
 			this->buttonVideo->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->buttonVideo->ForeColor = System::Drawing::Color::Transparent;
-			this->buttonVideo->Location = System::Drawing::Point(457, 162);
+			this->buttonVideo->Location = System::Drawing::Point(571, 202);
 			this->buttonVideo->Margin = System::Windows::Forms::Padding(0);
 			this->buttonVideo->Name = L"buttonVideo";
-			this->buttonVideo->Size = System::Drawing::Size(341, 323);
+			this->buttonVideo->Size = System::Drawing::Size(426, 404);
 			this->buttonVideo->TabIndex = 4;
 			this->buttonVideo->UseVisualStyleBackColor = false;
 			this->buttonVideo->Click += gcnew System::EventHandler(this, &MyForm::buttonVideo_Click_1);
@@ -169,9 +200,10 @@ namespace TestingNewGui {
 			// borderPictureBox
 			// 
 			this->borderPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"borderPictureBox.Image")));
-			this->borderPictureBox->Location = System::Drawing::Point(393, 102);
+			this->borderPictureBox->Location = System::Drawing::Point(491, 128);
+			this->borderPictureBox->Margin = System::Windows::Forms::Padding(4);
 			this->borderPictureBox->Name = L"borderPictureBox";
-			this->borderPictureBox->Size = System::Drawing::Size(467, 441);
+			this->borderPictureBox->Size = System::Drawing::Size(584, 551);
 			this->borderPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->borderPictureBox->TabIndex = 7;
 			this->borderPictureBox->TabStop = false;
@@ -180,9 +212,10 @@ namespace TestingNewGui {
 			// bgpicturebox3
 			// 
 			this->bgpicturebox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bgpicturebox3.Image")));
-			this->bgpicturebox3->Location = System::Drawing::Point(988, 510);
+			this->bgpicturebox3->Location = System::Drawing::Point(1235, 638);
+			this->bgpicturebox3->Margin = System::Windows::Forms::Padding(4);
 			this->bgpicturebox3->Name = L"bgpicturebox3";
-			this->bgpicturebox3->Size = System::Drawing::Size(243, 169);
+			this->bgpicturebox3->Size = System::Drawing::Size(304, 211);
 			this->bgpicturebox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->bgpicturebox3->TabIndex = 10;
 			this->bgpicturebox3->TabStop = false;
@@ -195,9 +228,10 @@ namespace TestingNewGui {
 			this->loadingLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 32.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->loadingLabel->ForeColor = System::Drawing::Color::Transparent;
-			this->loadingLabel->Location = System::Drawing::Point(214, 319);
+			this->loadingLabel->Location = System::Drawing::Point(268, 399);
+			this->loadingLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->loadingLabel->Name = L"loadingLabel";
-			this->loadingLabel->Size = System::Drawing::Size(540, 46);
+			this->loadingLabel->Size = System::Drawing::Size(665, 59);
 			this->loadingLabel->TabIndex = 6;
 			this->loadingLabel->Text = L"Requesting Access...";
 			this->loadingLabel->Visible = false;
@@ -207,8 +241,9 @@ namespace TestingNewGui {
 			// 
 			this->loadingPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"loadingPictureBox.Image")));
 			this->loadingPictureBox->Location = System::Drawing::Point(-1, -1);
+			this->loadingPictureBox->Margin = System::Windows::Forms::Padding(4);
 			this->loadingPictureBox->Name = L"loadingPictureBox";
-			this->loadingPictureBox->Size = System::Drawing::Size(1260, 680);
+			this->loadingPictureBox->Size = System::Drawing::Size(1575, 850);
 			this->loadingPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->loadingPictureBox->TabIndex = 5;
 			this->loadingPictureBox->TabStop = false;
@@ -232,17 +267,17 @@ namespace TestingNewGui {
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1264, 681);
-			this->Controls->Add(this->panelBoot);
+			this->ClientSize = System::Drawing::Size(1580, 851);
 			this->Controls->Add(this->panelLogin);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Controls->Add(this->panelBoot);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Welcome, human";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &MyForm::MyForm_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
@@ -339,12 +374,14 @@ private: System::Void timerGoToLogin_Tick(System::Object^ sender, System::EventA
 	timerGoToLogin->Enabled = false;
 	timerVideo->Stop();
 	timerVideo->Enabled = false;
-	this->panelLogin->Visible = true;
-	this->panelBoot->Visible = false;
+	//this->panelLogin->Visible = true;
+	//loginForm.Show();
+	this->Close();
 	this->Text = L"Spy Login";			//login background can be found at https://www.wallpaperflare.com/red-and-black-world-map-handprints-map-technology-streaks-wallpaper-195790
 	PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	//loginForm = (gcnew TestingNewGui::LoginForm());
 }
 private: System::Void timerVideo_Tick(System::Object^ sender, System::EventArgs^ e) {
 	PlaySound(TEXT("assets\\Crystal Glow Sound Effect.wav"), NULL, SND_FILENAME | SND_ASYNC);
@@ -367,6 +404,17 @@ private: System::Void bgpicturebox3_Click(System::Object^ sender, System::EventA
 	int y = rand() % 500;
 	bgpicturebox3->Location = Point(x, y);
 	
+}
+private: System::Void tbSpyName_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	
+}
+private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void MyForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	userClosed = true;
+	LoginForm login;
+
 }
 };
 }
