@@ -181,7 +181,7 @@ namespace TestingNewGui {
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 
-
+		// Used to rotate images - might be useful at some point
 		//@archan: plane rotation
 		//@avesh: adapted and edited
 		// Create an image from the picturebox
@@ -195,7 +195,7 @@ namespace TestingNewGui {
 	}
 
 	//@jaedon: original code
-	//@avesh: edited and adpated
+	//@avesh: edited and adapted
 	private: bool LoginForm::usernameExists(System::String^ s)
 	{
 		// Create a marshal context
@@ -226,7 +226,7 @@ namespace TestingNewGui {
 
 
 	//@archan: original code
-	//@avesh: edited and adpated
+	//@avesh: edited and adapted
 	private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		//Creates a name for the user incase they're struggling to create one
 		System::String^ username = tbSpyName->Text;
@@ -302,7 +302,7 @@ namespace TestingNewGui {
 		}
 	}
 
-//@avesh: to move to next form (sound notification)
+//@avesh: to move to next form after getting an acceptable alias (sound notification)
 private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	if (e->KeyCode == Keys::Enter && lblWarning->Text == "Accept state") {
 		// Show a message to indicate that the next form will be displayed
