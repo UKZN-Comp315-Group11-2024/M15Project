@@ -144,7 +144,6 @@ namespace TestingNewGui {
 			this->tbSpyName->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tbSpyName->TextChanged += gcnew System::EventHandler(this, &LoginForm::tbSpyName_TextChanged);
 			this->tbSpyName->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::tbSpyName_KeyDown);
-			this->tbSpyName->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &LoginForm::tbSpyName_KeyPress);
 			// 
 			// lblSpyName
 			// 
@@ -172,8 +171,6 @@ namespace TestingNewGui {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Spy Login";
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::LoginForm_KeyDown);
-			this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &LoginForm::LoginForm_KeyPress);
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -304,15 +301,6 @@ namespace TestingNewGui {
 			lblSuggestor->Text = "Suggestion:";
 		}
 	}
-private: System::Void LoginForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	
-}
-private: System::Void LoginForm_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	
-}
-private: System::Void tbSpyName_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	
-}
 
 //@avesh: to move to next form (sound notification)
 private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
