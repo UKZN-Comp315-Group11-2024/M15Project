@@ -332,8 +332,8 @@ private: System::Void timerGoToLogin_Tick(System::Object^ sender, System::EventA
 	timerVideo->Enabled = false;
 	LoginForm^ loginform = gcnew LoginForm();
 	loginform->Visible = false;
-	loginform->ShowDialog();
 	this->Hide();
+	loginform->ShowDialog();
 	this->Close();
 }
 private: System::Void BootForm_Load(System::Object^ sender, System::EventArgs^ e) {

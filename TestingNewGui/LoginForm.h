@@ -542,8 +542,8 @@ private: System::Void timerlockgif_Tick(System::Object^ sender, System::EventArg
 	player.timeTaken = 0;
 	lvl1Form^ lvl1form = gcnew lvl1Form(player);
 	lvl1form->Visible = false;
-	lvl1form->ShowDialog();
 	this->Hide();
+	lvl1form->ShowDialog();
 	this->Close();
 }
 };
