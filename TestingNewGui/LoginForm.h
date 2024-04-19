@@ -3,7 +3,8 @@
 #include <fstream>
 #include <msclr/marshal_cppstd.h>
 #include <string>
-
+#include "lvl1Form.h"
+#include "playerInfo.h"
 
 namespace TestingNewGui {
 
@@ -58,6 +59,9 @@ namespace TestingNewGui {
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::Timer^ starttypingtimer;
 	private: System::ComponentModel::IContainer^ components;
+	private: System::Windows::Forms::PictureBox^ pictureboxlockgif;
+	private: System::Windows::Forms::Timer^ timerlockgif;
+
 
 
 
@@ -66,7 +70,6 @@ namespace TestingNewGui {
 		/// Required designer variable.
 		/// </summary>
 		int logindots = 0;
-
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -78,6 +81,7 @@ namespace TestingNewGui {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->pictureboxlockgif = (gcnew System::Windows::Forms::PictureBox());
 			this->tbSpyName = (gcnew System::Windows::Forms::TextBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->labelloginscroll2 = (gcnew System::Windows::Forms::Label());
@@ -89,7 +93,9 @@ namespace TestingNewGui {
 			this->lblSpyName = (gcnew System::Windows::Forms::Label());
 			this->timerloginscroll = (gcnew System::Windows::Forms::Timer(this->components));
 			this->starttypingtimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timerlockgif = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelLogin->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxlockgif))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -99,6 +105,7 @@ namespace TestingNewGui {
 			this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			this->panelLogin->Controls->Add(this->tbSpyName);
 			this->panelLogin->Controls->Add(this->pictureBox2);
 			this->panelLogin->Controls->Add(this->labelloginscroll2);
@@ -115,6 +122,19 @@ namespace TestingNewGui {
 			this->panelLogin->TabIndex = 3;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &LoginForm::panelLogin_Paint);
 			// 
+			// pictureboxlockgif
+			// 
+			this->pictureboxlockgif->BackColor = System::Drawing::Color::Black;
+			this->pictureboxlockgif->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureboxlockgif.Image")));
+			this->pictureboxlockgif->Location = System::Drawing::Point(-276, -238);
+			this->pictureboxlockgif->Name = L"pictureboxlockgif";
+			this->pictureboxlockgif->Size = System::Drawing::Size(1846, 1066);
+			this->pictureboxlockgif->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureboxlockgif->TabIndex = 9;
+			this->pictureboxlockgif->TabStop = false;
+			this->pictureboxlockgif->Visible = false;
+			this->pictureboxlockgif->Click += gcnew System::EventHandler(this, &LoginForm::pictureboxlockgif_Click);
+			// 
 			// tbSpyName
 			// 
 			this->tbSpyName->BackColor = System::Drawing::Color::Maroon;
@@ -130,6 +150,7 @@ namespace TestingNewGui {
 			this->tbSpyName->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tbSpyName->TextChanged += gcnew System::EventHandler(this, &LoginForm::tbSpyName_TextChanged);
 			this->tbSpyName->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &LoginForm::tbSpyName_KeyDown);
+			this->tbSpyName->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &LoginForm::tbSpyName_KeyPress);
 			// 
 			// pictureBox2
 			// 
@@ -241,6 +262,11 @@ namespace TestingNewGui {
 			this->starttypingtimer->Interval = 1000;
 			this->starttypingtimer->Tick += gcnew System::EventHandler(this, &LoginForm::starttypingtimer_Tick);
 			// 
+			// timerlockgif
+			// 
+			this->timerlockgif->Interval = 6000;
+			this->timerlockgif->Tick += gcnew System::EventHandler(this, &LoginForm::timerlockgif_Tick);
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
@@ -257,6 +283,7 @@ namespace TestingNewGui {
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxlockgif))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -401,9 +428,14 @@ namespace TestingNewGui {
 
 //@avesh: to move to next form after getting an acceptable alias (sound notification)
 private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyCode == Keys::Enter && lblWarning->Text == "Alias available") {
+	if (e->KeyCode == Keys::Enter && (lblWarning->Text == "Alias available" || lblWarning->Text == "Alias available\n->(Max alias length)")) {
 		// Show a message to indicate that the next form will be displayed
 		e->SuppressKeyPress = true;
+		pictureboxlockgif->Visible = true;
+		timerlockgif->Enabled = true;
+		timerlockgif->Start();
+		PlaySound(NULL, NULL, 0);
+		PlaySound(TEXT("assets\\techsounds"), NULL, SND_FILENAME | SND_ASYNC);
 		
 		//std::cout<<"Show next form";
 		//MessageBox::Show("Show next form", "Next Form", MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -489,5 +521,29 @@ private: System::Void starttypingtimer_Tick(System::Object^ sender, System::Even
 private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 
+private: System::Void tbSpyName_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+
+
+}
+private: System::Void pictureboxlockgif_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void timerlockgif_Tick(System::Object^ sender, System::EventArgs^ e) {
+	pictureboxlockgif->Visible = true; //image found at https://www.behance.net/gallery/111619785/4K-Network-Cyber-Security-Hack?log_shim_removal=1
+	PlaySound(NULL, NULL, 0);
+	PlaySound(TEXT("assets\\accessgranted.wav"), NULL, SND_FILENAME | SND_SYNC);
+	PlaySound(TEXT("assets\\boom.wav"), NULL, SND_FILENAME | SND_SYNC);
+	timerloginscroll->Enabled = false;
+	starttypingtimer->Enabled = false;
+	timerlockgif->Enabled = false;
+	playerInfo player;
+	player.score = 0;
+	player.username = msclr::interop::marshal_as<std::string>(tbSpyName->Text);
+	player.timeTaken = 0;
+	lvl1Form^ lvl1form = gcnew lvl1Form(player);
+	lvl1form->Visible = false;
+	lvl1form->ShowDialog();
+	this->Hide();
+	this->Close();
+}
 };
 }

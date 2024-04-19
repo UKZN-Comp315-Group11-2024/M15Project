@@ -1,5 +1,7 @@
 #pragma once
-
+#include "PlayerInfo.h"
+#include <iostream>
+#include <windows.h>
 namespace TestingNewGui {
 
 	using namespace System;
@@ -15,12 +17,14 @@ namespace TestingNewGui {
 	public ref class lvl1Form : public System::Windows::Forms::Form
 	{
 	public:
-		lvl1Form(void)
+		lvl1Form(playerInfo player)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->player = &player;
 		}
 
 	protected:
@@ -35,13 +39,17 @@ namespace TestingNewGui {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
-	protected:
 
+	private: System::ComponentModel::IContainer^ components;
+	private: System::Windows::Forms::Label^ label2;
+	protected:
+		playerInfo* player;
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -52,6 +60,7 @@ namespace TestingNewGui {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(lvl1Form::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -66,17 +75,32 @@ namespace TestingNewGui {
 			this->label1->Text = L"LEVEL 1";
 			this->label1->Click += gcnew System::EventHandler(this, &lvl1Form::label1_Click);
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Courier New", 72, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(312, 132);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(395, 110);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"Player";
+			// 
 			// lvl1Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1264, 681);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->Name = L"lvl1Form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Level 1";
+			this->Activated += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Activated);
+			this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -84,5 +108,12 @@ namespace TestingNewGui {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
+	
+	}
+	private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
+		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Sizable;
+	}
+
 	};
 }
