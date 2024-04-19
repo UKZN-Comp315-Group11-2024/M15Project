@@ -481,6 +481,7 @@ private: System::Void starttypingtimer_Tick(System::Object^ sender, System::Even
 		}
 	}
 }
+
 private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };

@@ -134,11 +134,15 @@
     <ClInclude Include="BootForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="lvl1Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -164,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BootForm.resx">
       <DependentUpon>BootForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lvl1Form.resx">
+      <DependentUpon>lvl1Form.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
