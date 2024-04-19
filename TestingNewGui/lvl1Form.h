@@ -2,6 +2,8 @@
 #include "PlayerInfo.h"
 #include <iostream>
 #include <windows.h>
+#include <vector>
+#include <fstream>
 namespace TestingNewGui {
 
 	using namespace System;
@@ -17,14 +19,44 @@ namespace TestingNewGui {
 	public ref class lvl1Form : public System::Windows::Forms::Form
 	{
 	public:
-		lvl1Form(playerInfo player)
+		lvl1Form()
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+			
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->player = &player;
+			
+			std::ifstream file("textfiles/PlayerInfo.txt");
+			std::string line;
+			std::vector<std::string> v;
+			if (file.is_open())
+			{
+				while (getline(file, line))
+				{
+					v.push_back(line);
+				}
+			
+			}
+			playerInfo* p = new playerInfo();
+			for (int i = 0; i < 3; i++) {
+				std::string s = v[i];
+				if (i == 0) {
+					p->username = s;
+					
+				}
+				
+				else if (i == 1) {
+					p->score = std::stoi(s);
+				}
+				else {
+					p->timeTaken = std::stoi(s);
+				}
+				
+			}
+
+			this->player = p;
 		}
 
 	protected:
@@ -70,11 +102,12 @@ namespace TestingNewGui {
 
 
 	protected:
-		playerInfo* player;
+		
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
+		playerInfo* player;
 		
 
 
@@ -168,7 +201,8 @@ namespace TestingNewGui {
 	//@avesh: text and timer
 	private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-		lblMessage1->Text = "Welcome recruit\nLevel 1";
+		System:String^ recruitname = gcnew System::String(this->player->username.c_str());
+		lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 		Transition1->Start();
 	}
 	private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {

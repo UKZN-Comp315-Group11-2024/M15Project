@@ -546,7 +546,11 @@ private: System::Void timerlockgif_Tick(System::Object^ sender, System::EventArg
 	player.score = 0;
 	player.username = msclr::interop::marshal_as<std::string>(tbSpyName->Text);
 	player.timeTaken = 0;
-	lvl1Form^ lvl1form = gcnew lvl1Form(player);
+	std::ofstream ofs("textfiles/PlayerInfo.txt");
+	ofs << player.username << "\n" << player.score << "\n" << player.timeTaken;
+	ofs.close();
+
+	lvl1Form^ lvl1form = gcnew lvl1Form();
 	lvl1form->Visible = false;
 	this->Hide();
 	lvl1form->ShowDialog();
