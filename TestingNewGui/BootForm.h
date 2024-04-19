@@ -30,6 +30,7 @@ namespace TestingNewGui {
 		{
 			PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);  //music can be found here https://pixabay.com/music/beats-dark-cinematic-ambient-beat-173058/
 			InitializeComponent();
+			timerfade->Start();
 		}
 
 	protected:
@@ -80,7 +81,9 @@ namespace TestingNewGui {
 		/// Required designer variable.
 		/// </summary>
 		bool videoPlayed = false;
-		int parity = 0;
+	private: System::Windows::Forms::Timer^ timerfade;
+
+		   int parity = 0;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -101,6 +104,7 @@ namespace TestingNewGui {
 			this->timerLoading = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerGoToLogin = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerVideo = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timerfade = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelBoot->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->borderPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bgpicturebox3))->BeginInit();
@@ -211,8 +215,13 @@ namespace TestingNewGui {
 			this->timerVideo->Interval = 93000;
 			this->timerVideo->Tick += gcnew System::EventHandler(this, &BootForm::timerVideo_Tick);
 			// 
+			// timerfade
+			// 
+			this->timerfade->Enabled = true;
+			this->timerfade->Interval = 30;
+			this->timerfade->Tick += gcnew System::EventHandler(this, &BootForm::timerfade_Tick);
+			// 
 			// BootForm
-// 
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
@@ -221,6 +230,7 @@ namespace TestingNewGui {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->Name = L"BootForm";
+			this->Opacity = 0;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Welcome, human";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &BootForm::BootForm_FormClosed);
@@ -359,6 +369,13 @@ private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::Even
 }
 private: System::Void BootForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 
+}
+
+	   //quick method to get the form to fade in
+private: System::Void timerfade_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (this->Opacity < 1) {
+		this->Opacity = this->Opacity + 0.03;
+	}
 }
 };
 }
