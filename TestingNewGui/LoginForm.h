@@ -266,6 +266,7 @@ namespace TestingNewGui {
 			// 
 			this->timerlockgif->Interval = 6000;
 			this->timerlockgif->Tick += gcnew System::EventHandler(this, &LoginForm::timerlockgif_Tick);
+			this->timerlockgif->Enabled = false;
 			// 
 			// LoginForm
 			// 
