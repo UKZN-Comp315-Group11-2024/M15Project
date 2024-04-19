@@ -11,10 +11,10 @@ void main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	//BootForm form;
-	//Application::Run(% form);
+	BootForm form;
+	Application::Run(% form);
 
-	LoginForm loginForm;
-	Application::Run(% loginForm);
+	//LoginForm loginForm;
+	//Application::Run(% loginForm);
 
 }

@@ -210,9 +210,8 @@ namespace TestingNewGui {
 			this->lblSuggestor->Location = System::Drawing::Point(19, 636);
 			this->lblSuggestor->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblSuggestor->Name = L"lblSuggestor";
-			this->lblSuggestor->Size = System::Drawing::Size(342, 54);
+			this->lblSuggestor->Size = System::Drawing::Size(0, 54);
 			this->lblSuggestor->TabIndex = 2;
-			this->lblSuggestor->Text = L"Suggestion:";
 			// 
 			// lblSpyName
 			// 
@@ -311,6 +310,7 @@ namespace TestingNewGui {
 	//@archan: original code
 	//@avesh: edited and adapted
 	private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		lblWarning->Location = Point(604, 457);
 		//Creates a name for the user incase they're struggling to create one
 		System::String^ username = tbSpyName->Text;
 		System::String^ suggestedName = "";
@@ -318,17 +318,27 @@ namespace TestingNewGui {
 		char temp = ' ';
 
 		if (username->Length < 3) {
-			lblWarning->Text = "TOO SHORT";
+			lblWarning->Text = "Too Short";
+			lblWarning->Location = Point(685, 457);
+			lblSuggestor->Text = "";
 			return;
 		}
 
 		if (username->Length == 0) {
 			lblWarning->Text = "Start typing...";
+			lblSuggestor->Text = "";
+			return;
+		}
+
+		if (username->Length == 10 && (!usernameExists(username))) {
+			lblWarning->Text = "Max alias length";
+			lblSuggestor->Text = "";
 			return;
 		}
 
 		if (usernameExists(username))
 		{
+			lblWarning->Location = Point(700, 457);
 			lblWarning->Text = "TAKEN";
 			if (username->Length >= 3 && username->Length <= 7) { //adding on a number to the name
 				if (!usernameExists(username + "007") && usernameExists(username)) { //suggestedName is unique
@@ -351,7 +361,6 @@ namespace TestingNewGui {
 				isLastCharDigit = true;
 				username = username->Substring(0, username->Length - 1);
 				username = username->Substring(0, username->Length - 1);
-
 			}
 
 			//appending name with numbers
@@ -379,9 +388,9 @@ namespace TestingNewGui {
 		}
 		else
 		{
-			lblWarning->Text = "Accept state";
+			lblWarning->Text = "Alias available";
 			lblSuggestor->Enabled = false;
-			lblSuggestor->Text = "Suggestion:";
+			lblSuggestor->Text = "";
 		}
 	}
 
@@ -451,6 +460,7 @@ private: System::Void lblWarning_Click(System::Object^ sender, System::EventArgs
 //little elipis animation
 private: System::Void starttypingtimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	if (tbSpyName->Text == "") {
+		lblWarning->Location = Point(604, 457);
 		logindots = (logindots + 1) % 4;
 
 		if (logindots == 0) {
