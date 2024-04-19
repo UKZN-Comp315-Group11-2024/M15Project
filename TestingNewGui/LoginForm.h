@@ -107,10 +107,9 @@ namespace TestingNewGui {
 			this->panelLogin->Controls->Add(this->lblSuggestor);
 			this->panelLogin->Controls->Add(this->lblSpyName);
 			this->panelLogin->ForeColor = System::Drawing::Color::White;
-			this->panelLogin->Location = System::Drawing::Point(-10, -25);
-			this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+			this->panelLogin->Location = System::Drawing::Point(-8, -20);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(1600, 900);
+			this->panelLogin->Size = System::Drawing::Size(1280, 720);
 			this->panelLogin->TabIndex = 3;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &LoginForm::panelLogin_Paint);
 			// 
@@ -121,11 +120,10 @@ namespace TestingNewGui {
 			this->tbSpyName->Font = (gcnew System::Drawing::Font(L"Courier New", 90, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tbSpyName->ForeColor = System::Drawing::Color::White;
-			this->tbSpyName->Location = System::Drawing::Point(522, 227);
-			this->tbSpyName->Margin = System::Windows::Forms::Padding(4);
+			this->tbSpyName->Location = System::Drawing::Point(418, 182);
 			this->tbSpyName->MaxLength = 10;
 			this->tbSpyName->Name = L"tbSpyName";
-			this->tbSpyName->Size = System::Drawing::Size(981, 170);
+			this->tbSpyName->Size = System::Drawing::Size(785, 136);
 			this->tbSpyName->TabIndex = 0;
 			this->tbSpyName->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->tbSpyName->TextChanged += gcnew System::EventHandler(this, &LoginForm::tbSpyName_TextChanged);
@@ -134,10 +132,9 @@ namespace TestingNewGui {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(513, 221);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox2->Location = System::Drawing::Point(410, 177);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(998, 181);
+			this->pictureBox2->Size = System::Drawing::Size(798, 145);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 8;
 			this->pictureBox2->TabStop = false;
@@ -148,10 +145,9 @@ namespace TestingNewGui {
 			this->labelloginscroll2->Font = (gcnew System::Drawing::Font(L"Courier New", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->labelloginscroll2->ForeColor = System::Drawing::Color::DarkGray;
-			this->labelloginscroll2->Location = System::Drawing::Point(501, 625);
-			this->labelloginscroll2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->labelloginscroll2->Location = System::Drawing::Point(401, 500);
 			this->labelloginscroll2->Name = L"labelloginscroll2";
-			this->labelloginscroll2->Size = System::Drawing::Size(821, 67);
+			this->labelloginscroll2->Size = System::Drawing::Size(661, 54);
 			this->labelloginscroll2->TabIndex = 7;
 			this->labelloginscroll2->Text = L"Press <ENTER> to Login";
 			// 
@@ -161,10 +157,9 @@ namespace TestingNewGui {
 			this->Loginlabelscroll1->Font = (gcnew System::Drawing::Font(L"Courier New", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Loginlabelscroll1->ForeColor = System::Drawing::Color::DarkGray;
-			this->Loginlabelscroll1->Location = System::Drawing::Point(-800, 625);
-			this->Loginlabelscroll1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->Loginlabelscroll1->Location = System::Drawing::Point(-640, 500);
 			this->Loginlabelscroll1->Name = L"Loginlabelscroll1";
-			this->Loginlabelscroll1->Size = System::Drawing::Size(821, 67);
+			this->Loginlabelscroll1->Size = System::Drawing::Size(661, 54);
 			this->Loginlabelscroll1->TabIndex = 6;
 			this->Loginlabelscroll1->Text = L"Press <ENTER> to Login";
 			this->Loginlabelscroll1->Click += gcnew System::EventHandler(this, &LoginForm::label2_Click);
@@ -173,19 +168,18 @@ namespace TestingNewGui {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(0, 0);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(44, 16);
+			this->label1->Size = System::Drawing::Size(35, 13);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"label1";
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1430, 732);
+			this->pictureBox1->Location = System::Drawing::Point(1144, 586);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(125, 128);
+			this->pictureBox1->Size = System::Drawing::Size(100, 102);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 4;
 			this->pictureBox1->TabStop = false;
@@ -197,10 +191,10 @@ namespace TestingNewGui {
 			this->lblWarning->Font = (gcnew System::Drawing::Font(L"Courier New", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblWarning->ForeColor = System::Drawing::Color::Red;
-			this->lblWarning->Location = System::Drawing::Point(736, 434);
+			this->lblWarning->Location = System::Drawing::Point(589, 347);
 			this->lblWarning->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblWarning->Name = L"lblWarning";
-			this->lblWarning->Size = System::Drawing::Size(460, 65);
+			this->lblWarning->Size = System::Drawing::Size(370, 50);
 			this->lblWarning->TabIndex = 3;
 			this->lblWarning->Text = L"Start typing";
 			this->lblWarning->Click += gcnew System::EventHandler(this, &LoginForm::lblWarning_Click);
@@ -213,10 +207,10 @@ namespace TestingNewGui {
 			this->lblSuggestor->Font = (gcnew System::Drawing::Font(L"Courier New", 36, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblSuggestor->ForeColor = System::Drawing::Color::White;
-			this->lblSuggestor->Location = System::Drawing::Point(24, 795);
+			this->lblSuggestor->Location = System::Drawing::Point(19, 636);
 			this->lblSuggestor->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblSuggestor->Name = L"lblSuggestor";
-			this->lblSuggestor->Size = System::Drawing::Size(0, 65);
+			this->lblSuggestor->Size = System::Drawing::Size(0, 54);
 			this->lblSuggestor->TabIndex = 2;
 			// 
 			// lblSpyName
@@ -225,10 +219,10 @@ namespace TestingNewGui {
 			this->lblSpyName->Font = (gcnew System::Drawing::Font(L"Courier New", 56.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblSpyName->ForeColor = System::Drawing::Color::White;
-			this->lblSpyName->Location = System::Drawing::Point(73, 258);
+			this->lblSpyName->Location = System::Drawing::Point(58, 206);
 			this->lblSpyName->Margin = System::Windows::Forms::Padding(0);
 			this->lblSpyName->Name = L"lblSpyName";
-			this->lblSpyName->Size = System::Drawing::Size(418, 109);
+			this->lblSpyName->Size = System::Drawing::Size(334, 87);
 			this->lblSpyName->TabIndex = 1;
 			this->lblSpyName->Text = L"Alias:";
 			this->lblSpyName->Click += gcnew System::EventHandler(this, &LoginForm::lblSpyName_Click);
@@ -247,13 +241,14 @@ namespace TestingNewGui {
 			// 
 			// LoginForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1580, 851);
+			this->ClientSize = System::Drawing::Size(1264, 681);
 			this->Controls->Add(this->panelLogin);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(2);
+			this->MaximizeBox = false;
 			this->Name = L"LoginForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Spy Login";
@@ -316,7 +311,7 @@ namespace TestingNewGui {
 	//@archan: original code
 	//@avesh: edited and adapted
 	private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		lblWarning->Location = Point(604, 457);
+		lblWarning->Location = Point(604, 347);
 		//Creates a name for the user incase they're struggling to create one
 		System::String^ username = tbSpyName->Text;
 		System::String^ suggestedName = "";
@@ -325,13 +320,13 @@ namespace TestingNewGui {
 
 		if (username->Length < 3) {
 			lblWarning->Text = "Too Short";
-			lblWarning->Location = Point(604, 457);
+			lblWarning->Location = Point(650, 347);
 			lblSuggestor->Text = "";
 			return;
 		}
 
 		if (username->Length == 0) {
-			lblWarning->Location = Point(604, 457);
+			lblWarning->Location = Point(604, 347);
 			lblSuggestor->Text = "";
 			return;
 		}
@@ -344,7 +339,7 @@ namespace TestingNewGui {
 
 		if (usernameExists(username))
 		{
-			lblWarning->Location = Point(700, 457);
+			lblWarning->Location = Point(700, 347);
 			lblWarning->Text = "TAKEN";
 			if (username->Length >= 3 && username->Length <= 7) { //adding on a number to the name
 				if (!usernameExists(username + "007") && usernameExists(username)) { //suggestedName is unique
