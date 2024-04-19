@@ -4,6 +4,7 @@
 #include <msclr/marshal_cppstd.h>
 #include <string>
 
+
 namespace TestingNewGui {
 
 	using namespace System;
@@ -57,6 +58,7 @@ namespace TestingNewGui {
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::Timer^ starttypingtimer;
 	private: System::ComponentModel::IContainer^ components;
+
 
 
 	private:
@@ -314,6 +316,8 @@ namespace TestingNewGui {
 		lblWarning->Location = Point(604, 347);
 		//Creates a name for the user incase they're struggling to create one
 		System::String^ username = tbSpyName->Text;
+		username = username->Trim();
+		
 		System::String^ suggestedName = "";
 		bool isLastCharDigit = false;
 		char temp = ' ';
@@ -484,5 +488,6 @@ private: System::Void starttypingtimer_Tick(System::Object^ sender, System::Even
 
 private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
+
 };
 }

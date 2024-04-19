@@ -7,9 +7,8 @@
 #include <thread>
 #include <windows.h>
 #include <process.h>
-#include <string>
+#include <string.h>
 #include "LoginForm.h"
-
 
 namespace TestingNewGui {
 
@@ -81,9 +80,10 @@ namespace TestingNewGui {
 		/// Required designer variable.
 		/// </summary>
 		bool videoPlayed = false;
-	private: System::Windows::Forms::Timer^ timerfade;
+		private: System::Windows::Forms::Timer^ timerfade;
 
-		   int parity = 0;
+
+				int parity = 0;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -377,5 +377,7 @@ private: System::Void timerfade_Tick(System::Object^ sender, System::EventArgs^ 
 		this->Opacity = this->Opacity + 0.03;
 	}
 }
+
+
 };
 }
