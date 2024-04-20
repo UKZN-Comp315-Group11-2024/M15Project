@@ -12,15 +12,14 @@ void main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	BootForm form;
-	Application::Run(% form);
+	//BootForm form;
+	//Application::Run(% form);
 
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
 
-	//playerInfo player;
-	//lvl1Form lvl1form(player);
-	//Application::Run(% lvl1form);
+	lvl1Form lvl1form;
+	Application::Run(% lvl1form);
 
 
 }
