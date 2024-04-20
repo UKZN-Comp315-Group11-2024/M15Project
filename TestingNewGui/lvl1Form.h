@@ -93,6 +93,7 @@ namespace TestingNewGui {
 	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
 	private: System::Windows::Forms::PictureBox^ playerLvl1;
 	private: System::Windows::Forms::Timer^ movePlayerTimer;
+	private: System::Windows::Forms::Timer^ timeranimation;
 
 
 
@@ -145,6 +146,7 @@ namespace TestingNewGui {
 			this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->movePlayerTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timeranimation = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			this->panelLogin->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->BeginInit();
@@ -155,10 +157,9 @@ namespace TestingNewGui {
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(330, 900);
-			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblMessage1->Location = System::Drawing::Point(264, 720);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 90);
+			this->lblMessage1->Size = System::Drawing::Size(0, 73);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -173,10 +174,10 @@ namespace TestingNewGui {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -193,20 +194,18 @@ namespace TestingNewGui {
 			this->panelLogin->Controls->Add(this->lblMessage1);
 			this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 			this->panelLogin->ForeColor = System::Drawing::Color::White;
-			this->panelLogin->Location = System::Drawing::Point(-10, -25);
-			this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+			this->panelLogin->Location = System::Drawing::Point(-8, -20);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(1600, 900);
+			this->panelLogin->Size = System::Drawing::Size(1280, 720);
 			this->panelLogin->TabIndex = 12;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 			// 
 			// playerLvl1
 			// 
 			this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
-			this->playerLvl1->Location = System::Drawing::Point(144, 229);
-			this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
+			this->playerLvl1->Location = System::Drawing::Point(115, 183);
 			this->playerLvl1->Name = L"playerLvl1";
-			this->playerLvl1->Size = System::Drawing::Size(216, 220);
+			this->playerLvl1->Size = System::Drawing::Size(173, 176);
 			this->playerLvl1->TabIndex = 14;
 			this->playerLvl1->TabStop = false;
 			this->playerLvl1->Visible = false;
@@ -219,10 +218,9 @@ namespace TestingNewGui {
 			this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->beginButton->Location = System::Drawing::Point(612, 1000);
-			this->beginButton->Margin = System::Windows::Forms::Padding(4);
+			this->beginButton->Location = System::Drawing::Point(490, 800);
 			this->beginButton->Name = L"beginButton";
-			this->beginButton->Size = System::Drawing::Size(244, 62);
+			this->beginButton->Size = System::Drawing::Size(195, 50);
 			this->beginButton->TabIndex = 13;
 			this->beginButton->Text = L"Begin";
 			this->beginButton->UseVisualStyleBackColor = false;
@@ -234,10 +232,9 @@ namespace TestingNewGui {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-			this->progressBarLevel1->Location = System::Drawing::Point(342, 40);
-			this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
+			this->progressBarLevel1->Location = System::Drawing::Point(274, 32);
 			this->progressBarLevel1->Name = L"progressBarLevel1";
-			this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
+			this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
 			this->progressBarLevel1->TabIndex = 12;
 			this->progressBarLevel1->Visible = false;
 			// 
@@ -256,16 +253,21 @@ namespace TestingNewGui {
 			this->movePlayerTimer->Interval = 1;
 			this->movePlayerTimer->Tick += gcnew System::EventHandler(this, &lvl1Form::movePlayerTimer_Tick);
 			// 
+			// timeranimation
+			// 
+			this->timeranimation->Enabled = true;
+			this->timeranimation->Interval = 1;
+			this->timeranimation->Tick += gcnew System::EventHandler(this, &lvl1Form::timeranimation_Tick);
+			// 
 			// lvl1Form
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->ClientSize = System::Drawing::Size(1580, 851);
+			this->ClientSize = System::Drawing::Size(1264, 681);
 			this->Controls->Add(this->panelLogin);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"lvl1Form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -273,6 +275,7 @@ namespace TestingNewGui {
 			this->Activated += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Activated);
 			this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
+			this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &lvl1Form::lvl1Form_KeyPress);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyUp);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->panelLogin->ResumeLayout(false);
@@ -297,7 +300,7 @@ namespace TestingNewGui {
 
 	private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-
+		   bool isleft;
 //@avesh: animation of the military general and text into screen
 //@avesh: animation of the military general and text
 //@Daniel: and button
@@ -396,11 +399,12 @@ bool move_down = false;
 bool move_right = false;
 
 bool isRunning = false;
-
+int numMovementKeys = 0;
 //@Daniel: listener for player movement
 //@avesh: Edited and redefined how the player movement works (Smooth movement)
 private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	e->SuppressKeyPress = true;
+	timeranimation->Enabled = true;
 	/*switch (e->KeyCode) {
 	case Keys::W:
 		move_up = true;
@@ -424,15 +428,27 @@ private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::
 	if (e->KeyCode == Keys::W)
 	{
 		move_up = true;
-		isRunning = true;
+		if (lastkeypresseed != 'W') {
+			isRunning = true;
+		}
+		numkeysup=0;
+		numMovementKeys++;
+		lastkeypresseed = 'W';
 	}
 	else {
 		move_up = false;
 	}
 	if (e->KeyCode == Keys::A)
 	{
+		isleft = true;
 		move_left = true;
-		isRunning = true;
+		if (lastkeypresseed != 'A') {
+			isRunning = true;
+		}
+		numMovementKeys++;
+		numkeysup=0;
+		lastkeypresseed = 'A';
+	
 	}
 	else {
 		move_left = false;
@@ -440,56 +456,113 @@ private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::
 	if (e->KeyCode == Keys::S)
 	{
 		move_down = true;
-		isRunning = true;
+		if (lastkeypresseed != 'S') {
+			isRunning = true;
+		}
+		numMovementKeys++;
+		numkeysup=0;
+		lastkeypresseed = 'S';
+	
 	}
 	else {
 		move_down = false;
 	}
 	if (e->KeyCode == Keys::D)
 	{
+		isleft = false;
 		move_right = true;
-		isRunning = true;
+		if (lastkeypresseed != 'D') {
+			isRunning = true;
+		}
+		
+		numkeysup=0;
+		numMovementKeys++;
+		lastkeypresseed = 'D';
+
 	}
 	else {
 		move_right = false;
 	}
 	
 }
-	   
+
+	   int numkeysup =0;
+	   bool flag = false;
+	   int numkeyspressed = 0;
+	   char lastkeypresseed;
 private: System::Void lvl1Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	e->SuppressKeyPress = true;
+	String^ idlename;
+	if (!isleft) {
+		idlename = "assets/PlayerMove/idle.gif";
+	}
+	else {
+		idlename = "assets/PlayerMove/idleleft.gif";
+	}
 	switch (e->KeyCode)
 	{
 	case Keys::W:
-		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
+		if (numkeysup > 0 || numMovementKeys == 0) {
+			playerLvl1->Image = Image::FromFile(idlename);
+		}
+		numkeysup++;
+		
 		move_up = false;
 		isRunning = false;
+		numMovementKeys=0;
+		
 		break;
 	case Keys::A:
-		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
+		if (numkeysup > 0 || numMovementKeys == 0) {
+			playerLvl1->Image = Image::FromFile(idlename);
+		}
+		numkeysup++;
 		move_left = false;
 		isRunning = false;
+		numMovementKeys=0;
+		
 		break;
 	case Keys::S:
-		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
+		if (numkeysup > 0 || numMovementKeys == 0) {
+			playerLvl1->Image = Image::FromFile(idlename);
+		}
+		numkeysup++;
 		move_down = false;
 		isRunning = false;
+		numMovementKeys=0;
+		
 		break;
 	case Keys::D:
-		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
+		if (numkeysup > 0 || numMovementKeys == 0) {
+			playerLvl1->Image = Image::FromFile(idlename);
+		}
+		numkeysup++;
 		move_right = false;
 		isRunning = false;
+		numMovementKeys=0;
+		
 		break;
 
 	default:
 		break;
 	}
 }
-private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
-	if (isRunning && (move_up || move_down))
+
+private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e){
+
+	String^ runname;
+	if (!isleft) {
+		runname = "assets/PlayerMove/run.gif";
+	}
+	else {
+		runname = "assets/PlayerMove/runleft.gif";
+	}
+	std::cout << numkeyspressed;
+	if (numMovementKeys==1 && numkeysup == 0)
 	{
-		playerLvl1->Image = Image::FromFile("assets/PlayerMove/run.gif");
+		playerLvl1->Image = Image::FromFile(runname);
 		isRunning = false;
+		++numMovementKeys;
 	}
 	if (move_up)
 	{
@@ -519,53 +592,27 @@ private: System::Void playerLvl1_Click(System::Object^ sender, System::EventArgs
 private: System::Void lvl1Form_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
 }
 
+Point previousLocation;
 
-
-
-private: System::Void lvl1Form_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	
-	/*switch (e->KeyCode) {
-	case Keys::W:
-		move_up = true;
-		break;
-
-	case Keys::A:
-		move_left = true;
-		break;
-
-	case Keys::S:
-		move_down = true;
-		break;
-
-	case Keys::D:
-		move_right = true;
-		break;
-
-	default:
-		break;
-	}*/
-	if (e->KeyChar == 'W')
-	{
-		move_up = true;
-		isRunning = true;
+private: System::Void timeranimation_Tick(System::Object^ sender, System::EventArgs^ e) {
+	Point currentlocation = playerLvl1->Location;
+	String^ idlename;
+	if (!isleft) {
+		idlename = "assets/PlayerMove/idle.gif";
 	}
-	if (e->KeyChar == 'A')
-	{
-		move_left = true;
-		isRunning = true;
+	else {
+		idlename = "assets/PlayerMove/idleleft.gif";
 	}
-	if (e->KeyChar == 'S')
-	{
-		move_down = true;
-		isRunning = true;
+	if (previousLocation.X == currentlocation.X && previousLocation.Y == currentlocation.Y) {
+		playerLvl1->Image = Image::FromFile(idlename);
+		numkeyspressed++;
 	}
-	if (e->KeyChar == 'D')
-	{
-		move_right = true;
-		isRunning = true;
-	}
+
+	previousLocation.X = currentlocation.X;
+	previousLocation.Y = currentlocation.Y;
 
 }
-
+private: System::Void lvl1Form_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+}
 };
 }
