@@ -301,14 +301,15 @@ private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs
 	if (y1 >= 400)
 	{
 		y1 -= 10;
-	}
-	if (y2 >= 470)
+	}if (y2 >= 470)
 	{
 		y2 -= 10;
 	}
+	
 	pbGeneralMilitary->Location = Point(x, 230);
 	lblMessage1->Location = Point(395, y1);
 	beginButton->Location = Point(405, y2);
+	
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -317,6 +318,7 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
 	Point p1 = pbGeneralMilitary->Location;
 	Point p2 = lblMessage1->Location;
+	
 	int x = p1.X, y1 = p2.Y;
 
 	if (x >= -325)
@@ -329,14 +331,15 @@ private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs
 	}
 	pbGeneralMilitary->Location = Point(x, 230);
 	lblMessage1->Location = Point(395, y1);
+	
 }
-private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+/*private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	if (e->KeyCode == Keys::Enter && Transition1->Enabled)
 	{
 		Transition1->Enabled = false;
 		Transition2->Start();
 	}
-}
+}*/
 private: System::Void panelLogin_Paint_1(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 //@Daniel: makes button and text invisible and starts the timer for each question
@@ -344,9 +347,9 @@ private: System::Void beginButton_Click(System::Object^ sender, System::EventArg
 
 	this->progressBarLevel1->Visible = true;
 	this->playerLvl1->Visible = true;
-	if (this->playerLvl1->Focus()) {
+	/*if (this->playerLvl1->Focus()) {
 		std::cout << "got focus";
-	}
+	}*/
 	this->beginButton->Visible = false;
 	this->lblMessage1->Visible = false;
 	this->pbGeneralMilitary->Visible = false;
@@ -369,35 +372,37 @@ private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::
 	int xPos = position.X;
 	int yPos = position.Y;
 
+	
+
 	switch (e->KeyCode) {
 	case Keys::W:
 		//if (yPos > 105) {
-			/*yPos -= 10;
-			playerLvl1->Location = Point(xPos, yPos);*/
+			
 			playerLvl1->Top -= 10;
 			break;
-		//}
+		
 	case Keys::A:
 		//if (50 < xPos) {
-			/*xPos -= 10;
-			playerLvl1->Location = Point(xPos, yPos);*/
+			
 			playerLvl1->Left -= 10;
 			break;
-		//}
+		
 	case Keys::S:
 		//if (yPos < 634) {
-			/*yPos += 10;
-			playerLvl1->Location = Point(xPos, yPos);*/
+			
 			playerLvl1->Top += 10;
 			break;
-		//}
+		
 	case Keys::D:
 		//if (xPos < 900) {
 			playerLvl1->Left += 10;
-			/*xPos += 10;
-			playerLvl1->Location = Point(xPos, yPos);*/
+			
 			break;
-		//}
+	case Keys::Enter:
+		    Transition1->Enabled = false;
+		    Transition2->Start();
+			break;
+		
 	default:
 		break;
 	}
