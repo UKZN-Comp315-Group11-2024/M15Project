@@ -135,10 +135,10 @@ namespace TestingNewGui {
 			this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
-			this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->playerLvl1 = (gcnew System::Windows::Forms::PictureBox());
 			this->beginButton = (gcnew System::Windows::Forms::Button());
 			this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
+			this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
@@ -151,9 +151,10 @@ namespace TestingNewGui {
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(264, 720);
+			this->lblMessage1->Location = System::Drawing::Point(330, 900);
+			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 73);
+			this->lblMessage1->Size = System::Drawing::Size(0, 90);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -168,10 +169,10 @@ namespace TestingNewGui {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -188,9 +189,10 @@ namespace TestingNewGui {
 			this->panelLogin->Controls->Add(this->lblMessage1);
 			this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 			this->panelLogin->ForeColor = System::Drawing::Color::White;
-			this->panelLogin->Location = System::Drawing::Point(-8, -20);
+			this->panelLogin->Location = System::Drawing::Point(-10, -25);
+			this->panelLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panelLogin->Name = L"panelLogin";
-			this->panelLogin->Size = System::Drawing::Size(1280, 720);
+			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 12;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 			this->panelLogin->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &lvl1Form::panelLogin_PreviewKeyDown);
@@ -198,9 +200,10 @@ namespace TestingNewGui {
 			// playerLvl1
 			// 
 			this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
-			this->playerLvl1->Location = System::Drawing::Point(115, 183);
+			this->playerLvl1->Location = System::Drawing::Point(144, 229);
+			this->playerLvl1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->playerLvl1->Name = L"playerLvl1";
-			this->playerLvl1->Size = System::Drawing::Size(173, 176);
+			this->playerLvl1->Size = System::Drawing::Size(216, 220);
 			this->playerLvl1->TabIndex = 14;
 			this->playerLvl1->TabStop = false;
 			this->playerLvl1->Visible = false;
@@ -213,9 +216,10 @@ namespace TestingNewGui {
 			this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->beginButton->Location = System::Drawing::Point(490, 800);
+			this->beginButton->Location = System::Drawing::Point(612, 1000);
+			this->beginButton->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->beginButton->Name = L"beginButton";
-			this->beginButton->Size = System::Drawing::Size(195, 50);
+			this->beginButton->Size = System::Drawing::Size(244, 62);
 			this->beginButton->TabIndex = 13;
 			this->beginButton->Text = L"Begin";
 			this->beginButton->UseVisualStyleBackColor = false;
@@ -227,31 +231,33 @@ namespace TestingNewGui {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-			this->progressBarLevel1->Location = System::Drawing::Point(274, 32);
+			this->progressBarLevel1->Location = System::Drawing::Point(342, 40);
+			this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->progressBarLevel1->Name = L"progressBarLevel1";
-			this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
+			this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
 			this->progressBarLevel1->TabIndex = 12;
 			this->progressBarLevel1->Visible = false;
-			// 
-			// timerProgress
-			// 
-			this->timerProgress->Interval = 20;
-			this->timerProgress->Tick += gcnew System::EventHandler(this, &lvl1Form::timerProgress_Tick);
 			// 
 			// Transition2
 			// 
 			this->Transition2->Interval = 1;
 			this->Transition2->Tick += gcnew System::EventHandler(this, &lvl1Form::Transition2_Tick);
 			// 
+			// timerProgress
+			// 
+			this->timerProgress->Interval = 20;
+			this->timerProgress->Tick += gcnew System::EventHandler(this, &lvl1Form::timerProgress_Tick);
+			// 
 			// lvl1Form
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->ClientSize = System::Drawing::Size(1264, 681);
+			this->ClientSize = System::Drawing::Size(1580, 851);
 			this->Controls->Add(this->panelLogin);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->MaximizeBox = false;
 			this->Name = L"lvl1Form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -260,7 +266,6 @@ namespace TestingNewGui {
 			this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &lvl1Form::lvl1Form_PreviewKeyDown);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
@@ -301,7 +306,8 @@ private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs
 	if (y1 >= 400)
 	{
 		y1 -= 10;
-	}if (y2 >= 470)
+	}
+	if (y2 >= 470)
 	{
 		y2 -= 10;
 	}
@@ -318,8 +324,9 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
 	Point p1 = pbGeneralMilitary->Location;
 	Point p2 = lblMessage1->Location;
+	Point p3 = beginButton->Location;
 	
-	int x = p1.X, y1 = p2.Y;
+	int x = p1.X, y1 = p2.Y, y2 = p3.Y;
 
 	if (x >= -325)
 	{
@@ -329,8 +336,22 @@ private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs
 	{
 		y1 += 10;
 	}
+	if (y2 <= 1000)
+	{
+		y2 += 10;
+	}
+
+	// ensuring all stuff leaves screen before showing the player
+	if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
+	{
+		this->progressBarLevel1->Visible = true;
+		this->playerLvl1->Visible = true;
+		this->beginButton->Enabled = false;
+		Transition2->Enabled = false;
+	}
 	pbGeneralMilitary->Location = Point(x, 230);
 	lblMessage1->Location = Point(395, y1);
+	beginButton->Location = Point(405, y2);
 	
 }
 /*private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -344,15 +365,16 @@ private: System::Void panelLogin_Paint_1(System::Object^ sender, System::Windows
 }
 //@Daniel: makes button and text invisible and starts the timer for each question
 private: System::Void beginButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	Transition1->Enabled = false;
+	Transition2->Start();
 
-	this->progressBarLevel1->Visible = true;
-	this->playerLvl1->Visible = true;
+	
 	/*if (this->playerLvl1->Focus()) {
 		std::cout << "got focus";
 	}*/
-	this->beginButton->Visible = false;
-	this->lblMessage1->Visible = false;
-	this->pbGeneralMilitary->Visible = false;
+	//this->beginButton->Visible = false;
+	//this->lblMessage1->Visible = false;
+	//this->pbGeneralMilitary->Visible = false;
 	this->timerProgress->Start();
 
 }
@@ -397,10 +419,6 @@ private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::
 		//if (xPos < 900) {
 			playerLvl1->Left += 10;
 			
-			break;
-	case Keys::Enter:
-		    Transition1->Enabled = false;
-		    Transition2->Start();
 			break;
 		
 	default:

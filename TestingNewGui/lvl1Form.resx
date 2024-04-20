@@ -201,7 +201,6 @@
   <data name="panelLogin.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkAAAAOECAYAAAD5Tf2iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        7QAADu0B8c7FDgAAABF0RVh0VGl0bGUAUERGIENyZWF0b3JBXrwoAAAAE3RFWHRBdXRob3IAUERGIFRv
         7AAADuwBI4kn6gAAABF0RVh0VGl0bGUAUERGIENyZWF0b3JBXrwoAAAAE3RFWHRBdXRob3IAUERGIFRv
         b2xzIEFHG893MAAA/3ZJREFUeF7svYd7HFW2LT7/yfu9e2cGcMBBTso5dLdysE0eYABjTLBNMNFgk0w2
         ccgMOU0kDMwQDCaDc86WoyTLWVaW1m+tfaq6q1utYFvz3r3vve/T+lpdXVVnn5332RV+FakoR2lVBUpr
@@ -9303,13 +9302,10 @@
         AAAAAAByBAgAAAAAAJAjQAAAAAAAgJjbA2/y5A1+WldWAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="Transition2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>149, 17</value>
-  </metadata>
   <data name="playerLvl1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJYAAAClCAYAAAC+7wThAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAACzxJREFUeF7tnWtsU9cBx8O6SXuo0qTElLJKbdUO6EIIjwQ7IYlxDCJ+kJgQO44f
+        vQAADr0BR/uQrQAACzxJREFUeF7tnWtsU9cBx8O6SXuo0qTElLJKbdUO6EIIjwQ7IYlxDCJ+kJgQO44f
         eZGYsIRN0G6lYCehvNrwJhRIeI7QUZKwTZ2mPfplbB1I26eVqf2ApmpF01IkpElVpakiObs3u53vPecY
         Xz9OYjv/n/QTHzj34XN/urId33vz5iqe01a/97QlHM/A8PpwaNQZ184bzj3KqsFcpnHQ8p73dDWJZ+D8
         ehIac+rQ8UhZNZjLICwgBIQFhICwQMrYwmUuR9joVes5afmAFxKtf2gdaRuxaWy/ZmPC6hxzTHaOOry0
@@ -9360,6 +9356,9 @@
         hJU4uRVWXt5/AV2Ye4z1sfZAAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="Transition2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>149, 17</value>
+  </metadata>
   <metadata name="timerProgress.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>128, 17</value>
   </metadata>
