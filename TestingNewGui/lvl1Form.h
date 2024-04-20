@@ -92,6 +92,9 @@ namespace TestingNewGui {
 	private: System::Windows::Forms::Timer^ timerProgress;
 	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
 	private: System::Windows::Forms::PictureBox^ playerLvl1;
+	private: System::Windows::Forms::Timer^ movePlayerTimer;
+
+
 
 
 
@@ -141,6 +144,7 @@ namespace TestingNewGui {
 			this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
 			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+			this->movePlayerTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			this->panelLogin->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->BeginInit();
@@ -190,7 +194,7 @@ namespace TestingNewGui {
 			this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 			this->panelLogin->ForeColor = System::Drawing::Color::White;
 			this->panelLogin->Location = System::Drawing::Point(-10, -25);
-			this->panelLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 			this->panelLogin->Name = L"panelLogin";
 			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 12;
@@ -201,7 +205,7 @@ namespace TestingNewGui {
 			// 
 			this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
 			this->playerLvl1->Location = System::Drawing::Point(144, 229);
-			this->playerLvl1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
 			this->playerLvl1->Name = L"playerLvl1";
 			this->playerLvl1->Size = System::Drawing::Size(216, 220);
 			this->playerLvl1->TabIndex = 14;
@@ -217,7 +221,7 @@ namespace TestingNewGui {
 				static_cast<System::Byte>(0)));
 			this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->beginButton->Location = System::Drawing::Point(612, 1000);
-			this->beginButton->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->beginButton->Margin = System::Windows::Forms::Padding(4);
 			this->beginButton->Name = L"beginButton";
 			this->beginButton->Size = System::Drawing::Size(244, 62);
 			this->beginButton->TabIndex = 13;
@@ -232,7 +236,7 @@ namespace TestingNewGui {
 			this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
 			this->progressBarLevel1->Location = System::Drawing::Point(342, 40);
-			this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 			this->progressBarLevel1->Name = L"progressBarLevel1";
 			this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
 			this->progressBarLevel1->TabIndex = 12;
@@ -248,6 +252,11 @@ namespace TestingNewGui {
 			this->timerProgress->Interval = 20;
 			this->timerProgress->Tick += gcnew System::EventHandler(this, &lvl1Form::timerProgress_Tick);
 			// 
+			// movePlayerTimer
+			// 
+			this->movePlayerTimer->Interval = 1;
+			this->movePlayerTimer->Tick += gcnew System::EventHandler(this, &lvl1Form::movePlayerTimer_Tick);
+			// 
 			// lvl1Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
@@ -257,7 +266,7 @@ namespace TestingNewGui {
 			this->Controls->Add(this->panelLogin);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"lvl1Form";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -265,6 +274,7 @@ namespace TestingNewGui {
 			this->Activated += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Activated);
 			this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyUp);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &lvl1Form::lvl1Form_PreviewKeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->panelLogin->ResumeLayout(false);
@@ -347,6 +357,7 @@ private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs
 		this->progressBarLevel1->Visible = true;
 		this->playerLvl1->Visible = true;
 		this->beginButton->Enabled = false;
+		movePlayerTimer->Start();
 		Transition2->Enabled = false;
 	}
 	pbGeneralMilitary->Location = Point(x, 230);
@@ -388,48 +399,84 @@ private: System::Void pbGeneralMilitary_Click(System::Object^ sender, System::Ev
 private: System::Void panelLogin_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
 }
 
-//@Daniel: listener for player movement
-private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	Point position = playerLvl1->Location;
-	int xPos = position.X;
-	int yPos = position.Y;
+bool move_up = false;
+bool move_left = false;
+bool move_down = false;
+bool move_right = false;
 
-	
+//@Daniel: listener for player movement
+//@avesh: Edited and redefined how the player movement works (Smooth movement)
+private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 
 	switch (e->KeyCode) {
 	case Keys::W:
-		//if (yPos > 105) {
-			
-			playerLvl1->Top -= 10;
-			break;
+		move_up = true;
+		break;
 		
 	case Keys::A:
-		//if (50 < xPos) {
-			
-			playerLvl1->Left -= 10;
-			break;
+		move_left = true;
+		break;
 		
 	case Keys::S:
-		//if (yPos < 634) {
-			
-			playerLvl1->Top += 10;
-			break;
+		move_down = true;
+		break;
 		
 	case Keys::D:
-		//if (xPos < 900) {
-			playerLvl1->Left += 10;
-			
-			break;
+		move_right = true;
+		break;
 		
 	default:
 		break;
 	}
 	
 }
+private: System::Void lvl1Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	switch (e->KeyCode)
+	{
+	case Keys::W:
+		move_up = false;
+		break;
+	case Keys::A:
+		move_left = false;
+		break;
+	case Keys::S:
+		move_down = false;
+		break;
+	case Keys::D:
+		move_right = false;
+		break;
+
+	default:
+		break;
+	}
+}
+private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (move_up)
+	{
+		playerLvl1->Top += -5;
+	}
+	if (move_left)
+	{
+		playerLvl1->Left += -5;
+	}
+	if (move_down)
+	{
+		playerLvl1->Top += 5;
+	}
+	if (move_right)
+	{
+		playerLvl1->Left += 5;
+	}
+}
+
 private: System::Void playerLvl1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 
 private: System::Void lvl1Form_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
 }
+
+
+
+
 };
 }
