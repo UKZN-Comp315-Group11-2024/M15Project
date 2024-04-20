@@ -75,7 +75,7 @@ namespace TestingNewGui {
 
 
 	private: System::ComponentModel::IContainer^ components;
-	private: System::Windows::Forms::Label^ lblMessage1;
+
 
 
 	private: System::Windows::Forms::Timer^ Transition1;
@@ -83,6 +83,8 @@ namespace TestingNewGui {
 
 	private: System::Windows::Forms::PictureBox^ pbGeneralMilitary;
 	private: System::Windows::Forms::Panel^ panelLogin;
+	private: System::Windows::Forms::Timer^ Transition2;
+	private: System::Windows::Forms::Label^ lblMessage1;
 
 
 
@@ -124,6 +126,7 @@ namespace TestingNewGui {
 			this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			this->panelLogin->SuspendLayout();
 			this->SuspendLayout();
@@ -173,6 +176,11 @@ namespace TestingNewGui {
 			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 12;
 			// 
+			// Transition2
+			// 
+			this->Transition2->Interval = 1;
+			this->Transition2->Tick += gcnew System::EventHandler(this, &lvl1Form::Transition2_Tick);
+			// 
 			// lvl1Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
@@ -189,6 +197,7 @@ namespace TestingNewGui {
 			this->Text = L"Level 1";
 			this->Activated += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Activated);
 			this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
@@ -212,7 +221,7 @@ namespace TestingNewGui {
 	private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 
-//@avesh: animation of the military general and text
+//@avesh: animation of the military general and text into screen
 private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
 	Point p1 = pbGeneralMilitary->Location;
 	Point p2 = lblMessage1->Location;
@@ -230,6 +239,31 @@ private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs
 	lblMessage1->Location = Point(395, y1);
 }
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+//@avesh: animation of the military general and text out of screen
+private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
+	Point p1 = pbGeneralMilitary->Location;
+	Point p2 = lblMessage1->Location;
+	int x = p1.X, y1 = p2.Y;
+
+	if (x >= -325)
+	{
+		x -= 10;
+	}
+	if (y1 <= 900)
+	{
+		y1 += 10;
+	}
+	pbGeneralMilitary->Location = Point(x, 230);
+	lblMessage1->Location = Point(395, y1);
+}
+private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	if (e->KeyCode == Keys::Enter && Transition1->Enabled)
+	{
+		Transition1->Enabled = false;
+		Transition2->Start();
+	}
 }
 };
 }
