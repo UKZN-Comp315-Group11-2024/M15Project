@@ -199,7 +199,6 @@ namespace TestingNewGui {
 			this->panelLogin->Size = System::Drawing::Size(1600, 900);
 			this->panelLogin->TabIndex = 12;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
-			this->panelLogin->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &lvl1Form::panelLogin_PreviewKeyDown);
 			// 
 			// playerLvl1
 			// 
@@ -275,7 +274,6 @@ namespace TestingNewGui {
 			this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyUp);
-			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &lvl1Form::lvl1Form_PreviewKeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
@@ -379,13 +377,6 @@ private: System::Void beginButton_Click(System::Object^ sender, System::EventArg
 	Transition1->Enabled = false;
 	Transition2->Start();
 
-	
-	/*if (this->playerLvl1->Focus()) {
-		std::cout << "got focus";
-	}*/
-	//this->beginButton->Visible = false;
-	//this->lblMessage1->Visible = false;
-	//this->pbGeneralMilitary->Visible = false;
 	this->timerProgress->Start();
 
 }
@@ -404,11 +395,13 @@ bool move_left = false;
 bool move_down = false;
 bool move_right = false;
 
+bool isRunning = false;
+
 //@Daniel: listener for player movement
 //@avesh: Edited and redefined how the player movement works (Smooth movement)
 private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-
-	switch (e->KeyCode) {
+	e->SuppressKeyPress = true;
+	/*switch (e->KeyCode) {
 	case Keys::W:
 		move_up = true;
 		break;
@@ -427,23 +420,65 @@ private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::
 		
 	default:
 		break;
+	}*/
+	if (e->KeyCode == Keys::W)
+	{
+		move_up = true;
+		isRunning = true;
+	}
+	else {
+		move_up = false;
+	}
+	if (e->KeyCode == Keys::A)
+	{
+		move_left = true;
+		isRunning = true;
+	}
+	else {
+		move_left = false;
+	}
+	if (e->KeyCode == Keys::S)
+	{
+		move_down = true;
+		isRunning = true;
+	}
+	else {
+		move_down = false;
+	}
+	if (e->KeyCode == Keys::D)
+	{
+		move_right = true;
+		isRunning = true;
+	}
+	else {
+		move_right = false;
 	}
 	
 }
+	   
 private: System::Void lvl1Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	e->SuppressKeyPress = true;
 	switch (e->KeyCode)
 	{
 	case Keys::W:
+		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 		move_up = false;
+		isRunning = false;
 		break;
 	case Keys::A:
+		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 		move_left = false;
+		isRunning = false;
 		break;
 	case Keys::S:
+		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 		move_down = false;
+		isRunning = false;
 		break;
 	case Keys::D:
+		playerLvl1->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 		move_right = false;
+		isRunning = false;
 		break;
 
 	default:
@@ -451,20 +486,29 @@ private: System::Void lvl1Form_KeyUp(System::Object^ sender, System::Windows::Fo
 	}
 }
 private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (isRunning && (move_up || move_down))
+	{
+		playerLvl1->Image = Image::FromFile("assets/PlayerMove/run.gif");
+		isRunning = false;
+	}
 	if (move_up)
 	{
+		
 		playerLvl1->Top += -5;
 	}
 	if (move_left)
 	{
+		
 		playerLvl1->Left += -5;
 	}
 	if (move_down)
 	{
+		//playerLvl1->Image = Image::FromFile("assets/PlayerMove/run.gif");
 		playerLvl1->Top += 5;
 	}
 	if (move_right)
 	{
+		//playerLvl1->Image = Image::FromFile("assets/PlayerMove/run.gif");
 		playerLvl1->Left += 5;
 	}
 }
@@ -477,6 +521,51 @@ private: System::Void lvl1Form_PreviewKeyDown(System::Object^ sender, System::Wi
 
 
 
+
+private: System::Void lvl1Form_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	
+	/*switch (e->KeyCode) {
+	case Keys::W:
+		move_up = true;
+		break;
+
+	case Keys::A:
+		move_left = true;
+		break;
+
+	case Keys::S:
+		move_down = true;
+		break;
+
+	case Keys::D:
+		move_right = true;
+		break;
+
+	default:
+		break;
+	}*/
+	if (e->KeyChar == 'W')
+	{
+		move_up = true;
+		isRunning = true;
+	}
+	if (e->KeyChar == 'A')
+	{
+		move_left = true;
+		isRunning = true;
+	}
+	if (e->KeyChar == 'S')
+	{
+		move_down = true;
+		isRunning = true;
+	}
+	if (e->KeyChar == 'D')
+	{
+		move_right = true;
+		isRunning = true;
+	}
+
+}
 
 };
 }
