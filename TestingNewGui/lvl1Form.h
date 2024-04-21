@@ -5,6 +5,8 @@
 #include <vector>
 #include <fstream>
 #include "popup.h"
+#include <set>
+#include <cstdlib>
 namespace TestingNewGui {
 
 	using namespace System;
@@ -101,7 +103,7 @@ namespace TestingNewGui {
 		private: System::Windows::Forms::PictureBox^ space;
 
 
-
+		
 
 
 
@@ -328,7 +330,8 @@ namespace TestingNewGui {
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->EndInit();
 					this->ResumeLayout(false);
 
-				}
+				}			
+
 		#pragma endregion
 
 			String^ projectDirectory = Application::StartupPath;

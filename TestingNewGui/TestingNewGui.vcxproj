@@ -143,6 +143,7 @@
     <ClInclude Include="popup.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="LoadQuestion.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="popup.cpp" />
+    <ClCompile Include="LoadQuestion.cpp" />
     <ClCompile Include="TestingNewGui.cpp" />
   </ItemGroup>
   <ItemGroup>
