@@ -131,6 +131,7 @@
     <ClInclude Include="Leaderboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Destructible.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
+    <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">

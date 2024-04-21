@@ -242,7 +242,7 @@ namespace TestingNewGui {
 					// 
 					// playerLvl1
 					// 
-					this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
+					this->playerLvl1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
 					this->playerLvl1->Location = System::Drawing::Point(144, 229);
 					this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
 					this->playerLvl1->Name = L"playerLvl1";
@@ -250,7 +250,6 @@ namespace TestingNewGui {
 					this->playerLvl1->TabIndex = 14;
 					this->playerLvl1->TabStop = false;
 					this->playerLvl1->Visible = false;
-					this->playerLvl1->Click += gcnew System::EventHandler(this, &lvl1Form::playerLvl1_Click);
 					// 
 					// beginButton
 					// 
@@ -293,6 +292,7 @@ namespace TestingNewGui {
 					// 
 					// movePlayerTimer
 					// 
+					this->movePlayerTimer->Enabled = true;
 					this->movePlayerTimer->Interval = 1;
 					this->movePlayerTimer->Tick += gcnew System::EventHandler(this, &lvl1Form::movePlayerTimer_Tick);
 					// 
@@ -300,7 +300,6 @@ namespace TestingNewGui {
 					// 
 					this->timeranimation->Enabled = true;
 					this->timeranimation->Interval = 1;
-					this->timeranimation->Tick += gcnew System::EventHandler(this, &lvl1Form::timeranimation_Tick);
 					// 
 					// lvl1Form
 					// 
@@ -331,8 +330,9 @@ namespace TestingNewGui {
 
 				}
 		#pragma endregion
-			private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-			}
+
+			String^ projectDirectory = Application::StartupPath;
+			String^ imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 			//@avesh: text and timer
 			private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 				std::string windowPrompt = "Welcome to the first level, " + this->player->username + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + this->player->username + "... \n\nTry not to die;)";
@@ -347,8 +347,8 @@ namespace TestingNewGui {
 				lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				Transition1->Start();
 
-				//panel1->BackColor = System::Drawing::Color::FromArgb((int)(255 * 0.1), panel1->BackColor);
-				//panel1->ForeColor = System::Drawing::Color::FromArgb((int)(255 * 0.9), panel1->ForeColor);
+				
+				playerLvl1->ImageLocation = imagePath;
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -449,157 +449,116 @@ namespace TestingNewGui {
 		bool move_down = false;
 		bool move_right = false;
 
-		bool isRunning = false;
-		int numMovementKeys = 0;
+		bool is_w_up = true;
+		bool is_a_up = true;
+		bool is_s_up = true;
+		bool is_d_up = true;
+
 
 		//@Daniel: listener for player movement
 		//@avesh: Edited and redefined how the player movement works (Smooth movement)
 		//@jaedon: Edited and redefined player animations
+		//@avesh: Edited and redefined player movement and animations
 		private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
-			timeranimation->Enabled = true;
 			
 			if (e->KeyCode == Keys::W)
 			{
 				move_up = true;
-				if (lastkeypresseed != 'W') {
-					isRunning = true;
-				}
-				numkeysup=0;
-				numMovementKeys++;
-				lastkeypresseed = 'W';
-			}
-			else {
-				move_up = false;
+				is_w_up = false;
 			}
 			if (e->KeyCode == Keys::A)
 			{
 				isleft = true;
 				move_left = true;
-				if (lastkeypresseed != 'A') {
-					isRunning = true;
-				}
-				numMovementKeys++;
-				numkeysup=0;
-				lastkeypresseed = 'A';
+				is_a_up = false;
 	
-			}
-			else {
-				move_left = false;
 			}
 			if (e->KeyCode == Keys::S)
 			{
 				move_down = true;
-				if (lastkeypresseed != 'S') {
-					isRunning = true;
-				}
-				numMovementKeys++;
-				numkeysup=0;
-				lastkeypresseed = 'S';
+				is_s_up = false;
 	
-			}
-			else {
-				move_down = false;
 			}
 			if (e->KeyCode == Keys::D)
 			{
 				isleft = false;
 				move_right = true;
-				if (lastkeypresseed != 'D') {
-					isRunning = true;
-				}
-		
-				numkeysup=0;
-				numMovementKeys++;
-				lastkeypresseed = 'D';
+				is_d_up = false;
 
-			}
-			else {
-				move_right = false;
 			}
 	
 		}
-
-			   int numkeysup =0;
-			   bool flag = false;
-			   int numkeyspressed = 0;
-			   char lastkeypresseed;
 		//@avesh: Edited and redefined how the player movement works (Smooth movement)
 		//@jaedon: Edited and redefined player animations
+		//@avesh: Edited and redefined player movement and animations
 		private: System::Void lvl1Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
-			String^ idlename;
-			if (!isleft) {
-				idlename = "assets/PlayerMove/idle.gif";
-			}
-			else {
-				idlename = "assets/PlayerMove/idleleft.gif";
-			}
+			
 			switch (e->KeyCode)
 			{
 			case Keys::W:
-				if (numkeysup > 0 || numMovementKeys == 0) {
-					playerLvl1->Image = Image::FromFile(idlename);
-				}
-				numkeysup++;
-		
 				move_up = false;
-				isRunning = false;
-				numMovementKeys=0;
+				is_w_up = true;
 		
 				break;
 			case Keys::A:
-				if (numkeysup > 0 || numMovementKeys == 0) {
-					playerLvl1->Image = Image::FromFile(idlename);
-				}
-				numkeysup++;
 				move_left = false;
-				isRunning = false;
-				numMovementKeys=0;
+				is_a_up = true;
 		
 				break;
 			case Keys::S:
-				if (numkeysup > 0 || numMovementKeys == 0) {
-					playerLvl1->Image = Image::FromFile(idlename);
-				}
-				numkeysup++;
 				move_down = false;
-				isRunning = false;
-				numMovementKeys=0;
+				is_s_up = true;
 		
 				break;
 			case Keys::D:
-				if (numkeysup > 0 || numMovementKeys == 0) {
-					playerLvl1->Image = Image::FromFile(idlename);
-				}
-				numkeysup++;
 				move_right = false;
-				isRunning = false;
-				numMovementKeys=0;
+				is_d_up = true;
 		
 				break;
 
 			default:
 				break;
 			}
+
+			if (is_w_up && is_a_up && is_s_up && is_d_up)
+			{
+				if (isleft)
+				{
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idleleft.gif");
+				} 
+				else
+				{
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
+				}
+				playerLvl1->ImageLocation = imagePath;
+			}
 		}
 		//@avesh: Edited and redefined how the player movement works (Smooth movement)
 		//@jaedon: Edited and redefined player animations
+		//@avesh: Edited and redefined player movement and animations
+		String^ runAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+		String^ runLeftAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
 		private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e){
+			
 
-			String^ runname;
-			if (!isleft) {
-				runname = "assets/PlayerMove/run.gif";
-			}
-			else {
-				runname = "assets/PlayerMove/runleft.gif";
-			}
-			if (numMovementKeys==1 && numkeysup == 0)
+			if (!(is_w_up && is_a_up && is_s_up && is_d_up) && 
+				(playerLvl1->ImageLocation != runAnimation &&
+				playerLvl1->ImageLocation != runLeftAnimation)) 
 			{
-				playerLvl1->Image = Image::FromFile(runname);
-				isRunning = false;
-				++numMovementKeys;
+				
+				if (isleft)
+				{
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
+				}
+				else
+				{
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+				}
+				playerLvl1->ImageLocation = imagePath;
 			}
+
 			if (move_up)
 			{
 		
@@ -612,27 +571,19 @@ namespace TestingNewGui {
 			}
 			if (move_down)
 			{
-				//playerLvl1->Image = Image::FromFile("assets/PlayerMove/run.gif");
 				playerLvl1->Top += 5;
 			}
 			if (move_right)
 			{
-				//playerLvl1->Image = Image::FromFile("assets/PlayerMove/run.gif");
 				playerLvl1->Left += 5;
 			}
 		}
 
-		private: System::Void playerLvl1_Click(System::Object^ sender, System::EventArgs^ e) {
-		}
-
-		private: System::Void lvl1Form_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
-		}
-
-		Point previousLocation;
+		//Point previousLocation;
 
 		//@jaedon: Edited and redefined player animations
 		//@avesh: was there
-		private: System::Void timeranimation_Tick(System::Object^ sender, System::EventArgs^ e) {
+		/*private: System::Void timeranimation_Tick(System::Object^ sender, System::EventArgs^ e) {
 			Point currentlocation = playerLvl1->Location;
 			String^ idlename;
 			if (!isleft) {
@@ -649,7 +600,7 @@ namespace TestingNewGui {
 			previousLocation.X = currentlocation.X;
 			previousLocation.Y = currentlocation.Y;
 
-		}
+		}*/
 		private: System::Void lvl1Form_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		}
 };
