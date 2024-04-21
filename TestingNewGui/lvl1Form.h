@@ -97,6 +97,13 @@ namespace TestingNewGui {
 			private: System::Windows::Forms::PictureBox^ playerLvl1;
 			private: System::Windows::Forms::Timer^ movePlayerTimer;
 			private: System::Windows::Forms::Timer^ timeranimation;
+		private: System::Windows::Forms::PictureBox^ wasd;
+		private: System::Windows::Forms::PictureBox^ space;
+
+
+
+
+
 
 
 
@@ -142,6 +149,8 @@ namespace TestingNewGui {
 					this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 					this->panelLogin = (gcnew System::Windows::Forms::Panel());
+					this->space = (gcnew System::Windows::Forms::PictureBox());
+					this->wasd = (gcnew System::Windows::Forms::PictureBox());
 					this->playerLvl1 = (gcnew System::Windows::Forms::PictureBox());
 					this->beginButton = (gcnew System::Windows::Forms::Button());
 					this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
@@ -152,6 +161,8 @@ namespace TestingNewGui {
 					this->timeranimation = (gcnew System::Windows::Forms::Timer(this->components));
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->BeginInit();
 					this->SuspendLayout();
 					// 
@@ -160,9 +171,10 @@ namespace TestingNewGui {
 					this->lblMessage1->AutoSize = true;
 					this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-					this->lblMessage1->Location = System::Drawing::Point(264, 720);
+					this->lblMessage1->Location = System::Drawing::Point(330, 900);
+					this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 					this->lblMessage1->Name = L"lblMessage1";
-					this->lblMessage1->Size = System::Drawing::Size(0, 73);
+					this->lblMessage1->Size = System::Drawing::Size(0, 90);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 					this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -177,10 +189,10 @@ namespace TestingNewGui {
 					this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 					this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 					this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-					this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
+					this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
 					this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 					this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-					this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
+					this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
@@ -191,24 +203,50 @@ namespace TestingNewGui {
 					this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 					this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 					this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+					this->panelLogin->Controls->Add(this->space);
+					this->panelLogin->Controls->Add(this->wasd);
 					this->panelLogin->Controls->Add(this->playerLvl1);
 					this->panelLogin->Controls->Add(this->beginButton);
 					this->panelLogin->Controls->Add(this->progressBarLevel1);
 					this->panelLogin->Controls->Add(this->lblMessage1);
 					this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-8, -20);
+					this->panelLogin->Location = System::Drawing::Point(-10, -25);
+					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1280, 720);
+					this->panelLogin->Size = System::Drawing::Size(1600, 900);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
+					// 
+					// space
+					// 
+					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
+					this->space->Location = System::Drawing::Point(796, 799);
+					this->space->Name = L"space";
+					this->space->Size = System::Drawing::Size(39, 49);
+					this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+					this->space->TabIndex = 16;
+					this->space->TabStop = false;
+					this->space->Visible = false;
+					// 
+					// wasd
+					// 
+					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
+					this->wasd->Location = System::Drawing::Point(670, 774);
+					this->wasd->Name = L"wasd";
+					this->wasd->Size = System::Drawing::Size(120, 90);
+					this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+					this->wasd->TabIndex = 15;
+					this->wasd->TabStop = false;
+					this->wasd->Visible = false;
 					// 
 					// playerLvl1
 					// 
 					this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
-					this->playerLvl1->Location = System::Drawing::Point(115, 183);
+					this->playerLvl1->Location = System::Drawing::Point(144, 229);
+					this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
 					this->playerLvl1->Name = L"playerLvl1";
-					this->playerLvl1->Size = System::Drawing::Size(173, 176);
+					this->playerLvl1->Size = System::Drawing::Size(216, 220);
 					this->playerLvl1->TabIndex = 14;
 					this->playerLvl1->TabStop = false;
 					this->playerLvl1->Visible = false;
@@ -221,9 +259,10 @@ namespace TestingNewGui {
 					this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-					this->beginButton->Location = System::Drawing::Point(490, 800);
+					this->beginButton->Location = System::Drawing::Point(612, 1000);
+					this->beginButton->Margin = System::Windows::Forms::Padding(4);
 					this->beginButton->Name = L"beginButton";
-					this->beginButton->Size = System::Drawing::Size(195, 50);
+					this->beginButton->Size = System::Drawing::Size(244, 62);
 					this->beginButton->TabIndex = 13;
 					this->beginButton->Text = L"Begin";
 					this->beginButton->UseVisualStyleBackColor = false;
@@ -235,9 +274,10 @@ namespace TestingNewGui {
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(274, 32);
+					this->progressBarLevel1->Location = System::Drawing::Point(342, 40);
+					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
+					this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					// 
@@ -264,13 +304,14 @@ namespace TestingNewGui {
 					// 
 					// lvl1Form
 					// 
-					this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 					this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 					this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-					this->ClientSize = System::Drawing::Size(1264, 681);
+					this->ClientSize = System::Drawing::Size(1580, 851);
 					this->Controls->Add(this->panelLogin);
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 					this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+					this->Margin = System::Windows::Forms::Padding(4);
 					this->MaximizeBox = false;
 					this->Name = L"lvl1Form";
 					this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -283,6 +324,8 @@ namespace TestingNewGui {
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 					this->panelLogin->ResumeLayout(false);
 					this->panelLogin->PerformLayout();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->EndInit();
 					this->ResumeLayout(false);
 
@@ -303,6 +346,9 @@ namespace TestingNewGui {
 				System:String^ recruitname = gcnew System::String(this->player->username.c_str());
 				lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				Transition1->Start();
+
+				//panel1->BackColor = System::Drawing::Color::FromArgb((int)(255 * 0.1), panel1->BackColor);
+				//panel1->ForeColor = System::Drawing::Color::FromArgb((int)(255 * 0.9), panel1->ForeColor);
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -368,6 +414,8 @@ namespace TestingNewGui {
 				this->progressBarLevel1->Visible = true;
 				this->playerLvl1->Visible = true;
 				this->beginButton->Enabled = false;
+				this->wasd->Visible = true;
+				this->space->Visible = true;
 				movePlayerTimer->Start();
 				Transition2->Enabled = false;
 			}
