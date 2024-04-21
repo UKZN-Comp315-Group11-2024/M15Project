@@ -26,7 +26,7 @@ namespace TestingNewGui {
 			//
 			//TODO: Add the constructor code here
 			//
-			// @Neo Kekana this is basically Daniel's implementatio
+			// @Neo Kekana copied from Daniel's code
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
 			std::vector<std::string> v;
@@ -39,25 +39,42 @@ namespace TestingNewGui {
 				}
 			}
 			playerInfo* p = new playerInfo();
+			for (int i = 0; i < 3; i++) {
+				std::string s = v[i];
+				if (i == 0) {
+					p->username = s;
+
+				}
+
+				else if (i == 1) {
+					p->score = std::stoi(s);
+				}
+				else {
+					p->timeTaken = std::stoi(s);
+				}
+
+			}
+			// @Neo
+			/*playerInfo* p = new playerInfo();
 			int index = 0;
 			for (int i = 0; i < v.size(); i++)
 			{
 				std::string info = v[i];
-				if (i % 3 == 0) {
+				if (i % 3 == 0 && p->username.length() == 0) {
 					p->username = info;
 					index++;
 					continue;
 				}
-				if (index == 1) {
+				if (index == 1 && p->score == NULL) {
 					p->score = std::stoi(info);
 					index++;
 					continue;
 				}
-				if (index == 2) {
+				if (index == 2 && p->timeTaken == NULL) {
 					p->timeTaken = std::stoi(info);
 					index = 0;
 				}
-			}
+			}*/
 
 			this->player = p;
 
