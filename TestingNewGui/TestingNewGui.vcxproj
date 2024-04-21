@@ -139,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlayerInfo.h" />
+    <ClInclude Include="popup.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +154,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="popup.cpp" />
     <ClCompile Include="TestingNewGui.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="lvl1Form.resx">
       <DependentUpon>lvl1Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="popup.resx">
+      <DependentUpon>popup.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
