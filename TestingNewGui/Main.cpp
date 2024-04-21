@@ -4,6 +4,7 @@
 #include "lvl1Form.h"
 #include "PlayerInfo.h"
 #include "popup.h"
+#include "Leaderboard.h"
 
 using namespace System;
 using namespace TestingNewGui;
@@ -22,6 +23,9 @@ void main(array<String^>^ args) {
 
 	lvl1Form lvl1form;
 	Application::Run(% lvl1form);
+
+	//Leaderboard leaderboard;
+	//Application::Run(% leaderboard);
 	
 	//popup P("Lorem Ipsum is simply dummy text of the printing and typesetting industry, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.", 0, 0);
 	//Application::Run(% P);
