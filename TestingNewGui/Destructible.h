@@ -30,9 +30,12 @@ class Myform {
 	}
 */
 
+//Class that contains functions which allow you to make Control objects move and possibly destroy eachother
 public ref class Destructible {
 private:
+	//List of 'bullet' Control objects
 	List<Bullet^> bullets;
+	//List of destroyable Control objects
 	List<Destruct^> destroyables;
 public:
 	//Updates bullet positions and checks for collisions
@@ -58,12 +61,19 @@ public:
 	void addObject(Control^ item, DestroyFunction^ functionToCallOnDestroy);
 };
 
+//Structure storing the Control object and other necessary details needed for moving bullets
 ref struct Bullet {
+	//The actual Control object that represents the bullet
 	Control^ object;
+
+	//Positions/velocity numbers
+	//Doubles are used to store position and then type-cast to int when drawing, allows more fine control over speed and angle of bullet
 	double curX, curY, velX, velY;
 };
 
+//Structure storing the Control object and other necessary details needed for destroyable objects
 ref struct Destruct {
+	//The actual Control object that represents the destroyable object
 	Control^ object;
 	Destructible::DestroyFunction^ destructFunction;
 };

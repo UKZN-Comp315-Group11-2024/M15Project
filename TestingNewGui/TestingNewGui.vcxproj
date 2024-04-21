@@ -128,6 +128,9 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Leaderboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Destructible.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
@@ -148,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Leaderboard.cpp" />
     <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -172,6 +176,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Leaderboard.resx">
+      <DependentUpon>Leaderboard.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
     </EmbeddedResource>
