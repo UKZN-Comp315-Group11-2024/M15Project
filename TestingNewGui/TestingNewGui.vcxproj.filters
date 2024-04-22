@@ -44,9 +44,6 @@
     <ClInclude Include="Leaderboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Destructible.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestingNewGui.cpp">
@@ -68,9 +65,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Leaderboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Destructible.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
