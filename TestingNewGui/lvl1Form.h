@@ -351,7 +351,12 @@ namespace TestingNewGui {
 				lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				Transition1->Start();
 
-				
+				msclr::interop::marshal_context context;
+
+				// Convert System::String^ to std::string
+				std::string stdString = context.marshal_as<std::string>(imagePath);
+
+				std::cout << stdString; //display
 				playerLvl1->ImageLocation = imagePath;
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
