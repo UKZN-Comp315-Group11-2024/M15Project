@@ -41,6 +41,9 @@
     <ClInclude Include="popup.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Leaderboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TestingNewGui.cpp">
@@ -59,6 +62,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="popup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Leaderboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

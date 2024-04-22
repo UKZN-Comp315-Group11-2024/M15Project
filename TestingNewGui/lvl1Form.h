@@ -5,6 +5,8 @@
 #include <vector>
 #include <fstream>
 #include "popup.h"
+#include <set>
+#include <cstdlib>
 namespace TestingNewGui {
 
 	using namespace System;
@@ -101,7 +103,7 @@ namespace TestingNewGui {
 		private: System::Windows::Forms::PictureBox^ space;
 
 
-
+		
 
 
 
@@ -246,7 +248,8 @@ namespace TestingNewGui {
 					this->playerLvl1->Location = System::Drawing::Point(144, 229);
 					this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
 					this->playerLvl1->Name = L"playerLvl1";
-					this->playerLvl1->Size = System::Drawing::Size(216, 220);
+					this->playerLvl1->Size = System::Drawing::Size(237, 127);
+					this->playerLvl1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->playerLvl1->TabIndex = 14;
 					this->playerLvl1->TabStop = false;
 					this->playerLvl1->Visible = false;
@@ -329,6 +332,7 @@ namespace TestingNewGui {
 					this->ResumeLayout(false);
 
 				}
+
 		#pragma endregion
 
 			String^ projectDirectory = Application::StartupPath;
@@ -337,10 +341,10 @@ namespace TestingNewGui {
 			private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 				std::string windowPrompt = "Welcome to the first level, " + this->player->username + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + this->player->username + "... \n\nTry not to die;)";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
-				popup^ window = gcnew popup(unwrapped, 0, 0);
-				window->Visible = false;
-				this->Hide();
-				window->ShowDialog();
+				//popup^ window = gcnew popup(unwrapped, 0, 0);
+				//window->Visible = false;
+				//this->Hide();
+				//window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 				System:String^ recruitname = gcnew System::String(this->player->username.c_str());
