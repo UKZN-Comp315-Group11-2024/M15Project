@@ -11,23 +11,23 @@ ref struct Destruct;
 
 //Example of how to use this class
 /*
-class Myform { 
-	public:
-		Destructible^ des; //Declare class
-		MyForm(void)
-		{
-			InitializeComponent();
-			des = gcnew Destructible; //Create class
-			Destructible::DestroyFunction^ destroyFunc = gcnew Destructible::DestroyFunction(this, &MyForm::printDeathMSG); //Create delegate function (basically a function pointer)
-
-			des->addBullet(bulletIcon, 5, 0);
-			des->addObject(dickheadIcon, destroyFunc);
-
-			des->addBullet(bulletLabel, 2, 0.1);
-			des->addObject(pictureBox1, destroyFunc);
-		}
-		... Other Code ...
-	}
+*class Myform { 
+*	public:
+*		Destructible^ des; //Declare class
+*		MyForm(void)
+*		{
+*			InitializeComponent();
+*			des = gcnew Destructible; //Create class
+*			Destructible::DestroyFunction^ destroyFunc = gcnew Destructible::DestroyFunction(this, &MyForm::printDeathMSG); //Create delegate function (basically a function pointer)
+*
+*			des->addBullet(bulletIcon, 5, 0);
+*			des->addObject(dickheadIcon, destroyFunc);
+*
+*			des->addBullet(bulletLabel, 2, 0.1);
+*			des->addObject(pictureBox1, destroyFunc);
+*		}
+*		... Other Code ...
+*	}
 */
 
 //Class that contains functions which allow you to make Control objects move and possibly destroy eachother

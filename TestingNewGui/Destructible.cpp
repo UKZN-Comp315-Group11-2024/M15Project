@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Destructible.h"
 
 //Author: Faran Steenkamp
