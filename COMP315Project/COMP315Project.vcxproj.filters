@@ -64,9 +64,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lvl1Form.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="popup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -77,6 +74,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Destructible.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lvl1Form.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
