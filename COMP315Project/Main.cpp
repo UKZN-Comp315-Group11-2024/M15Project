@@ -8,7 +8,7 @@
 #include "Leaderboard.h"
 
 using namespace System;
-using namespace TestingNewGui;
+using namespace M15Namespace;
 using namespace System::Windows::Forms;
 
 

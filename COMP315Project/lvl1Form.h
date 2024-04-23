@@ -7,7 +7,7 @@
 #include "popup.h"
 #include <set>
 #include <cstdlib>
-namespace TestingNewGui {
+namespace M15Namespace {
 
 	using namespace System;
 	using namespace System::ComponentModel;
