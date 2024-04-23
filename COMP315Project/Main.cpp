@@ -4,7 +4,7 @@
 #include "lvl1Form.h"
 #include "PlayerInfo.h"
 #include "popup.h"
-//#include "LoadQuestion.h"
+#include "LoadQuestion.h"
 #include "Leaderboard.h"
 
 using namespace System;
