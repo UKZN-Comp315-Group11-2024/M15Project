@@ -11,7 +11,7 @@ void Destructible::update() {
 		//Update bullet position then move
 		currentBullet->curX += currentBullet->velX;
 		currentBullet->curY += currentBullet->velY;
-		currentBullet->object->Location = System::Drawing::Point(currentBullet->curX, currentBullet->curY);
+		currentBullet->object->Location = System::Drawing::Point((int)(currentBullet->curX), (int)(currentBullet->curY));
 
 		//Calculate center of Bullet for bounds checking
 		int bulletCenterX = currentBullet->object->Location.X + currentBullet->object->Size.Width/2;

@@ -12,7 +12,7 @@ using namespace TestingNewGui;
 using namespace System::Windows::Forms;
 
 
-void main(array<String^>^ args) {
+int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 

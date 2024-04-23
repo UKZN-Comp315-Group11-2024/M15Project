@@ -347,7 +347,7 @@ namespace TestingNewGui {
 				//window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-				System:String^ recruitname = gcnew System::String(this->player->username.c_str());
+				System::String^ recruitname = gcnew System::String(this->player->username.c_str());
 				lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				Transition1->Start();
 
