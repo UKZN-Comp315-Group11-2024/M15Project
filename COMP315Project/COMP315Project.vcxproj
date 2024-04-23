@@ -163,7 +163,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="popup.cpp" />
-    <ClCompile Include="TestingNewGui.cpp" />
+    <ClCompile Include="COMP315Project.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
