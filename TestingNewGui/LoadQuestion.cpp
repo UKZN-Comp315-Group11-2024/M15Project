@@ -6,13 +6,12 @@
 #include "LoadQuestion.h"
 using namespace std;
 
-LoadQuestion::LoadQuestion() {
-
+LoadQuestion::LoadQuestion(int levelNum) {
 
     std::queue<Question> QuestionQueue;
-    string LevelFile = "level3QuestionBank.txt"; //selects approprate question depending on the level
 
-
+    std::string LevelFile = "level" + std::to_string(levelNum) + "QuestionBank.txt"; // textfile name
+   // string LevelFile = "level3QuestionBank.txt"; //selects approprate question depending on the level
 
     fstream myfile;
 

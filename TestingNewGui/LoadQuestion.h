@@ -11,7 +11,7 @@
 
 class LoadQuestion {   // outer class
 public:
-	LoadQuestion();
+	LoadQuestion(int levelNum);
 	~LoadQuestion();
 
 
