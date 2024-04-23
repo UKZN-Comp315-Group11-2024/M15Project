@@ -2,7 +2,7 @@
 #include <string>
 #include <msclr/marshal_cppstd.h>
 #include <iostream>
-namespace TestingNewGui {
+namespace M15Namespace {
 
 	using namespace System;
 	using namespace System::ComponentModel;

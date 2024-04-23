@@ -8,5 +8,22 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
+//System headers
+#include <iostream>
+#include <string>
+#include <vector>
+#include <set>
+#include <queue>
+#include <cstdlib>
+#include <fstream>
+#include <thread>
+#include <windows.h>
+#include <process.h>
+#include <msclr/marshal_cppstd.h>
+
+//user defined headers
+//Only add here if the header is unlikely to ever change in the future
+#include "PlayerInfo.h"
+#include "Destructible.h"
 
 #endif //PCH_H

@@ -23,7 +23,8 @@ LoadQuestion::LoadQuestion(int levelNum) {
             LoadQuestion::Question currentQuestion; //creates object  
             //addQuestion.QuestionType = 0;
 
-            int pos = sline.find("$");
+            //size_t alias for unsigned long long, used for positive indexes
+            size_t pos = sline.find("$");
             // cout << sline + \n;
 
             currentQuestion.QuestionType = sline.substr(0, pos); // string to int

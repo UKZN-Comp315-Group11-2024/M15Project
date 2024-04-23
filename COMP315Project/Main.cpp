@@ -4,15 +4,15 @@
 #include "lvl1Form.h"
 #include "PlayerInfo.h"
 #include "popup.h"
-//#include "LoadQuestion.h"
+#include "LoadQuestion.h"
 #include "Leaderboard.h"
 
 using namespace System;
-using namespace TestingNewGui;
+using namespace M15Namespace;
 using namespace System::Windows::Forms;
 
 
-void main(array<String^>^ args) {
+int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
@@ -30,7 +30,9 @@ void main(array<String^>^ args) {
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 	
-	//popup P("Lorem Ipsum is simply dummy text of the printing and typesetting industry, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.", 0, 0);
+	/*popup P("Lorem Ipsum is simply dummy text of the printing and typesetting industry, "
+		+   "but also the leap into electronic typesetting, remaining essentially unchanged. "
+		+   "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.", 0, 0);*/
 	//Application::Run(% P);
 
 

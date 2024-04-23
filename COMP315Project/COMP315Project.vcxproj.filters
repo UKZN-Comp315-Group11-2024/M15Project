@@ -47,9 +47,12 @@
     <ClInclude Include="LoadQuestion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Destructible.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestingNewGui.cpp">
+    <ClCompile Include="COMP315Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -61,9 +64,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lvl1Form.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="popup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -71,6 +71,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LoadQuestion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Destructible.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lvl1Form.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,7 +7,7 @@
 #include "popup.h"
 #include <set>
 #include <cstdlib>
-namespace TestingNewGui {
+namespace M15Namespace {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -101,6 +101,7 @@ namespace TestingNewGui {
 			private: System::Windows::Forms::Timer^ timeranimation;
 		private: System::Windows::Forms::PictureBox^ wasd;
 		private: System::Windows::Forms::PictureBox^ space;
+		private: System::Windows::Forms::Timer^ shootTimer;
 
 
 		
@@ -161,6 +162,7 @@ namespace TestingNewGui {
 					this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 					this->movePlayerTimer = (gcnew System::Windows::Forms::Timer(this->components));
 					this->timeranimation = (gcnew System::Windows::Forms::Timer(this->components));
+					this->shootTimer = (gcnew System::Windows::Forms::Timer(this->components));
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
@@ -304,6 +306,11 @@ namespace TestingNewGui {
 					this->timeranimation->Enabled = true;
 					this->timeranimation->Interval = 1;
 					// 
+					// shootTimer
+					// 
+					this->shootTimer->Interval = 200;
+					this->shootTimer->Tick += gcnew System::EventHandler(this, &lvl1Form::shootTimer_Tick);
+					// 
 					// lvl1Form
 					// 
 					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
@@ -321,7 +328,6 @@ namespace TestingNewGui {
 					this->Activated += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Activated);
 					this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 					this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
-					this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &lvl1Form::lvl1Form_KeyPress);
 					this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyUp);
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 					this->panelLogin->ResumeLayout(false);
@@ -347,7 +353,7 @@ namespace TestingNewGui {
 				//window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-				System:String^ recruitname = gcnew System::String(this->player->username.c_str());
+				System::String^ recruitname = gcnew System::String(this->player->username.c_str());
 				lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				Transition1->Start();
 
@@ -496,6 +502,10 @@ namespace TestingNewGui {
 				is_d_up = false;
 
 			}
+			if (e->KeyCode == Keys::Space)
+			{
+				shootTimer->Start();
+			}
 	
 		}
 		//@avesh: Edited and redefined how the player movement works (Smooth movement)
@@ -549,9 +559,9 @@ namespace TestingNewGui {
 		//@avesh: Edited and redefined player movement and animations
 		String^ runAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
 		String^ runLeftAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
+		
 		private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e){
 			
-
 			if (!(is_w_up && is_a_up && is_s_up && is_d_up) && 
 				(playerLvl1->ImageLocation != runAnimation &&
 				playerLvl1->ImageLocation != runLeftAnimation)) 
@@ -610,7 +620,31 @@ namespace TestingNewGui {
 			previousLocation.Y = currentlocation.Y;
 
 		}*/
-		private: System::Void lvl1Form_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+
+//@avesh: shoot animation
+String^ shootAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\shoot.gif");
+String^ shootLeftAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\shootleft.gif");
+int countSpace = 0;
+private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (countSpace == 0) {
+		if (isleft)
+		{
+			playerLvl1->ImageLocation = shootLeftAnimation;
+		} 
+		else
+		{
+			playerLvl1->ImageLocation = shootAnimation;
 		}
+		movePlayerTimer->Stop();
+		countSpace++;
+	}
+	else {
+		playerLvl1->ImageLocation = imagePath;
+		movePlayerTimer->Start();		
+		countSpace = 0;
+		shootTimer->Stop();
+	}
+	
+}
 };
 }

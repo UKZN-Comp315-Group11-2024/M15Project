@@ -6,7 +6,7 @@
 #include "lvl1Form.h"
 #include "playerInfo.h"
 
-namespace TestingNewGui {
+namespace M15Namespace {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -330,7 +330,9 @@ namespace TestingNewGui {
 		{
 			while (getline(file, line))
 			{
-				int pos = line.find('$');
+				//size_t alias for unsigned long long
+				//used in system functions where the return is a non-negative index, such as finding a position
+				size_t pos = line.find('$');
 
 				if (pos != -1 && line.substr(0, pos) == stdString)
 				{
@@ -338,8 +340,11 @@ namespace TestingNewGui {
 					return true;
 				}
 			}
-			return false;
+			
 		}
+		return false;
+		//moved return false outside if, makes sure the function always explicitly returns something
+		//and it doesn't alter the logic
 
 	}
 
@@ -354,7 +359,8 @@ namespace TestingNewGui {
 		
 		System::String^ suggestedName = "";
 		bool isLastCharDigit = false;
-		char temp = ' ';
+		wchar_t temp = ' '; //Windows uses widechars, conversion between wide chars and chars can cause weird side effects
+		//So make sure to use wchar whenever working with System::String
 
 		if (username->Length < 3) {
 			lblWarning->Text = "Too Short";
@@ -453,7 +459,7 @@ private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows:
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void timerloginscroll_Tick(System::Object^ sender, System::EventArgs^ e) {
-	int x, y;
+	int x; //Removed y as it was never used
 	Point p1 = Loginlabelscroll1->Location;
 	Point p2 = labelloginscroll2->Location;
 	x = p1.X;

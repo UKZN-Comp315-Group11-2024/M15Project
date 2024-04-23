@@ -5,7 +5,7 @@
 #include "PlayerInfo.h"
 #include "LoginForm.h"
 
-namespace TestingNewGui {
+namespace M15Namespace {
 
 	using namespace System;
 	using namespace System::ComponentModel;
