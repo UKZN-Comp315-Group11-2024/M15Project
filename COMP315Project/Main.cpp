@@ -23,8 +23,8 @@ int main(array<String^>^ args) {
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
 
-	lvl1Form lvl1form;
-	Application::Run(% lvl1form);
+	//lvl1Form lvl1form;
+	//Application::Run(% lvl1form);
 
 	//Leaderboard leaderboard;
 	//Application::Run(% leaderboard);
@@ -36,8 +36,8 @@ int main(array<String^>^ args) {
 		+   "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.", 0, 0);*/
 	//Application::Run(% P);
 
-	//BonusLevelOne bonusLevelOne;
-	//Application::Run(% bonusLevelOne);
+	BonusLevelOne bonusLevelOne;
+	Application::Run(% bonusLevelOne);
 
 
 }

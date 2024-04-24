@@ -342,6 +342,7 @@ namespace M15Namespace {
 			}
 			
 		}
+		file.close();
 		return false;
 		//moved return false outside if, makes sure the function always explicitly returns something
 		//and it doesn't alter the logic
