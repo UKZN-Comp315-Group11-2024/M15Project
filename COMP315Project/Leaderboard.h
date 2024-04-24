@@ -78,7 +78,7 @@ namespace M15Namespace {
 
 			this->player = p;
 
-
+			delete p;
 
 		}
 

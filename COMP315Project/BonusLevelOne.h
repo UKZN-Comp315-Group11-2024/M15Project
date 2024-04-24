@@ -1,4 +1,5 @@
 #pragma once
+#include <math.h>
 
 namespace M15Namespace {
 
@@ -43,6 +44,10 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ pbGeneralMilitary;
 
 	private: System::Windows::Forms::Timer^ TargetTimer;
+
+
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -148,6 +153,9 @@ namespace M15Namespace {
 				this->Parent = panelBonusLevel;
 				this->Visible = false;
 				this->Click += gcnew System::EventHandler(this, &definedButton::button_Click);
+				this->BackgroundImage = System::Drawing::Image::FromFile("assets/PlayerMove/idle.gif");
+				this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+				this->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			}
 
 			void setLocation(int x, int y) {
@@ -162,7 +170,7 @@ namespace M15Namespace {
 
 		//private:
 			bool operator ==(definedButton^ b1) {
-				if (this->Location.X <= b1->Location.X && this->Location.X+100 >= b1->Location.X && this->Location.Y <= b1->Location.Y && this->Location.Y+100 >= b1->Location.Y)
+				if (  Math::Pow(this->Location.X - b1->Location.X, 2) + Math::Pow(this->Location.Y - b1->Location.Y, 2) < 20000)
 				{
 					return true;
 				}
@@ -170,17 +178,14 @@ namespace M15Namespace {
 			}
 
 			void button_Click(System::Object^ sender, System::EventArgs^ e) {
-				
 				this->Hide();
 			}
-			   
+			
 
 		};
 
 		array<definedButton^>^ buttons = gcnew array<definedButton^>(15);
 		private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
-
-		
 
 			for (int i = 0; i < buttons->Length; i++) {
 				delete buttons[i];
@@ -192,29 +197,23 @@ namespace M15Namespace {
 
 				buttons[i]->Text = i.ToString() + "h";
 				buttons[i]->ForeColor = System::Drawing::Color::Black;
-			}
 
+				if (i > 0) {
+
+					for (int j = i - 1; j >= 0; j--)
+					{
+						if (buttons[i] == buttons[j] || buttons[j] == buttons[i])
+						{
+							int x_pos = rand() % 1050 + 10;
+							int y_pos = rand() % 420 + 180;
+							buttons[i]->setLocation(x_pos, y_pos);
+							j = i - 1;
+						}
+					}
+				}
+				
+			}
 			TargetTimer->Start();
-		
-			//std::cout << (buttons[1] == buttons[2]);
-			//int count = 0;
-			//for (int i = 0; i < buttons->Length; i++) {
-			//	for (int j = 0; j < buttons->Length; j++) {
-			//		if (i != j) {
-			//			while (buttons[i] == buttons[j] || buttons[j] == buttons[i]) {
-			//				int x_pos = rand() % 1050 + 10;
-			//				int y_pos = rand() % 420 + 180;
-			//				buttons[i]->setLocation(x_pos, y_pos);
-			//				//break;
-			//			}
-			//		}
-			//	}
-			//	buttons[i]->setVisible(true);
-			//	count++;
-			//	if (count == 14) {
-			//		i = 0;
-			//	}
-			//}
 		}
 
 		int targetNum = 0;
