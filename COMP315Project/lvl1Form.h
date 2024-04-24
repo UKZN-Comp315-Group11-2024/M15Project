@@ -8,6 +8,7 @@
 #include <set>
 #include <cstdlib>
 #include "customAlgs.h"
+#include "LevelMethods.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -23,6 +24,8 @@ namespace M15Namespace {
 		public ref class lvl1Form : public System::Windows::Forms::Form
 		{
 			public:
+				LevelMethods^ LvlMethods;
+				
 				lvl1Form()
 				{
 					InitializeComponent();
@@ -31,7 +34,8 @@ namespace M15Namespace {
 					//
 					//@Daniel: need this to be true or listeners dont work
 					this->KeyPreview = true;
-
+					LvlMethods = gcnew LevelMethods;
+					
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			
 					std::ifstream file("textfiles/PlayerInfo.txt");
