@@ -21,9 +21,11 @@ public:
     TO CHECK IF ELEMENT IS FOUND: if(binarySearch(v, e))!= -1
     But in the case where we need to get the element's index, that is returned.
     //TIME COMPLEXITY: O(log(n)). This is known to be optimal for a generic sorted array.
-    //Usage: determining whether a score / user exists in textfile
+
+    //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses > < and ==,
+    //This method compares players based on their SCORE.
     */
-    static int binarySearch(std::vector<E> v, E e) {
+    static int binarySearchScore(std::vector<E> v, E e) {
         int start = 0;
         int end = v.size() - 1;
         int midd;
@@ -50,14 +52,76 @@ public:
         }
     }
 
+    /*method that searches for an element inside an array
+    OUTPUT: if element found, the index of the element is returned.
+            if the element is not found, -1 is returned.
+    TO CHECK IF ELEMENT IS FOUND: if(binarySearch(v, e))!= -1
+    But in the case where we need to get the element's index, that is returned.
+    //TIME COMPLEXITY: O(log(n)). This is known to be optimal for a generic sorted array.
+
+    //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses >= <= and %,
+    //This method compares players based on USERNAME.
+    */
+    static int binarySearchUsername(std::vector<E> v, E e) {
+        int start = 0;
+        int end = v.size() - 1;
+        int midd;
+        while ((end != start)) {
+            midd = (start + end) / 2;           //assumption 1:  the generic type has the following operators overloaded:
+            if (e <= v.at(midd)) {               //              >       <       ==
+                end = midd - 1;
+            }
+            else if (e >= v.at(midd)) {          //assumption 2: the vector is sorted. Hence always maintain the vector to be sorted
+                start = midd + 1;
+            }
+            else if (e % v.at(midd)) {
+                return midd;
+            }
+            else {
+                return -1;
+            }
+        }
+        if (v.at(start) % e) {
+            return start;
+        }
+        else {
+            return -1;
+        }
+    }
+
     /*method that inserts an element into a sorted vector, such that the vector remains sorted
     OUTPUT: none. Method is void, so it modifies the original vector without returning anything
     //TIME COMPLEXITY: O(n). This cannot be improved even by binary search due to the shifting that would need to occur.
     //Usage: inserting a score / user into a textfile, to keep the textfile sorted
+
+    //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses <
+    //This method compares players based on their SCORE.
     */
-    static void insert(std::vector<E>& v, E e) {
+    static void insertScore(std::vector<E>& v, E e) {
         int i = 0;
         while (i < v.size() && v.at(i) < e) {
+            i++;
+        }
+        if (i < v.size()) {
+            v.insert(v.begin() + i, e);
+        }
+        else {
+            v.push_back(e);
+        }
+
+    }
+
+    /*method that inserts an element into a sorted vector, such that the vector remains sorted
+    OUTPUT: none. Method is void, so it modifies the original vector without returning anything
+    //TIME COMPLEXITY: O(n). This cannot be improved even by binary search due to the shifting that would need to occur.
+    //Usage: inserting a score / user into a textfile, to keep the textfile sorted
+
+    //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses <=
+    //This method compares players based on their USERNAME.
+    */
+    static void insertName(std::vector<E>& v, E e) {
+        int i = 0;
+        while (i < v.size() && v.at(i) <= e) {
             i++;
         }
         if (i < v.size()) {
