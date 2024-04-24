@@ -347,10 +347,10 @@ namespace M15Namespace {
 			private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 				std::string windowPrompt = "Welcome to the first level, " + this->player->username + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + this->player->username + "... \n\nTry not to die;)";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
-				//popup^ window = gcnew popup(unwrapped, 0, 0);
-				//window->Visible = false;
-				//this->Hide();
-				//window->ShowDialog();
+				popup^ window = gcnew popup(unwrapped, 0, 0);
+				window->Visible = false;
+				this->Hide();
+				window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 				System::String^ recruitname = gcnew System::String(this->player->username.c_str());
