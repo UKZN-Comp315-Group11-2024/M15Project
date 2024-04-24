@@ -484,9 +484,14 @@ namespace M15Namespace {
 			}
 			if (e->KeyCode == Keys::A)
 			{
+				if (!isleft) {
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
+					playerLvl1->ImageLocation = imagePath;
+				}
 				isleft = true;
 				move_left = true;
 				is_a_up = false;
+
 	
 			}
 			if (e->KeyCode == Keys::S)
@@ -497,9 +502,15 @@ namespace M15Namespace {
 			}
 			if (e->KeyCode == Keys::D)
 			{
+				if (isleft) {
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+					playerLvl1->ImageLocation = imagePath;
+				}
 				isleft = false;
 				move_right = true;
 				is_d_up = false;
+
+
 
 			}
 			if (e->KeyCode == Keys::Space)
