@@ -82,22 +82,21 @@ namespace M15Namespace {
 			this->panelBonusLevel->Controls->Add(this->pbGeneralMilitary);
 			this->panelBonusLevel->Cursor = System::Windows::Forms::Cursors::NoMove2D;
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-10, -25);
-			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4);
+			this->panelBonusLevel->Location = System::Drawing::Point(-8, -20);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
+			this->panelBonusLevel->Size = System::Drawing::Size(1200, 731);
 			this->panelBonusLevel->TabIndex = 13;
 			this->panelBonusLevel->Click += gcnew System::EventHandler(this, &BonusLevelOne::panelLogin_Click);
+			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelOne::panelBonusLevel_Paint);
 			// 
 			// lblMessage1
 			// 
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(330, 900);
-			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblMessage1->Location = System::Drawing::Point(248, 731);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 90);
+			this->lblMessage1->Size = System::Drawing::Size(0, 73);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			// 
@@ -106,10 +105,10 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-244, 234);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(278, 455);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -121,10 +120,11 @@ namespace M15Namespace {
 			// 
 			// BonusLevelOne
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1580, 851);
+			this->ClientSize = System::Drawing::Size(1185, 691);
 			this->Controls->Add(this->panelBonusLevel);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"BonusLevelOne";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"BonusLevelOne";
@@ -225,6 +225,8 @@ namespace M15Namespace {
 			targetNum++;
 		}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 };
 }

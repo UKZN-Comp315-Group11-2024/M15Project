@@ -131,6 +131,7 @@
     <ClInclude Include="BonusLevelOne.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="customAlgs.h" />
     <ClInclude Include="Destructible.h" />
     <ClInclude Include="Leaderboard.h">
       <FileType>CppForm</FileType>

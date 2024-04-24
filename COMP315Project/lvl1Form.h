@@ -7,6 +7,7 @@
 #include "popup.h"
 #include <set>
 #include <cstdlib>
+#include "customAlgs.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -175,10 +176,9 @@ namespace M15Namespace {
 					this->lblMessage1->AutoSize = true;
 					this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-					this->lblMessage1->Location = System::Drawing::Point(330, 900);
-					this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+					this->lblMessage1->Location = System::Drawing::Point(264, 720);
 					this->lblMessage1->Name = L"lblMessage1";
-					this->lblMessage1->Size = System::Drawing::Size(0, 90);
+					this->lblMessage1->Size = System::Drawing::Size(0, 73);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 					this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -193,10 +193,10 @@ namespace M15Namespace {
 					this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 					this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 					this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-					this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+					this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
 					this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 					this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-					this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+					this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
@@ -215,19 +215,19 @@ namespace M15Namespace {
 					this->panelLogin->Controls->Add(this->lblMessage1);
 					this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-10, -25);
-					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+					this->panelLogin->Location = System::Drawing::Point(-8, -20);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1600, 900);
+					this->panelLogin->Size = System::Drawing::Size(1280, 720);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(796, 799);
+					this->space->Location = System::Drawing::Point(637, 639);
+					this->space->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 					this->space->Name = L"space";
-					this->space->Size = System::Drawing::Size(39, 49);
+					this->space->Size = System::Drawing::Size(31, 39);
 					this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->space->TabIndex = 16;
 					this->space->TabStop = false;
@@ -236,9 +236,10 @@ namespace M15Namespace {
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(670, 774);
+					this->wasd->Location = System::Drawing::Point(536, 619);
+					this->wasd->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 					this->wasd->Name = L"wasd";
-					this->wasd->Size = System::Drawing::Size(120, 90);
+					this->wasd->Size = System::Drawing::Size(96, 72);
 					this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->wasd->TabIndex = 15;
 					this->wasd->TabStop = false;
@@ -247,10 +248,9 @@ namespace M15Namespace {
 					// playerLvl1
 					// 
 					this->playerLvl1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
-					this->playerLvl1->Location = System::Drawing::Point(144, 229);
-					this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
+					this->playerLvl1->Location = System::Drawing::Point(115, 183);
 					this->playerLvl1->Name = L"playerLvl1";
-					this->playerLvl1->Size = System::Drawing::Size(237, 127);
+					this->playerLvl1->Size = System::Drawing::Size(190, 102);
 					this->playerLvl1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->playerLvl1->TabIndex = 14;
 					this->playerLvl1->TabStop = false;
@@ -263,10 +263,9 @@ namespace M15Namespace {
 					this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-					this->beginButton->Location = System::Drawing::Point(612, 1000);
-					this->beginButton->Margin = System::Windows::Forms::Padding(4);
+					this->beginButton->Location = System::Drawing::Point(490, 800);
 					this->beginButton->Name = L"beginButton";
-					this->beginButton->Size = System::Drawing::Size(244, 62);
+					this->beginButton->Size = System::Drawing::Size(195, 50);
 					this->beginButton->TabIndex = 13;
 					this->beginButton->Text = L"Begin";
 					this->beginButton->UseVisualStyleBackColor = false;
@@ -278,12 +277,12 @@ namespace M15Namespace {
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(342, 40);
-					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
+					this->progressBarLevel1->Location = System::Drawing::Point(274, 32);
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
+					this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
+					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
 					// 
 					// Transition2
 					// 
@@ -313,14 +312,13 @@ namespace M15Namespace {
 					// 
 					// lvl1Form
 					// 
-					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+					this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 					this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 					this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-					this->ClientSize = System::Drawing::Size(1580, 851);
+					this->ClientSize = System::Drawing::Size(1264, 681);
 					this->Controls->Add(this->panelLogin);
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 					this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-					this->Margin = System::Windows::Forms::Padding(4);
 					this->MaximizeBox = false;
 					this->Name = L"lvl1Form";
 					this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -656,6 +654,8 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 		shootTimer->Stop();
 	}
 	
+}
+private: System::Void progressBarLevel1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

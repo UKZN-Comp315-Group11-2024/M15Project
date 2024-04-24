@@ -96,6 +96,7 @@ namespace M15Namespace {
 			this->lblText->Size = System::Drawing::Size(1204, 287);
 			this->lblText->TabIndex = 1;
 			this->lblText->Text = L"label1";
+			this->lblText->Click += gcnew System::EventHandler(this, &popup::lblText_Click);
 			// 
 			// timertext
 			// 
@@ -141,7 +142,6 @@ namespace M15Namespace {
 		}
 
 		void displayText(){
-			std::cout << "hi";
 			Point p;
 			p.X = x;
 			p.Y = y;
@@ -199,6 +199,8 @@ private: System::Void timerclose_Tick(System::Object^ sender, System::EventArgs^
 		parity++;
 		parity = parity % 2;
 	}
+}
+private: System::Void lblText_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

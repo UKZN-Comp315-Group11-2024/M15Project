@@ -53,6 +53,9 @@
     <ClInclude Include="BonusLevelOne.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="customAlgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="COMP315Project.cpp">
