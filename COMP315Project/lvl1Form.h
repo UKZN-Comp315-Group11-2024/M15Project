@@ -34,7 +34,7 @@ namespace M15Namespace {
 					//
 					//@Daniel: need this to be true or listeners dont work
 					this->KeyPreview = true;
-					LvlMethods = gcnew LevelMethods(lblMessage1, 1);
+					LvlMethods = gcnew LevelMethods(1);
 					
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			
@@ -528,7 +528,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 				System::String^ recruitname = gcnew System::String(this->player->username.c_str());
 				//lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
-				LvlMethods->DisplayNextQuestionSet();
+				//LvlMethods->DisplayNextQuestionSet();
 				Transition1->Start();
 
 				msclr::interop::marshal_context context;
@@ -627,7 +627,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 		private: System::Void timerProgress_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 			this->progressBarLevel1->Increment(1);
-			this->progressBarLevel1->
+			//this->progressBarLevel1->
 			
 		}
 		private: System::Void pbGeneralMilitary_Click(System::Object^ sender, System::EventArgs^ e) {

@@ -117,8 +117,8 @@ LoadQuestion::LoadQuestion(int levelNum) {
     System::String^ sline;
     //@Daniel: replaced while (getline(myfile, sline)) with managed equivalent also added stream reader declaration
     while ((sline = myfile->ReadLine()) != nullptr) { //goes through each line
-        
-        LoadQuestion::Question^ currentQuestion; //creates object  
+
+        LoadQuestion::Question^ currentQuestion = gcnew Question; //creates object  
         //addQuestion.QuestionType = 0;
 
         //size_t alias for unsigned long long, used for positive indexes
@@ -133,6 +133,9 @@ LoadQuestion::LoadQuestion(int levelNum) {
         
         if (pos == 1) {
             //@Daniel replaced sline.substr(0, pos)
+            msclr::interop::marshal_context context;
+            std::string stdString = context.marshal_as<std::string>(sline);
+            std::cout << stdString<<" ";
             currentQuestion->QuestionType = sline->Substring(0, pos); // string to int
             sline = sline->Remove(0, 2);
             ////instantiates class depending on question type  
