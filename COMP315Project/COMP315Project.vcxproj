@@ -178,6 +178,7 @@
     <ClCompile Include="COMP315Project.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
