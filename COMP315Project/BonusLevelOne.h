@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include "popup.h"
-
 namespace M15Namespace {
 
 	using namespace System;
@@ -56,6 +55,7 @@ namespace M15Namespace {
 
 
 
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -94,33 +94,34 @@ namespace M15Namespace {
 			this->panelBonusLevel->Controls->Add(this->lblMessage1);
 			this->panelBonusLevel->Controls->Add(this->pbGeneralMilitary);
 			this->panelBonusLevel->Cursor = System::Windows::Forms::Cursors::NoMove2D;
+			this->panelBonusLevel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-11, -25);
-			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4);
+			this->panelBonusLevel->Location = System::Drawing::Point(-8, -20);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
+			this->panelBonusLevel->Size = System::Drawing::Size(1200, 731);
 			this->panelBonusLevel->TabIndex = 13;
 			this->panelBonusLevel->Click += gcnew System::EventHandler(this, &BonusLevelOne::panelLogin_Click);
-			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelOne::panelBonusLevel_Paint);
 			// 
 			// countdownBar
 			// 
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
-			this->countdownBar->Location = System::Drawing::Point(466, 75);
+			this->countdownBar->Location = System::Drawing::Point(350, 61);
+			this->countdownBar->Margin = System::Windows::Forms::Padding(2);
 			this->countdownBar->Name = L"countdownBar";
-			this->countdownBar->Size = System::Drawing::Size(629, 45);
+			this->countdownBar->Size = System::Drawing::Size(472, 37);
 			this->countdownBar->TabIndex = 12;
+			this->countdownBar->Click += gcnew System::EventHandler(this, &BonusLevelOne::countdownBar_Click);
 			// 
 			// lblMessage1
 			// 
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 27, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(331, 900);
-			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblMessage1->Location = System::Drawing::Point(248, 731);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 52);
+			this->lblMessage1->Size = System::Drawing::Size(0, 41);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			// 
@@ -129,17 +130,17 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-244, 234);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(278, 455);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
 			// 
 			// TargetTimer
 			// 
-			this->TargetTimer->Interval = 500;
+			this->TargetTimer->Interval = 1;
 			this->TargetTimer->Tick += gcnew System::EventHandler(this, &BonusLevelOne::TargetTimer_Tick);
 			// 
 			// Transition2
@@ -159,11 +160,12 @@ namespace M15Namespace {
 			// 
 			// BonusLevelOne
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1580, 850);
+			this->ClientSize = System::Drawing::Size(1185, 691);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
+			this->MaximizeBox = false;
 			this->Name = L"BonusLevelOne";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"BonusLevelOne";
@@ -179,7 +181,8 @@ namespace M15Namespace {
 		private: System::Void panelLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		}
-
+	
+		static int countTotal = 0;
 		//@aveshr	   
 		ref class definedButton : public Button {
 		public:
@@ -210,16 +213,19 @@ namespace M15Namespace {
 
 		//private:
 			bool operator ==(definedButton^ b1) {
-				if (  Math::Pow(this->Location.X - b1->Location.X, 2) + Math::Pow(this->Location.Y - b1->Location.Y, 2) <= 20000)
+				if (this->Bounds.IntersectsWith(b1->Bounds))
 				{
 					return true;
 				}
 				return false;
 			}
 
+
+
 			void button_Click(System::Object^ sender, System::EventArgs^ e) {
 				this->Hide();
 				countClick++;
+				countTotal++;
 			}
 			
 			int numClicks()
@@ -231,35 +237,47 @@ namespace M15Namespace {
 		};
 
 		//@aveshr
-		array<definedButton^>^ buttons = gcnew array<definedButton^>(20);
+		array<definedButton^>^ buttons = gcnew array<definedButton^>(25);
 		private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
+			int x_pos;
+			int y_pos;
 			srand(time(0));
 			for (int i = 0; i < buttons->Length; i++) {
 				delete buttons[i];
 				buttons[i] = gcnew definedButton(panelBonusLevel);
 
 				
-				int x_pos = rand() % 1050 + 10;
-				int y_pos = rand() % 420 + 180;
+				x_pos = rand() % 1050 + 10;
+				y_pos = rand() % 420 + 180;
 				buttons[i]->setLocation(x_pos, y_pos);
 
 				buttons[i]->Text = i.ToString() + "h";
-				buttons[i]->ForeColor = System::Drawing::Color::Black;
+				buttons[i]->ForeColor = System::Drawing::Color::White;
+				buttons[i]->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
+					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+
+				
+				
+			}
+
+			for (int i = 0; i < buttons->Length; i++) {
+
 
 				if (i > 0) {
-
-					for (int j = i - 1; j >= 0; j--)
-					{
-						if (*buttons[i] == buttons[j])
+					int j = i - 1;
+					while (j >= 0) {
+						if (buttons[i]==buttons[j])
 						{
-							int x_pos = rand() % 1050 + 10;
-							int y_pos = rand() % 420 + 180;
+							x_pos = rand() % 1050 + 10;
+							y_pos = rand() % 420 + 180;
 							buttons[i]->setLocation(x_pos, y_pos);
 							j = i - 1;
 						}
+						else{
+							j--;
+						}
 					}
 				}
-				
 			}
 
 			lblMessage1->Text = "Welcome to the first bonus level\nHint: Use your mouse";
@@ -271,7 +289,7 @@ namespace M15Namespace {
 		int targetNum = 0;
 		private: System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 			buttons[targetNum]->setVisible(true);
-			if (targetNum == 19) {
+			if (targetNum == buttons->Length-1) {
 				TargetTimer->Stop();
 			}
 			targetNum++;
@@ -333,6 +351,11 @@ private: System::Void BonusLevelOne_KeyDown(System::Object^ sender, System::Wind
 }
 //@aveshr
 private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+	if (countTotal == buttons->Length) {
+		countdownBar->Value = 100;
+	}
+
 	if (countdownBar->Value < 100) {
 		if (countdownBar->Value + 6.5 > 100)
 		{
@@ -348,11 +371,12 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 		TargetTimer->Stop();
 		countdown->Stop();
 		
-		int countTotal = 0, currScore;
+		int  currScore;
 		for (int i = 0; i < buttons->Length; i++)
 		{
 			buttons[i]->Enabled = false;
-			countTotal += buttons[i]->numClicks();
+			//countTotal += buttons[i]->numClicks();
+
 		}
 
 		std::vector<std::string> lines;
@@ -406,5 +430,9 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 	
 
 }
+private: System::Void countdownBar_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
+
+
 }
