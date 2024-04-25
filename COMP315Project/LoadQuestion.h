@@ -81,3 +81,52 @@ private:
 		System::Collections::Generic::Queue<Question^>^ QuestionQueue;
 
 	};
+// our code
+
+/*#pragma once     //ORIGINAL
+#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <set>
+#include <fstream>
+#include <cstdlib>
+#include <queue>
+//#include <stack>
+
+
+
+	ref class LoadQuestion {   // outer class
+	public:
+		LoadQuestion(int levelNum);
+		~LoadQuestion();
+
+		ref struct Question { // inner struct
+
+
+			System::String^ QuestionType = "";
+			System::String^ question = "";
+			System::String^ OptionA = "";
+			System::String^ OptionB = "";
+			System::String^ OptionC = "";
+			System::String^ OptionD = "";
+			System::String^ CorrectOption = "";
+
+		};
+
+	private:
+		//std::queue<Question> QuestionQueue;
+		std::vector<Question> QuestionStack;
+		//vectors to store Questions type, Elements: mcq = 16, tf = 4
+		std::vector<Question> tfQuestions;
+		std::vector<Question> mcqQuestions;
+		//temp vector, just to combine into main question vector(levelQuestions)
+		std::vector<Question> tempTFvector;
+		// stores the 10 questions for the current level
+		std::vector<Question> levelQuestions;
+		//Queue
+		std::queue<Question> displayQuestions;
+		//vector stores options to be shuffled
+		std::vector<std::string> optionsShuffle;
+
+	};
+	*/
