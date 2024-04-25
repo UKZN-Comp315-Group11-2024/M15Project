@@ -20,7 +20,7 @@ ref struct Destruct;
 *			Destructible::DestroyFunction^ destroyFunc = gcnew Destructible::DestroyFunction(this, &MyForm::printDeathMSG); //Create delegate function (basically a function pointer)
 *
 *			des->addBullet(bulletIcon, 5, 0);
-*			des->addObject(dickheadIcon, destroyFunc);
+*			des->addObject(destructibleIcon, destroyFunc);
 *
 *			des->addBullet(bulletLabel, 2, 0.1);
 *			des->addObject(pictureBox1, destroyFunc);
