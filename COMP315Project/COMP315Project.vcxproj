@@ -136,6 +136,7 @@
     <ClInclude Include="Leaderboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="LevelMethods.h" />
     <ClInclude Include="LoadQuestion.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
@@ -158,6 +159,7 @@
     <ClCompile Include="BonusLevelOne.cpp" />
     <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
+    <ClCompile Include="LevelMethods.cpp" />
     <ClCompile Include="LoadQuestion.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="Main.cpp" />
