@@ -56,6 +56,9 @@
     <ClInclude Include="customAlgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelMethods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="COMP315Project.cpp">
@@ -86,6 +89,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BonusLevelOne.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelMethods.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

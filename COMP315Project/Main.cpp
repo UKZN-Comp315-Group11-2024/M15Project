@@ -14,6 +14,7 @@ using namespace System::Windows::Forms;
 
 
 int main(array<String^>^ args) {
+	//PlayerInfo PlayerStats;
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 

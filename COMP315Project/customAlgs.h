@@ -12,7 +12,7 @@
 //  vector<int> v;
 //  customAlgs<int>::insert(v, -1);
 template <class E>
-class customAlgs {
+ref class customAlgs {
 
 public:
     /*method that searches for an element inside an array
