@@ -1,9 +1,13 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include <vector>
 #include <fstream>
+#include "customAlgs.h"
 #include "PlayerInfo.h"
 #include "LoginForm.h"
+
+
 
 namespace M15Namespace {
 
@@ -17,6 +21,14 @@ namespace M15Namespace {
 	/// <summary>
 	/// Summary for Leaderboard
 	/// </summary>
+
+	/*struct UserData {
+		std::string name;
+		int score;
+		int timeTaken;
+	};*/
+
+
 	public ref class Leaderboard : public System::Windows::Forms::Form
 	{
 	public:
@@ -26,59 +38,98 @@ namespace M15Namespace {
 			//
 			//TODO: Add the constructor code here
 			//
-			// @Neo Kekana copied from Daniel's code
-			std::ifstream file("textfiles/PlayerInfo.txt");
-			std::string line;
-			std::vector<std::string> v;
+			LoadImage();
+			std::vector<playerInfo> players = LoadAllPlayers();
+			LoadCurrentPlayerData("textfiles/PlayerInfo.txt", players);
+
+		}
+
+		// Function that reads the current player data from the text file to a vector
+		// Assuming that the scores and player data is written at the end of the play through from the playerinfo.txt
+		void LoadCurrentPlayerData(std::string filename, std::vector<playerInfo> players)
+		{
+			std::ifstream file(filename);
+			std::string uName;
+			int sc, tt;
+			//std::vector<UserData> userdata;
+			playerInfo p;
 
 			if (file.is_open())
 			{
-				while (getline(file, line))
+				// Reads the data line by line, for the username, score and timetaken
+				while (getline(file, uName) && file >> sc && file >> tt)
 				{
-					v.push_back(line);
+					// Creates the UserData object and adds it to the userdata vector
+					p.username = uName;
+					p.score = sc;
+					p.timeTaken = tt;
 				}
 			}
-			playerInfo* p = new playerInfo();
-			for (int i = 0; i < 3; i++) {
-				std::string s = v[i];
-				if (i == 0) {
-					p->username = s;
 
-				}
+			//players.insertScore(players, p);
+			// close the file and update the labels
+			file.close();
 
-				else if (i == 1) {
-					p->score = std::stoi(s);
-				}
-				else {
-					p->timeTaken = std::stoi(s);
-				}
+			// Sortint the vector and inserting the current players scores. 
+			//customAlgs<playerInfo>::insertScore(players, p);
+			players.push_back(p);
 
-			}
-			// @Neo
-			/*playerInfo* p = new playerInfo();
-			int index = 0;
-			for (int i = 0; i < v.size(); i++)
+			UpdateLabels(players);
+		}
+
+		// Method that returns a vector of the leaderboard.txt
+		std::vector<playerInfo> LoadAllPlayers() {
+			std::vector<playerInfo> _players;
+			std::ifstream file("textfiles/Leaderboard.txt");
+			std::string line;
+			if (file.is_open())
 			{
-				std::string info = v[i];
-				if (i % 3 == 0 && p->username.length() == 0) {
-					p->username = info;
-					index++;
-					continue;
+				while (getline(file, line)) {
+					int score = 0;
+					int time;
+					size_t pos = line.find('$');
+					std::string username = line.substr(0, pos);
+					line.substr(0, pos + 1).erase();
+					for (int i = 0; i < 4; i++) {
+						pos = line.find('$');
+						score = score + stoi(line.substr(0, pos));
+						line.substr(0, pos + 1).erase();
+					}
+					time = stoi(line);
+					line.erase();
+					_players.push_back({ username, score, time });
 				}
-				if (index == 1 && p->score == NULL) {
-					p->score = std::stoi(info);
-					index++;
-					continue;
-				}
-				if (index == 2 && p->timeTaken == NULL) {
-					p->timeTaken = std::stoi(info);
-					index = 0;
-				}
-			}*/
+			}
 
-			this->player = p;
+			return _players;
+		}
 
-			delete p;
+	private:
+
+		// Function to update the labels each time the leaderboard is accessed. 
+		// Creates new labels from scratch and puts them in the appropriate locations
+		void UpdateLabels(std::vector<playerInfo> v) {
+			//Clear previous labels
+			ClearLabels();
+			
+			for (int i = 0; i < v.size(); i++) {
+				Label^ usernameLabel = gcnew Label();
+				Label^ scoreLabel = gcnew Label();
+				Label^ timeLabel = gcnew Label();
+
+				usernameLabel->Text = gcnew String(msclr::interop::marshal_as<System::String^>(v[i].username.c_str()));
+				scoreLabel->Text = v[i].score.ToString();
+				timeLabel->Text = v[i].timeTaken.ToString();
+
+				int marginTop = (i * 50) + 70;
+				usernameLabel->Location = System::Drawing::Point(177, marginTop);
+				scoreLabel->Location = System::Drawing::Point(518, marginTop);
+				timeLabel->Location = System::Drawing::Point(720, marginTop);
+
+				this->Controls->Add(usernameLabel);
+				this->Controls->Add(scoreLabel);
+				this->Controls->Add(timeLabel);
+			}
 
 		}
 
@@ -93,15 +144,36 @@ namespace M15Namespace {
 				delete components;
 			}
 		}
+	
 	private:
 
 		System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::ComponentModel::IContainer^ components;
 
-	internal: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
-	internal:
 	private:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	internal:
 
 
 
@@ -117,17 +189,26 @@ namespace M15Namespace {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
-		playerInfo* player;
+		// Vector to store user data
 
 		void LoadImage()
 		{
-			Image^ board = Image::FromFile("assets/leaderboard.png");
-			pictureBox1->Image = board;
-			pictureBox1->SizeMode = PictureBoxSizeMode::StretchImage;
+			Image^ board = Image::FromFile("assets/LeaderboardTime.png");
+			pictureBox2->Image = board;
+			pictureBox2->SizeMode = PictureBoxSizeMode::StretchImage;
 		}
 
+		// Clears the created labels from memory
+		void ClearLabels()
+		{
+			for each (Control ^ control in this->Controls) {
+				delete control;
+			}
+		}
+
+
 #pragma region Windows Form Designer generated code
+
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
@@ -135,19 +216,9 @@ namespace M15Namespace {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Leaderboard::typeid));
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(177, 119);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(44, 16);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"label1";
 			// 
 			// pictureBox2
 			// 
@@ -155,7 +226,7 @@ namespace M15Namespace {
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(2, 1);
+			this->pictureBox2->Location = System::Drawing::Point(0, 0);
 			this->pictureBox2->Margin = System::Windows::Forms::Padding(0);
 			this->pictureBox2->MaximumSize = System::Drawing::Size(1238, 719);
 			this->pictureBox2->Name = L"pictureBox2";
@@ -169,7 +240,6 @@ namespace M15Namespace {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1238, 719);
-			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox2);
 			this->MaximumSize = System::Drawing::Size(1256, 766);
 			this->MinimizeBox = false;
@@ -183,8 +253,7 @@ namespace M15Namespace {
 		}
 #pragma endregion
 
-	private: System::Void Leaderboard_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->label1->Text = "";
-	}
+
+
 };
 }

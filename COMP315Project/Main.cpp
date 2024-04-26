@@ -27,8 +27,9 @@ int main(array<String^>^ args) {
 	lvl1Form lvl1form;
 	Application::Run(% lvl1form);
 
-	//Leaderboard leaderboard;
-	//Application::Run(% leaderboard);
+	Leaderboard leaderboard;
+	Application::Run(% leaderboard);
+
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 	
