@@ -142,7 +142,7 @@ public:
     */
     static std::vector<E> chooseRandomMfromN(std::vector<E> v, int M) {
         srand(time(0));                                 //srand() is necessary to ensure that different values are generated each time
-        std::vector<E> result;
+        vector<E> result;
         for (int i = 0; i < M; i++) {
             if (v.size() == 1) {
                 E e = v.at(0);

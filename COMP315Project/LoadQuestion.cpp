@@ -92,6 +92,7 @@ LoadQuestion::LoadQuestion(int levelNum) {
 #include <fstream>
 #include <string>
 #include <queue>
+#include "customAlgs.h"
 #include "LoadQuestion.h"
 //where ever you see an @Daniel is where I replaced std methods with .Net versions
 //using namespace std;
@@ -103,7 +104,9 @@ using namespace System::Collections::Generic;
 LoadQuestion::LoadQuestion(int levelNum) {
 
     //@Daniel: std::queue<Question> QuestionQueue;
-    QuestionQueue = gcnew Queue<Question^>();
+    //QuestionQueue = gcnew Queue<Question^>();
+
+    std::vector<Question> tempVector;
     System::String^ LevelFile = "level" + levelNum + "QuestionBank.txt";
     //std::string LevelFile = "level" + std::to_string(levelNum) + "QuestionBank.txt"; // textfile name
     // string LevelFile = "level3QuestionBank.txt"; //selects approprate question depending on the level
@@ -187,6 +190,23 @@ LoadQuestion::LoadQuestion(int levelNum) {
                 //pos = sline->IndexOf('$');
                 currentQuestion->OptionD = sline;  // stores option D
 
+                //storing into mcqVector
+                mcqQuestions->Add(currentQuestion);
+
+                //Shuffling Options MCQ
+                optionsShuffle->Add(currentQuestion->OptionA);
+                optionsShuffle->Add(currentQuestion->OptionB);
+                optionsShuffle->Add(currentQuestion->OptionC);
+                optionsShuffle->Add(currentQuestion->OptionD);
+
+
+                List<System::String^>^ optionsShuffle = customAlgs<System::String^>::shuffle(optionsShuffle);
+
+                currentQuestion->OptionA = optionsShuffle[0];
+                currentQuestion->OptionB = optionsShuffle[1];
+                currentQuestion->OptionC = optionsShuffle[2];
+                currentQuestion->OptionD = optionsShuffle[3];
+
             }
             else if (currentQuestion->QuestionType == "1") { // T&F
                 /*pos = sline.find('$');
@@ -215,11 +235,23 @@ LoadQuestion::LoadQuestion(int levelNum) {
                 //The remaining bit is the last option, pos would be -1 here, gives an error when doing subtring with negative length
                 //pos = sline->IndexOf('$');
                 currentQuestion->OptionB = sline;  // stores option B
+
+                //storing into tfVector
+                tfQuestions->Add(currentQuestion);
+
+                //Shuffling Options T&F
+                optionsShuffle->Add(currentQuestion->OptionA);
+                optionsShuffle->Add(currentQuestion->OptionB);   
+       
+                List<System::String^>^ optionsShuffle = customAlgs<System::String^>::shuffle(optionsShuffle);
+
+                currentQuestion->OptionA = optionsShuffle[0];
+                currentQuestion->OptionB = optionsShuffle[1];
             }
-            else
-            {
-                // cout << "Unkown Question type";
-            }
+            //else
+            //{
+             //   // cout << "Unkown Question type";
+            //}
 
             //QuestionQueue.push(currentQuestion); // adds "addQuestion" to the queue
             //std::cout << QuestionQueue.front().question << endl;
@@ -230,6 +262,17 @@ LoadQuestion::LoadQuestion(int levelNum) {
     //}
     //@Daniel: myfile.close();
     myfile->Close();
+
+    List<Question^>^ levelQuestions = customAlgs<Question^>::chooseRandomMfromN(mcqQuestions, 16);
+    List<Question^>^ tempTFvector = customAlgs<Question^>::chooseRandomMfromN(tfQuestions, 4);
+
+    //Randomized Questions are now Combined
+    levelQuestions->AddRange(tempTFvector);
+
+    for each (Question^ questions in levelQuestions) {
+        displayQuestions->Enqueue(questions);
+    }
+
 }
 
 

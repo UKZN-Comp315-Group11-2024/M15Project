@@ -44,6 +44,10 @@ private:
 #include <cstdlib>
 #include <queue>
 #include <string>
+#include "customAlgs.h"
+
+using namespace System;
+using namespace System::Collections::Generic;
 
 //@Daniel: had to convert this class to ref class and place it in the two name spaces below otherwise this class cant be used.
 //Cant have a non-managed member of a managed class. That means you cant create an instance of LoadQuestion in ref classes and all forms are ref classes
@@ -67,18 +71,27 @@ private:
 			System::String^ OptionD = "";
 			System::String^ CorrectOption = "";
 
-
-
-
-
-
 		};
 
-		//private:
+	private:
 			//@Daniel: swapped std::queue<Question> for managed class version
 			//std::queue<Question> QuestionQueue;
 			//System::Collections::Generic::Queue <Question^>  QuestionQueue;
 		System::Collections::Generic::Queue<Question^>^ QuestionQueue;
+
+		//std::queue<Question> QuestionQueue;
+		//std::vector<Question^>^ QuestionStack;
+		//vectors to store Questions type, Elements: mcq = 16, tf = 4
+		List<Question^>^ tfQuestions;
+		List<Question^>^ mcqQuestions;
+		//temp vector, just to combine into main question vector(levelQuestions)
+		List<Question^>^ tempTFvector;
+		// stores the 10 questions for the current level
+		List<Question^>^ levelQuestions;
+		//Queue
+		Queue<Question^>^ displayQuestions;
+		//vector stores options to be shuffled
+		List<System::String^>^ optionsShuffle;
 
 	};
 // our code
