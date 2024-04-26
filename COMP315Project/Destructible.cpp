@@ -49,10 +49,11 @@ void Destructible::update() {
 	}
 }
 
-void Destructible::addBullet(Control^ item, double velocityX, double velocityY) {
+void Destructible::addBullet(Control^ item, double velocityX, double velocityY, int x_pos, int y_pos) {
 	//Initialise struct and add to queue
 	Bullet^ bul = gcnew Bullet;
 	bul->object = item;
+	bul->object->Location = System::Drawing::Point(x_pos, y_pos);
 	bul->curX = item->Location.X;
 	bul->curY = item->Location.Y;
 	bul->velX = velocityX;
