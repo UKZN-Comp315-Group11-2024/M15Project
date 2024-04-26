@@ -99,6 +99,9 @@
     <Image Include="app.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\..\Downloads\orbgif.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="textfiles\UsersAlphabetical.txt" />

@@ -1,9 +1,11 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include <vector>
 #include <fstream>
 #include "PlayerInfo.h"
 #include "LoginForm.h"
+
 
 
 namespace M15Namespace {
@@ -20,7 +22,7 @@ namespace M15Namespace {
 	/// </summary>
 
 	struct UserData {
-		System::String^ name;
+		std::string name;
 		int score;
 		int timeTaken;
 	};
@@ -34,44 +36,53 @@ namespace M15Namespace {
 			//
 			//TODO: Add the constructor code here
 			//
-			
-			LoadUserData("textfiles/PlayerInfo.txt");
 			LoadImage();
-			// @Neo Kekana initialize the leaderboard by creating a vector of userdata
-			std::ifstream file("textfiles/PlayerInfo.txt");
+			LoadUserData("textfiles/PlayerInfo.txt");
+
+		}
+
+		// Function that reads the players data from the text file to a vector
+		void LoadUserData(std::string filename)
+		{
+
+			std::ifstream file(filename);
 			std::string username;
 			int score, timetaken;
+			std::vector<UserData> userdata;
 
 			if (file.is_open())
 			{
+				// Reads the data line by line, for the username, score and timetaken
 				while (getline(file, username) && file >> score && file >> timetaken)
 				{
-					System::String^ managedUsername = msclr::interop::marshal_as<System::String^>(username);
-
-					userdata.push_back({ managedUsername, score, timetaken });
+					// Creates the UserData object and adds it to the userdata vector
+					userdata.push_back({ username, score, timetaken });
+					file.ignore('\n'); // Ignores the new line tag
 				}
 			}
+			// close the file and update the labels
 			file.close();
+			UpdateLabels(userdata);
 		}
 
-		void LoadUserData(System::String^ filename)
-		{
-			userdata.clear();
+	private:
 
-		}
+		// Function to update the labels each time the leaderboard is accessed. 
+		// Creates new labels from scratch and puts them in the appropriate locations
+		// Will implement a sorting algorithm to sort from highest to lowest.
 
-		void UpdateLabels(const std::vector<UserData>& userData) {
-
+		void UpdateLabels(std::vector<UserData> u) {
+			//Clear previous labels
 			ClearLabels();
 
-			for (int i = 0; i < userData.size(); i++) {
+			for (int i = 0; i < u.size(); i++) {
 				Label^ usernameLabel = gcnew Label();
 				Label^ scoreLabel = gcnew Label();
 				Label^ timeLabel = gcnew Label();
 
-				usernameLabel->Text = gcnew String(userData[i].name.c_str());
-				scoreLabel->Text = userData[i].score.ToString();
-				timeLabel->Text = userData[i].timeTaken.ToString();
+				usernameLabel->Text = gcnew String(msclr::interop::marshal_as<System::String^>(u[i].name.c_str()));
+				scoreLabel->Text = u[i].score.ToString();
+				timeLabel->Text = u[i].timeTaken.ToString();
 
 				int marginTop = (i * 50) + 70;
 				usernameLabel->Location = System::Drawing::Point(177, marginTop);
@@ -95,16 +106,17 @@ namespace M15Namespace {
 				delete components;
 			}
 		}
-	private: std::vector<UserData> userdata;
+	
 	private:
 
 		System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
 
 
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 
 
 
@@ -143,11 +155,12 @@ namespace M15Namespace {
 
 		void LoadImage()
 		{
-			Image^ board = Image::FromFile("assets/Leaderboard 2.png");
+			Image^ board = Image::FromFile("assets/LeaderboardTime.png");
 			pictureBox2->Image = board;
 			pictureBox2->SizeMode = PictureBoxSizeMode::StretchImage;
 		}
 
+		// Clears the created labels from memory
 		void ClearLabels()
 		{
 			for each (Control ^ control in this->Controls) {
@@ -183,7 +196,6 @@ namespace M15Namespace {
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
 			this->pictureBox2->TabIndex = 1;
 			this->pictureBox2->TabStop = false;
-			this->pictureBox2->Click += gcnew System::EventHandler(this, &Leaderboard::pictureBox2_Click);
 			// 
 			// Leaderboard
 			// 
@@ -202,6 +214,8 @@ namespace M15Namespace {
 
 		}
 #pragma endregion
+
+
 
 };
 }
