@@ -133,9 +133,11 @@ LoadQuestion::LoadQuestion(int levelNum) {
         
         if (pos == 1) {
             //@Daniel replaced sline.substr(0, pos)
-            msclr::interop::marshal_context context;
-            std::string stdString = context.marshal_as<std::string>(sline);
-            std::cout << stdString<<" ";
+            // 
+            // Reading questions fixed, no more need to print to console
+            //msclr::interop::marshal_context context;
+            //std::string stdString = context.marshal_as<std::string>(sline);
+            //std::cout << stdString<<" " << std::endl;
             currentQuestion->QuestionType = sline->Substring(0, pos); // string to int
             sline = sline->Remove(0, 2);
             ////instantiates class depending on question type  
@@ -181,8 +183,9 @@ LoadQuestion::LoadQuestion(int levelNum) {
                 currentQuestion->OptionC = sline->Substring(0, pos); // stores option C
                 sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-                pos = sline->IndexOf('$');
-                currentQuestion->OptionD = sline->Substring(0, pos);  // stores option D
+                //The remaining bit is the last option, pos would be -1 here, gives an error when doing subtring with negative length
+                //pos = sline->IndexOf('$');
+                currentQuestion->OptionD = sline;  // stores option D
 
             }
             else if (currentQuestion->QuestionType == "1") { // T&F
@@ -209,8 +212,9 @@ LoadQuestion::LoadQuestion(int levelNum) {
                 currentQuestion->OptionA = sline->Substring(0, pos);
                 sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-                pos = sline->IndexOf('$');
-                currentQuestion->OptionB = sline->Substring(0, pos);  // stores option B
+                //The remaining bit is the last option, pos would be -1 here, gives an error when doing subtring with negative length
+                //pos = sline->IndexOf('$');
+                currentQuestion->OptionB = sline;  // stores option B
             }
             else
             {
