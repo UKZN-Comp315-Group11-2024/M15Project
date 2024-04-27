@@ -156,6 +156,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PictureBox.h" />
     <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="popup.h">
       <FileType>CppForm</FileType>
@@ -178,12 +179,15 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PictureBox.cpp" />
     <ClCompile Include="popup.cpp" />
     <ClCompile Include="COMP315Project.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
     <Image Include="app.ico" />
+    <Image Include="assets\Retical\ret.png" />
+    <Image Include="Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

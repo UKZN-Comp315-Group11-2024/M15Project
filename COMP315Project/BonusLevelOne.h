@@ -4,6 +4,7 @@
 #include <fstream>
 #include "popup.h"
 #include "LoadQuestion.h"
+#include "PictureBox.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -53,6 +54,9 @@ namespace M15Namespace {
 
 	private: System::Windows::Forms::Timer^ countdown;
 
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
+
 
 
 
@@ -75,6 +79,7 @@ namespace M15Namespace {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(BonusLevelOne::typeid));
 			this->panelBonusLevel = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->countdownBar = (gcnew System::Windows::Forms::ProgressBar());
 			this->lblMessage1 = (gcnew System::Windows::Forms::Label());
 			this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
@@ -83,6 +88,7 @@ namespace M15Namespace {
 			this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->countdown = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelBonusLevel->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -91,28 +97,38 @@ namespace M15Namespace {
 			this->panelBonusLevel->BackColor = System::Drawing::Color::Transparent;
 			this->panelBonusLevel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelBonusLevel.BackgroundImage")));
 			this->panelBonusLevel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panelBonusLevel->Controls->Add(this->pictureBox1);
 			this->panelBonusLevel->Controls->Add(this->countdownBar);
 			this->panelBonusLevel->Controls->Add(this->lblMessage1);
 			this->panelBonusLevel->Controls->Add(this->pbGeneralMilitary);
-			this->panelBonusLevel->Cursor = System::Windows::Forms::Cursors::NoMove2D;
+			this->panelBonusLevel->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->panelBonusLevel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-8, -20);
+			this->panelBonusLevel->Location = System::Drawing::Point(-11, -25);
+			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1200, 731);
+			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
 			this->panelBonusLevel->TabIndex = 13;
 			this->panelBonusLevel->Click += gcnew System::EventHandler(this, &BonusLevelOne::panelLogin_Click);
 			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelOne::panelBonusLevel_Paint);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Location = System::Drawing::Point(-17, -32);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(100, 50);
+			this->pictureBox1->TabIndex = 13;
+			this->pictureBox1->TabStop = false;
 			// 
 			// countdownBar
 			// 
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
-			this->countdownBar->Location = System::Drawing::Point(350, 61);
-			this->countdownBar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->countdownBar->Location = System::Drawing::Point(467, 75);
+			this->countdownBar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->countdownBar->Name = L"countdownBar";
-			this->countdownBar->Size = System::Drawing::Size(472, 37);
+			this->countdownBar->Size = System::Drawing::Size(629, 46);
 			this->countdownBar->TabIndex = 12;
 			this->countdownBar->Click += gcnew System::EventHandler(this, &BonusLevelOne::countdownBar_Click);
 			// 
@@ -121,9 +137,10 @@ namespace M15Namespace {
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 27, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(248, 731);
+			this->lblMessage1->Location = System::Drawing::Point(331, 900);
+			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 41);
+			this->lblMessage1->Size = System::Drawing::Size(0, 52);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			// 
@@ -132,17 +149,17 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-244, 234);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(278, 455);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
 			// 
 			// TargetTimer
 			// 
-			this->TargetTimer->Interval = 1;
+			this->TargetTimer->Interval = 500;
 			this->TargetTimer->Tick += gcnew System::EventHandler(this, &BonusLevelOne::TargetTimer_Tick);
 			// 
 			// Transition2
@@ -162,11 +179,11 @@ namespace M15Namespace {
 			// 
 			// BonusLevelOne
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1185, 691);
+			this->ClientSize = System::Drawing::Size(1580, 850);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelOne";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -175,6 +192,7 @@ namespace M15Namespace {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelOne::BonusLevelOne_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
 			this->panelBonusLevel->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->ResumeLayout(false);
 
@@ -183,81 +201,25 @@ namespace M15Namespace {
 		private: System::Void panelLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		}
-	
-		static int countTotal = 0;
-		//@aveshr	   
-		ref class definedButton : public Button {
-		public:
-			definedButton()
-			{
-				this->Size = System::Drawing::Size(100, 100);
-			}
-			definedButton(Panel^ panelBonusLevel)
-			{
-				this->Size = System::Drawing::Size(100, 100);
-				this->Parent = panelBonusLevel;
-				this->Visible = false;
-				this->Click += gcnew System::EventHandler(this, &definedButton::button_Click);
-				this->BackgroundImage = System::Drawing::Image::FromFile("assets/PlayerMove/idle.gif");
-				this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-				this->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			}
 
-			void setLocation(int x, int y) {
-				this->Location = System::Drawing::Point(x, y);
-			}
-
-
-
-			void setVisible(bool visible) {
-				this->Visible = visible;
-			}
-
-		//private:
-			bool operator ==(definedButton^ b1) {
-				if (this->Bounds.IntersectsWith(b1->Bounds))
-				{
-					return true;
-				}
-				return false;
-			}
-
-
-
-			void button_Click(System::Object^ sender, System::EventArgs^ e) {
-				this->Hide();
-				countClick++;
-				countTotal++;
-			}
-			
-			int numClicks()
-			{
-				return countClick;
-			}
-
-			int countClick = 0;
-		};
+			   int countTotal = 0;
 
 		//@aveshr
-		array<definedButton^>^ buttons = gcnew array<definedButton^>(20);
+		array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(20);
 		private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
-			Bitmap^ backgroundImage = gcnew Bitmap("assets/newpngggg.png");
 
-			// Set the background image of the panel
+			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/PurpleOfficeBackground.png");
 			panelBonusLevel->BackgroundImage = backgroundImage;
-			//Image^ backimage = Image::FromFile("assets/Lvl1.png");
-			//panelBonusLevel->BackgroundImage = backimage;
+
 			int x_pos;
 			int y_pos;
 			srand(time(0));
 			for (int i = 0; i < buttons->Length; i++) {
 				delete buttons[i];
-				buttons[i] = gcnew definedButton(panelBonusLevel);
-
 				
 				x_pos = rand() % 1050 + 10;
 				y_pos = rand() % 420 + 180;
-				buttons[i]->setLocation(x_pos, y_pos);
+				buttons[i] = gcnew definedPictureBox(panelBonusLevel, 65, 75, x_pos, y_pos, "assets/BonusLevel/idle.gif", true);
 
 				buttons[i]->Text = i.ToString() + "h";
 				buttons[i]->ForeColor = System::Drawing::Color::White;
@@ -323,6 +285,7 @@ private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs
 	// ensuring all stuff leaves screen before showing the player
 	if (!(x >= -325) && !(y1 <= 900))
 	{
+		panelBonusLevel->Cursor = gcnew System::Windows::Forms::Cursor("assets/Retical/ShootRetical2.cur");
 		countdown->Start();
 		TargetTimer->Start();
 		Transition2->Enabled = false;
@@ -360,9 +323,9 @@ private: System::Void BonusLevelOne_KeyDown(System::Object^ sender, System::Wind
 //@aveshr
 private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-	if (countTotal ==1) {
+	/*if (countTotal ==1) {
 		countdownBar->Value = 100;
-	}
+	}*/
 
 	if (countdownBar->Value < 100) {
 		if (countdownBar->Value + 6.5 > 100)
@@ -383,7 +346,7 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 		for (int i = 0; i < buttons->Length; i++)
 		{
 			buttons[i]->Enabled = false;
-			//countTotal += buttons[i]->numClicks();
+			countTotal += buttons[i]->numClicks();
 
 		}
 
@@ -402,7 +365,7 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 
 		currScore = stoi(lines[1]);
 
-		if (countTotal == 1) {
+		if (countTotal == 20) {
 			
 			lines[1] = std::to_string(stoi(lines[1]) + 5);
 
@@ -413,9 +376,9 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 
 			outputFile.close();
 
-			std::string windowPrompt = "\nBonus Level One Feedback\n\n\nTargets destroyed: " + std::to_string(countTotal) +"\nPrevious Score: " + std::to_string(currScore)+"\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
+			std::string windowPrompt = "\nBonus Level One Feedback\n\nTargets destroyed: " + std::to_string(countTotal) +"\nPrevious Score: " + std::to_string(currScore)+"\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/newpngnew.png");
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 			window->Visible = false;
 			this->Hide();
 			window->ShowDialog();
@@ -424,9 +387,9 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 		}
 		else
 		{ 
-			std::string windowPrompt = "\n\nBonus Level One Feedback\n\n\nTargets destroyed: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
+			std::string windowPrompt = "\nBonus Level One Feedback\n\nTargets destroyed: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/newpngnew.png");
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 			
 			window->Visible = false;
 			this->Hide();
