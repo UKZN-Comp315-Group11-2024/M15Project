@@ -4,7 +4,7 @@
 LevelMethods::LevelMethods(int lvlno) {
 	this->lvlNum = lvlno;
 	QuestionLoader = gcnew LoadQuestion(this->lvlNum);
-	QuestionQueue = QuestionLoader->QuestionQueue;
+	QuestionQueue = QuestionLoader->displayQuestions;	//displayQuestions is the final set of questions
 	ShuffelQuestionSets();
 
 }
