@@ -61,6 +61,7 @@ namespace M15Namespace {
 
 
 
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -205,6 +206,10 @@ namespace M15Namespace {
 		   int countTotal = 0;
 
 		   //@aveshr
+		   definedPictureBox^ box1;
+		   definedPictureBox^ box2;
+		   definedPictureBox^ box3;
+		   definedPictureBox^ box4;
 		   array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(27);
 	private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
 
@@ -250,14 +255,41 @@ namespace M15Namespace {
 				}
 			}
 		}
-		lblMessage1->Text = "Welcome to the third bonus level\nHint: Use your mouse";
-		Transition1->Start();
 
+		box1 = gcnew definedPictureBox(panelBonusLevel, buttons[7]->Size.Width, buttons[7]->Size.Height, buttons[7]->Location.X, buttons[7]->Location.Y, "assets/Doors/Box.png", true);
+		
+		box2 = gcnew definedPictureBox(panelBonusLevel, buttons[14]->Size.Width, buttons[14]->Size.Height, buttons[14]->Location.X, buttons[14]->Location.Y, "assets/Doors/Box.png", true);
+		
+		box3 = gcnew definedPictureBox(panelBonusLevel, buttons[21]->Size.Width, buttons[21]->Size.Height, buttons[21]->Location.X, buttons[21]->Location.Y, "assets/Doors/Box.png", true);
+		
+		box4 = gcnew definedPictureBox(panelBonusLevel, buttons[25]->Size.Width, buttons[25]->Size.Height, buttons[25]->Location.X, buttons[25]->Location.Y, "assets/Doors/Box.png", true);
+		
+		box1->BringToFront();
+		box2->BringToFront();
+		box3->BringToFront();
+		box4->BringToFront();
+
+		lblMessage1->Text = "Welcome to the third bonus level.\nEnemies may use a box as cover\nBREAK IT!\n\nHint: Use your mouse";
+		Transition1->Start();
 	}
 
 		   //@aveshr
 		   int targetNum = 0;
 	private: System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+		switch (targetNum) {
+			case 7:
+				box1->setVisible(true);
+				break;
+			case 14:
+				box2->setVisible(true);
+				break;
+			case 21:
+				box3->setVisible(true);
+				break;
+			case 25:
+				box4->setVisible(true);
+				break;
+		}
 		buttons[targetNum]->setVisible(true);
 		if (targetNum == buttons->Length - 1) {
 			TargetTimer->Stop();
@@ -416,7 +448,8 @@ namespace M15Namespace {
 	}
 	private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	};
+	
+};
 
 
 }
