@@ -74,18 +74,23 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>SFML-2.6.1\include\SFML;$(IncludePath)</IncludePath>
+    <LibraryPath>SFML-2.6.1\lib2;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/SFML-2.6.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;kernel32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;kernel32.lib;advapi32.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(SolutionDir)/SMFL-2.6.1/lib2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -133,9 +138,13 @@
     </ClInclude>
     <ClInclude Include="customAlgs.h" />
     <ClInclude Include="Destructible.h" />
+    <ClInclude Include="FaceRecognition.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Leaderboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="LevelMethods.h" />
     <ClInclude Include="LoadQuestion.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
@@ -157,7 +166,9 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BonusLevelOne.cpp" />
     <ClCompile Include="Destructible.cpp" />
+    <ClCompile Include="FaceRecognition.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
+    <ClCompile Include="LevelMethods.cpp" />
     <ClCompile Include="LoadQuestion.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -171,6 +182,7 @@
     <ClCompile Include="COMP315Project.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +195,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BonusLevelOne.resx">
       <DependentUpon>BonusLevelOne.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FaceRecognition.resx">
+      <DependentUpon>FaceRecognition.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leaderboard.resx">
       <DependentUpon>Leaderboard.h</DependentUpon>
@@ -221,6 +236,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="textfiles\communicaton.txt" />
     <Text Include="textfiles\UsersAlphabetical.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

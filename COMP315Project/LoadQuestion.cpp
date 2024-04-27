@@ -3,87 +3,126 @@
 #include <fstream>
 #include <string>
 #include <queue>
+#include "customAlgs.h"
 #include "LoadQuestion.h"
-using namespace std;
+
+//Source Code: @Vashin, @Archan
+//De-Standardizing: @Daniel
+//Debugging: @Jaedon
+
+using namespace System;
+using namespace System::IO;
+using namespace System::Collections::Generic;
 
 LoadQuestion::LoadQuestion(int levelNum) {
+    this->levelNum = levelNum;
+	System::String^ LevelFile = "textfiles\\level" + levelNum + "QuestionBank.txt";
+	System::IO::StreamReader^ myfile = gcnew System::IO::StreamReader(LevelFile);
+	System::String^ sline;
 
-    std::queue<Question> QuestionQueue;
+    while ((sline = myfile->ReadLine()) != nullptr) {
+        int pos = sline->IndexOf("$");
+        if (pos == 1) {         //only do all this if it's actually a question and not some other line in the textfile
+            Question^ currentQuestion = gcnew Question;
+            currentQuestion->QuestionType = sline->Substring(0, pos);
+            sline = sline->Remove(0, pos + 1);
+            if (currentQuestion->QuestionType == "0") {
+                pos = sline->IndexOf('$');
+                currentQuestion->question = sline->Substring(0, pos);   // stores the question
+                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-    std::string LevelFile = "level" + std::to_string(levelNum) + "QuestionBank.txt"; // textfile name
-   // string LevelFile = "level3QuestionBank.txt"; //selects approprate question depending on the level
+                pos = sline->IndexOf('$');
+                currentQuestion->CorrectOption = sline->Substring(0, pos);  // stores option A
+                currentQuestion->OptionA = sline->Substring(0, pos);
+                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-    fstream myfile;
+                pos = sline->IndexOf('$');
+                currentQuestion->OptionB = sline->Substring(0, pos);  // stores option B
+                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-    myfile.open(LevelFile, ios::in);
-    if (myfile.is_open()) {
-        std::string sline;
-        while (getline(myfile, sline)) { //goes through each line
+                pos = sline->IndexOf('$');
+                currentQuestion->OptionC = sline->Substring(0, pos); // stores option C
+                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-            LoadQuestion::Question currentQuestion; //creates object  
-            //addQuestion.QuestionType = 0;
+                //The remaining bit is the last option, pos would be -1 here, gives an error when doing substring with negative length
+                //pos = sline->IndexOf('$');
+                currentQuestion->OptionD = sline;  // stores option D
+                
+                mcqQuestions->Add(currentQuestion);
 
-            //size_t alias for unsigned long long, used for positive indexes
-            size_t pos = sline.find("$");
-            // cout << sline + \n;
+                optionsShuffle->Clear();
+                optionsShuffle->Add(currentQuestion->OptionA);
+                optionsShuffle->Add(currentQuestion->OptionB);
+                optionsShuffle->Add(currentQuestion->OptionC);
+                optionsShuffle->Add(currentQuestion->OptionD);
 
-            currentQuestion.QuestionType = sline.substr(0, pos); // string to int
+                optionsShuffle = customAlgs<System::String^>::shuffle(optionsShuffle);
 
-            sline.erase(0, 2);
-
-
-            ////instantiates class depending on question type  
-            if (currentQuestion.QuestionType == "0") // MCQ
-            {
-
-                pos = sline.find('$');
-                currentQuestion.question = sline.substr(0, pos);   // stores the question
-                sline.erase(0, pos + 1);
-
-                pos = sline.find('$');
-                currentQuestion.CorrectOption = sline.substr(0, pos);  // stores option A
-                currentQuestion.OptionA = sline.substr(0, pos);
-                sline.erase(0, pos + 1);
-
-                pos = sline.find('$');
-                currentQuestion.OptionB = sline.substr(0, pos);  // stores option B
-                sline.erase(0, pos + 1);
-
-                pos = sline.find('$');
-                currentQuestion.OptionC = sline.substr(0, pos); // stores option C
-                sline.erase(0, pos + 1);
-
-                pos = sline.find('$');
-                currentQuestion.OptionD = sline.substr(0, pos);  // stores option D
-                sline.erase(0, pos + 1);
-
+                currentQuestion->OptionA = optionsShuffle[0];
+                currentQuestion->OptionB = optionsShuffle[1];
+                currentQuestion->OptionC = optionsShuffle[2];
+                currentQuestion->OptionD = optionsShuffle[3];
+                
             }
-            else if (currentQuestion.QuestionType == "1") { // T&F
-                pos = sline.find('$');
-                currentQuestion.question = sline.substr(0, pos);   // stores the question
-                sline.erase(0, pos + 1);
+            else {
+                pos = sline->IndexOf('$');
+                currentQuestion->question = sline->Substring(0, pos);   // stores the question
+                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-                pos = sline.find('$');
-                currentQuestion.CorrectOption = sline.substr(0, pos);  // stores option A
-                currentQuestion.OptionA = sline.substr(0, pos);
-                sline.erase(0, pos + 1);
+                pos = sline->IndexOf('$');
+                currentQuestion->CorrectOption = sline->Substring(0, pos);  // stores option A
+                currentQuestion->OptionA = sline->Substring(0, pos);
+                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
 
-                pos = sline.find('$');
-                currentQuestion.OptionB = sline.substr(0, pos);  // stores option B
-                sline.erase(0, pos + 1);
+                //The remaining bit is the last option, pos would be -1 here, gives an error when doing subtring with negative length
+                //pos = sline->IndexOf('$');
+                currentQuestion->OptionB = sline;  // stores option B
+
+                //storing into Vector
+                tfQuestions->Add(currentQuestion);
+
+                //Shuffling Options T&F
+                optionsShuffle->Clear();
+                optionsShuffle->Add(currentQuestion->OptionA);
+                optionsShuffle->Add(currentQuestion->OptionB);
+
+                optionsShuffle = customAlgs<System::String^>::shuffle(optionsShuffle);
+                currentQuestion->OptionA = optionsShuffle[0];
+                currentQuestion->OptionB = optionsShuffle[1];
             }
-            else
-            {
-                cout << "Unkown Question type";
-            }
 
-            QuestionQueue.push(currentQuestion); // adds "addQuestion" to the queue
-            std::cout << QuestionQueue.front().question << endl;
-
-
-        }
-
+            this->QuestionQueue->Enqueue(currentQuestion);
+           
+        }      
     }
-    myfile.close();
 
+    myfile->Close();
+
+    levelQuestions = customAlgs<Question^>::chooseRandomMfromN(mcqQuestions, 8);
+    tempTFvector = customAlgs<Question^>::chooseRandomMfromN(tfQuestions, 2);
+
+    //Randomized Questions are now Combined
+    levelQuestions->AddRange(tempTFvector);
+
+    for each (Question ^ q in levelQuestions) {
+        displayQuestions->Enqueue(q);
+    }
+
+    printQuestions();
+}
+
+//@Jaedon: method that's useful for debugging
+void LoadQuestion::printQuestions() {
+    std::cout << "LEVEL " << levelNum << " QUESTIONS: " << "\n\n";
+    for each (Question ^ q in displayQuestions) {
+        msclr::interop::marshal_context context;
+        std::string stdString = "QUESTION: " + context.marshal_as<std::string>(q->question) + "\n";
+        stdString += "OPTIONS: " + context.marshal_as<std::string>(q->OptionA) + "\n";
+        stdString += context.marshal_as<std::string>(q->OptionB) + "\n";
+        stdString += context.marshal_as<std::string>(q->OptionC) + "\n";
+        stdString += context.marshal_as<std::string>(q->OptionD) + "\n";
+        stdString += "CORRECT OPTION: " + context.marshal_as<std::string>(q->CorrectOption) + "\n";
+        std::cout << stdString << "\n\n";
+    }
+    
 }

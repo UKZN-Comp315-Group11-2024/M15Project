@@ -13,6 +13,13 @@ void Destructible::update() {
 		currentBullet->curY += currentBullet->velY;
 		currentBullet->object->Location = System::Drawing::Point((int)(currentBullet->curX), (int)(currentBullet->curY));
 
+		//Bounds checking, to see if the bullet has gone off screen
+		if (currentBullet->curX < -20 || currentBullet->curX > 1300 || currentBullet->curY < -20 || currentBullet->curY > 740) {
+			currentBullet->object->~Control();
+			bullets.RemoveAt(i--);
+			continue;
+		}
+
 		//Calculate center of Bullet for bounds checking
 		int bulletCenterX = currentBullet->object->Location.X + currentBullet->object->Size.Width/2;
 		int bulletCenterY = currentBullet->object->Location.Y + currentBullet->object->Size.Height/2;
@@ -58,6 +65,11 @@ void Destructible::addBullet(Control^ item, double velocityX, double velocityY) 
 	bul->velX = velocityX;
 	bul->velY = velocityY;
 	bullets.Add(bul);
+}
+
+void Destructible::addBullet(Control^ item, double velocityX, double velocityY, int x_pos, int y_pos) {
+	item->Location = System::Drawing::Point(x_pos, y_pos);
+	addBullet(item, velocityX, velocityY);
 }
 
 void Destructible::addObject(Control ^ item, DestroyFunction^ functionToCallOnDestroy) {

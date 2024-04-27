@@ -17,7 +17,8 @@ namespace M15Namespace {
 	public ref class popup : public System::Windows::Forms::Form
 	{
 	public:
-		popup(String^ text, int x, int y)
+		String^ backgroundImage;
+		popup(String^ text, int x, int y, String^ backgroundImage) 
 		{
 			InitializeComponent();
 			//
@@ -26,6 +27,8 @@ namespace M15Namespace {
 			this->x = x;
 			this->y = y;
 			this->text = text;
+			this->backgroundImage = backgroundImage;
+			
 			displayText();
 			PlaySound(NULL, NULL, 0);
 			PlaySound(TEXT("assets\\digitaltyping"), NULL, SND_LOOP | SND_ASYNC);
@@ -56,6 +59,9 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Timer^ timertext;
 	private: System::Windows::Forms::Label^ lblspace;
 	private: System::Windows::Forms::Timer^ timerclose;
+	private: System::Windows::Forms::PictureBox^ backgroundPictureBox;
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -73,27 +79,31 @@ namespace M15Namespace {
 			this->timertext = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lblspace = (gcnew System::Windows::Forms::Label());
 			this->timerclose = (gcnew System::Windows::Forms::Timer(this->components));
+			this->backgroundPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxbackground))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->backgroundPictureBox))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pictureboxbackground
 			// 
+			this->pictureboxbackground->BackColor = System::Drawing::Color::Transparent;
 			this->pictureboxbackground->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureboxbackground.Image")));
-			this->pictureboxbackground->Location = System::Drawing::Point(811, 344);
+			this->pictureboxbackground->Location = System::Drawing::Point(786, 352);
 			this->pictureboxbackground->Name = L"pictureboxbackground";
-			this->pictureboxbackground->Size = System::Drawing::Size(544, 358);
+			this->pictureboxbackground->Size = System::Drawing::Size(536, 363);
 			this->pictureboxbackground->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureboxbackground->TabIndex = 0;
 			this->pictureboxbackground->TabStop = false;
 			// 
 			// lblText
 			// 
+			this->lblText->BackColor = System::Drawing::Color::Transparent;
 			this->lblText->Font = (gcnew System::Drawing::Font(L"Courier New", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblText->ForeColor = System::Drawing::Color::White;
 			this->lblText->Location = System::Drawing::Point(35, 34);
 			this->lblText->Name = L"lblText";
-			this->lblText->Size = System::Drawing::Size(1204, 287);
+			this->lblText->Size = System::Drawing::Size(1204, 349);
 			this->lblText->TabIndex = 1;
 			this->lblText->Text = L"label1";
 			this->lblText->Click += gcnew System::EventHandler(this, &popup::lblText_Click);
@@ -105,6 +115,7 @@ namespace M15Namespace {
 			// 
 			// lblspace
 			// 
+			this->lblspace->BackColor = System::Drawing::Color::Transparent;
 			this->lblspace->Font = (gcnew System::Drawing::Font(L"Courier New", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblspace->ForeColor = System::Drawing::Color::White;
@@ -120,23 +131,35 @@ namespace M15Namespace {
 			this->timerclose->Interval = 30;
 			this->timerclose->Tick += gcnew System::EventHandler(this, &popup::timerclose_Tick);
 			// 
+			// backgroundPictureBox
+			// 
+			this->backgroundPictureBox->Location = System::Drawing::Point(0, 0);
+			this->backgroundPictureBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->backgroundPictureBox->Name = L"backgroundPictureBox";
+			this->backgroundPictureBox->Size = System::Drawing::Size(1264, 681);
+			this->backgroundPictureBox->TabIndex = 3;
+			this->backgroundPictureBox->TabStop = false;
+			// 
 			// popup
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->ClientSize = System::Drawing::Size(1264, 681);
-			this->Controls->Add(this->lblspace);
 			this->Controls->Add(this->pictureboxbackground);
 			this->Controls->Add(this->lblText);
+			this->Controls->Add(this->lblspace);
+			this->Controls->Add(this->backgroundPictureBox);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->HelpButton = true;
 			this->Name = L"popup";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"popup";
+			this->Load += gcnew System::EventHandler(this, &popup::popup_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &popup::popup_KeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxbackground))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->backgroundPictureBox))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -201,6 +224,17 @@ private: System::Void timerclose_Tick(System::Object^ sender, System::EventArgs^
 	}
 }
 private: System::Void lblText_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void popup_Load(System::Object^ sender, System::EventArgs^ e) {
+	if (backgroundImage->Length != 0)
+	{
+		lblspace->Parent = backgroundPictureBox;
+		lblText->Parent = backgroundPictureBox;
+		pictureboxbackground->Parent = backgroundPictureBox;
+		Image^ BackgroundImage = Image::FromFile(backgroundImage);
+		backgroundPictureBox->Image = BackgroundImage;
+	}
+
 }
 };
 }

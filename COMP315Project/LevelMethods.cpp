@@ -19,6 +19,7 @@ void LevelMethods::SetQuestionComponents(System::Windows::Forms::TextBox^ lblQue
 	this->Option4 = lblOption4;
 	this->TFOption1 = lblTFOption1;
 	this->TFOption2 = lblTFOption2;
+	this->lvlNum = lvlNumber;
 
 }
 

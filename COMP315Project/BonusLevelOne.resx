@@ -121,7 +121,7 @@
   <data name="panelBonusLevel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkAAAAOECAYAAAD5Tf2iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        7AAADuwBI4kn6gAAABF0RVh0VGl0bGUAUERGIENyZWF0b3JBXrwoAAAAE3RFWHRBdXRob3IAUERGIFRv
+        7wAADu8BjjAGhwAAABF0RVh0VGl0bGUAUERGIENyZWF0b3JBXrwoAAAAE3RFWHRBdXRob3IAUERGIFRv
         b2xzIEFHG893MAAA/3ZJREFUeF7svYd7HFW2LT7/yfu9e2cGcMBBTso5dLdysE0eYABjTLBNMNFgk0w2
         ccgMOU0kDMwQDCaDc86WoyTLWVaW1m+tfaq6q1utYFvz3r3vve/T+lpdXVVnn5332RV+FakoR2lVBUpr
         KlFWU4Xy2mpEqqoQFmqq+yBSW0NUoYzQvkKZHVtB8FzVFdwv+bGJcOdyKK2r7YPobxpnKs9fW8b/S0lr
@@ -9301,5 +9301,17 @@
   </data>
   <metadata name="TargetTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="Transition2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>297, 13</value>
+  </metadata>
+  <metadata name="Transition1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>148, 16</value>
+  </metadata>
+  <metadata name="countdown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>429, 13</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
   </metadata>
 </root>

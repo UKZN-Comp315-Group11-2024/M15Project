@@ -16,11 +16,11 @@ ref struct Destruct;
 *		MyForm(void)
 *		{
 *			InitializeComponent();
-*			des = gcnew Destructible; //Create class
+*			des = gcnew Destructible; //Create class 
 *			Destructible::DestroyFunction^ destroyFunc = gcnew Destructible::DestroyFunction(this, &MyForm::printDeathMSG); //Create delegate function (basically a function pointer)
 *
 *			des->addBullet(bulletIcon, 5, 0);
-*			des->addObject(dickheadIcon, destroyFunc);
+*			des->addObject(destructibleIcon, destroyFunc);
 *
 *			des->addBullet(bulletLabel, 2, 0.1);
 *			des->addObject(pictureBox1, destroyFunc);
@@ -51,6 +51,17 @@ public:
 	/// <param name="velocityY">The vertical velocity of the bullet</param>
 	/// <returns></returns>
 	void addBullet(Control^ item, double velocityX, double velocityY);
+
+	/// <summary>
+	/// Adds a bullet object to the list, with optional starting position if you wish to set it here instead of before
+	/// </summary>
+	/// <param name="item">The Control subclass you want to be treated as a bullet</param>
+	/// <param name="velocityX">The horizontal velocity of the bullet</param>
+	/// <param name="velocityY">The vertical velocity of the bullet</param>
+	/// <param name="x_pos">x start position</param>
+	/// <param name="y_pos">y start position</param>
+	/// <returns></returns>
+	void addBullet(Control^ item, double velocityX, double velocityY, int x_pos, int y_pos);
 
 	/// <summary>
 	/// Adds a destructible object to the list

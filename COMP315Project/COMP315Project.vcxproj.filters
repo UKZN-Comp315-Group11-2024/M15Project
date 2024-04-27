@@ -56,6 +56,9 @@
     <ClInclude Include="customAlgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelMethods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="COMP315Project.cpp">
@@ -88,9 +91,15 @@
     <ClCompile Include="BonusLevelOne.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LevelMethods.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\orbgif.gif">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
