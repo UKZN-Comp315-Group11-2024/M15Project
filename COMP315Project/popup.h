@@ -105,7 +105,7 @@ namespace M15Namespace {
 			this->lblText->Location = System::Drawing::Point(47, 42);
 			this->lblText->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblText->Name = L"lblText";
-			this->lblText->Size = System::Drawing::Size(1605, 387);
+			this->lblText->Size = System::Drawing::Size(1605, 481);
 			this->lblText->TabIndex = 1;
 			this->lblText->Text = L"label1";
 			this->lblText->Click += gcnew System::EventHandler(this, &popup::lblText_Click);

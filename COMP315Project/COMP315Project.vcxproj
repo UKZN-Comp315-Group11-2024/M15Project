@@ -136,6 +136,12 @@
     <ClInclude Include="BonusLevelOne.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BonusLevelThree.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="BonusLevelTwo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="customAlgs.h" />
     <ClInclude Include="Destructible.h" />
     <ClInclude Include="FaceRecognition.h">
@@ -166,6 +172,8 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BonusLevelOne.cpp" />
+    <ClCompile Include="BonusLevelThree.cpp" />
+    <ClCompile Include="BonusLevelTwo.cpp" />
     <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="FaceRecognition.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
@@ -199,6 +207,12 @@
   <ItemGroup>
     <EmbeddedResource Include="BonusLevelOne.resx">
       <DependentUpon>BonusLevelOne.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BonusLevelThree.resx">
+      <DependentUpon>BonusLevelThree.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BonusLevelTwo.resx">
+      <DependentUpon>BonusLevelTwo.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FaceRecognition.resx">
       <DependentUpon>FaceRecognition.h</DependentUpon>

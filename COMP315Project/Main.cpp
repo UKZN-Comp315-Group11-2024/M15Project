@@ -7,6 +7,8 @@
 #include "LoadQuestion.h"
 #include "Leaderboard.h"
 #include "BonusLevelOne.h"
+#include "BonusLevelTwo.h"
+#include "BonusLevelThree.h"
 using namespace System;
 using namespace M15Namespace;
 using namespace System::Windows::Forms;
@@ -36,9 +38,12 @@ int main(array<String^>^ args) {
 		+   "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.", 0, 0);*/
 	//Application::Run(% P);
 
-	BonusLevelOne bonusLevelOne;
-	Application::Run(% bonusLevelOne);
+	//BonusLevelOne bonusLevelOne;
+	//Application::Run(% bonusLevelOne);
 
+	//BonusLevelTwo bnt;
+	//Application::Run(% bnt);
 
-
+	BonusLevelThree BNTT;
+	Application::Run(% BNTT);
 }
