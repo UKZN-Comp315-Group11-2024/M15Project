@@ -3,7 +3,6 @@
 #include <vector>
 #include <time.h> 
 #include <cstdlib> 
-
 //@author jaedonnaidu
 
 //Template class to handle some algorithms we use frequently
@@ -140,22 +139,21 @@ public:
     //TIME COMPLEXITY: O(M). This time complexity is clearly optimal.
     //Usage: choosing 8 of 16 A B C D, and 2 of 4 T/F
     */
-    static std::vector<E> chooseRandomMfromN(std::vector<E> v, int M) {
+    static List<E>^ chooseRandomMfromN(List<E>^ v, int M) {
         srand(time(0));                                 //srand() is necessary to ensure that different values are generated each time
-        vector<E> result;
+        List<E>^ result = gcnew List<E>;
         for (int i = 0; i < M; i++) {
-            if (v.size() == 1) {
-                E e = v.at(0);
-                v.erase(v.begin());
-                result.push_back(e);
+            if (v->Count == 1) {
+                E e = v[0];
+                v->RemoveAt(0);
+                result->Add(e);
             }
             else {
-                int random = rand() % (v.size() - 1);
-                E e = v.at(random);
-                v.erase(v.begin() + random);
-                result.push_back(e);
+                int random = rand() % (v->Count - 1);
+                E e = v[random];
+                v->RemoveRange(random, 1);
+                result->Add(e);
             }
-
         }
         return result;
     }
@@ -165,7 +163,9 @@ public:
     //TIME COMPLEXITY: O(n). This time complexity is also also clearly optimal.
     */
     //Usage: to shuffle the questions, etc
-    static std::vector<E> shuffle(std::vector<E> v) {
-        return chooseRandomMfromN(v, v.size()); //really this is just the case of chooseRandomMfromN where you want the result vector to have the same size as the original
+    static  List<E>^ shuffle(List<E>^ v) {
+        List<E>^ result = gcnew List<E>;
+        result = chooseRandomMfromN(v, v->Count);
+        return result; //really this is just the case of chooseRandomMfromN where you want the result vector to have the same size as the original
     }
 };
