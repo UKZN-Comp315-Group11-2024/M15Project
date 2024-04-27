@@ -138,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="customAlgs.h" />
     <ClInclude Include="Destructible.h" />
+    <ClInclude Include="FaceRecognition.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Leaderboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -163,6 +166,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BonusLevelOne.cpp" />
     <ClCompile Include="Destructible.cpp" />
+    <ClCompile Include="FaceRecognition.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
     <ClCompile Include="LevelMethods.cpp" />
     <ClCompile Include="LoadQuestion.cpp" />
@@ -191,6 +195,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BonusLevelOne.resx">
       <DependentUpon>BonusLevelOne.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FaceRecognition.resx">
+      <DependentUpon>FaceRecognition.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leaderboard.resx">
       <DependentUpon>Leaderboard.h</DependentUpon>
