@@ -236,6 +236,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="textfiles\communicaton.txt" />
     <Text Include="textfiles\UsersAlphabetical.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

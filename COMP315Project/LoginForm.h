@@ -592,10 +592,26 @@ private: System::Void timerlockgif_Tick(System::Object^ sender, System::EventArg
 }
 private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 	FaceRecognition^ facerec = gcnew FaceRecognition();
+	std::string comm;
 	this->Visible = false;
 	this->Hide();
 	facerec->ShowDialog();
-	this->Visible = true;
+	std::fstream file;
+	file.open("textfiles/communication.txt", std::ios::in);
+	if (file.is_open()) {
+		getline(file, comm);
+	}
+	file.close();
+	if (comm == "1") {
+
+		this->Visible = true;
+	}
+	else if(comm == "0") {
+		std::cout << "closing";
+		this->Close();
+	}
+	
+
 }
 private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 }
