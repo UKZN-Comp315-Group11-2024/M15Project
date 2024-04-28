@@ -9,6 +9,8 @@
 #include "BonusLevelOne.h"
 #include "BonusLevelTwo.h"
 #include "BonusLevelThree.h"
+#include "MusicAndSFX.h"
+
 using namespace System;
 using namespace M15Namespace;
 using namespace System::Windows::Forms;
