@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/COMP315Project/Interop/Interop.WMPLib.1.0.dll
