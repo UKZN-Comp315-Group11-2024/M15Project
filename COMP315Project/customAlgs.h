@@ -10,6 +10,11 @@
 //Example of sytax to use methods:
 //  vector<int> v;
 //  customAlgs<int>::insert(v, -1);
+
+
+
+
+
 template <class E>
 ref class customAlgs {
 
@@ -27,8 +32,8 @@ public:
     static int binarySearchScore(List<E>^ v, E e) {
         int start = 0;
         int end = v->Count - 1;
-        int midd;
-        while ((end != start)) {
+        int midd=-1;
+        while ((end > start && (midd!= 0)) && (midd!= v->Count-1)) {
             midd = (start + end) / 2;           //assumption 1:  the generic type has the following operators overloaded:
             if (e < v[midd]) {               //              >       <       ==
                 end = midd - 1;
@@ -43,8 +48,12 @@ public:
                 return -1;
             }
         }
-        if (v[start] == e) {
+        if ((start >= 0 && start < v->Count) && v[start] % e) {
             return start;
+        }
+
+        if ((end >= 0 && end < v->Count) && v[end] % e) {
+            return end;
         }
         else {
             return -1;
@@ -63,9 +72,9 @@ public:
     */
     static int binarySearchUsername(List<E>^ v, E e) {
         int start = 0;
-        int end = v->Count-1
-        int midd;
-        while ((end != start)) {
+        int end = v->Count - 1;
+        int midd=-1;
+        while ((end > start && (midd!= 0)) && (midd != v->Count - 1)) {
             midd = (start + end) / 2;           //assumption 1:  the generic type has the following operators overloaded:
             if (e <= v[midd]) {                  //              >       <       ==
                 end = midd - 1;
@@ -80,8 +89,11 @@ public:
                 return -1;
             }
         }
-        if (v[start] % e) {
+        if ((start>=0 && start <v->Count) && v[start] % e) {
             return start;
+        }
+        if ((end >= 0 && end < v->Count) && v[end] % e) {
+            return end;
         }
         else {
             return -1;
