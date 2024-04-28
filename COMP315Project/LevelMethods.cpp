@@ -59,8 +59,8 @@ void LevelMethods::DisplayNextQuestionSet() {
 		TFOption2->Text = OptionB;
 		TFOption2->Visible = true;
 
-		Option1->Visible = false;
-		Option2->Visible = false;
+		Option1->Visible = true;
+		Option2->Visible = true;
 		Option3->Visible = false;
 		Option4->Visible = false;
 	}

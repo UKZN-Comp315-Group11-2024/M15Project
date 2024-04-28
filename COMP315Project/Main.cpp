@@ -9,6 +9,8 @@
 #include "BonusLevelOne.h"
 #include "BonusLevelTwo.h"
 #include "BonusLevelThree.h"
+#include "MusicAndSFX.h"
+
 using namespace System;
 using namespace M15Namespace;
 using namespace System::Windows::Forms;
@@ -41,9 +43,10 @@ int main(array<String^>^ args) {
 	//BonusLevelOne bonusLevelOne;
 	//Application::Run(% bonusLevelOne);
 
+
 	//BonusLevelTwo bnt;
 	//Application::Run(% bnt);
 
-	//BonusLevelThree BNTT;
-	//Application::Run(% BNTT);
+	BonusLevelThree BNTT;
+	Application::Run(% BNTT);
 }

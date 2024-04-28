@@ -78,6 +78,10 @@
     <IncludePath>SFML-2.6.1\include\SFML;$(IncludePath)</IncludePath>
     <LibraryPath>SFML-2.6.1\lib2;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>SFML-2.6.1\include\SFML;$(IncludePath)</IncludePath>
+    <LibraryPath>SFML-2.6.1\lib2;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -123,10 +127,12 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/SFML-2.6.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;kernel32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;kernel32.lib;advapi32.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)/SMFL-2.6.1/lib2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,6 +167,7 @@
     <ClInclude Include="lvl1Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MusicAndSFX.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PictureBox.h" />
     <ClInclude Include="PlayerInfo.h" />
@@ -181,6 +188,7 @@
     <ClCompile Include="LoadQuestion.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MusicAndSFX.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

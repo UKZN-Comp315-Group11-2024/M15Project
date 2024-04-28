@@ -206,11 +206,8 @@ namespace M15Namespace {
 		   int countTotal = 0;
 
 		   //@aveshr
-		   definedPictureBox^ box1;
-		   definedPictureBox^ box2;
-		   definedPictureBox^ box3;
-		   definedPictureBox^ box4;
 		   array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(27);
+		   array<definedPictureBox^>^ boxes = gcnew array<definedPictureBox^>(5);
 	private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
@@ -256,18 +253,14 @@ namespace M15Namespace {
 			}
 		}
 
-		box1 = gcnew definedPictureBox(panelBonusLevel, buttons[7]->Size.Width, buttons[7]->Size.Height, buttons[7]->Location.X, buttons[7]->Location.Y, "assets/Doors/Box.png", true);
-		
-		box2 = gcnew definedPictureBox(panelBonusLevel, buttons[14]->Size.Width, buttons[14]->Size.Height, buttons[14]->Location.X, buttons[14]->Location.Y, "assets/Doors/Box.png", true);
-		
-		box3 = gcnew definedPictureBox(panelBonusLevel, buttons[21]->Size.Width, buttons[21]->Size.Height, buttons[21]->Location.X, buttons[21]->Location.Y, "assets/Doors/Box.png", true);
-		
-		box4 = gcnew definedPictureBox(panelBonusLevel, buttons[25]->Size.Width, buttons[25]->Size.Height, buttons[25]->Location.X, buttons[25]->Location.Y, "assets/Doors/Box.png", true);
-		
-		box1->BringToFront();
-		box2->BringToFront();
-		box3->BringToFront();
-		box4->BringToFront();
+		int randomTargetX = 0;
+		for (int i = 0; i < boxes->Length; i++)
+		{
+			randomTargetX = rand() % 5 + i*5;
+			std::cout << randomTargetX << std::endl;
+			boxes[i] = gcnew definedPictureBox(panelBonusLevel, buttons[randomTargetX]->Size.Width, buttons[randomTargetX]->Size.Height, buttons[randomTargetX]->Location.X, buttons[randomTargetX]->Location.Y, "assets/Doors/Box.png", true);
+
+		}
 
 		lblMessage1->Text = "Welcome to the third bonus level.\nEnemies may use a box as cover\nBREAK IT!\n\nHint: Use your mouse";
 		Transition1->Start();
@@ -276,19 +269,12 @@ namespace M15Namespace {
 		   //@aveshr
 		   int targetNum = 0;
 	private: System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
-		switch (targetNum) {
-			case 7:
-				box1->setVisible(true);
-				break;
-			case 14:
-				box2->setVisible(true);
-				break;
-			case 21:
-				box3->setVisible(true);
-				break;
-			case 25:
-				box4->setVisible(true);
-				break;
+		for (int i = 0; i < boxes->Length; i++)
+		{
+			if (boxes[i]->Location.X == buttons[targetNum]->Location.X && boxes[i]->Location.Y == buttons[targetNum]->Location.Y) {
+				boxes[i]->BringToFront();
+				boxes[i]->setVisible(true);
+			}
 		}
 		buttons[targetNum]->setVisible(true);
 		if (targetNum == buttons->Length - 1) {

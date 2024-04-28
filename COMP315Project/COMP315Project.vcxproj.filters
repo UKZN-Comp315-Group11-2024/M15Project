@@ -112,12 +112,6 @@
     <ClCompile Include="PictureBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BonusLevelTwo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BonusLevelThree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
