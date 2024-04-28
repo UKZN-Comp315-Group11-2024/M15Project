@@ -6,7 +6,7 @@
 
 class MusicAndSFX {
 public:
-	sf::Sound sound;// objects that plays sounds from sound buffer
+	sf::Music sound; // @jaedon: changed this to Music since the other one didn't seem to work
 	sf::Music Background; //object that streams sound directly from source file
 	sf::Music music;//object that streams sound directly from source file
 

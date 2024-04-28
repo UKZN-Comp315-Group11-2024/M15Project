@@ -5,6 +5,7 @@
 #include "popup.h"
 #include "LoadQuestion.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -19,13 +20,13 @@ namespace M15Namespace {
 	/// </summary>
 	public ref class BonusLevelThree : public System::Windows::Forms::Form
 	{
+		MusicAndSFX* sound = new MusicAndSFX();
 	public:
 		BonusLevelThree(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			
+			sound->Forest();
 		}
 
 	protected:
@@ -212,7 +213,6 @@ namespace M15Namespace {
 
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
-
 		int x_pos, y_pos, x_size, y_size;
 		srand(time(0));
 		for (int i = 0; i < buttons->Length; i++) {
