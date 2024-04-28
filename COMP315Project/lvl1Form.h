@@ -323,6 +323,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// playerlevel1
 					// 
+					this->playerlevel1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerlevel1.Image")));
 					this->playerlevel1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
 					this->playerlevel1->Location = System::Drawing::Point(40, 406);
 					this->playerlevel1->Name = L"playerlevel1";

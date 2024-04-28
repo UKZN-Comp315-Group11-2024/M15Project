@@ -118,6 +118,9 @@
     <ClCompile Include="BonusLevelThree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="playerInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
