@@ -59,7 +59,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		System::String^ OptionD = "";
 		System::String^ CorrectOption = "";
 		
-		playerInfo* PlayerStats;
+		playerInfo^ PlayerStats;
 
 		//LevelMethods(Form^ form, int lvlNum);
 		LevelMethods(int lvlno);

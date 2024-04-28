@@ -6,7 +6,7 @@ LevelMethods::LevelMethods(int lvlno) {
 	this->lvlNum = lvlno;
 	this->QuestionLoader = gcnew LoadQuestion(this->lvlNum);
 	this->QuestionQueue = QuestionLoader->levelQuestions;
-	this->PlayerStats = new playerInfo();
+	this->PlayerStats = gcnew playerInfo();
 	//ShuffelQuestionSets();
 
 }
@@ -58,6 +58,11 @@ void LevelMethods::DisplayNextQuestionSet() {
 
 		TFOption2->Text = OptionB;
 		TFOption2->Visible = true;
+
+		Option1->Visible = false;
+		Option2->Visible = false;
+		Option3->Visible = false;
+		Option4->Visible = false;
 	}
 	DetermCorrectOptionInt();
 	//set back to default
@@ -105,7 +110,7 @@ void LevelMethods::ExtractQuestionSet() {
 void LevelMethods::QuestionAnswered(int option) {
 	this->QuestionsCompleted += 1;
 	this->QuestionsAnswered += 1;
-	this->PlayerStats->Score += 1000000;
+	this->PlayerStats->score += 1000000;
 	if (option == CorrectOptionInt) {
 		this->PlayerStats->CorrectAnswers += 1;
 		this->Correct = true;
@@ -167,10 +172,10 @@ void LevelMethods::SetButtonComponenets(System::Windows::Forms::Button^ btn) {
 
 void LevelMethods::calculateTime() {
 	if (this->ProgressBarTimer->Interval < 30000) {
-		this->PlayerStats->Time += this->ProgressBarTimer->Interval;
+		this->PlayerStats->timeTaken += this->ProgressBarTimer->Interval;
 	}
 	else {
-		this->PlayerStats->Time += 30000;
+		this->PlayerStats->timeTaken += 30000;
 	}
 }
 
@@ -229,7 +234,7 @@ void LevelMethods::RecordPlayerStats() {
 
 	StreamWriter^ Writer = gcnew StreamWriter("textfiles\\PlayerInfo.txt", true);
 
-	Writer->WriteLine("Level", this->lvlNum, ":\n", "Time: ", this->PlayerStats->Time, "\n", "Score: ", this->PlayerStats->Score, "\n", "Correct answers out of 10: ", this->PlayerStats->CorrectAnswers, "\n0");
+	Writer->WriteLine("Level", this->lvlNum, ":\n", "Time: ", this->PlayerStats->timeTaken, "\n", "Score: ", this->PlayerStats->score, "\n", "Correct answers out of 10: ", this->PlayerStats->CorrectAnswers, "\n0");
 
 }
 

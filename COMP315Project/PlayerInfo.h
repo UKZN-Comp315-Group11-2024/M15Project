@@ -6,6 +6,7 @@ public:
 	System::String^ username;
 	int score;
 	int timeTaken;
+	int CorrectAnswers;
 
 	playerInfo();
 

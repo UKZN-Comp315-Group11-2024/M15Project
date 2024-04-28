@@ -67,9 +67,9 @@ namespace M15Namespace {
 					
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			
-					std::ifstream file("textfiles/PlayerInfo.txt");
+					/*std::ifstream file("textfiles/PlayerInfo.txt");
 					std::string line;
-					std::vector<std::string> v;
+					System::Collections::Generic::List<System::String^> v;
 					if (file.is_open())
 					{
 						while (getline(file, line))
@@ -78,24 +78,24 @@ namespace M15Namespace {
 						}
 			
 					}
-					playerInfo* p = new playerInfo();
+					playerInfo^ p = gcnew playerInfo();
 					for (int i = 0; i < 3; i++) {
-						std::string s = v[i];
+						System::String^ s = v[i];
 						if (i == 0) {
 							p->username = s;
 					
 						}
 				
 						else if (i == 1) {
-							p->Score = std::stoi(s);
+						    p->score = std::stoi(s);
 						}
 						else {
-							p->Time = std::stoi(s);
+							p->timeTaken = std::stoi(s);
 						}
 				
 					}
 
-					this->player = p;
+					this->player = p;*/
 
 
 				}
@@ -666,7 +666,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				
 				Transition1->Start();
 
-				msclr::interop::marshal_context context;
+				//msclr::interop::marshal_context context;
 
 				// Convert System::String^ to std::string
 				std::string stdString = context.marshal_as<std::string>(imagePath);
@@ -744,6 +744,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			{
 				this->progressBarLevel1->Visible = true;
 				this->playerLvl1->Visible = true;
+				this->playerLvl1->BringToFront();
 				this->beginButton->Enabled = false;
 				this->wasd->Visible = true;
 				this->space->Visible = true;
