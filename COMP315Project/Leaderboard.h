@@ -21,6 +21,7 @@ namespace M15Namespace {
 	/// Summary for Leaderboard
 	/// </summary>
 
+	//comment when creating playerInfo objects
 	struct UserData {
 		std::string name;
 		int score;
@@ -37,11 +38,40 @@ namespace M15Namespace {
 			//TODO: Add the constructor code here
 			//
 			LoadImage();
+			//LoadAllPlayers();
 			LoadUserData("textfiles/PlayerInfo.txt");
+			//LoadCurrentPlayerData("textfiles/PlayerInfo.txt", players);
 
 		}
 
+		/*void LoadAllPlayers() {
+			//std::vector<playerInfo> _players;
+			//std::ifstream file("textfiles/Leaderboard.txt");
+			System::IO::StreamReader^ file = gcnew System::IO::StreamReader(msclr::interop::marshal_as<System::String^>("textfiles/Leaderboard.txt"));
+			//std::string line;
+			System::String^ line;
+
+			while ((line = file->ReadLine()) != nullptr) {
+				int score = 0;
+				int time;
+				int pos = line->IndexOf('$');
+				std::string username = msclr::interop::marshal_as<std::string>(line->Substring(0, pos));
+				line = line->Remove(0, pos + 1);
+				for (int i = 0; i < 4; i++) {
+					pos = line->IndexOf('$');
+					score = score + System::Int32::Parse(line->Substring(0, pos));
+					line = line->Remove(0, pos + 1);
+				}
+				time = System::Int32::Parse(line);
+				line->Remove(0, -1);
+				players.push_back({ username, score, time });
+			}
+		}*/
+
 		// Function that reads the players data from the text file to a vector
+		// It should read to a vector that is created from the leaderboard class 
+		// but due the nonmanageble class error, a vector cannot be instantiated, 
+		// see the commented method below this one
 		void LoadUserData(std::string filename)
 		{
 
@@ -65,6 +95,37 @@ namespace M15Namespace {
 			UpdateLabels(userdata);
 		}
 
+		//error code
+		/*void LoadCurrentPlayerData(std::string filename, cliext::list<playerInfo> players)
+		{
+			std::ifstream file(filename);
+			std::string uName;
+			int sc, tt;
+			playerInfo p;
+
+			if (file.is_open())
+			{
+				// Reads the data line by line, for the username, score and timetaken
+				while (getline(file, uName) && file >> sc && file >> tt)
+				{
+					// Creates the UserData object and adds it to the userdata vector
+					p.username = uName;
+					p.score = sc;
+					p.timeTaken = tt;
+				}
+			}
+
+			//players.insertScore(players, p);
+			// close the file and update the labels
+			file.close();
+
+			// Sortint the vector and inserting the current players scores. 
+			customAlgs<playerInfo>::insertScore(players, p);
+			players.push_back(p);
+
+			UpdateLabels(players);
+		}*/
+
 	private:
 
 		// Function to update the labels each time the leaderboard is accessed. 
@@ -75,7 +136,32 @@ namespace M15Namespace {
 			//Clear previous labels
 			ClearLabels();
 
-			for (int i = 0; i < u.size(); i++) {
+			/*
+			// Creating an iterator for the list and iterating through each playerInfo object in the list to create the labels
+			for (cliext::list<playerInfo>::iterator it = v.begin(); it != v.end(); ++it) {
+				Label^ usernameLabel = gcnew Label();
+				Label^ scoreLabel = gcnew Label();
+				Label^ timeLabel = gcnew Label();
+
+				playerInfo elem = *it;
+				int i = 1;
+
+				// Converting the std::string to System::String^ 
+				usernameLabel->Text = gcnew String(msclr::interop::marshal_as<System::String^>(elem.username.c_str()));
+				scoreLabel->Text = elem.score.ToString();
+				timeLabel->Text = elem.timeTaken.ToString();
+
+				int marginTop = (i * 50) + 70;
+				usernameLabel->Location = System::Drawing::Point(177, marginTop);
+				scoreLabel->Location = System::Drawing::Point(518, marginTop);
+				timeLabel->Location = System::Drawing::Point(720, marginTop);
+
+				this->Controls->Add(usernameLabel);
+				this->Controls->Add(scoreLabel);
+				this->Controls->Add(timeLabel);
+			}*/
+
+			for (int i = 1; i <= u.size(); i++) {
 				Label^ usernameLabel = gcnew Label();
 				Label^ scoreLabel = gcnew Label();
 				Label^ timeLabel = gcnew Label();
