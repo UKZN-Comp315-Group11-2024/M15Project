@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <cliext/list>
 #include "customAlgs.h"
 #include "PlayerInfo.h"
 #include "LoginForm.h"
@@ -39,14 +40,14 @@ namespace M15Namespace {
 			//TODO: Add the constructor code here
 			//
 			LoadImage();
-			std::vector<playerInfo> players = LoadAllPlayers();
+			LoadAllPlayers();
 			LoadCurrentPlayerData("textfiles/PlayerInfo.txt", players);
 
 		}
 
 		// Function that reads the current player data from the text file to a vector
 		// Assuming that the scores and player data is written at the end of the play through from the playerinfo.txt
-		void LoadCurrentPlayerData(std::string filename, std::vector<playerInfo> players)
+		void LoadCurrentPlayerData(std::string filename, cliext::list<playerInfo> players)
 		{
 			std::ifstream file(filename);
 			std::string uName;
@@ -78,48 +79,50 @@ namespace M15Namespace {
 		}
 
 		// Method that returns a vector of the leaderboard.txt
-		std::vector<playerInfo> LoadAllPlayers() {
-			std::vector<playerInfo> _players;
-			std::ifstream file("textfiles/Leaderboard.txt");
-			std::string line;
-			if (file.is_open())
-			{
-				while (getline(file, line)) {
-					int score = 0;
-					int time;
-					size_t pos = line.find('$');
-					std::string username = line.substr(0, pos);
-					line.substr(0, pos + 1).erase();
-					for (int i = 0; i < 4; i++) {
-						pos = line.find('$');
-						score = score + stoi(line.substr(0, pos));
-						line.substr(0, pos + 1).erase();
-					}
-					time = stoi(line);
-					line.erase();
-					_players.push_back({ username, score, time });
-				}
-			}
+		void LoadAllPlayers() {
+			//std::vector<playerInfo> _players;
+			//std::ifstream file("textfiles/Leaderboard.txt");
+			System::IO::StreamReader^ file = gcnew System::IO::StreamReader(msclr::interop::marshal_as<System::String^>("textfiles/Leaderboard.txt"));
+			//std::string line;
+			System::String^ line;
 
-			return _players;
+			while ((line = file->ReadLine()) != nullptr) {
+				int score = 0;
+				int time;
+				int pos = line->IndexOf('$');
+				std::string username = msclr::interop::marshal_as<std::string>(line->Substring(0, pos));
+				line = line->Remove(0, pos + 1);
+				for (int i = 0; i < 4; i++) {
+					pos = line->IndexOf('$');
+					score = score + System::Int32::Parse(line->Substring(0, pos));
+					line = line->Remove(0, pos + 1);
+				}
+				time = System::Int32::Parse(line);
+				line->Remove(0, -1);
+				players.push_back({ username, score, time });
+			}
 		}
 
 	private:
 
+		cliext::list<playerInfo> players;
 		// Function to update the labels each time the leaderboard is accessed. 
 		// Creates new labels from scratch and puts them in the appropriate locations
-		void UpdateLabels(std::vector<playerInfo> v) {
+		void UpdateLabels(cliext::list<playerInfo> v) {
 			//Clear previous labels
 			ClearLabels();
 			
-			for (int i = 0; i < v.size(); i++) {
+			for (cliext::list<playerInfo>::iterator it = v.begin(); it != v.end(); ++it) {
 				Label^ usernameLabel = gcnew Label();
 				Label^ scoreLabel = gcnew Label();
 				Label^ timeLabel = gcnew Label();
 
-				usernameLabel->Text = gcnew String(msclr::interop::marshal_as<System::String^>(v[i].username.c_str()));
-				scoreLabel->Text = v[i].score.ToString();
-				timeLabel->Text = v[i].timeTaken.ToString();
+				playerInfo elem = *it;
+				int i = 1;
+
+				usernameLabel->Text = gcnew String(msclr::interop::marshal_as<System::String^>(elem.username.c_str()));
+				scoreLabel->Text = elem.score.ToString();
+				timeLabel->Text = elem.timeTaken.ToString();
 
 				int marginTop = (i * 50) + 70;
 				usernameLabel->Location = System::Drawing::Point(177, marginTop);
@@ -148,7 +151,8 @@ namespace M15Namespace {
 	private:
 
 		System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -193,7 +197,7 @@ namespace M15Namespace {
 
 		void LoadImage()
 		{
-			Image^ board = Image::FromFile("assets/LeaderboardTime.png");
+			Image^ board = Image::FromFile("assets/leaderboard.png");
 			pictureBox2->Image = board;
 			pictureBox2->SizeMode = PictureBoxSizeMode::StretchImage;
 		}
@@ -222,17 +226,11 @@ namespace M15Namespace {
 			// 
 			// pictureBox2
 			// 
-			this->pictureBox2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
 			this->pictureBox2->Location = System::Drawing::Point(0, 0);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(0);
-			this->pictureBox2->MaximumSize = System::Drawing::Size(1238, 719);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(1238, 719);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
-			this->pictureBox2->TabIndex = 1;
+			this->pictureBox2->Size = System::Drawing::Size(1256, 766);
+			this->pictureBox2->TabIndex = 0;
 			this->pictureBox2->TabStop = false;
 			// 
 			// Leaderboard
@@ -246,14 +244,16 @@ namespace M15Namespace {
 			this->Name = L"Leaderboard";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Leaderboard";
+			this->Load += gcnew System::EventHandler(this, &Leaderboard::Leaderboard_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
 
 
 
+private: System::Void Leaderboard_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
