@@ -88,9 +88,9 @@ namespace M15Namespace {
 			// 
 			this->pictureboxbackground->BackColor = System::Drawing::Color::Transparent;
 			this->pictureboxbackground->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureboxbackground.Image")));
-			this->pictureboxbackground->Location = System::Drawing::Point(786, 352);
+			this->pictureboxbackground->Location = System::Drawing::Point(828, 428);
 			this->pictureboxbackground->Name = L"pictureboxbackground";
-			this->pictureboxbackground->Size = System::Drawing::Size(536, 363);
+			this->pictureboxbackground->Size = System::Drawing::Size(453, 271);
 			this->pictureboxbackground->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureboxbackground->TabIndex = 0;
 			this->pictureboxbackground->TabStop = false;
@@ -103,7 +103,7 @@ namespace M15Namespace {
 			this->lblText->ForeColor = System::Drawing::Color::White;
 			this->lblText->Location = System::Drawing::Point(35, 34);
 			this->lblText->Name = L"lblText";
-			this->lblText->Size = System::Drawing::Size(1204, 349);
+			this->lblText->Size = System::Drawing::Size(1204, 391);
 			this->lblText->TabIndex = 1;
 			this->lblText->Text = L"label1";
 			this->lblText->Click += gcnew System::EventHandler(this, &popup::lblText_Click);
@@ -133,6 +133,7 @@ namespace M15Namespace {
 			// 
 			// backgroundPictureBox
 			// 
+			this->backgroundPictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->backgroundPictureBox->Location = System::Drawing::Point(0, 0);
 			this->backgroundPictureBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->backgroundPictureBox->Name = L"backgroundPictureBox";
@@ -148,8 +149,8 @@ namespace M15Namespace {
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->ClientSize = System::Drawing::Size(1264, 681);
 			this->Controls->Add(this->pictureboxbackground);
-			this->Controls->Add(this->lblText);
 			this->Controls->Add(this->lblspace);
+			this->Controls->Add(this->lblText);
 			this->Controls->Add(this->backgroundPictureBox);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->HelpButton = true;
@@ -233,6 +234,9 @@ private: System::Void popup_Load(System::Object^ sender, System::EventArgs^ e) {
 		pictureboxbackground->Parent = backgroundPictureBox;
 		Image^ BackgroundImage = Image::FromFile(backgroundImage);
 		backgroundPictureBox->Image = BackgroundImage;
+		backgroundPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+		//this->Image = System::Drawing::Image::FromFile(imageLocation);
+		//this->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 	}
 
 }

@@ -136,6 +136,12 @@
     <ClInclude Include="BonusLevelOne.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BonusLevelThree.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="BonusLevelTwo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="customAlgs.h" />
     <ClInclude Include="Destructible.h" />
     <ClInclude Include="FaceRecognition.h">
@@ -156,6 +162,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PictureBox.h" />
     <ClInclude Include="PlayerInfo.h" />
     <ClInclude Include="popup.h">
       <FileType>CppForm</FileType>
@@ -165,6 +172,8 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BonusLevelOne.cpp" />
+    <ClCompile Include="BonusLevelThree.cpp" />
+    <ClCompile Include="BonusLevelTwo.cpp" />
     <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="FaceRecognition.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
@@ -178,12 +187,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PictureBox.cpp" />
+    <ClCompile Include="playerInfo.cpp" />
     <ClCompile Include="popup.cpp" />
     <ClCompile Include="COMP315Project.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
     <Image Include="app.ico" />
+    <Image Include="assets\Retical\ret.png" />
+    <Image Include="Icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -195,6 +208,12 @@
   <ItemGroup>
     <EmbeddedResource Include="BonusLevelOne.resx">
       <DependentUpon>BonusLevelOne.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BonusLevelThree.resx">
+      <DependentUpon>BonusLevelThree.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BonusLevelTwo.resx">
+      <DependentUpon>BonusLevelTwo.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FaceRecognition.resx">
       <DependentUpon>FaceRecognition.h</DependentUpon>

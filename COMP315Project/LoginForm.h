@@ -6,6 +6,8 @@
 #include "lvl1Form.h"
 #include "playerInfo.h"
 #include "FaceRecognition.h"
+#include "customAlgs.h"
+
 
 namespace M15Namespace {
 
@@ -15,6 +17,7 @@ namespace M15Namespace {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Summary for LoginForm
@@ -28,9 +31,24 @@ namespace M15Namespace {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Show();
 			PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			//
-			//TODO: Add the constructor code here
-			//
+			userlist = gcnew List<playerInfo^>;
+			std::ifstream file("textfiles/UsersAlphabetical.txt");
+			std::string line;
+			
+
+			if (file.is_open())
+			{
+				while (getline(file, line))
+				{	
+					playerInfo^ p = gcnew playerInfo;
+					p->username = gcnew String(line.c_str());
+					p->score = 0;
+					p->timeTaken = 0;
+					userlist->Add(p);
+				}
+
+			}
+			file.close();
 		}
 
 	protected:
@@ -73,6 +91,7 @@ namespace M15Namespace {
 		/// Required designer variable.
 		/// </summary>
 		int logindots = 0;
+		List<playerInfo^>^ userlist;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -111,6 +130,7 @@ namespace M15Namespace {
 			this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			this->panelLogin->Controls->Add(this->label2);
 			this->panelLogin->Controls->Add(this->pictureBox3);
 			this->panelLogin->Controls->Add(this->tbSpyName);
@@ -122,7 +142,6 @@ namespace M15Namespace {
 			this->panelLogin->Controls->Add(this->lblWarning);
 			this->panelLogin->Controls->Add(this->lblSuggestor);
 			this->panelLogin->Controls->Add(this->lblSpyName);
-			this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			this->panelLogin->ForeColor = System::Drawing::Color::White;
 			this->panelLogin->Location = System::Drawing::Point(-8, -20);
 			this->panelLogin->Name = L"panelLogin";
@@ -136,7 +155,7 @@ namespace M15Namespace {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Courier New", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(413, 617);
+			this->label2->Location = System::Drawing::Point(737, 616);
 			this->label2->Margin = System::Windows::Forms::Padding(0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(287, 88);
@@ -147,7 +166,7 @@ namespace M15Namespace {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(692, 523);
+			this->pictureBox3->Location = System::Drawing::Point(1017, 508);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(154, 182);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -219,7 +238,7 @@ namespace M15Namespace {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1144, 586);
+			this->pictureBox1->Location = System::Drawing::Point(1160, 31);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(100, 102);
@@ -343,36 +362,14 @@ namespace M15Namespace {
 	//@jaedon: original code
 	//@avesh: edited and adapted
 	private: bool LoginForm::usernameExists(System::String^ s)
-	{
-		// Create a marshal context
+	{	
 		msclr::interop::marshal_context context;
+		playerInfo^ p = gcnew playerInfo;
+		p->username = s;
+		p->score = 0;
+		p->timeTaken = 0;
 
-		// Convert System::String^ to std::string
-		std::string stdString = context.marshal_as<std::string>(s);
-
-		std::ifstream file("textfiles/Leaderboard.txt");
-		std::string line;
-
-		if (file.is_open())
-		{
-			while (getline(file, line))
-			{
-				//size_t alias for unsigned long long
-				//used in system functions where the return is a non-negative index, such as finding a position
-				size_t pos = line.find('$');
-
-				if (pos != -1 && line.substr(0, pos) == stdString)
-				{
-
-					return true;
-				}
-			}
-			
-		}
-		file.close();
-		return false;
-		//moved return false outside if, makes sure the function always explicitly returns something
-		//and it doesn't alter the logic
+		return (customAlgs<playerInfo^>::binarySearchUsername(userlist, p) != -1);
 
 	}
 
@@ -576,12 +573,13 @@ private: System::Void timerlockgif_Tick(System::Object^ sender, System::EventArg
 	timerloginscroll->Enabled = false;
 	starttypingtimer->Enabled = false;
 	timerlockgif->Enabled = false;
-	playerInfo player;
-	player.Score = 0;
-	player.username = msclr::interop::marshal_as<std::string>(tbSpyName->Text);
-	player.Time = 0;
+	playerInfo^ player = gcnew playerInfo;
+	player->score = 0;
+	player->username = tbSpyName->Text;
+	player->timeTaken = 0;
 	std::ofstream ofs("textfiles/PlayerInfo.txt");
-	ofs << player.username << "\n" << player.Score << "\n" << player.Time;
+	msclr::interop::marshal_context context;
+	ofs << context.marshal_as<std::string>(player->username) << "\n" << player->score << "\n" << player->timeTaken;
 	ofs.close();
 
 	lvl1Form^ lvl1form = gcnew lvl1Form();

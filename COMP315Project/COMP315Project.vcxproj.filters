@@ -59,6 +59,18 @@
     <ClInclude Include="LevelMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FaceRecognition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PictureBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusLevelTwo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusLevelThree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="COMP315Project.cpp">
@@ -94,6 +106,18 @@
     <ClCompile Include="LevelMethods.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FaceRecognition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PictureBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusLevelTwo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusLevelThree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
@@ -102,8 +126,15 @@
     <Image Include="..\..\..\..\..\Downloads\orbgif.gif">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Retical\ret.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="textfiles\UsersAlphabetical.txt" />
+    <Text Include="textfiles\communicaton.txt" />
   </ItemGroup>
 </Project>

@@ -40,7 +40,7 @@ namespace M15Namespace {
 		public:
 			Destructible^ des;
 				lvl1Form()
-				{
+				{	
 					InitializeComponent();
 					//
 					//TODO: Add the constructor code here
@@ -192,7 +192,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				/// <summary>
 				/// Required designer variable.
 				/// </summary>
-				playerInfo* player;
+				playerInfo^ player;
 		
 
 
@@ -301,7 +301,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Controls->Add(this->textBoxA);
 					this->panelLogin->Controls->Add(this->space);
 					this->panelLogin->Controls->Add(this->wasd);
-					this->panelLogin->Controls->Add(this->playerLvl1);
 					this->panelLogin->Controls->Add(this->beginButton);
 					this->panelLogin->Controls->Add(this->progressBarLevel1);
 					this->panelLogin->Controls->Add(this->lblMessage1);
@@ -454,6 +453,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// playerLvl1
 					// 
+					this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
 					this->playerLvl1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
 					this->playerLvl1->Location = System::Drawing::Point(115, 183);
 					this->playerLvl1->Name = L"playerLvl1";
@@ -620,7 +620,40 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			String^ imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 			//@avesh: text and timer
 			private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
-				std::string windowPrompt = "Welcome to the first level, " + this->player->username + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + this->player->username + "... \n\nTry not to die;)";
+
+				std::ifstream file("textfiles/PlayerInfo.txt");
+				std::string line;
+				std::vector<std::string> v;
+				if (file.is_open())
+				{
+					while (getline(file, line))
+					{
+						v.push_back(line);
+					}
+
+				}
+				playerInfo^ p = gcnew playerInfo;
+				for (int i = 0; i < 3; i++) {
+					std::string s = v[i];
+					if (i == 0) {
+						p->username = gcnew String(s.c_str());
+
+					}
+
+					else if (i == 1) {
+						p->score = std::stoi(s);
+					}
+					else {
+						p->timeTaken = std::stoi(s);
+					}
+
+				}
+
+				this->player = p;
+
+
+				msclr::interop::marshal_context context;
+				std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "");
 				window->Visible = false;
@@ -628,7 +661,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-				System::String^ recruitname = gcnew System::String(this->player->username.c_str());
+				System::String^ recruitname = this->player->username;
 				//lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				
 				Transition1->Start();
@@ -638,7 +671,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				// Convert System::String^ to std::string
 				std::string stdString = context.marshal_as<std::string>(imagePath);
 
-				std::cout << stdString; //display
 				playerLvl1->ImageLocation = imagePath;
 
 				bullet = gcnew System::Windows::Forms::PictureBox;

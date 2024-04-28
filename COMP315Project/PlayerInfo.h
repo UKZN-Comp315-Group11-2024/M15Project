@@ -1,42 +1,21 @@
 #pragma once
 #include <string>
-struct playerInfo {
+#include <msclr/marshal_cppstd.h>
+public ref struct playerInfo {
 public:
-	std::string username;
-	//@Daniel: changed name of variables
-	int Score = 0;
-	int Time = 0;
-	int CorrectAnswers = 0;
+	System::String^ username;
+	int score;
+	int timeTaken;
 
-	bool operator<(playerInfo p2);
-	bool operator>(playerInfo p2);
-	bool operator==(playerInfo p2);
+	playerInfo();
 
-	bool operator<=(playerInfo p2);
-	bool operator>=(playerInfo p2);
-	bool operator%(playerInfo p2);
+	bool operator<(playerInfo^ p2);
+	bool operator>(playerInfo^ p2);
+	bool operator==(playerInfo^ p2);
+
+	bool operator<=(playerInfo^ p2);
+	bool operator>=(playerInfo^ p2);
+	bool operator%(playerInfo^ p2);
 };
 
-bool playerInfo::operator<(playerInfo p2) {
-	return (this->Score < p2.Score);
-}
 
-bool playerInfo::operator>(playerInfo p2) {
-	return (this->Score > p2.Score);
-}
-
-bool playerInfo::operator==(playerInfo p2) {
-	return (this->Score == p2.Score);
-}
-
-bool playerInfo::operator<=(playerInfo p2) {
-	return (this->username < p2.username);
-}
-
-bool playerInfo::operator>=(playerInfo p2) {
-	return (this->username > p2.username);
-}
-
-bool playerInfo::operator%(playerInfo p2) {
-	return (this->username == p2.username);
-}

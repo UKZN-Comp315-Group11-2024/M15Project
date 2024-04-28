@@ -10,6 +10,11 @@
 //Example of sytax to use methods:
 //  vector<int> v;
 //  customAlgs<int>::insert(v, -1);
+
+
+
+
+
 template <class E>
 ref class customAlgs {
 
@@ -24,27 +29,31 @@ public:
     //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses > < and ==,
     //This method compares players based on their SCORE.
     */
-    static int binarySearchScore(std::vector<E> v, E e) {
+    static int binarySearchScore(List<E>^ v, E e) {
         int start = 0;
-        int end = v.size() - 1;
-        int midd;
-        while ((end != start)) {
+        int end = v->Count - 1;
+        int midd=-1;
+        while ((end > start && (midd!= 0)) && (midd!= v->Count-1)) {
             midd = (start + end) / 2;           //assumption 1:  the generic type has the following operators overloaded:
-            if (e < v.at(midd)) {               //              >       <       ==
+            if (e < v[midd]) {               //              >       <       ==
                 end = midd - 1;
             }
-            else if (e > v.at(midd)) {          //assumption 2: the vector is sorted. Hence always maintain the vector to be sorted
+            else if (e > v[midd]) {          //assumption 2: the vector is sorted. Hence always maintain the vector to be sorted
                 start = midd + 1;
             }
-            else if (e == v.at(midd)) {
+            else if (e == v[midd]) {
                 return midd;
             }
             else {
                 return -1;
             }
         }
-        if (v.at(start) == e) {
+        if ((start >= 0 && start < v->Count) && v[start] % e) {
             return start;
+        }
+
+        if ((end >= 0 && end < v->Count) && v[end] % e) {
+            return end;
         }
         else {
             return -1;
@@ -61,27 +70,30 @@ public:
     //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses >= <= and %,
     //This method compares players based on USERNAME.
     */
-    static int binarySearchUsername(std::vector<E> v, E e) {
+    static int binarySearchUsername(List<E>^ v, E e) {
         int start = 0;
-        int end = v.size() - 1;
-        int midd;
-        while ((end != start)) {
+        int end = v->Count - 1;
+        int midd=-1;
+        while ((end > start && (midd!= 0)) && (midd != v->Count - 1)) {
             midd = (start + end) / 2;           //assumption 1:  the generic type has the following operators overloaded:
-            if (e <= v.at(midd)) {               //              >       <       ==
+            if (e <= v[midd]) {                  //              >       <       ==
                 end = midd - 1;
             }
-            else if (e >= v.at(midd)) {          //assumption 2: the vector is sorted. Hence always maintain the vector to be sorted
+            else if (e >= v[midd]) {          //assumption 2: the vector is sorted. Hence always maintain the vector to be sorted
                 start = midd + 1;
             }
-            else if (e % v.at(midd)) {
+            else if (e % v[midd]) {
                 return midd;
             }
             else {
                 return -1;
             }
         }
-        if (v.at(start) % e) {
+        if ((start>=0 && start <v->Count) && v[start] % e) {
             return start;
+        }
+        if ((end >= 0 && end < v->Count) && v[end] % e) {
+            return end;
         }
         else {
             return -1;
@@ -98,14 +110,14 @@ public:
     */
     static void insertScore(std::vector<E>& v, E e) {
         int i = 0;
-        while (i < v.size() && v.at(i) < e) {
+        while (i < v->Count && v[i] < e) {
             i++;
         }
-        if (i < v.size()) {
-            v.insert(v.begin() + i, e);
+        if (i < v->Count) {
+            v->Insert(i, e);
         }
         else {
-            v.push_back(e);
+            v->Add(e);
         }
 
     }
@@ -118,16 +130,16 @@ public:
     //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses <=
     //This method compares players based on their USERNAME.
     */
-    static void insertName(std::vector<E>& v, E e) {
+    static void insertName(List<E>^& v, E e) {
         int i = 0;
-        while (i < v.size() && v.at(i) <= e) {
+        while (i < v->Count && v[i] <= e) {
             i++;
         }
-        if (i < v.size()) {
-            v.insert(v.begin() + i, e);
+        if (i < v->Count) {
+            v->Insert(i, e);
         }
         else {
-            v.push_back(e);
+            v->Add(e);
         }
 
     }
