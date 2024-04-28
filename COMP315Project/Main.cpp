@@ -7,6 +7,8 @@
 #include "LoadQuestion.h"
 #include "Leaderboard.h"
 #include "BonusLevelOne.h"
+#include "MusicAndSFX.h"
+
 using namespace System;
 using namespace M15Namespace;
 using namespace System::Windows::Forms;
@@ -38,6 +40,9 @@ int main(array<String^>^ args) {
 
 	BonusLevelOne bonusLevelOne;
 	Application::Run(% bonusLevelOne);
+
+	//MusicAndSFX* m=new MusicAndSFX();
+	//m->LevelOneMusic();
 
 
 
