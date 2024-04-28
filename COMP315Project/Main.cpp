@@ -9,6 +9,7 @@
 #include "BonusLevelOne.h"
 #include "BonusLevelTwo.h"
 #include "BonusLevelThree.h"
+#include "BonusLevelFour.h"
 #include "MusicAndSFX.h"
 
 using namespace System;
@@ -47,6 +48,9 @@ int main(array<String^>^ args) {
 	//BonusLevelTwo bnt;
 	//Application::Run(% bnt);
 
-	BonusLevelThree BNTT;
-	Application::Run(% BNTT);
+	//BonusLevelThree BNTT;
+	//Application::Run(% BNTT);
+
+	BonusLevelFour BNF;
+	Application::Run(% BNF);
 }

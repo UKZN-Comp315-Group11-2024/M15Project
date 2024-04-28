@@ -15,7 +15,7 @@ namespace M15Namespace {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for BonusLevelOne
+	/// Summary for BonusLevelTwo
 	/// </summary>
 	public ref class BonusLevelTwo : public System::Windows::Forms::Form
 	{
@@ -189,8 +189,8 @@ namespace M15Namespace {
 			this->Name = L"BonusLevelTwo";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"BonusLevelTwo";
-			this->Load += gcnew System::EventHandler(this, &BonusLevelTwo::BonusLevelOne_Load);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelTwo::BonusLevelOne_KeyDown);
+			this->Load += gcnew System::EventHandler(this, &BonusLevelTwo::BonusLevelTwo_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelTwo::BonusLevelTwo_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
 			this->panelBonusLevel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -207,7 +207,7 @@ namespace M15Namespace {
 
 		   //@aveshr
 		   array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(30);
-	private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void BonusLevelTwo_Load(System::Object^ sender, System::EventArgs^ e) {
 		
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/BattlefieldSolidFloor.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
@@ -314,7 +314,7 @@ namespace M15Namespace {
 		lblMessage1->Location = Point(380, y1);
 	}
 		   //@aveshr
-	private: System::Void BonusLevelOne_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	private: System::Void BonusLevelTwo_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::Enter)
 		{
 			Transition1->Stop();
@@ -323,7 +323,6 @@ namespace M15Namespace {
 	}
 		   //@aveshr
 	private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
-
 
 		if (countdownBar->Value < 100) {
 			if (countdownBar->Value + 4 > 100)

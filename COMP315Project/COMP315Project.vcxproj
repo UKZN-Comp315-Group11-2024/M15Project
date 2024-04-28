@@ -139,6 +139,9 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BonusLevelFour.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="BonusLevelOne.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -178,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="BonusLevelFour.cpp" />
     <ClCompile Include="BonusLevelOne.cpp" />
     <ClCompile Include="BonusLevelThree.cpp" />
     <ClCompile Include="BonusLevelTwo.cpp" />
@@ -214,6 +218,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BonusLevelFour.resx">
+      <DependentUpon>BonusLevelFour.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BonusLevelOne.resx">
       <DependentUpon>BonusLevelOne.h</DependentUpon>
     </EmbeddedResource>

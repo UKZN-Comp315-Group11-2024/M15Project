@@ -62,3 +62,13 @@ int definedPictureBox::numClicks()
 {
 	return countClick;
 }
+
+void definedPictureBox::setSpeed(int speed)
+{
+	this->speed = speed;
+}
+
+int definedPictureBox::getSpeed()
+{
+	return speed;
+}
