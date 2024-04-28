@@ -21,17 +21,9 @@
 	//Sound effects
 
 	void MusicAndSFX::gunshot() {
-		//sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-		sf::SoundBuffer buffer;
-
-		buffer.loadFromFile("TempSoundEffect.wav");
-		
-
-		sf::Sound sound;
-
-		if (!buffer.loadFromFile(" ")) {  //loads audio file
-			sound.setBuffer(buffer);
+		if (!sound.openFromFile(" ")) {  //loads audio file
+			std::cout << "sound failed to load into file" << std::endl;
 		}
 		sound.play();
 
@@ -49,24 +41,20 @@
 	}
 
 	void MusicAndSFX::MouseClick() {
-		sf::SoundBuffer buffer; //stores small sounds that can fit in memory
+		//sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-		if (!buffer.loadFromFile(" ")) {  //loads audio file
+		if (!sound.openFromFile("assets\\techsounds.wav")) {  //loads audio file
 			std::cout << "sound failed to load into file" << std::endl;
 		}
-
-		sound.setBuffer(buffer);
 		sound.play();   //plays what's in the buffer
 	}
 
 	void MusicAndSFX::FacialRegocnition() {
 		sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-		if (!buffer.loadFromFile(" ")) {  //loads audio file
+		if (!sound.openFromFile(" ")) {  //loads audio file
 			std::cout << "sound failed to load into file" << std::endl;
 		}
-
-		sound.setBuffer(buffer);
 		sound.play();   //plays what's in the buffer
 	}
 
@@ -75,7 +63,7 @@
 
 	void MusicAndSFX::LevelOneMusic() {
 
-		if (!music.openFromFile("TempBackgroundMusic.wav")) {  //opens music file
+		if (!music.openFromFile("assets/TempBackgroundMusic.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -120,13 +108,14 @@
 	}
 
 	void MusicAndSFX::Forest() {
-
-		if (!Background.openFromFile("")) {  //opens music file
+		if (!Background.openFromFile("assets/TempBackgroundMusic.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
+		std::cout << "here";
 		Background.play();
 
 		Background.setLoop(true); //loops music file
+		std::cout << "exited";
 	}
 
 	void MusicAndSFX::NightForest() {

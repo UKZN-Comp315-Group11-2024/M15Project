@@ -48,9 +48,8 @@ int main(array<String^>^ args) {
 	//BonusLevelTwo bnt;
 	//Application::Run(% bnt);
 
-	//BonusLevelThree BNTT;
-	//Application::Run(% BNTT);
+	BonusLevelThree BNTT;
 
-	BonusLevelFour BNF;
-	Application::Run(% BNF);
+	Application::Run(% BNTT);
+
 }
