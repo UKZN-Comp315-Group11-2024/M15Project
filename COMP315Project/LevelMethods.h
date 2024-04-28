@@ -10,24 +10,24 @@
 	int CoOrdX, CoOrdY;
 
 };*/
-
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Collections::Generic;
 using namespace System::Diagnostics;
 using namespace System::Drawing;
+using namespace System::IO;
+
 
 public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 	{
 	public:
-		int QuestionsCompleted;
-		int QuestionsAnswered;
-		int CorrectAnswers;
-		int Time;
-		int Score;
+		int QuestionsCompleted;  
+		int QuestionsAnswered; 
 		int lvlNum;
 		bool DisableControls;
-		//bool DisplayNextQuestionSet;
+		int CorrectOptionInt = -1;
+		bool Correct = false;
+		bool AnswerGiven = true;
 	
 		System::Windows::Forms::Form^ LevelFormInstance;
 
@@ -49,7 +49,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		System::Windows::Forms::Panel^ Panel;
 
 		LoadQuestion^ QuestionLoader;
-		Queue<LoadQuestion::Question^>^ QuestionQueue;
+		List<LoadQuestion::Question^>^ QuestionQueue;
 
 		System::String^ QuestionType = "";
 		System::String^ question = "";
@@ -59,7 +59,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		System::String^ OptionD = "";
 		System::String^ CorrectOption = "";
 		
-		//playerInfo* PlayerStats;
+		playerInfo* PlayerStats;
 
 		//LevelMethods(Form^ form, int lvlNum);
 		LevelMethods(int lvlno);
@@ -116,4 +116,6 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		void EndLevel();
 
 		void RecordPlayerStats();
+
+		void DetermCorrectOptionInt();
 	};

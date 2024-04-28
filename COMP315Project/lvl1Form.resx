@@ -9305,7 +9305,7 @@
   <data name="pictureBoxD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLEAAAJnCAYAAABoCMFcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
+        cQAAEnEB89x6jgAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
         P1W5A/D1v6qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq/n/9f3Oqqqqqqqqqqqr+heiHmPznqqqqqqqqqqrq
         X4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqqqqqq6l+IfojJf66qqqqqqqqqqv6F6IeY/Oeqqqqqqqqq
         qupfiH6IyX+uqqqqqqqqqqr+heiHmPznqqqqqqqqqqrqX4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqq
@@ -9821,7 +9821,7 @@
   <data name="pictureBoxC.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLEAAAJnCAYAAABoCMFcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
+        cQAAEnEB89x6jgAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
         P1W5A/D1v6qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq/n/9f3Oqqqqqqqqqqqr+heiHmPznqqqqqqqqqqrq
         X4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqqqqqq6l+IfojJf66qqqqqqqqqqv6F6IeY/Oeqqqqqqqqq
         qupfiH6IyX+uqqqqqqqqqqr+heiHmPznqqqqqqqqqqrqX4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqq
@@ -10337,7 +10337,7 @@
   <data name="pictureBoxB.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLEAAAJnCAYAAABoCMFcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
+        cQAAEnEB89x6jgAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
         P1W5A/D1v6qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq/n/9f3Oqqqqqqqqqqqr+heiHmPznqqqqqqqqqqrq
         X4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqqqqqq6l+IfojJf66qqqqqqqqqqv6F6IeY/Oeqqqqqqqqq
         qupfiH6IyX+uqqqqqqqqqqr+heiHmPznqqqqqqqqqqrqX4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqq
@@ -11454,7 +11454,7 @@
   <data name="pictureBoxA.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLEAAAJnCAYAAABoCMFcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
+        cQAAEnEB89x6jgAAd2lJREFUeF7t+MGtJWvSLuldHVokooU5Y4pBMVqJXzs2wLGFRd8KP3xzZZkBz9Q/
         P1W5A/D1v6qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq/n/9f3Oqqqqqqqqqqqr+heiHmPznqqqqqqqqqqrq
         X4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqqqqqq6l+IfojJf66qqqqqqqqqqv6F6IeY/Oeqqqqqqqqq
         qupfiH6IyX+uqqqqqqqqqqr+heiHmPznqqqqqqqqqqrqX4h+iMl/rqqqqqqqqqqq/oXoh5j856qqqqqq
@@ -11987,6 +11987,12 @@
   </metadata>
   <metadata name="BulletTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>265, 45</value>
+  </metadata>
+  <metadata name="QuestionTransitionTimerShow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>379, 45</value>
+  </metadata>
+  <metadata name="QuestionTransitionTimerHide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>591, 45</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

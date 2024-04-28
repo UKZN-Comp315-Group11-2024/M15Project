@@ -3,8 +3,10 @@
 struct playerInfo {
 public:
 	std::string username;
-	int score;
-	int timeTaken;
+	//@Daniel: changed name of variables
+	int Score = 0;
+	int Time = 0;
+	int CorrectAnswers = 0;
 
 	bool operator<(playerInfo p2);
 	bool operator>(playerInfo p2);
@@ -16,15 +18,15 @@ public:
 };
 
 bool playerInfo::operator<(playerInfo p2) {
-	return (this->score < p2.score);
+	return (this->Score < p2.Score);
 }
 
 bool playerInfo::operator>(playerInfo p2) {
-	return (this->score > p2.score);
+	return (this->Score > p2.Score);
 }
 
 bool playerInfo::operator==(playerInfo p2) {
-	return (this->score == p2.score);
+	return (this->Score == p2.Score);
 }
 
 bool playerInfo::operator<=(playerInfo p2) {

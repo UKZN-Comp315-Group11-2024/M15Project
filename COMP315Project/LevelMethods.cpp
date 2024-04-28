@@ -5,7 +5,8 @@ LevelMethods::LevelMethods(int lvlno) {
 	this->DisableControls = false;
 	this->lvlNum = lvlno;
 	this->QuestionLoader = gcnew LoadQuestion(this->lvlNum);
-	this->QuestionQueue = QuestionLoader->QuestionQueue;
+	this->QuestionQueue = QuestionLoader->levelQuestions;
+	this->PlayerStats = new playerInfo();
 	//ShuffelQuestionSets();
 
 }
@@ -19,7 +20,6 @@ void LevelMethods::SetQuestionComponents(System::Windows::Forms::TextBox^ lblQue
 	this->Option4 = lblOption4;
 	this->TFOption1 = lblTFOption1;
 	this->TFOption2 = lblTFOption2;
-	this->lvlNum = lvlNumber;
 
 }
 
@@ -59,12 +59,16 @@ void LevelMethods::DisplayNextQuestionSet() {
 		TFOption2->Text = OptionB;
 		TFOption2->Visible = true;
 	}
+	DetermCorrectOptionInt();
+	//set back to default
+	this->AnswerGiven = true;
+	this->ProgressBar->Value = 0;
 	this->ProgressBarTimer->Start();
 }
 
 //dequeues a Question and pulls the members
 void LevelMethods::ExtractQuestionSet() {
-	LoadQuestion::Question^ QuestionSet = QuestionQueue->Dequeue();
+	LoadQuestion::Question^ QuestionSet = QuestionQueue[QuestionsCompleted];
 	QuestionType = QuestionSet->QuestionType;
 	question = QuestionSet->question;
 	OptionA = QuestionSet->OptionA;
@@ -97,12 +101,17 @@ void LevelMethods::ExtractQuestionSet() {
 	}
 }*/
 //called if bullet collsion with answer option
+//NB: NEEDS TO BE UPDATED FOR NEW lOADQUESTION CLASS
 void LevelMethods::QuestionAnswered(int option) {
-	QuestionsCompleted += 1;
-	QuestionsAnswered += 1;
-	Score += 1000000;
-	if (option == 1) {
-		CorrectAnswers += 1;
+	this->QuestionsCompleted += 1;
+	this->QuestionsAnswered += 1;
+	this->PlayerStats->Score += 1000000;
+	if (option == CorrectOptionInt) {
+		this->PlayerStats->CorrectAnswers += 1;
+		this->Correct = true;
+	}
+	else {
+		this->Correct = false;
 	}
 	
 	this->ProgressBarTimer->Stop();
@@ -119,7 +128,8 @@ void LevelMethods::QuestionAnswered(int option) {
 
 //called if timer runs out
 void LevelMethods::QuestionCompleted() {
-	QuestionsCompleted += 1;
+	this->AnswerGiven = false;
+	this->QuestionsCompleted += 1;
 	this->ProgressBarTimer->Stop();
 	calculateTime();
 
@@ -157,10 +167,10 @@ void LevelMethods::SetButtonComponenets(System::Windows::Forms::Button^ btn) {
 
 void LevelMethods::calculateTime() {
 	if (this->ProgressBarTimer->Interval < 30000) {
-		this->Time += this->ProgressBarTimer->Interval;
+		this->PlayerStats->Time += this->ProgressBarTimer->Interval;
 	}
 	else {
-		this->Time += 30000;
+		this->PlayerStats->Time += 30000;
 	}
 }
 
@@ -217,4 +227,23 @@ void LevelMethods::EndLevel() {
 //maybe player info shouldnt be a struct
 void LevelMethods::RecordPlayerStats() {
 
+	StreamWriter^ Writer = gcnew StreamWriter("textfiles\\PlayerInfo.txt", true);
+
+	Writer->WriteLine("Level", this->lvlNum, ":\n", "Time: ", this->PlayerStats->Time, "\n", "Score: ", this->PlayerStats->Score, "\n", "Correct answers out of 10: ", this->PlayerStats->CorrectAnswers, "\n0");
+
+}
+
+void LevelMethods::DetermCorrectOptionInt() {
+		if (this->CorrectOption == this->OptionA) {
+			this->CorrectOptionInt = 0;
+		}
+		else if (this->CorrectOption == this->OptionB) {
+			this->CorrectOptionInt = 1;
+		}
+		else if (this->CorrectOption == this->OptionC) {
+			this->CorrectOptionInt = 2;
+		}
+		else if (this->CorrectOption == this->OptionD) {
+			this->CorrectOptionInt = 3;
+		}
 }

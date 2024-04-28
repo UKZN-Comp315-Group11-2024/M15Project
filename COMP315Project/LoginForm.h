@@ -577,11 +577,11 @@ private: System::Void timerlockgif_Tick(System::Object^ sender, System::EventArg
 	starttypingtimer->Enabled = false;
 	timerlockgif->Enabled = false;
 	playerInfo player;
-	player.score = 0;
+	player.Score = 0;
 	player.username = msclr::interop::marshal_as<std::string>(tbSpyName->Text);
-	player.timeTaken = 0;
+	player.Time = 0;
 	std::ofstream ofs("textfiles/PlayerInfo.txt");
-	ofs << player.username << "\n" << player.score << "\n" << player.timeTaken;
+	ofs << player.username << "\n" << player.Score << "\n" << player.Time;
 	ofs.close();
 
 	lvl1Form^ lvl1form = gcnew lvl1Form();
