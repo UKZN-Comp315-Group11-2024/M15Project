@@ -205,10 +205,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->lblMessage1->AutoSize = true;
 					this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-					this->lblMessage1->Location = System::Drawing::Point(330, 900);
-					this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+					this->lblMessage1->Location = System::Drawing::Point(264, 720);
 					this->lblMessage1->Name = L"lblMessage1";
-					this->lblMessage1->Size = System::Drawing::Size(0, 90);
+					this->lblMessage1->Size = System::Drawing::Size(0, 73);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 					this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -223,10 +222,10 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 					this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 					this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-					this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+					this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
 					this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 					this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-					this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+					this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
@@ -237,6 +236,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 					this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 					this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+					this->panelLogin->Controls->Add(this->playerLvl1);
 					this->panelLogin->Controls->Add(this->textBoxQuestion);
 					this->panelLogin->Controls->Add(this->textBoxTFB);
 					this->panelLogin->Controls->Add(this->textBoxTFA);
@@ -249,7 +249,6 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->panelLogin->Controls->Add(this->textBoxA);
 					this->panelLogin->Controls->Add(this->space);
 					this->panelLogin->Controls->Add(this->wasd);
-					this->panelLogin->Controls->Add(this->playerLvl1);
 					this->panelLogin->Controls->Add(this->beginButton);
 					this->panelLogin->Controls->Add(this->progressBarLevel1);
 					this->panelLogin->Controls->Add(this->lblMessage1);
@@ -258,74 +257,66 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->panelLogin->Controls->Add(this->pictureBoxTFA);
 					this->panelLogin->Controls->Add(this->pictureBox1);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-10, -25);
-					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+					this->panelLogin->Location = System::Drawing::Point(-8, -20);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1600, 900);
+					this->panelLogin->Size = System::Drawing::Size(1280, 720);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
 					// textBoxQuestion
 					// 
-					this->textBoxQuestion->Location = System::Drawing::Point(298, 40);
-					this->textBoxQuestion->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxQuestion->Location = System::Drawing::Point(238, 32);
 					this->textBoxQuestion->Name = L"textBoxQuestion";
-					this->textBoxQuestion->Size = System::Drawing::Size(514, 22);
+					this->textBoxQuestion->Size = System::Drawing::Size(412, 20);
 					this->textBoxQuestion->TabIndex = 29;
 					this->textBoxQuestion->Visible = false;
 					// 
 					// textBoxTFB
 					// 
-					this->textBoxTFB->Location = System::Drawing::Point(1152, 494);
-					this->textBoxTFB->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxTFB->Location = System::Drawing::Point(922, 395);
 					this->textBoxTFB->Name = L"textBoxTFB";
-					this->textBoxTFB->Size = System::Drawing::Size(410, 22);
+					this->textBoxTFB->Size = System::Drawing::Size(329, 20);
 					this->textBoxTFB->TabIndex = 28;
 					this->textBoxTFB->Visible = false;
 					// 
 					// textBoxTFA
 					// 
-					this->textBoxTFA->Location = System::Drawing::Point(1152, 119);
-					this->textBoxTFA->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxTFA->Location = System::Drawing::Point(922, 95);
 					this->textBoxTFA->Name = L"textBoxTFA";
-					this->textBoxTFA->Size = System::Drawing::Size(410, 22);
+					this->textBoxTFA->Size = System::Drawing::Size(329, 20);
 					this->textBoxTFA->TabIndex = 27;
 					this->textBoxTFA->Visible = false;
 					// 
 					// textBoxD
 					// 
-					this->textBoxD->Location = System::Drawing::Point(1152, 681);
-					this->textBoxD->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxD->Location = System::Drawing::Point(922, 545);
 					this->textBoxD->Name = L"textBoxD";
-					this->textBoxD->Size = System::Drawing::Size(410, 22);
+					this->textBoxD->Size = System::Drawing::Size(329, 20);
 					this->textBoxD->TabIndex = 24;
 					this->textBoxD->Visible = false;
 					// 
 					// textBoxC
 					// 
-					this->textBoxC->Location = System::Drawing::Point(1152, 494);
-					this->textBoxC->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxC->Location = System::Drawing::Point(922, 395);
 					this->textBoxC->Name = L"textBoxC";
-					this->textBoxC->Size = System::Drawing::Size(410, 22);
+					this->textBoxC->Size = System::Drawing::Size(329, 20);
 					this->textBoxC->TabIndex = 23;
 					this->textBoxC->Visible = false;
 					// 
 					// textBoxB
 					// 
-					this->textBoxB->Location = System::Drawing::Point(1152, 306);
-					this->textBoxB->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxB->Location = System::Drawing::Point(922, 245);
 					this->textBoxB->Name = L"textBoxB";
-					this->textBoxB->Size = System::Drawing::Size(410, 22);
+					this->textBoxB->Size = System::Drawing::Size(329, 20);
 					this->textBoxB->TabIndex = 22;
 					this->textBoxB->Visible = false;
 					// 
 					// pictureBoxD
 					// 
 					this->pictureBoxD->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxD.Image")));
-					this->pictureBoxD->Location = System::Drawing::Point(1152, 681);
-					this->pictureBoxD->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxD->Location = System::Drawing::Point(922, 545);
 					this->pictureBoxD->Name = L"pictureBoxD";
-					this->pictureBoxD->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxD->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxD->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->pictureBoxD->TabIndex = 21;
 					this->pictureBoxD->TabStop = false;
@@ -333,10 +324,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// pictureBoxC
 					// 
 					this->pictureBoxC->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxC.Image")));
-					this->pictureBoxC->Location = System::Drawing::Point(1152, 494);
-					this->pictureBoxC->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxC->Location = System::Drawing::Point(922, 395);
 					this->pictureBoxC->Name = L"pictureBoxC";
-					this->pictureBoxC->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxC->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxC->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->pictureBoxC->TabIndex = 20;
 					this->pictureBoxC->TabStop = false;
@@ -344,30 +334,28 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// pictureBoxB
 					// 
 					this->pictureBoxB->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxB.Image")));
-					this->pictureBoxB->Location = System::Drawing::Point(1152, 306);
-					this->pictureBoxB->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxB->Location = System::Drawing::Point(922, 245);
 					this->pictureBoxB->Name = L"pictureBoxB";
-					this->pictureBoxB->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxB->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxB->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->pictureBoxB->TabIndex = 19;
 					this->pictureBoxB->TabStop = false;
 					// 
 					// textBoxA
 					// 
-					this->textBoxA->Location = System::Drawing::Point(1152, 119);
-					this->textBoxA->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxA->Location = System::Drawing::Point(922, 95);
 					this->textBoxA->Name = L"textBoxA";
-					this->textBoxA->Size = System::Drawing::Size(410, 22);
+					this->textBoxA->Size = System::Drawing::Size(329, 20);
 					this->textBoxA->TabIndex = 17;
 					this->textBoxA->Visible = false;
 					// 
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(796, 799);
+					this->space->Location = System::Drawing::Point(637, 639);
 					this->space->Margin = System::Windows::Forms::Padding(2);
 					this->space->Name = L"space";
-					this->space->Size = System::Drawing::Size(39, 49);
+					this->space->Size = System::Drawing::Size(31, 39);
 					this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->space->TabIndex = 16;
 					this->space->TabStop = false;
@@ -376,10 +364,10 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(670, 774);
+					this->wasd->Location = System::Drawing::Point(536, 619);
 					this->wasd->Margin = System::Windows::Forms::Padding(2);
 					this->wasd->Name = L"wasd";
-					this->wasd->Size = System::Drawing::Size(120, 90);
+					this->wasd->Size = System::Drawing::Size(96, 72);
 					this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->wasd->TabIndex = 15;
 					this->wasd->TabStop = false;
@@ -387,11 +375,11 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// 
 					// playerLvl1
 					// 
+					this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
 					this->playerLvl1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
-					this->playerLvl1->Location = System::Drawing::Point(144, 229);
-					this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
+					this->playerLvl1->Location = System::Drawing::Point(115, 183);
 					this->playerLvl1->Name = L"playerLvl1";
-					this->playerLvl1->Size = System::Drawing::Size(238, 128);
+					this->playerLvl1->Size = System::Drawing::Size(190, 102);
 					this->playerLvl1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->playerLvl1->TabIndex = 14;
 					this->playerLvl1->TabStop = false;
@@ -405,10 +393,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-					this->beginButton->Location = System::Drawing::Point(612, 1000);
-					this->beginButton->Margin = System::Windows::Forms::Padding(4);
+					this->beginButton->Location = System::Drawing::Point(490, 800);
 					this->beginButton->Name = L"beginButton";
-					this->beginButton->Size = System::Drawing::Size(244, 62);
+					this->beginButton->Size = System::Drawing::Size(195, 50);
 					this->beginButton->TabIndex = 13;
 					this->beginButton->Text = L"Begin";
 					this->beginButton->UseVisualStyleBackColor = false;
@@ -420,10 +407,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(836, 40);
-					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
+					this->progressBarLevel1->Location = System::Drawing::Point(669, 32);
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
+					this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
@@ -431,30 +417,27 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// pictureBoxA
 					// 
 					this->pictureBoxA->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxA.Image")));
-					this->pictureBoxA->Location = System::Drawing::Point(1152, 119);
-					this->pictureBoxA->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxA->Location = System::Drawing::Point(922, 95);
 					this->pictureBoxA->Name = L"pictureBoxA";
-					this->pictureBoxA->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxA->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxA->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->pictureBoxA->TabIndex = 18;
 					this->pictureBoxA->TabStop = false;
 					// 
 					// pictureBoxTFA
 					// 
-					this->pictureBoxTFA->Location = System::Drawing::Point(1152, 119);
-					this->pictureBoxTFA->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxTFA->Location = System::Drawing::Point(922, 95);
 					this->pictureBoxTFA->Name = L"pictureBoxTFA";
-					this->pictureBoxTFA->Size = System::Drawing::Size(411, 362);
+					this->pictureBoxTFA->Size = System::Drawing::Size(329, 290);
 					this->pictureBoxTFA->TabIndex = 25;
 					this->pictureBoxTFA->TabStop = false;
 					this->pictureBoxTFA->Visible = false;
 					// 
 					// pictureBox1
 					// 
-					this->pictureBox1->Location = System::Drawing::Point(1152, 494);
-					this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBox1->Location = System::Drawing::Point(922, 395);
 					this->pictureBox1->Name = L"pictureBox1";
-					this->pictureBox1->Size = System::Drawing::Size(411, 362);
+					this->pictureBox1->Size = System::Drawing::Size(329, 290);
 					this->pictureBox1->TabIndex = 26;
 					this->pictureBox1->TabStop = false;
 					this->pictureBox1->Visible = false;
@@ -492,14 +475,13 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// 
 					// lvl1Form
 					// 
-					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+					this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 					this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 					this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-					this->ClientSize = System::Drawing::Size(1580, 851);
+					this->ClientSize = System::Drawing::Size(1264, 681);
 					this->Controls->Add(this->panelLogin);
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 					this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-					this->Margin = System::Windows::Forms::Padding(4);
 					this->MaximizeBox = false;
 					this->Name = L"lvl1Form";
 					this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -552,7 +534,6 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				std::ifstream file("textfiles/PlayerInfo.txt");
 				std::string line;
 				std::vector<std::string> v;
-				std::cout << "HERE";
 				if (file.is_open())
 				{
 					while (getline(file, line))
@@ -583,7 +564,6 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 
 				msclr::interop::marshal_context context;
 				std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
-				std::cout << windowPrompt;
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "");
 				window->Visible = false;
@@ -598,7 +578,6 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				// Convert System::String^ to std::string
 				std::string stdString = context.marshal_as<std::string>(imagePath);
 
-				std::cout << stdString; //display
 				playerLvl1->ImageLocation = imagePath;
 
 				bullet = gcnew System::Windows::Forms::PictureBox;
