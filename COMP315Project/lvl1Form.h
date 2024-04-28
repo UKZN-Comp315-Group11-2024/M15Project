@@ -395,6 +395,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pictureBoxD->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->pictureBoxD->TabIndex = 33;
 					this->pictureBoxD->TabStop = false;
+					this->pictureBoxD->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBoxD_Click);
 					// 
 					// pictureBoxC
 					// 
@@ -1059,6 +1060,8 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 	LvlMethods->DisableControls = false;
 	QuestionTransitionTimerHide->Stop();
 
+}
+private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
