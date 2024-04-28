@@ -36,6 +36,7 @@ namespace M15Namespace {
 		private: System::Windows::Forms::TextBox^ ResultTextBox;
 		private: System::Windows::Forms::Timer^ QuestionTransitionTimerHide;
 		private: System::Windows::Forms::PictureBox^ playerlevel1;
+		private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 
 
@@ -234,6 +235,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pictureBoxA = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBoxTFA = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+					this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 					this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
 					this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
@@ -254,6 +256,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 					this->SuspendLayout();
 					// 
 					// lblMessage1
@@ -314,10 +317,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Controls->Add(this->pictureBoxA);
 					this->panelLogin->Controls->Add(this->pictureBoxTFA);
 					this->panelLogin->Controls->Add(this->pictureBox1);
+					this->panelLogin->Controls->Add(this->pictureBox2);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-8, -20);
+					this->panelLogin->Location = System::Drawing::Point(-3, -20);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1280, 708);
+					this->panelLogin->Size = System::Drawing::Size(1283, 708);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
@@ -494,7 +498,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->progressBarLevel1->Location = System::Drawing::Point(669, 32);
 					this->progressBarLevel1->Maximum = 2000;
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
+					this->progressBarLevel1->Size = System::Drawing::Size(585, 49);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
@@ -527,6 +531,17 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pictureBox1->TabStop = false;
 					this->pictureBox1->Visible = false;
 					this->pictureBox1->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBox1_Click);
+					// 
+					// pictureBox2
+					// 
+					this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+					this->pictureBox2->Location = System::Drawing::Point(279, 189);
+					this->pictureBox2->Name = L"pictureBox2";
+					this->pictureBox2->Size = System::Drawing::Size(20, 727);
+					this->pictureBox2->TabIndex = 36;
+					this->pictureBox2->TabStop = false;
+					this->pictureBox2->Visible = false;
+					this->pictureBox2->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBox2_Click);
 					// 
 					// Transition2
 					// 
@@ -598,6 +613,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 					this->ResumeLayout(false);
 
 				}
@@ -772,6 +788,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		private: System::Void beginButton_Click(System::Object^ sender, System::EventArgs^ e) {
 			Transition1->Enabled = false;
 			Transition2->Start();
+			pictureBox2->Visible = true;
 
 			this->timerProgress->Start();
 
@@ -944,7 +961,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			{
 				playerlevel1->Top += 5;
 			}
-			if (move_right && playerlevel1->Left < 160)
+			if (move_right && playerlevel1->Left < 110)
 			{
 				playerlevel1->Left += 5;
 			}
@@ -1062,6 +1079,8 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 
 }
 private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
