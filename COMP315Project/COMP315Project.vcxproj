@@ -78,6 +78,10 @@
     <IncludePath>SFML-2.6.1\include\SFML;$(IncludePath)</IncludePath>
     <LibraryPath>SFML-2.6.1\lib2;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>SFML-2.6.1\include\SFML;$(IncludePath)</IncludePath>
+    <LibraryPath>SFML-2.6.1\lib2;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -123,10 +127,12 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/SFML-2.6.1/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;kernel32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;kernel32.lib;advapi32.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)/SMFL-2.6.1/lib2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -134,6 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BonusLevelOne.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="BonusLevelThree.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="BonusLevelTwo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="customAlgs.h" />
@@ -167,6 +179,8 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BonusLevelOne.cpp" />
+    <ClCompile Include="BonusLevelThree.cpp" />
+    <ClCompile Include="BonusLevelTwo.cpp" />
     <ClCompile Include="Destructible.cpp" />
     <ClCompile Include="FaceRecognition.cpp" />
     <ClCompile Include="Leaderboard.cpp" />
@@ -182,6 +196,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PictureBox.cpp" />
+    <ClCompile Include="playerInfo.cpp" />
     <ClCompile Include="popup.cpp" />
     <ClCompile Include="COMP315Project.cpp" />
   </ItemGroup>
@@ -201,6 +216,12 @@
   <ItemGroup>
     <EmbeddedResource Include="BonusLevelOne.resx">
       <DependentUpon>BonusLevelOne.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BonusLevelThree.resx">
+      <DependentUpon>BonusLevelThree.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BonusLevelTwo.resx">
+      <DependentUpon>BonusLevelTwo.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FaceRecognition.resx">
       <DependentUpon>FaceRecognition.h</DependentUpon>

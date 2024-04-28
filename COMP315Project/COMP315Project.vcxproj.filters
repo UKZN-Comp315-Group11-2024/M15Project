@@ -65,7 +65,10 @@
     <ClInclude Include="PictureBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MusicAndSFX.h">
+    <ClInclude Include="BonusLevelTwo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusLevelThree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,9 +110,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PictureBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MusicAndSFX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

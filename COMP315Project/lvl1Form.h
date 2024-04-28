@@ -28,10 +28,25 @@ namespace M15Namespace {
 				LevelMethods^ LvlMethods;
 
 		private: System::Windows::Forms::Timer^ BulletTimer;
+		private: System::Windows::Forms::PictureBox^ pictureBoxB;
+		private: System::Windows::Forms::PictureBox^ pictureBoxD;
+		private: System::Windows::Forms::PictureBox^ pictureBoxC;
+		private: System::Windows::Forms::Timer^ QuestionTransitionTimerShow;
+
+		private: System::Windows::Forms::TextBox^ ResultTextBox;
+		private: System::Windows::Forms::Timer^ QuestionTransitionTimerHide;
+		private: System::Windows::Forms::PictureBox^ playerlevel1;
+
+
+
+
+
+
+
 		public:
 			Destructible^ des;
 				lvl1Form()
-				{
+				{	
 					InitializeComponent();
 					//
 					//TODO: Add the constructor code here
@@ -42,16 +57,25 @@ namespace M15Namespace {
 					des->addObject(pictureBoxB, destroyFunc);
 					des->addObject(pictureBoxC, destroyFunc);
 					des->addObject(pictureBoxD, destroyFunc);
+					//@Daniel
+					des->SetQuestionTransitionTimer(QuestionTransitionTimerShow);
 
 					//@Daniel: need this to be true or listeners dont work
 					this->KeyPreview = true;
-					LvlMethods = gcnew LevelMethods(1);
+					
+					this->LvlMethods = gcnew LevelMethods(1);
+					this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
+					this->LvlMethods->SetPlayerComponent(playerlevel1);
+					this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
+					this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
+					this->LvlMethods->SetPanelComponant(panelLogin);
+					this->LvlMethods->SetLevelFormInstance(this);
 					
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			
-					std::ifstream file("textfiles/PlayerInfo.txt");
+					/*std::ifstream file("textfiles/PlayerInfo.txt");
 					std::string line;
-					std::vector<std::string> v;
+					System::Collections::Generic::List<System::String^> v;
 					if (file.is_open())
 					{
 						while (getline(file, line))
@@ -60,16 +84,16 @@ namespace M15Namespace {
 						}
 			
 					}
-					playerInfo* p = new playerInfo();
+					playerInfo^ p = gcnew playerInfo();
 					for (int i = 0; i < 3; i++) {
-						std::string s = v[i];
+						System::String^ s = v[i];
 						if (i == 0) {
 							p->username = s;
 					
 						}
 				
 						else if (i == 1) {
-							p->score = std::stoi(s);
+						    p->score = std::stoi(s);
 						}
 						else {
 							p->timeTaken = std::stoi(s);
@@ -77,7 +101,7 @@ namespace M15Namespace {
 				
 					}
 
-					this->player = p;
+					this->player = p;*/
 
 
 				}
@@ -112,7 +136,6 @@ namespace M15Namespace {
 			private: System::Windows::Forms::Button^ beginButton;
 			private: System::Windows::Forms::Timer^ timerProgress;
 			private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
-			private: System::Windows::Forms::PictureBox^ playerLvl1;
 			private: System::Windows::Forms::Timer^ movePlayerTimer;
 			private: System::Windows::Forms::Timer^ timeranimation;
 		private: System::Windows::Forms::PictureBox^ wasd;
@@ -123,12 +146,12 @@ namespace M15Namespace {
 
 
 		private: System::Windows::Forms::TextBox^ textBoxB;
-		private: System::Windows::Forms::PictureBox^ pictureBoxD;
 
 
-		private: System::Windows::Forms::PictureBox^ pictureBoxC;
 
-		private: System::Windows::Forms::PictureBox^ pictureBoxB;
+
+
+
 
 		private: System::Windows::Forms::PictureBox^ pictureBoxA;
 
@@ -138,6 +161,7 @@ namespace M15Namespace {
 		private: System::Windows::Forms::PictureBox^ pictureBox1;
 private: System::Windows::Forms::TextBox^ textBoxTFB;
 private: System::Windows::Forms::TextBox^ textBoxQuestion;
+private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 
 
@@ -173,7 +197,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				/// <summary>
 				/// Required designer variable.
 				/// </summary>
-				playerInfo* player;
+				playerInfo^ player;
 		
 
 
@@ -190,19 +214,21 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 					this->panelLogin = (gcnew System::Windows::Forms::Panel());
-					this->textBoxQuestion = (gcnew System::Windows::Forms::TextBox());
-					this->textBoxTFB = (gcnew System::Windows::Forms::TextBox());
-					this->textBoxTFA = (gcnew System::Windows::Forms::TextBox());
-					this->textBoxD = (gcnew System::Windows::Forms::TextBox());
+					this->playerlevel1 = (gcnew System::Windows::Forms::PictureBox());
+					this->ResultTextBox = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxC = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxB = (gcnew System::Windows::Forms::TextBox());
+					this->textBoxTFA = (gcnew System::Windows::Forms::TextBox());
+					this->textBoxTFB = (gcnew System::Windows::Forms::TextBox());
+					this->textBoxD = (gcnew System::Windows::Forms::TextBox());
 					this->pictureBoxD = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBoxC = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBoxB = (gcnew System::Windows::Forms::PictureBox());
+					this->ContinueNxtLvlButton = (gcnew System::Windows::Forms::Button());
+					this->textBoxQuestion = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxA = (gcnew System::Windows::Forms::TextBox());
 					this->space = (gcnew System::Windows::Forms::PictureBox());
 					this->wasd = (gcnew System::Windows::Forms::PictureBox());
-					this->playerLvl1 = (gcnew System::Windows::Forms::PictureBox());
 					this->beginButton = (gcnew System::Windows::Forms::Button());
 					this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
 					this->pictureBoxA = (gcnew System::Windows::Forms::PictureBox());
@@ -215,14 +241,16 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->timeranimation = (gcnew System::Windows::Forms::Timer(this->components));
 					this->shootTimer = (gcnew System::Windows::Forms::Timer(this->components));
 					this->BulletTimer = (gcnew System::Windows::Forms::Timer(this->components));
+					this->QuestionTransitionTimerShow = (gcnew System::Windows::Forms::Timer(this->components));
+					this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxD))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxC))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxB))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -233,10 +261,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->lblMessage1->AutoSize = true;
 					this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-					this->lblMessage1->Location = System::Drawing::Point(330, 900);
-					this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+					this->lblMessage1->Location = System::Drawing::Point(264, 720);
 					this->lblMessage1->Name = L"lblMessage1";
-					this->lblMessage1->Size = System::Drawing::Size(0, 90);
+					this->lblMessage1->Size = System::Drawing::Size(0, 73);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 					this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -251,10 +278,10 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 					this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 					this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-					this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+					this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
 					this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 					this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-					this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+					this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
@@ -265,19 +292,21 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 					this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 					this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-					this->panelLogin->Controls->Add(this->textBoxQuestion);
-					this->panelLogin->Controls->Add(this->textBoxTFB);
-					this->panelLogin->Controls->Add(this->textBoxTFA);
-					this->panelLogin->Controls->Add(this->textBoxD);
+					this->panelLogin->Controls->Add(this->playerlevel1);
+					this->panelLogin->Controls->Add(this->ResultTextBox);
 					this->panelLogin->Controls->Add(this->textBoxC);
 					this->panelLogin->Controls->Add(this->textBoxB);
+					this->panelLogin->Controls->Add(this->textBoxTFA);
+					this->panelLogin->Controls->Add(this->textBoxTFB);
+					this->panelLogin->Controls->Add(this->textBoxD);
 					this->panelLogin->Controls->Add(this->pictureBoxD);
 					this->panelLogin->Controls->Add(this->pictureBoxC);
 					this->panelLogin->Controls->Add(this->pictureBoxB);
+					this->panelLogin->Controls->Add(this->ContinueNxtLvlButton);
+					this->panelLogin->Controls->Add(this->textBoxQuestion);
 					this->panelLogin->Controls->Add(this->textBoxA);
 					this->panelLogin->Controls->Add(this->space);
 					this->panelLogin->Controls->Add(this->wasd);
-					this->panelLogin->Controls->Add(this->playerLvl1);
 					this->panelLogin->Controls->Add(this->beginButton);
 					this->panelLogin->Controls->Add(this->progressBarLevel1);
 					this->panelLogin->Controls->Add(this->lblMessage1);
@@ -286,116 +315,144 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->panelLogin->Controls->Add(this->pictureBoxTFA);
 					this->panelLogin->Controls->Add(this->pictureBox1);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-10, -25);
-					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+					this->panelLogin->Location = System::Drawing::Point(-8, -20);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1600, 900);
+					this->panelLogin->Size = System::Drawing::Size(1280, 708);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
-					// textBoxQuestion
+					// playerlevel1
 					// 
-					this->textBoxQuestion->Location = System::Drawing::Point(298, 40);
-					this->textBoxQuestion->Margin = System::Windows::Forms::Padding(4);
-					this->textBoxQuestion->Name = L"textBoxQuestion";
-					this->textBoxQuestion->Size = System::Drawing::Size(514, 22);
-					this->textBoxQuestion->TabIndex = 29;
-					this->textBoxQuestion->Visible = false;
+					this->playerlevel1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerlevel1.Image")));
+					this->playerlevel1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
+					this->playerlevel1->Location = System::Drawing::Point(40, 406);
+					this->playerlevel1->Name = L"playerlevel1";
+					this->playerlevel1->Size = System::Drawing::Size(102, 88);
+					this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+					this->playerlevel1->TabIndex = 35;
+					this->playerlevel1->TabStop = false;
+					this->playerlevel1->Visible = false;
+					this->playerlevel1->Click += gcnew System::EventHandler(this, &lvl1Form::playerLvl1_Click);
 					// 
-					// textBoxTFB
+					// ResultTextBox
 					// 
-					this->textBoxTFB->Location = System::Drawing::Point(1152, 494);
-					this->textBoxTFB->Margin = System::Windows::Forms::Padding(4);
-					this->textBoxTFB->Name = L"textBoxTFB";
-					this->textBoxTFB->Size = System::Drawing::Size(410, 22);
-					this->textBoxTFB->TabIndex = 28;
-					this->textBoxTFB->Visible = false;
-					// 
-					// textBoxTFA
-					// 
-					this->textBoxTFA->Location = System::Drawing::Point(1152, 119);
-					this->textBoxTFA->Margin = System::Windows::Forms::Padding(4);
-					this->textBoxTFA->Name = L"textBoxTFA";
-					this->textBoxTFA->Size = System::Drawing::Size(410, 22);
-					this->textBoxTFA->TabIndex = 27;
-					this->textBoxTFA->Visible = false;
-					// 
-					// textBoxD
-					// 
-					this->textBoxD->Location = System::Drawing::Point(1152, 681);
-					this->textBoxD->Margin = System::Windows::Forms::Padding(4);
-					this->textBoxD->Name = L"textBoxD";
-					this->textBoxD->Size = System::Drawing::Size(410, 22);
-					this->textBoxD->TabIndex = 24;
-					this->textBoxD->Visible = false;
+					this->ResultTextBox->Location = System::Drawing::Point(0, 0);
+					this->ResultTextBox->Name = L"ResultTextBox";
+					this->ResultTextBox->Size = System::Drawing::Size(100, 20);
+					this->ResultTextBox->TabIndex = 34;
+					this->ResultTextBox->Visible = false;
 					// 
 					// textBoxC
 					// 
-					this->textBoxC->Location = System::Drawing::Point(1152, 494);
-					this->textBoxC->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxC->Location = System::Drawing::Point(987, 445);
+					this->textBoxC->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxC->Name = L"textBoxC";
-					this->textBoxC->Size = System::Drawing::Size(410, 22);
+					this->textBoxC->Size = System::Drawing::Size(264, 20);
 					this->textBoxC->TabIndex = 23;
 					this->textBoxC->Visible = false;
 					// 
 					// textBoxB
 					// 
-					this->textBoxB->Location = System::Drawing::Point(1152, 306);
-					this->textBoxB->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxB->Location = System::Drawing::Point(987, 292);
+					this->textBoxB->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxB->Name = L"textBoxB";
-					this->textBoxB->Size = System::Drawing::Size(410, 22);
+					this->textBoxB->Size = System::Drawing::Size(264, 20);
 					this->textBoxB->TabIndex = 22;
 					this->textBoxB->Visible = false;
+					// 
+					// textBoxTFA
+					// 
+					this->textBoxTFA->Location = System::Drawing::Point(987, 230);
+					this->textBoxTFA->Margin = System::Windows::Forms::Padding(2);
+					this->textBoxTFA->Name = L"textBoxTFA";
+					this->textBoxTFA->Size = System::Drawing::Size(264, 20);
+					this->textBoxTFA->TabIndex = 27;
+					this->textBoxTFA->Visible = false;
+					// 
+					// textBoxTFB
+					// 
+					this->textBoxTFB->Location = System::Drawing::Point(987, 521);
+					this->textBoxTFB->Margin = System::Windows::Forms::Padding(2);
+					this->textBoxTFB->Name = L"textBoxTFB";
+					this->textBoxTFB->Size = System::Drawing::Size(264, 20);
+					this->textBoxTFB->TabIndex = 28;
+					this->textBoxTFB->Visible = false;
+					// 
+					// textBoxD
+					// 
+					this->textBoxD->Location = System::Drawing::Point(987, 598);
+					this->textBoxD->Margin = System::Windows::Forms::Padding(2);
+					this->textBoxD->Name = L"textBoxD";
+					this->textBoxD->Size = System::Drawing::Size(264, 20);
+					this->textBoxD->TabIndex = 24;
+					this->textBoxD->Visible = false;
 					// 
 					// pictureBoxD
 					// 
 					this->pictureBoxD->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxD.Image")));
-					this->pictureBoxD->Location = System::Drawing::Point(1152, 681);
-					this->pictureBoxD->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxD->Location = System::Drawing::Point(692, 533);
 					this->pictureBoxD->Name = L"pictureBoxD";
-					this->pictureBoxD->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxD->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxD->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxD->TabIndex = 21;
+					this->pictureBoxD->TabIndex = 33;
 					this->pictureBoxD->TabStop = false;
 					// 
 					// pictureBoxC
 					// 
 					this->pictureBoxC->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxC.Image")));
-					this->pictureBoxC->Location = System::Drawing::Point(1152, 494);
-					this->pictureBoxC->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxC->Location = System::Drawing::Point(692, 387);
 					this->pictureBoxC->Name = L"pictureBoxC";
-					this->pictureBoxC->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxC->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxC->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxC->TabIndex = 20;
+					this->pictureBoxC->TabIndex = 32;
 					this->pictureBoxC->TabStop = false;
 					// 
 					// pictureBoxB
 					// 
 					this->pictureBoxB->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxB.Image")));
-					this->pictureBoxB->Location = System::Drawing::Point(1152, 306);
-					this->pictureBoxB->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxB->Location = System::Drawing::Point(692, 245);
 					this->pictureBoxB->Name = L"pictureBoxB";
-					this->pictureBoxB->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxB->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxB->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxB->TabIndex = 19;
+					this->pictureBoxB->TabIndex = 31;
 					this->pictureBoxB->TabStop = false;
+					// 
+					// ContinueNxtLvlButton
+					// 
+					this->ContinueNxtLvlButton->Location = System::Drawing::Point(573, 560);
+					this->ContinueNxtLvlButton->Margin = System::Windows::Forms::Padding(2);
+					this->ContinueNxtLvlButton->Name = L"ContinueNxtLvlButton";
+					this->ContinueNxtLvlButton->Size = System::Drawing::Size(120, 58);
+					this->ContinueNxtLvlButton->TabIndex = 30;
+					this->ContinueNxtLvlButton->Text = L"Continue";
+					this->ContinueNxtLvlButton->UseVisualStyleBackColor = true;
+					this->ContinueNxtLvlButton->Visible = false;
+					// 
+					// textBoxQuestion
+					// 
+					this->textBoxQuestion->Location = System::Drawing::Point(190, 26);
+					this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2);
+					this->textBoxQuestion->Name = L"textBoxQuestion";
+					this->textBoxQuestion->Size = System::Drawing::Size(330, 20);
+					this->textBoxQuestion->TabIndex = 29;
+					this->textBoxQuestion->Visible = false;
 					// 
 					// textBoxA
 					// 
-					this->textBoxA->Location = System::Drawing::Point(1152, 119);
-					this->textBoxA->Margin = System::Windows::Forms::Padding(4);
+					this->textBoxA->Location = System::Drawing::Point(987, 169);
+					this->textBoxA->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxA->Name = L"textBoxA";
-					this->textBoxA->Size = System::Drawing::Size(410, 22);
+					this->textBoxA->Size = System::Drawing::Size(264, 20);
 					this->textBoxA->TabIndex = 17;
 					this->textBoxA->Visible = false;
 					// 
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(796, 799);
+					this->space->Location = System::Drawing::Point(637, 639);
 					this->space->Margin = System::Windows::Forms::Padding(2);
 					this->space->Name = L"space";
-					this->space->Size = System::Drawing::Size(39, 49);
+					this->space->Size = System::Drawing::Size(31, 39);
 					this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->space->TabIndex = 16;
 					this->space->TabStop = false;
@@ -404,27 +461,14 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(670, 774);
+					this->wasd->Location = System::Drawing::Point(536, 619);
 					this->wasd->Margin = System::Windows::Forms::Padding(2);
 					this->wasd->Name = L"wasd";
-					this->wasd->Size = System::Drawing::Size(120, 90);
+					this->wasd->Size = System::Drawing::Size(96, 72);
 					this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->wasd->TabIndex = 15;
 					this->wasd->TabStop = false;
 					this->wasd->Visible = false;
-					// 
-					// playerLvl1
-					// 
-					this->playerLvl1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
-					this->playerLvl1->Location = System::Drawing::Point(144, 229);
-					this->playerLvl1->Margin = System::Windows::Forms::Padding(4);
-					this->playerLvl1->Name = L"playerLvl1";
-					this->playerLvl1->Size = System::Drawing::Size(238, 128);
-					this->playerLvl1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->playerLvl1->TabIndex = 14;
-					this->playerLvl1->TabStop = false;
-					this->playerLvl1->Visible = false;
-					this->playerLvl1->Click += gcnew System::EventHandler(this, &lvl1Form::playerLvl1_Click);
 					// 
 					// beginButton
 					// 
@@ -433,10 +477,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-					this->beginButton->Location = System::Drawing::Point(612, 1000);
-					this->beginButton->Margin = System::Windows::Forms::Padding(4);
+					this->beginButton->Location = System::Drawing::Point(490, 800);
 					this->beginButton->Name = L"beginButton";
-					this->beginButton->Size = System::Drawing::Size(244, 62);
+					this->beginButton->Size = System::Drawing::Size(195, 50);
 					this->beginButton->TabIndex = 13;
 					this->beginButton->Text = L"Begin";
 					this->beginButton->UseVisualStyleBackColor = false;
@@ -448,10 +491,10 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(836, 40);
-					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
+					this->progressBarLevel1->Location = System::Drawing::Point(669, 32);
+					this->progressBarLevel1->Maximum = 2000;
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(728, 61);
+					this->progressBarLevel1->Size = System::Drawing::Size(582, 49);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
@@ -459,33 +502,31 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// pictureBoxA
 					// 
 					this->pictureBoxA->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxA.Image")));
-					this->pictureBoxA->Location = System::Drawing::Point(1152, 119);
-					this->pictureBoxA->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxA->Location = System::Drawing::Point(692, 95);
 					this->pictureBoxA->Name = L"pictureBoxA";
-					this->pictureBoxA->Size = System::Drawing::Size(411, 175);
+					this->pictureBoxA->Size = System::Drawing::Size(329, 140);
 					this->pictureBoxA->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->pictureBoxA->TabIndex = 18;
 					this->pictureBoxA->TabStop = false;
 					// 
 					// pictureBoxTFA
 					// 
-					this->pictureBoxTFA->Location = System::Drawing::Point(1152, 119);
-					this->pictureBoxTFA->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBoxTFA->Location = System::Drawing::Point(922, 95);
 					this->pictureBoxTFA->Name = L"pictureBoxTFA";
-					this->pictureBoxTFA->Size = System::Drawing::Size(411, 362);
+					this->pictureBoxTFA->Size = System::Drawing::Size(329, 290);
 					this->pictureBoxTFA->TabIndex = 25;
 					this->pictureBoxTFA->TabStop = false;
 					this->pictureBoxTFA->Visible = false;
 					// 
 					// pictureBox1
 					// 
-					this->pictureBox1->Location = System::Drawing::Point(1152, 494);
-					this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+					this->pictureBox1->Location = System::Drawing::Point(922, 395);
 					this->pictureBox1->Name = L"pictureBox1";
-					this->pictureBox1->Size = System::Drawing::Size(411, 362);
+					this->pictureBox1->Size = System::Drawing::Size(329, 290);
 					this->pictureBox1->TabIndex = 26;
 					this->pictureBox1->TabStop = false;
 					this->pictureBox1->Visible = false;
+					this->pictureBox1->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBox1_Click);
 					// 
 					// Transition2
 					// 
@@ -494,7 +535,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					// 
 					// timerProgress
 					// 
-					this->timerProgress->Interval = 20;
+					this->timerProgress->Interval = 1;
 					this->timerProgress->Tick += gcnew System::EventHandler(this, &lvl1Form::timerProgress_Tick);
 					// 
 					// movePlayerTimer
@@ -518,16 +559,25 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					this->BulletTimer->Interval = 1;
 					this->BulletTimer->Tick += gcnew System::EventHandler(this, &lvl1Form::BulletTimer_Tick);
 					// 
+					// QuestionTransitionTimerShow
+					// 
+					this->QuestionTransitionTimerShow->Interval = 1;
+					this->QuestionTransitionTimerShow->Tick += gcnew System::EventHandler(this, &lvl1Form::QuestionTransitionTimerShow_Tick);
+					// 
+					// QuestionTransitionTimerHide
+					// 
+					this->QuestionTransitionTimerHide->Interval = 3000;
+					this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl1Form::QuestionTransitionTimerHide_Tick);
+					// 
 					// lvl1Form
 					// 
-					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+					this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 					this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 					this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-					this->ClientSize = System::Drawing::Size(1580, 851);
+					this->ClientSize = System::Drawing::Size(1264, 681);
 					this->Controls->Add(this->panelLogin);
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 					this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-					this->Margin = System::Windows::Forms::Padding(4);
 					this->MaximizeBox = false;
 					this->Name = L"lvl1Form";
 					this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -539,12 +589,12 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 					this->panelLogin->ResumeLayout(false);
 					this->panelLogin->PerformLayout();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxD))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxC))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxB))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -564,7 +614,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 					bullet = gcnew System::Windows::Forms::PictureBox;
 					bullet->Size = System::Drawing::Size(75, 50);
 					bullet->Parent = panelLogin;
-					bullet->Location = System::Drawing::Point(playerLvl1->Location.X, playerLvl1->Location.Y);
+					bullet->Location = System::Drawing::Point(playerlevel1->Location.X, playerlevel1->Location.Y);
 					bullet->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 					//bullet->BringToFront();
 					bullet->Hide();
@@ -576,7 +626,40 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 			String^ imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 			//@avesh: text and timer
 			private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
-				std::string windowPrompt = "Welcome to the first level, " + this->player->username + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + this->player->username + "... \n\nTry not to die;)";
+
+				std::ifstream file("textfiles/PlayerInfo.txt");
+				std::string line;
+				std::vector<std::string> v;
+				if (file.is_open())
+				{
+					while (getline(file, line))
+					{
+						v.push_back(line);
+					}
+
+				}
+				playerInfo^ p = gcnew playerInfo;
+				for (int i = 0; i < 3; i++) {
+					std::string s = v[i];
+					if (i == 0) {
+						p->username = gcnew String(s.c_str());
+
+					}
+
+					else if (i == 1) {
+						p->score = std::stoi(s);
+					}
+					else {
+						p->timeTaken = std::stoi(s);
+					}
+
+				}
+
+				this->player = p;
+
+
+				msclr::interop::marshal_context context;
+				std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "");
 				window->Visible = false;
@@ -584,23 +667,22 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-				System::String^ recruitname = gcnew System::String(this->player->username.c_str());
+				System::String^ recruitname = this->player->username;
 				//lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
-				//LvlMethods->DisplayNextQuestionSet();
+				
 				Transition1->Start();
 
-				msclr::interop::marshal_context context;
+				//msclr::interop::marshal_context context;
 
 				// Convert System::String^ to std::string
 				std::string stdString = context.marshal_as<std::string>(imagePath);
 
-				std::cout << stdString; //display
-				playerLvl1->ImageLocation = imagePath;
+				playerlevel1->ImageLocation = imagePath;
 
 				bullet = gcnew System::Windows::Forms::PictureBox;
 				bullet->Size = System::Drawing::Size(75, 50);
 				bullet->Parent = panelLogin;
-				bullet->Location = System::Drawing::Point(playerLvl1->Location.X, playerLvl1->Location.Y);
+				bullet->Location = System::Drawing::Point(playerlevel1->Location.X, playerlevel1->Location.Y);
 				bullet->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 				//bullet->BringToFront();
 				bullet->Hide();
@@ -612,6 +694,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 			private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 			}
 				   bool isleft;
+				   bool canshoot = false;
 		//@avesh: animation of the military general and text into screen
 		//@avesh: animation of the military general and text
 		//@Daniel: and button
@@ -667,16 +750,20 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
 				this->progressBarLevel1->Visible = true;
-				this->playerLvl1->Visible = true;
+				this->playerlevel1->Visible = true;
+				this->playerlevel1->BringToFront();
 				this->beginButton->Enabled = false;
 				this->wasd->Visible = true;
 				this->space->Visible = true;
 				movePlayerTimer->Start();
 				Transition2->Enabled = false;
+				canshoot = true;
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(395, y1);
 			beginButton->Location = Point(405, y2);
+
+			LvlMethods->DisplayNextQuestionSet();
 	
 		}
 		private: System::Void panelLogin_Paint_1(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
@@ -693,6 +780,9 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 		private: System::Void timerProgress_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 			this->progressBarLevel1->Increment(1);
+			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum) {
+				LvlMethods->QuestionCompleted();
+			}
 			//this->progressBarLevel1->
 			
 		}
@@ -718,51 +808,55 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 		//@avesh: Edited and redefined player movement and animations
 		private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
-			
-			if (e->KeyCode == Keys::W)
-			{
-				move_up = true;
-				is_w_up = false;
-			}
-			if (e->KeyCode == Keys::A)
-			{
-				if (!isleft) {
-					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
-					playerLvl1->ImageLocation = imagePath;
+			if (LvlMethods->DisableControls != true) {
+				if (e->KeyCode == Keys::W)
+				{
+					move_up = true;
+					is_w_up = false;
 				}
-				isleft = true;
-				move_left = true;
-				is_a_up = false;
+				if (e->KeyCode == Keys::A)
+				{
+					if (!isleft) {
+						imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
+						playerlevel1->ImageLocation = imagePath;
+					}
+					isleft = true;
+					move_left = true;
+					is_a_up = false;
 
-	
-			}
-			if (e->KeyCode == Keys::S)
-			{
-				move_down = true;
-				is_s_up = false;
-	
-			}
-			if (e->KeyCode == Keys::D)
-			{
-				if (isleft) {
-					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
-					playerLvl1->ImageLocation = imagePath;
+
 				}
-				isleft = false;
-				move_right = true;
-				is_d_up = false;
+				if (e->KeyCode == Keys::S)
+				{
+					move_down = true;
+					is_s_up = false;
+
+				}
+				if (e->KeyCode == Keys::D)
+				{
+					if (isleft) {
+						imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+						playerlevel1->ImageLocation = imagePath;
+					}
+					isleft = false;
+					move_right = true;
+					is_d_up = false;
 
 
 
-			}
-			if (e->KeyCode == Keys::Space)
-			{
-				Image^ image = Image::FromFile("assets/PlayerMove/idle.gif");
-				bullet->BringToFront();
-				bullet->Show();
-				des->addBullet(bullet, 10, 0, playerLvl1->Location.X, playerLvl1->Location.Y);
-				BulletTimer->Start();
-				shootTimer->Start();
+				}
+				if (e->KeyCode == Keys::Space)
+				{
+					if (canshoot) {
+						Image^ image = Image::FromFile("assets/PlayerMove/idle.gif");
+						bullet->BringToFront();
+						bullet->Show();
+						des->addBullet(bullet, 10, 0, playerlevel1->Location.X, playerlevel1->Location.Y);
+						BulletTimer->Start();
+					
+						shootTimer->Start();
+					}
+				}
 			}
 	
 		}
@@ -809,7 +903,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				{
 					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 				}
-				playerLvl1->ImageLocation = imagePath;
+				playerlevel1->ImageLocation = imagePath;
 			}
 		}
 		//@avesh: Edited and redefined how the player movement works (Smooth movement)
@@ -821,8 +915,8 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 		private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e){
 			
 			if (!(is_w_up && is_a_up && is_s_up && is_d_up) && 
-				(playerLvl1->ImageLocation != runAnimation &&
-				playerLvl1->ImageLocation != runLeftAnimation)) 
+				(playerlevel1->ImageLocation != runAnimation &&
+					playerlevel1->ImageLocation != runLeftAnimation))
 			{
 				
 				if (isleft)
@@ -833,26 +927,26 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				{
 					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
 				}
-				playerLvl1->ImageLocation = imagePath;
+				playerlevel1->ImageLocation = imagePath;
 			}
 
-			if (move_up)
+			if (move_up && playerlevel1->Top > 190)
 			{
 		
-				playerLvl1->Top += -5;
+				playerlevel1->Top += -5;
 			}
-			if (move_left)
+			if (move_left && playerlevel1->Left > 10)
 			{
 		
-				playerLvl1->Left += -5;
+				playerlevel1->Left += -5;
 			}
-			if (move_down)
+			if (move_down && playerlevel1->Top < 580)
 			{
-				playerLvl1->Top += 5;
+				playerlevel1->Top += 5;
 			}
-			if (move_right)
+			if (move_right && playerlevel1->Left < 160)
 			{
-				playerLvl1->Left += 5;
+				playerlevel1->Left += 5;
 			}
 		}
 
@@ -861,7 +955,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 		//@jaedon: Edited and redefined player animations
 		//@avesh: was there
 		/*private: System::Void timeranimation_Tick(System::Object^ sender, System::EventArgs^ e) {
-			Point currentlocation = playerLvl1->Location;
+			Point currentlocation = playerlevel1->Location;
 			String^ idlename;
 			if (!isleft) {
 				idlename = "assets/PlayerMove/idle.gif";
@@ -870,7 +964,7 @@ private: System::Windows::Forms::TextBox^ textBoxQuestion;
 				idlename = "assets/PlayerMove/idleleft.gif";
 			}
 			if (previousLocation.X == currentlocation.X && previousLocation.Y == currentlocation.Y) {
-				playerLvl1->Image = Image::FromFile(idlename);
+				playerlevel1->Image = Image::FromFile(idlename);
 				numkeyspressed++;
 			}
 
@@ -888,17 +982,17 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 	if (countSpace == 0) {
 		if (isleft)
 		{
-			playerLvl1->ImageLocation = shootLeftAnimation;
+			playerlevel1->ImageLocation = shootLeftAnimation;
 		} 
 		else
 		{
-			playerLvl1->ImageLocation = shootAnimation;
+			playerlevel1->ImageLocation = shootAnimation;
 		}
 		movePlayerTimer->Stop();
 		countSpace++;
 	}
 	else {
-		playerLvl1->ImageLocation = imagePath;
+		playerlevel1->ImageLocation = imagePath;
 		movePlayerTimer->Start();		
 		countSpace = 0;
 		shootTimer->Stop();
@@ -913,6 +1007,59 @@ private: System::Void playerLvl1_Click(System::Object^ sender, System::EventArgs
 }
 private: System::Void BulletTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	des->update();
+}
+	   
+private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+	   //@Daniel: timer to give player feedback
+		private: System::Void QuestionTransitionTimerShow_Tick(System::Object^ sender, System::EventArgs^ e) {
+			if (LvlMethods->AnswerGiven) {
+				LvlMethods->QuestionAnswered(des->Choice);
+			}
+			LvlMethods->DisableControls = true;
+		        if (LvlMethods->Correct) {
+					ResultTextBox->Visible = true;
+					ResultTextBox->Text = "Well Done!!!";
+					Point pnt = Point();
+					pnt.X = 600;
+					pnt.Y = 260;
+					ResultTextBox->Location = pnt;
+					LvlMethods->Correct = false;
+					QuestionTransitionTimerHide->Start();
+					QuestionTransitionTimerShow->Stop();
+
+				} else {
+					ResultTextBox->Visible = true;
+					ResultTextBox->Text = "You Suck!!!";
+					Point pnt = Point();
+					pnt.X = 600;
+					pnt.Y = 260;
+					ResultTextBox->Location = pnt;
+					LvlMethods->Correct = false;
+					QuestionTransitionTimerHide->Start();
+					QuestionTransitionTimerShow->Stop();
+				}
+
+			
+			
+		
+		//std::cout << QuestionTransitionTimerShow->Enabled, "\n";
+		
+}
+			   //@Daniel: puts everything back after the player get feeback for 3 seconds
+private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+	//puts everything back
+	//hide message and set its location
+	ResultTextBox->Visible = false;
+	Point pnt = Point();
+	pnt.X = 0;
+	pnt.Y = 0;
+	ResultTextBox->Location = pnt;
+	LvlMethods->DisableControls = false;
+	QuestionTransitionTimerHide->Stop();
+
 }
 };
 }

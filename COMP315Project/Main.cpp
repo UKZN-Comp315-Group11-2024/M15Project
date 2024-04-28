@@ -7,8 +7,8 @@
 #include "LoadQuestion.h"
 #include "Leaderboard.h"
 #include "BonusLevelOne.h"
-#include "MusicAndSFX.h"
-
+#include "BonusLevelTwo.h"
+#include "BonusLevelThree.h"
 using namespace System;
 using namespace M15Namespace;
 using namespace System::Windows::Forms;
@@ -25,8 +25,8 @@ int main(array<String^>^ args) {
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
 
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
+	lvl1Form lvl1form;
+	Application::Run(% lvl1form);
 
 	//Leaderboard leaderboard;
 	//Application::Run(% leaderboard);
@@ -41,9 +41,10 @@ int main(array<String^>^ args) {
 	BonusLevelOne bonusLevelOne;
 	Application::Run(% bonusLevelOne);
 
-	//MusicAndSFX* m=new MusicAndSFX();
-	//m->LevelOneMusic();
 
+	//BonusLevelTwo bnt;
+	//Application::Run(% bnt);
 
-
+	//BonusLevelThree BNTT;
+	//Application::Run(% BNTT);
 }

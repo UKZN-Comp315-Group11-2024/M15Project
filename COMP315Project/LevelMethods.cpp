@@ -2,14 +2,16 @@
 #include "LevelMethods.h"
 
 LevelMethods::LevelMethods(int lvlno) {
+	this->DisableControls = false;
 	this->lvlNum = lvlno;
-	QuestionLoader = gcnew LoadQuestion(this->lvlNum);
-	QuestionQueue = QuestionLoader->displayQuestions;	//displayQuestions is the final set of questions
-	ShuffelQuestionSets();
+	this->QuestionLoader = gcnew LoadQuestion(this->lvlNum);
+	this->QuestionQueue = QuestionLoader->levelQuestions;
+	this->PlayerStats = gcnew playerInfo();
+	//ShuffelQuestionSets();
 
 }
 
-void LevelMethods::SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2, int lvlNumber) {
+void LevelMethods::SetQuestionComponents(System::Windows::Forms::TextBox^ lblQuestion, System::Windows::Forms::TextBox^ lblOption1, System::Windows::Forms::TextBox^ lblOption2, System::Windows::Forms::TextBox^ lblOption3, System::Windows::Forms::TextBox^ lblOption4, System::Windows::Forms::TextBox^ lblTFOption1, System::Windows::Forms::TextBox^ lblTFOption2) {
 	
 	this->Question = lblQuestion;
 	this->Option1 = lblOption1;
@@ -18,7 +20,6 @@ void LevelMethods::SetQuestionComponents(System::Windows::Forms::Label^ lblQuest
 	this->Option4 = lblOption4;
 	this->TFOption1 = lblTFOption1;
 	this->TFOption2 = lblTFOption2;
-	this->lvlNum = lvlNumber;
 
 }
 
@@ -57,13 +58,22 @@ void LevelMethods::DisplayNextQuestionSet() {
 
 		TFOption2->Text = OptionB;
 		TFOption2->Visible = true;
+
+		Option1->Visible = true;
+		Option2->Visible = true;
+		Option3->Visible = false;
+		Option4->Visible = false;
 	}
+	DetermCorrectOptionInt();
+	//set back to default
+	this->AnswerGiven = true;
+	this->ProgressBar->Value = 0;
 	this->ProgressBarTimer->Start();
 }
 
 //dequeues a Question and pulls the members
 void LevelMethods::ExtractQuestionSet() {
-	LoadQuestion::Question^ QuestionSet = QuestionQueue->Dequeue();
+	LoadQuestion::Question^ QuestionSet = QuestionQueue[QuestionsCompleted];
 	QuestionType = QuestionSet->QuestionType;
 	question = QuestionSet->question;
 	OptionA = QuestionSet->OptionA;
@@ -75,7 +85,7 @@ void LevelMethods::ExtractQuestionSet() {
 /// <summary>
 /// used the Fisher-Yates shuffle
 /// </summary>
-void LevelMethods::ShuffelQuestionSets() {
+/*void LevelMethods::ShuffelQuestionSets() {
 	Random^ rand = gcnew Random();
 	List<LoadQuestion::Question^>^ ShuffelList = gcnew List<LoadQuestion::Question^>;
 	while (QuestionQueue->Count > 0) {
@@ -94,13 +104,19 @@ void LevelMethods::ShuffelQuestionSets() {
 	for each (LoadQuestion::Question ^ item in ShuffelList) {
 		QuestionQueue->Enqueue(item);
 	}
-}
+}*/
 //called if bullet collsion with answer option
+//NB: NEEDS TO BE UPDATED FOR NEW lOADQUESTION CLASS
 void LevelMethods::QuestionAnswered(int option) {
-	QuestionsCompleted += 1;
-	QuestionsAnswered += 1;
-	if (option == 1) {
-		CorrectAnswers += 1;
+	this->QuestionsCompleted += 1;
+	this->QuestionsAnswered += 1;
+	this->PlayerStats->score += 1000000;
+	if (option == CorrectOptionInt) {
+		this->PlayerStats->CorrectAnswers += 1;
+		this->Correct = true;
+	}
+	else {
+		this->Correct = false;
 	}
 	
 	this->ProgressBarTimer->Stop();
@@ -117,7 +133,8 @@ void LevelMethods::QuestionAnswered(int option) {
 
 //called if timer runs out
 void LevelMethods::QuestionCompleted() {
-	QuestionsCompleted += 1;
+	this->AnswerGiven = false;
+	this->QuestionsCompleted += 1;
 	this->ProgressBarTimer->Stop();
 	calculateTime();
 
@@ -133,8 +150,12 @@ void LevelMethods::SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr) 
 	this->PlayerImage = plyr;
 }
 
-void LevelMethods::SetLoadingBarComponent(System::Windows::Forms::Timer^ PBtmr) {
+void LevelMethods::SetProgressBarTimerComponent(System::Windows::Forms::Timer^ PBtmr) {
 	this->ProgressBarTimer = PBtmr;
+}
+
+void LevelMethods::SetProgressBarComponent(System::Windows::Forms::ProgressBar^ PB) {
+	this->ProgressBar = PB;
 }
 
 void LevelMethods::SetPanelComponant(System::Windows::Forms::Panel^ Pnl) {
@@ -145,12 +166,16 @@ void LevelMethods::SetLevelFormInstance(System::Windows::Forms::Form^ lvlFrmInst
 	this->LevelFormInstance = lvlFrmInst;
 }
 
+void LevelMethods::SetButtonComponenets(System::Windows::Forms::Button^ btn) {
+	this->ContinueButton = btn;
+}
+
 void LevelMethods::calculateTime() {
 	if (this->ProgressBarTimer->Interval < 30000) {
-		this->Time += this->ProgressBarTimer->Interval;
+		this->PlayerStats->timeTaken += this->ProgressBarTimer->Interval;
 	}
 	else {
-		this->Time += 30000;
+		this->PlayerStats->timeTaken += 30000;
 	}
 }
 
@@ -170,15 +195,60 @@ bool LevelMethods::CheckLevelEnd() {
 	}
 }
 
+//This method is ment to disable relevant player inputs, hide the player, question, answer options and progress bar as well as change the background, 
+//finally it will display the players stats and present a button that would take the player to the next level
 void LevelMethods::EndLevel() {
 	//send all necessary info to PlayerInfo
+	RecordPlayerStats();
 
 	//change background
 	Panel->BackgroundImage = Image::FromFile("path_to_image.jpg");
+
 	//disable player controlls
 	//LevelFormInstance->
+	this->DisableControls = true;
+	
 	//hide player, loading bar, question, answer options, collonel, the controlls
+	this->PlayerImage->Visible = false;
+	this->ProgressBar->Visible = false;
+	this->Question->Visible = false;
+	this->Option1->Visible = false;
+	this->Option2->Visible = false;
+	this->Option3->Visible = false;
+	this->Option4->Visible = false;
+	this->TFOption1->Visible = false;
+	this->TFOption2->Visible = false;
 	
 	//reveal player stats by calling PrintPlayerStats()
+	
 	//reveal button to continue to next level
+	Point buttonPoint = Point(536, 619);
+	ContinueButton->Location = buttonPoint;
+	ContinueButton->Visible = true;
+
+}
+
+//write player stats to PlayerInfo, player info updates the text file
+//maybe player info shouldnt be a struct
+void LevelMethods::RecordPlayerStats() {
+
+	StreamWriter^ Writer = gcnew StreamWriter("textfiles\\PlayerInfo.txt", true);
+
+	Writer->WriteLine("Level", this->lvlNum, ":\n", "Time: ", this->PlayerStats->timeTaken, "\n", "Score: ", this->PlayerStats->score, "\n", "Correct answers out of 10: ", this->PlayerStats->CorrectAnswers, "\n0");
+
+}
+
+void LevelMethods::DetermCorrectOptionInt() {
+		if (this->CorrectOption == this->OptionA) {
+			this->CorrectOptionInt = 0;
+		}
+		else if (this->CorrectOption == this->OptionB) {
+			this->CorrectOptionInt = 1;
+		}
+		else if (this->CorrectOption == this->OptionC) {
+			this->CorrectOptionInt = 2;
+		}
+		else if (this->CorrectOption == this->OptionD) {
+			this->CorrectOptionInt = 3;
+		}
 }

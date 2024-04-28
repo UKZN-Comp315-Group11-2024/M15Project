@@ -137,7 +137,7 @@ namespace M15Namespace {
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 27, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(331, 900);
+			this->lblMessage1->Location = System::Drawing::Point(380, 900);
 			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblMessage1->Name = L"lblMessage1";
 			this->lblMessage1->Size = System::Drawing::Size(0, 52);
@@ -179,8 +179,8 @@ namespace M15Namespace {
 			// 
 			// BonusLevelOne
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->ClientSize = System::Drawing::Size(1580, 850);
 			this->Controls->Add(this->panelBonusLevel);
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -205,7 +205,7 @@ namespace M15Namespace {
 			   int countTotal = 0;
 
 		//@aveshr
-		array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(20);
+		array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(21);
 		private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
 
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/PurpleOfficeBackground.png");
@@ -291,7 +291,7 @@ private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs
 		Transition2->Enabled = false;
 	}
 	pbGeneralMilitary->Location = Point(x, 230);
-	lblMessage1->Location = Point(395, y1);
+	lblMessage1->Location = Point(380, y1);
 }
 //@aveshr
 private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -310,7 +310,7 @@ private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs
 	}
 
 	pbGeneralMilitary->Location = Point(x, 230);
-	lblMessage1->Location = Point(395, y1);
+	lblMessage1->Location = Point(380, y1);
 }
 //@aveshr
 private: System::Void BonusLevelOne_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -323,18 +323,15 @@ private: System::Void BonusLevelOne_KeyDown(System::Object^ sender, System::Wind
 //@aveshr
 private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-	/*if (countTotal ==1) {
-		countdownBar->Value = 100;
-	}*/
 
 	if (countdownBar->Value < 100) {
-		if (countdownBar->Value + 6.5 > 100)
+		if (countdownBar->Value + 6 > 100)
 		{
 			countdownBar->Value += (100 - countdownBar->Value);
 		}
 		else
 		{
-			countdownBar->Value = countdownBar->Value + 6.5;
+			countdownBar->Value = countdownBar->Value + 6;
 		}
 		
 	}
@@ -365,9 +362,21 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 
 		currScore = stoi(lines[1]);
 
-		if (countTotal == 20) {
-			
-			lines[1] = std::to_string(stoi(lines[1]) + 5);
+		if (countTotal >= 7) {
+			int addToTotal = 0;
+			if (countTotal >= 7 && countTotal < 14)
+			{
+				addToTotal += 1;
+			}
+			else if (countTotal >= 14 && countTotal < 21)
+			{
+				addToTotal += 2;
+			}
+			else if (countTotal == 21)
+			{
+				addToTotal += 3;
+			}
+			lines[1] = std::to_string(stoi(lines[1]) + addToTotal);
 
 			std::ofstream outputFile("textfiles/PlayerInfo.txt");
 			outputFile << lines[0] << std::endl;
@@ -376,7 +385,7 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 
 			outputFile.close();
 
-			std::string windowPrompt = "\nBonus Level One Feedback\n\nTargets destroyed: " + std::to_string(countTotal) +"\nPrevious Score: " + std::to_string(currScore)+"\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
+			std::string windowPrompt = "\nBonus Level One Feedback (7 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) +"\nPrevious Score: " + std::to_string(currScore)+"\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 			window->Visible = false;
@@ -387,7 +396,7 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 		}
 		else
 		{ 
-			std::string windowPrompt = "\nBonus Level One Feedback\n\nTargets destroyed: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
+			std::string windowPrompt = "\nBonus Level One Feedback (7 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 			

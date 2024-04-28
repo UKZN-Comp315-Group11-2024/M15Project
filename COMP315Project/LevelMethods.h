@@ -1,6 +1,6 @@
 #pragma once
-#include"PlayerInfo.h"
-#include<string>
+//#include "PlayerInfo.h"
+#include <string>
 #include "LoadQuestion.h"
 #include <windows.h>
 
@@ -10,41 +10,46 @@
 	int CoOrdX, CoOrdY;
 
 };*/
-
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Collections::Generic;
 using namespace System::Diagnostics;
 using namespace System::Drawing;
+using namespace System::IO;
+
 
 public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 	{
 	public:
-		int QuestionsCompleted;
-		int QuestionsAnswered;
-		int CorrectAnswers;
-		int Time;
+		int QuestionsCompleted;  
+		int QuestionsAnswered; 
 		int lvlNum;
-		//bool DisplayNextQuestionSet;
+		bool DisableControls;
+		int CorrectOptionInt = -1;
+		bool Correct = false;
+		bool AnswerGiven = true;
 	
 		System::Windows::Forms::Form^ LevelFormInstance;
 
-		System::Windows::Forms::Label^ Question;
-		System::Windows::Forms::Label^ Option1;
-		System::Windows::Forms::Label^ Option2;
-		System::Windows::Forms::Label^ Option3;
-		System::Windows::Forms::Label^ Option4;
-		System::Windows::Forms::Label^ TFOption1;
-		System::Windows::Forms::Label^ TFOption2;
+		System::Windows::Forms::TextBox^ Question;
+		System::Windows::Forms::TextBox^ Option1;
+		System::Windows::Forms::TextBox^ Option2;
+		System::Windows::Forms::TextBox^ Option3;
+		System::Windows::Forms::TextBox^ Option4;
+		System::Windows::Forms::TextBox^ TFOption1;
+		System::Windows::Forms::TextBox^ TFOption2;
 
 		System::Windows::Forms::PictureBox^ PlayerImage;
 
+		System::Windows::Forms::Button^ ContinueButton;
+
+		System::Windows::Forms::ProgressBar^ ProgressBar;
 		System::Windows::Forms::Timer^ ProgressBarTimer;
 
 		System::Windows::Forms::Panel^ Panel;
 
 		LoadQuestion^ QuestionLoader;
-		Queue<LoadQuestion::Question^>^ QuestionQueue;
+		List<LoadQuestion::Question^>^ QuestionQueue;
 
 		System::String^ QuestionType = "";
 		System::String^ question = "";
@@ -54,7 +59,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		System::String^ OptionD = "";
 		System::String^ CorrectOption = "";
 		
-		//PlayerInfo PlayerStats;
+		playerInfo^ PlayerStats;
 
 		//LevelMethods(Form^ form, int lvlNum);
 		LevelMethods(int lvlno);
@@ -63,7 +68,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 
 		//void SetTransLabel(String^ label, Control^ item);
 
-		void ShuffelQuestionSets();
+		//void ShuffelQuestionSets();
 
 		void ExtractQuestionSet();
 
@@ -85,15 +90,18 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		//returns true if they match
 		//bool CheckAnswerCorrect(System::String^ AnswerSelected, System::String^ CorrectAnswer);
 
-		void SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2, int lvlNumber);
+		void SetQuestionComponents(System::Windows::Forms::TextBox^ lblQuestion, System::Windows::Forms::TextBox^ lblOption1, System::Windows::Forms::TextBox^ lblOption2, System::Windows::Forms::TextBox^ lblOption3, System::Windows::Forms::TextBox^ lblOption4, System::Windows::Forms::TextBox^ lblTFOption1, System::Windows::Forms::TextBox^ lblTFOption2);
 
 		void SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr);
 
-		void SetLoadingBarComponent(System::Windows::Forms::Timer^ PBtmr);
+		void SetProgressBarComponent(System::Windows::Forms::ProgressBar^ PB);
+		void SetProgressBarTimerComponent(System::Windows::Forms::Timer^ PBtmr);
 
 		void SetPanelComponant(System::Windows::Forms::Panel^ Pnl);
 
 		void SetLevelFormInstance(System::Windows::Forms::Form^ lvlFrmInst);
+
+		void SetButtonComponenets(System::Windows::Forms::Button^ btn);
 
 		//void ResetLoadingBar();
 
@@ -106,4 +114,8 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 
 		//end the level
 		void EndLevel();
+
+		void RecordPlayerStats();
+
+		void DetermCorrectOptionInt();
 	};
