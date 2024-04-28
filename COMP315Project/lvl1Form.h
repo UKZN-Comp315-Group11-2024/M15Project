@@ -35,6 +35,12 @@ namespace M15Namespace {
 
 		private: System::Windows::Forms::TextBox^ ResultTextBox;
 		private: System::Windows::Forms::Timer^ QuestionTransitionTimerHide;
+		private: System::Windows::Forms::PictureBox^ playerlevel1;
+
+
+
+
+
 
 
 		public:
@@ -59,7 +65,7 @@ namespace M15Namespace {
 					
 					this->LvlMethods = gcnew LevelMethods(1);
 					this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
-					this->LvlMethods->SetPlayerComponent(playerLvl1);
+					this->LvlMethods->SetPlayerComponent(playerlevel1);
 					this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
 					this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
 					this->LvlMethods->SetPanelComponant(panelLogin);
@@ -130,7 +136,6 @@ namespace M15Namespace {
 			private: System::Windows::Forms::Button^ beginButton;
 			private: System::Windows::Forms::Timer^ timerProgress;
 			private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
-			private: System::Windows::Forms::PictureBox^ playerLvl1;
 			private: System::Windows::Forms::Timer^ movePlayerTimer;
 			private: System::Windows::Forms::Timer^ timeranimation;
 		private: System::Windows::Forms::PictureBox^ wasd;
@@ -209,6 +214,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 					this->panelLogin = (gcnew System::Windows::Forms::Panel());
+					this->playerlevel1 = (gcnew System::Windows::Forms::PictureBox());
 					this->ResultTextBox = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxC = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxB = (gcnew System::Windows::Forms::TextBox());
@@ -223,7 +229,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->textBoxA = (gcnew System::Windows::Forms::TextBox());
 					this->space = (gcnew System::Windows::Forms::PictureBox());
 					this->wasd = (gcnew System::Windows::Forms::PictureBox());
-					this->playerLvl1 = (gcnew System::Windows::Forms::PictureBox());
 					this->beginButton = (gcnew System::Windows::Forms::Button());
 					this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
 					this->pictureBoxA = (gcnew System::Windows::Forms::PictureBox());
@@ -240,12 +245,12 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxD))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxC))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxB))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -287,6 +292,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 					this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 					this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+					this->panelLogin->Controls->Add(this->playerlevel1);
 					this->panelLogin->Controls->Add(this->ResultTextBox);
 					this->panelLogin->Controls->Add(this->textBoxC);
 					this->panelLogin->Controls->Add(this->textBoxB);
@@ -314,6 +320,18 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Size = System::Drawing::Size(1280, 720);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
+					// 
+					// playerlevel1
+					// 
+					this->playerlevel1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
+					this->playerlevel1->Location = System::Drawing::Point(125, 292);
+					this->playerlevel1->Name = L"playerlevel1";
+					this->playerlevel1->Size = System::Drawing::Size(102, 88);
+					this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+					this->playerlevel1->TabIndex = 35;
+					this->playerlevel1->TabStop = false;
+					this->playerlevel1->Visible = false;
+					this->playerlevel1->Click += gcnew System::EventHandler(this, &lvl1Form::playerLvl1_Click);
 					// 
 					// ResultTextBox
 					// 
@@ -451,19 +469,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->wasd->TabStop = false;
 					this->wasd->Visible = false;
 					// 
-					// playerLvl1
-					// 
-					this->playerLvl1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"playerLvl1.Image")));
-					this->playerLvl1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
-					this->playerLvl1->Location = System::Drawing::Point(115, 183);
-					this->playerLvl1->Name = L"playerLvl1";
-					this->playerLvl1->Size = System::Drawing::Size(190, 102);
-					this->playerLvl1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->playerLvl1->TabIndex = 14;
-					this->playerLvl1->TabStop = false;
-					this->playerLvl1->Visible = false;
-					this->playerLvl1->Click += gcnew System::EventHandler(this, &lvl1Form::playerLvl1_Click);
-					// 
 					// beginButton
 					// 
 					this->beginButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
@@ -583,12 +588,12 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 					this->panelLogin->ResumeLayout(false);
 					this->panelLogin->PerformLayout();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxD))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxC))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxB))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerLvl1))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -608,7 +613,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					bullet = gcnew System::Windows::Forms::PictureBox;
 					bullet->Size = System::Drawing::Size(75, 50);
 					bullet->Parent = panelLogin;
-					bullet->Location = System::Drawing::Point(playerLvl1->Location.X, playerLvl1->Location.Y);
+					bullet->Location = System::Drawing::Point(playerlevel1->Location.X, playerlevel1->Location.Y);
 					bullet->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 					//bullet->BringToFront();
 					bullet->Hide();
@@ -671,12 +676,12 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				// Convert System::String^ to std::string
 				std::string stdString = context.marshal_as<std::string>(imagePath);
 
-				playerLvl1->ImageLocation = imagePath;
+				playerlevel1->ImageLocation = imagePath;
 
 				bullet = gcnew System::Windows::Forms::PictureBox;
 				bullet->Size = System::Drawing::Size(75, 50);
 				bullet->Parent = panelLogin;
-				bullet->Location = System::Drawing::Point(playerLvl1->Location.X, playerLvl1->Location.Y);
+				bullet->Location = System::Drawing::Point(playerlevel1->Location.X, playerlevel1->Location.Y);
 				bullet->Image = Image::FromFile("assets/PlayerMove/idle.gif");
 				//bullet->BringToFront();
 				bullet->Hide();
@@ -688,6 +693,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 			}
 				   bool isleft;
+				   bool canshoot = false;
 		//@avesh: animation of the military general and text into screen
 		//@avesh: animation of the military general and text
 		//@Daniel: and button
@@ -743,13 +749,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
 				this->progressBarLevel1->Visible = true;
-				this->playerLvl1->Visible = true;
-				this->playerLvl1->BringToFront();
+				this->playerlevel1->Visible = true;
+				this->playerlevel1->BringToFront();
 				this->beginButton->Enabled = false;
 				this->wasd->Visible = true;
 				this->space->Visible = true;
 				movePlayerTimer->Start();
 				Transition2->Enabled = false;
+				canshoot = true;
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(395, y1);
@@ -810,7 +817,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				{
 					if (!isleft) {
 						imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
-						playerLvl1->ImageLocation = imagePath;
+						playerlevel1->ImageLocation = imagePath;
 					}
 					isleft = true;
 					move_left = true;
@@ -828,7 +835,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				{
 					if (isleft) {
 						imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
-						playerLvl1->ImageLocation = imagePath;
+						playerlevel1->ImageLocation = imagePath;
 					}
 					isleft = false;
 					move_right = true;
@@ -839,12 +846,15 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				}
 				if (e->KeyCode == Keys::Space)
 				{
-					Image^ image = Image::FromFile("assets/PlayerMove/idle.gif");
-					bullet->BringToFront();
-					bullet->Show();
-					des->addBullet(bullet, 10, 0, playerLvl1->Location.X, playerLvl1->Location.Y);
-					BulletTimer->Start();
-					shootTimer->Start();
+					if (canshoot) {
+						Image^ image = Image::FromFile("assets/PlayerMove/idle.gif");
+						bullet->BringToFront();
+						bullet->Show();
+						des->addBullet(bullet, 10, 0, playerlevel1->Location.X, playerlevel1->Location.Y);
+						BulletTimer->Start();
+					
+						shootTimer->Start();
+					}
 				}
 			}
 	
@@ -892,7 +902,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				{
 					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 				}
-				playerLvl1->ImageLocation = imagePath;
+				playerlevel1->ImageLocation = imagePath;
 			}
 		}
 		//@avesh: Edited and redefined how the player movement works (Smooth movement)
@@ -904,8 +914,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e){
 			
 			if (!(is_w_up && is_a_up && is_s_up && is_d_up) && 
-				(playerLvl1->ImageLocation != runAnimation &&
-				playerLvl1->ImageLocation != runLeftAnimation)) 
+				(playerlevel1->ImageLocation != runAnimation &&
+					playerlevel1->ImageLocation != runLeftAnimation))
 			{
 				
 				if (isleft)
@@ -916,26 +926,26 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				{
 					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
 				}
-				playerLvl1->ImageLocation = imagePath;
+				playerlevel1->ImageLocation = imagePath;
 			}
 
 			if (move_up)
 			{
 		
-				playerLvl1->Top += -5;
+				playerlevel1->Top += -5;
 			}
 			if (move_left)
 			{
 		
-				playerLvl1->Left += -5;
+				playerlevel1->Left += -5;
 			}
 			if (move_down)
 			{
-				playerLvl1->Top += 5;
+				playerlevel1->Top += 5;
 			}
 			if (move_right)
 			{
-				playerLvl1->Left += 5;
+				playerlevel1->Left += 5;
 			}
 		}
 
@@ -944,7 +954,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		//@jaedon: Edited and redefined player animations
 		//@avesh: was there
 		/*private: System::Void timeranimation_Tick(System::Object^ sender, System::EventArgs^ e) {
-			Point currentlocation = playerLvl1->Location;
+			Point currentlocation = playerlevel1->Location;
 			String^ idlename;
 			if (!isleft) {
 				idlename = "assets/PlayerMove/idle.gif";
@@ -953,7 +963,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				idlename = "assets/PlayerMove/idleleft.gif";
 			}
 			if (previousLocation.X == currentlocation.X && previousLocation.Y == currentlocation.Y) {
-				playerLvl1->Image = Image::FromFile(idlename);
+				playerlevel1->Image = Image::FromFile(idlename);
 				numkeyspressed++;
 			}
 
@@ -971,17 +981,17 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 	if (countSpace == 0) {
 		if (isleft)
 		{
-			playerLvl1->ImageLocation = shootLeftAnimation;
+			playerlevel1->ImageLocation = shootLeftAnimation;
 		} 
 		else
 		{
-			playerLvl1->ImageLocation = shootAnimation;
+			playerlevel1->ImageLocation = shootAnimation;
 		}
 		movePlayerTimer->Stop();
 		countSpace++;
 	}
 	else {
-		playerLvl1->ImageLocation = imagePath;
+		playerlevel1->ImageLocation = imagePath;
 		movePlayerTimer->Start();		
 		countSpace = 0;
 		shootTimer->Stop();
@@ -1033,7 +1043,7 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			
 			
 		
-		std::cout << QuestionTransitionTimerShow->Enabled, "\n";
+		//std::cout << QuestionTransitionTimerShow->Enabled, "\n";
 		
 }
 			   //@Daniel: puts everything back after the player get feeback for 3 seconds
