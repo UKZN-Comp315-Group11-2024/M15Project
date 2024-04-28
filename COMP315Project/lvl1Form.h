@@ -317,14 +317,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
 					this->panelLogin->Location = System::Drawing::Point(-8, -20);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1280, 720);
+					this->panelLogin->Size = System::Drawing::Size(1280, 708);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
 					// playerlevel1
 					// 
 					this->playerlevel1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
-					this->playerlevel1->Location = System::Drawing::Point(125, 292);
+					this->playerlevel1->Location = System::Drawing::Point(40, 406);
 					this->playerlevel1->Name = L"playerlevel1";
 					this->playerlevel1->Size = System::Drawing::Size(102, 88);
 					this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -929,21 +929,21 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				playerlevel1->ImageLocation = imagePath;
 			}
 
-			if (move_up)
+			if (move_up && playerlevel1->Top > 190)
 			{
 		
 				playerlevel1->Top += -5;
 			}
-			if (move_left)
+			if (move_left && playerlevel1->Left > 10)
 			{
 		
 				playerlevel1->Left += -5;
 			}
-			if (move_down)
+			if (move_down && playerlevel1->Top < 580)
 			{
 				playerlevel1->Top += 5;
 			}
-			if (move_right)
+			if (move_right && playerlevel1->Left < 160)
 			{
 				playerlevel1->Left += 5;
 			}
