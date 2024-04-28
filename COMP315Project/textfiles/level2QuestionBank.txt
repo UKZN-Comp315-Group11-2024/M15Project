@@ -1,4 +1,18 @@
+@Daniel Hogg
 @Author
-@Author
-Source:
+Source: chat gpt
 LEVEL 2 QUESTIONS
+0$What is a primary aspect to test in a soldier undercover?$Painting expertise$Combat skills$Singing talent$Ability to cook gourmet meals
+0$During a combat simulation, what action should be observed?$Shooting accurately$Running away from the battlefield$Hiding behind trees$Taking a nap
+0$What is an essential skill for a soldier to possess?$Weapon maintenance$Juggling balls$Negotiation tactics$Balloon animal sculpting
+0$How should a soldier react to orders from commanding officers?$Following them diligently$Ignoring them completely$Asking for a coffee break$Pretending to be deaf
+0$What should a soldier prioritize during a reconnaissance mission?$Gathering intelligence$Collecting seashells$Avoiding eye contact with the enemy$Writing poetry
+0$What is a crucial element in evaluating a soldier's loyalty?$Following the chain of command$Ability to whistle$Dancing skills$Drawing caricatures
+0$How should a soldier handle confidential information?$Keeping it confidential$Posting it on social media$Sharing it with friends$Using it for personal gain
+0$What trait is essential for a soldier in undercover operations?$Adaptability to different environments$Fear of heights$Allergic to camouflage$Fear of loud noises
+1$True or False: A soldier undercover must blend in seamlessly with their surroundings.$True$False
+1$True or False: Maintaining discipline and composure is crucial for a soldier in undercover operations.$True$False
+
+
+
+
