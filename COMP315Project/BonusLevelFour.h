@@ -224,7 +224,7 @@ namespace M15Namespace {
 			x_pos = rand() % 1050 + 10;
 			y_pos = rand() % 420 + 180;
 			x_size = rand() % 50 + 60;
-			y_size = rand() % 50 + 40;
+			y_size = rand() % 50 + 30;
 			buttons[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, -100, y_pos, "assets/Doors/PageColorized.png", true);
 
 			speed = rand() % 8 + 5;

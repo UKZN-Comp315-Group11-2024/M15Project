@@ -31,8 +31,8 @@ int main(array<String^>^ args) {
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
-	//Leaderboard leaderboard;
-	//Application::Run(% leaderboard);
+	Leaderboard leaderboard;
+	Application::Run(% leaderboard);
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 	
@@ -48,8 +48,7 @@ int main(array<String^>^ args) {
 	//BonusLevelTwo bnt;
 	//Application::Run(% bnt);
 
-	BonusLevelThree BNTT;
-
-	Application::Run(% BNTT);
+	//BonusLevelFour BNTT;
+	//Application::Run(% BNTT);
 
 }
