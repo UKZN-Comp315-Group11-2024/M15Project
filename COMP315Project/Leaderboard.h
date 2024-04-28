@@ -199,11 +199,12 @@ namespace M15Namespace {
 			// 
 			// Leaderboard
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1238, 719);
+			this->ClientSize = System::Drawing::Size(930, 584);
 			this->Controls->Add(this->pictureBox2);
-			this->MaximumSize = System::Drawing::Size(1256, 766);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->MaximumSize = System::Drawing::Size(946, 630);
 			this->MinimizeBox = false;
 			this->Name = L"Leaderboard";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;

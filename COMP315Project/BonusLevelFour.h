@@ -107,18 +107,18 @@ namespace M15Namespace {
 			this->panelBonusLevel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-11, -25);
-			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4);
+			this->panelBonusLevel->Location = System::Drawing::Point(-9, -20);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
+			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
 			this->panelBonusLevel->TabIndex = 13;
 			this->panelBonusLevel->Click += gcnew System::EventHandler(this, &BonusLevelFour::panelLogin_Click);
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(-17, -32);
+			this->pictureBox1->Location = System::Drawing::Point(-14, -26);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(100, 50);
+			this->pictureBox1->Size = System::Drawing::Size(80, 40);
 			this->pictureBox1->TabIndex = 13;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -126,10 +126,10 @@ namespace M15Namespace {
 			// 
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
-			this->countdownBar->Location = System::Drawing::Point(467, 75);
-			this->countdownBar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->countdownBar->Location = System::Drawing::Point(374, 60);
+			this->countdownBar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->countdownBar->Name = L"countdownBar";
-			this->countdownBar->Size = System::Drawing::Size(629, 46);
+			this->countdownBar->Size = System::Drawing::Size(503, 37);
 			this->countdownBar->TabIndex = 12;
 			// 
 			// lblMessage1
@@ -137,10 +137,9 @@ namespace M15Namespace {
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 27, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(380, 900);
-			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblMessage1->Location = System::Drawing::Point(304, 720);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 52);
+			this->lblMessage1->Size = System::Drawing::Size(0, 41);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			// 
@@ -149,10 +148,10 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -184,11 +183,11 @@ namespace M15Namespace {
 			// 
 			// BonusLevelFour
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1580, 850);
+			this->ClientSize = System::Drawing::Size(1264, 680);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelFour";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
