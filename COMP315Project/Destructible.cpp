@@ -40,8 +40,8 @@ void Destructible::update() {
 
 			if (xInside && yInside) {
 				//@Daniel: trynna detect which door was hit, we know how the doors are entered into the List, if we have the index of which door needs to be destroyed, we have the door
-				this->DoorHit = true;
-				this->Choice = j;
+				//this->DoorHit = true;
+				//this->Choice = j;
 				//Call delegate function
 				currentDestroyable->destructFunction();
 				//Delete Controls and remove items from queue
