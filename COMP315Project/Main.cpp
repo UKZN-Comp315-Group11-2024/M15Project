@@ -31,6 +31,10 @@ int main(array<String^>^ args) {
 	lvl1Form lvl1form;
 	Application::Run(% lvl1form);
 
+	MusicAndSFX *m = new MusicAndSFX();
+	m->LevelOneMusic();
+
+
 	//Leaderboard leaderboard;
 	//Application::Run(% leaderboard);
 	

@@ -64,7 +64,7 @@ namespace M15Namespace {
 					//@Daniel: need this to be true or listeners dont work
 					this->KeyPreview = true;
 					
-					this->LvlMethods = gcnew LevelMethods(1);
+					this->LvlMethods = gcnew LevelMethods(3);
 					this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
 					this->LvlMethods->SetPlayerComponent(playerlevel1);
 					this->LvlMethods->SetProgressBarComponent(progressBarLevel1);

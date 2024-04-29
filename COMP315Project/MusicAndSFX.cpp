@@ -63,7 +63,7 @@
 
 	void MusicAndSFX::LevelOneMusic() {
 
-		if (!music.openFromFile("assets/TempBackgroundMusic.wav")) {  //opens music file
+		if (!music.openFromFile("assets/TempSoundEffect.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();

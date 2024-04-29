@@ -4,7 +4,7 @@ Source: My source, trust me bro
 LEVEL 3 QUESTIONS
 0$In the Combat manual it states a medical mercenary should always come equipped with what during operations.$Adrenaline shot med kit$Light reflective vest$MK2 Night Vision$A white flag
 0$Sometimes, a tool might look brilliant, but all you need is a hammer. Which tool would you choose to stealth fully breach a wall?$Ultra Laser cutter$Atomic door RAM$Sledgehammer$High explosive C4
-0$If stranded and you discover a river to get to find a settlement you need to travel upstream.$False$True
+0$On average how long can most people last without food?$3 Weeks$1 day$2 years$6 days
 0$Which of the following medicinal plant can be used to clean wounds if you are injured$Turmeric$Wolfsbane$Poison ivy$Pain bush
 0$You’re tasked to eliminate a target as fast and discreetly as possible, which animal venom/poison is best suited for this task.$Blue ringed octopus$wolf spiders$European adder$Fire salamander
 0$During covert operations, the tactical wall climbing rope requires which suitable knot$A figure 8 Knot$Standard shoelace knot$Texas rig knot$Slip knot
@@ -21,5 +21,4 @@ LEVEL 3 QUESTIONS
 1$In the Spy Aviation Manuel, the statement “Danger close” refers to nearby hostiles approaching spy radar.$False$True
 1$Deviating from the operation objective is considered treason$True$False
 1$A met1$Incase of immediate capture a spy must activate the cyanide pill behind their molar to prevent sharing intelligence$True$False
-hod to locate the North Star to navigate during the night is to find the big dipper constellation$True$False
-
+1$to locate the North Star to navigate during the night is to find the big dipper constellation$True$False
