@@ -60,10 +60,6 @@ public:
         }
     }
 
-    static void srandom() {
-        srand(time(0));
-    }
-
     /*method that searches for an element inside an array
     OUTPUT: if element found, the index of the element is returned.
             if the element is not found, -1 is returned.

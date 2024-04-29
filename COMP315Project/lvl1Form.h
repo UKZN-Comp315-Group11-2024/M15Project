@@ -598,7 +598,25 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  des->addObject(pictureBoxTF1, destroyFuncTF1);
 
 						  LvlMethods->QuestionAnswered(0);
-						  QuestionTransitionTimerShow->Start();
+						  if (LvlMethods->QuestionsCompleted == 10)
+						  {
+							  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
+							  String^ unwrapped = gcnew String(windowPrompt.c_str());
+							  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
+
+							  window->Visible = false;
+							  this->Hide();
+							  window->ShowDialog();
+
+							  //this->~lvl1Form();
+							  this->Close();
+							  LvlMethods->QuestionsCompleted--;
+						  }
+						  else
+						  {
+							  QuestionTransitionTimerShow->Start();
+						  }
+						  std::cout << LvlMethods->QuestionsCompleted << std::endl;
 					  }
 					  void destroyTF2()
 					  {
@@ -629,7 +647,22 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  //remove
 						  //AddDoors();
 						  LvlMethods->QuestionAnswered(0);
-						  QuestionTransitionTimerShow->Start();
+						  if (LvlMethods->QuestionsCompleted == 10)
+						  {
+							  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
+							  String^ unwrapped = gcnew String(windowPrompt.c_str());
+							  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
+
+							  window->Visible = false;
+							  this->Hide();
+							  window->ShowDialog();
+
+							  this->Close();
+						  }
+						  else
+						  {
+							  QuestionTransitionTimerShow->Start();
+						  }
 					  }
 					  void destroyB()
 					  {
@@ -847,7 +880,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		}
 		//@Daniel: timer for progress bar
 		private: System::Void timerProgress_Tick(System::Object^ sender, System::EventArgs^ e) {
-
+			
 			this->progressBarLevel1->Increment(1);
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum) {
 				LvlMethods->QuestionCompleted();

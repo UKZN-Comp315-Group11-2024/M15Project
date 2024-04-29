@@ -206,6 +206,8 @@ void LevelMethods::EndLevel() {
 	//change background
 	//Panel->BackgroundImage = Image::FromFile("path_to_image.jpg");
 	Panel->BackgroundImage = Image::FromFile("assets/Backgrounds/plz.png");
+	Panel->Controls->Clear();
+	Panel->Controls->Remove(Panel->Controls->Owner);
 
 	//disable player controlls
 	//LevelFormInstance->
@@ -225,9 +227,9 @@ void LevelMethods::EndLevel() {
 	//reveal player stats by calling PrintPlayerStats()
 	
 	//reveal button to continue to next level
-	Point buttonPoint = Point(536, 619);
+	/*Point buttonPoint = Point(536, 619);
 	ContinueButton->Location = buttonPoint;
-	ContinueButton->Visible = true;
+	ContinueButton->Visible = true;*/
 
 }
 
