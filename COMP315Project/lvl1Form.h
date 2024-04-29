@@ -66,7 +66,7 @@ namespace M15Namespace {
 					//@Daniel: need this to be true or listeners dont work
 					this->KeyPreview = true;
 					
-					this->LvlMethods = gcnew LevelMethods(1);
+					this->LvlMethods = gcnew LevelMethods(3);
 					this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
 					this->LvlMethods->SetPlayerComponent(playerlevel1);
 					this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
@@ -1138,7 +1138,7 @@ private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-
+	   //@Daniel
 	   void AddDoors() {
 		   //des->clearDoors();
 		   if (this->LvlMethods->QuestionType == "0") {
@@ -1148,6 +1148,8 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 			   bullet->Hide();
 			   pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxA, destroyFuncA);
+			   this->textBoxA->Show();
+			   textBoxTFA->Hide();
 
 			   //re-prints door B
 			   std::cout << "B des" << std::endl;
@@ -1155,6 +1157,7 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 			   bullet->Hide();
 			   pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxB, destroyFuncB);
+			   this->textBoxB->Show();
 
 			   //re-prints door C
 			   std::cout << "C des" << std::endl;
@@ -1162,6 +1165,8 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 			   bullet->Hide();
 			   pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxC, destroyFuncC);
+			   this->textBoxC->Show();
+			   textBoxTFB->Hide();
 
 			   //re-prints door D
 			   std::cout << "D des" << std::endl;
@@ -1169,6 +1174,7 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 			   bullet->Hide();
 			   pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxD, destroyFuncD);
+			   this->textBoxD->Show();
 		   }
 		   //for True/False
 		   else {
@@ -1178,6 +1184,7 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 			   bullet->Hide();
 			   pictureBoxA = gcnew definedPictureBox(panelLogin, 329, 120, 850, 95, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxA, destroyFuncA);
+			   textBoxTFA->Show();
 
 			   //re-prints door B
 			   std::cout << "B des" << std::endl;
@@ -1185,6 +1192,7 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 			   bullet->Hide();
 			   pictureBoxB = gcnew definedPictureBox(panelLogin, 329, 120, 850, 395, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxB, destroyFuncB);
+			   textBoxTFB->Show();
 		   }
 
 	   }
