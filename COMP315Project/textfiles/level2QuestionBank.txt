@@ -14,10 +14,6 @@ LEVEL 2 QUESTIONS
 0$What does the term "black ops" refer to in the context of espionage?$Covert operations conducted by special forces$Intelligence operations involving deception and disinformation$Cyber warfare conducted by state-sponsored hackers$Propaganda campaigns aimed at influencing public opinion
 0$Which of the following is NOT a common method of communication used by spies?$Smoke signals$Morse code$Semaphore signals$Carrier pigeon
 0$What is the codename of the Soviet intelligence officer who provided information to the British Secret Intelligence Service (MI6) during the Cold War?$Agent Red$Agent Orange$Agent Gray$Agent Blue
-0$What is a primary aspect to test in a soldier undercover?$Painting expertise$Combat skills$Singing talent$Ability to cook gourmet meals
-0$During a combat simulation, what action should be observed?$Shooting accurately$Running away from the battlefield$Hiding behind trees$Taking a nap
-0$What is an essential skill for a soldier to possess?$Weapon maintenance$Juggling balls$Negotiation tactics$Balloon animal sculpting
-0$How should a soldier react to orders from commanding officers?$Following them diligently$Ignoring them completely$Asking for a coffee break$Pretending to be deaf
 0$Who is often credited as the author of the book "The Art of War," which has been studied by intelligence agencies around the world?$Sun Tzu$Niccol  Machiavelli$Karl von Clausewitz$Mao Zedong
 0$In spy terminology, what does the term "blowback" refer to?$A covert operation that goes wrong and results in unintended consequences$A signal used to trigger a predetermined action$A communication intercepted by enemy intelligence$A clandestine meeting between agents
 0$What is the name of an anonymous female person$Jane Doe$Mary Sue$Jessica White$Richard Roe
