@@ -108,7 +108,7 @@ public:
     //NOTE: REFER TO OVERLOADED OPERATORS IN playerInfo. Because this method uses <
     //This method compares players based on their SCORE.
     */
-    static void insertScore(std::vector<E>& v, E e) {
+    static List<E>^ insertScore(List<E>^ v, E e) {
         int i = 0;
         while (i < v->Count && v[i] < e) {
             i++;
@@ -119,6 +119,7 @@ public:
         else {
             v->Add(e);
         }
+        return v;
 
     }
 

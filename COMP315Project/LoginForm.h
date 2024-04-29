@@ -7,6 +7,7 @@
 #include "playerInfo.h"
 #include "FaceRecognition.h"
 #include "customAlgs.h"
+#include "Leaderboard.h"
 
 
 namespace M15Namespace {
@@ -91,7 +92,8 @@ namespace M15Namespace {
 		/// Required designer variable.
 		/// </summary>
 		int logindots = 0;
-		List<playerInfo^>^ userlist;
+	private: System::Windows::Forms::PictureBox^ pbleaderboard;
+		   List<playerInfo^>^ userlist;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -103,6 +105,7 @@ namespace M15Namespace {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->pbleaderboard = (gcnew System::Windows::Forms::PictureBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->tbSpyName = (gcnew System::Windows::Forms::TextBox());
@@ -119,6 +122,7 @@ namespace M15Namespace {
 			this->starttypingtimer = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timerlockgif = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelLogin->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbleaderboard))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -131,6 +135,7 @@ namespace M15Namespace {
 			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->panelLogin->Controls->Add(this->pictureboxlockgif);
+			this->panelLogin->Controls->Add(this->pbleaderboard);
 			this->panelLogin->Controls->Add(this->label2);
 			this->panelLogin->Controls->Add(this->pictureBox3);
 			this->panelLogin->Controls->Add(this->tbSpyName);
@@ -148,6 +153,17 @@ namespace M15Namespace {
 			this->panelLogin->Size = System::Drawing::Size(1280, 720);
 			this->panelLogin->TabIndex = 3;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &LoginForm::panelLogin_Paint);
+			// 
+			// pbleaderboard
+			// 
+			this->pbleaderboard->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbleaderboard.Image")));
+			this->pbleaderboard->Location = System::Drawing::Point(20, 31);
+			this->pbleaderboard->Name = L"pbleaderboard";
+			this->pbleaderboard->Size = System::Drawing::Size(193, 163);
+			this->pbleaderboard->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pbleaderboard->TabIndex = 12;
+			this->pbleaderboard->TabStop = false;
+			this->pbleaderboard->Click += gcnew System::EventHandler(this, &LoginForm::pbleaderboard_Click);
 			// 
 			// label2
 			// 
@@ -335,6 +351,7 @@ namespace M15Namespace {
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbleaderboard))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -612,6 +629,13 @@ private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArg
 
 }
 private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pbleaderboard_Click(System::Object^ sender, System::EventArgs^ e) {
+	Leaderboard^ leaderboard = gcnew Leaderboard("no");
+	leaderboard->Visible = false;
+	this->Hide();
+	leaderboard->ShowDialog();
+	this->Show();
 }
 };
 }
