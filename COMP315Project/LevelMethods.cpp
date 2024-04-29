@@ -59,8 +59,8 @@ void LevelMethods::DisplayNextQuestionSet() {
 		TFOption2->Text = OptionB;
 		TFOption2->Visible = true;
 
-		Option1->Visible = true;
-		Option2->Visible = true;
+		Option1->Visible = false;
+		Option2->Visible = false;
 		Option3->Visible = false;
 		Option4->Visible = false;
 	}
@@ -142,7 +142,7 @@ void LevelMethods::QuestionCompleted() {
 		EndLevel();
 	}
 
-	ResetPlayerPos();
+	//ResetPlayerPos();
 	DisplayNextQuestionSet();
 }
 
@@ -202,7 +202,7 @@ void LevelMethods::EndLevel() {
 	RecordPlayerStats();
 
 	//change background
-	Panel->BackgroundImage = Image::FromFile("path_to_image.jpg");
+	Panel->BackgroundImage = Image::FromFile("assets/Backgrounds/plz.png");
 
 	//disable player controlls
 	//LevelFormInstance->

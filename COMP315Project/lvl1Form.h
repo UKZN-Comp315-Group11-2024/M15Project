@@ -52,6 +52,8 @@ namespace M15Namespace {
 			Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyB);
 			Destructible::DestroyFunction^ destroyFuncC = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyC);
 			Destructible::DestroyFunction^ destroyFuncD = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyD);
+			Destructible::DestroyFunction^ destroyFuncTF1 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF1);
+			Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF2);
 				lvl1Form()
 				{	
 					InitializeComponent();
@@ -348,19 +350,19 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// textBoxTFA
 					// 
-					this->textBoxTFA->Location = System::Drawing::Point(1234, 288);
+					this->textBoxTFA->Location = System::Drawing::Point(1320, 288);
 					this->textBoxTFA->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxTFA->Name = L"textBoxTFA";
-					this->textBoxTFA->Size = System::Drawing::Size(329, 22);
+					this->textBoxTFA->Size = System::Drawing::Size(213, 22);
 					this->textBoxTFA->TabIndex = 27;
 					this->textBoxTFA->Visible = false;
 					// 
 					// textBoxTFB
 					// 
-					this->textBoxTFB->Location = System::Drawing::Point(1234, 651);
+					this->textBoxTFB->Location = System::Drawing::Point(1320, 650);
 					this->textBoxTFB->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxTFB->Name = L"textBoxTFB";
-					this->textBoxTFB->Size = System::Drawing::Size(329, 22);
+					this->textBoxTFB->Size = System::Drawing::Size(199, 22);
 					this->textBoxTFB->TabIndex = 28;
 					this->textBoxTFB->Visible = false;
 					// 
@@ -528,7 +530,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// QuestionTransitionTimerHide
 					// 
-					this->QuestionTransitionTimerHide->Interval = 3000;
+					this->QuestionTransitionTimerHide->Interval = 2;
 					this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl1Form::QuestionTransitionTimerHide_Tick);
 					// 
 					// lvl1Form
@@ -583,7 +585,34 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  definedPictureBox^ pictureBoxB;
 					  definedPictureBox^ pictureBoxC;
 					  definedPictureBox^ pictureBoxD;
+					  definedPictureBox^ pictureBoxTF1;
+					  definedPictureBox^ pictureBoxTF2;
+					  void destroyTF1()
+					  {
+						  std::cout << "T des" << std::endl;
+						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  bullet->Hide();
 
+						  pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 195, "assets/Doors/door.png", false);
+
+						  des->addObject(pictureBoxTF1, destroyFuncTF1);
+
+						  LvlMethods->QuestionAnswered(0);
+						  QuestionTransitionTimerShow->Start();
+					  }
+					  void destroyTF2()
+					  {
+						  std::cout << "F des" << std::endl;
+						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  bullet->Hide();
+
+						  pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 435, "assets/Doors/door.png", false);
+
+						  des->addObject(pictureBoxTF2, destroyFuncTF2);
+
+						  LvlMethods->QuestionAnswered(1);
+						  QuestionTransitionTimerShow->Start();
+					  }
 					  void destroyA()
 					  {
 						  //remove
@@ -591,10 +620,12 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 						  bullet->Hide();
 
+						  
 						  pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
 
-						  
 						  des->addObject(pictureBoxA, destroyFuncA);
+						  
+						  
 						  //remove
 						  //AddDoors();
 						  LvlMethods->QuestionAnswered(0);
@@ -774,19 +805,27 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				Transition2->Enabled = false;
 				canshoot = true;
 
-				pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
-				pictureBoxA->Show();
-				pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
-				pictureBoxB->Show();
-				pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
-				pictureBoxC->Show();
-				pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
-				pictureBoxD->Show();
+				//if (LvlMethods->QuestionType == "0") 
+				//{
+					pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
+					pictureBoxA->Show();
+					pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
+					pictureBoxB->Show();
+					pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
+					pictureBoxC->Show();
+					pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
+					pictureBoxD->Show();
 
-				des->addObject(pictureBoxA, destroyFuncA);
-				des->addObject(pictureBoxB, destroyFuncB);
-				des->addObject(pictureBoxC, destroyFuncC);
-				des->addObject(pictureBoxD, destroyFuncD);
+					des->addObject(pictureBoxA, destroyFuncA);
+					des->addObject(pictureBoxB, destroyFuncB);
+					des->addObject(pictureBoxC, destroyFuncC);
+					des->addObject(pictureBoxD, destroyFuncD);
+				//}
+				//else
+				//{
+					
+				//}
+				
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(395, y1);
@@ -1065,10 +1104,35 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 	LvlMethods->DisableControls = false;
 	QuestionTransitionTimerHide->Stop();
 
-	pictureBoxA->Show();
-	pictureBoxB->Show();
-	pictureBoxC->Show();
-	pictureBoxD->Show();
+	if (LvlMethods->QuestionType == "0")
+	{
+		pictureBoxA->Show();
+		pictureBoxB->Show();
+		pictureBoxC->Show();
+		pictureBoxD->Show();
+	}
+	else if (LvlMethods->QuestionType == "1")
+	{
+		pictureBoxA->setLocation(870, pictureBoxA->Location.Y);
+		pictureBoxB->setLocation(870, pictureBoxA->Location.Y);
+		pictureBoxC->setLocation(870, pictureBoxA->Location.Y);
+		pictureBoxD->setLocation(870, pictureBoxA->Location.Y);
+		pictureBoxA->Hide();
+		pictureBoxB->Hide();
+		pictureBoxC->Hide();
+		pictureBoxD->Hide();
+
+		pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/door.png", false);
+		pictureBoxTF1->Hide();
+		pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/door.png", false);
+		pictureBoxTF2->Hide();
+
+		des->addObject(pictureBoxTF1, destroyFuncTF1);
+		des->addObject(pictureBoxTF2, destroyFuncTF2);
+		pictureBoxTF1->Show();
+		pictureBoxTF2->Show();
+	}
+	
 }
 private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArgs^ e) {
 }

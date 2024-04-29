@@ -153,7 +153,7 @@ public:
     //Usage: choosing 8 of 16 A B C D, and 2 of 4 T/F
     */
     static List<E>^ chooseRandomMfromN(List<E>^ v, int M) {
-        srand(time(0));                                 //srand() is necessary to ensure that different values are generated each time
+        //srand(time(0));                                 //srand() is necessary to ensure that different values are generated each time
         List<E>^ result = gcnew List<E>;
         for (int i = 0; i < M; i++) {
             if (v->Count == 1) {
@@ -162,7 +162,7 @@ public:
                 result->Add(e);
             }
             else {
-                int random = rand() % (v->Count - 1);
+                int random = rand() % (v->Count);
                 E e = v[random];
                 v->RemoveRange(random, 1);
                 result->Add(e);
@@ -171,6 +171,10 @@ public:
         return result;
     }
 
+    static void srandom() {
+        
+        srand(time(0));
+    }
     /*method to shuffle a vector
     OUTPUT: the method returns the shuffled vector
     //TIME COMPLEXITY: O(n). This time complexity is also also clearly optimal.
