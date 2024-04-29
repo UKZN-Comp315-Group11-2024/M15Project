@@ -18,7 +18,7 @@ LEVEL 2 QUESTIONS
 0$In spy terminology, what does the term "blowback" refer to?$A covert operation that goes wrong and results in unintended consequences$A signal used to trigger a predetermined action$A communication intercepted by enemy intelligence$A clandestine meeting between agents
 0$What is the name of an anonymous female person$Jane Doe$Mary Sue$Jessica White$Richard Roe
 0$When on an infiltration mission, what is a common objective for a spy?$To gather intelligence$To engage in direct combat$To establish diplomatic relations$To conduct propaganda efforts
-1$Spies can disquise themselves using face masks like in Mission Impossible.$True$False
+1$Spies can disquise themselves using face masks just like in the Mission Impossible series.$True$False
 1$$False$True
 1$$True$False
 1$$True$False

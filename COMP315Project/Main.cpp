@@ -28,14 +28,14 @@ int main(array<String^>^ args) {
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
 
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
-
-	//Leaderboard leaderboard;
-	//Application::Run(% leaderboard);
-	
 	lvl1Form lvl1form;
 	Application::Run(% lvl1form);
+
+	Leaderboard leaderboard;
+	Application::Run(% leaderboard);
+	
+	//lvl1Form lvl1form;
+	//Application::Run(% lvl1form);
 	
 	/*popup P("Lorem Ipsum is simply dummy text of the printing and typesetting industry, "
 		+   "but also the leap into electronic typesetting, remaining essentially unchanged. "
