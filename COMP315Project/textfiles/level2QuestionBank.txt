@@ -1,4 +1,24 @@
-@Author
-@Author
-Source:
+@Author Neo
+@Author Daniel
+Source: Youtube, Chat, Myself(Neo)
 LEVEL 2 QUESTIONS
+0$What is an icebox?$A classified room$A box made of ice$A musical box$A case for weapons
+0$What is in Area 51?$Classified weapons and aircrafts$Classifed extraterrestrials and spacecrafts$Classified documents and government secrets$Classified nuclear projects and war plans
+0$How would a spy communicate or share info with another spy?$Covert Communication$Face-to-face Communication$Telegraphical Communication$Virtual Communication
+0$What makes a good spy?$Charisma$Athleticism$Deception$Curiosity
+0$Which of the following fictional characters is NOT a famous spy in literature or film?$Ethan Hunt$Jason Bourne$Sherlock Holmes$Natasha Romanoff	
+0$Who was the American whistleblower who leaked classified information from the National Security Agency (NSA) in 2013?$Edward Snowden$Julian Assange$Chelsea Manning$Robert Hanssen
+0$What is the name of the infamous Soviet intelligence agency known for its covert operations during the Cold War?$KGB$GRU$FSB$SVR
+0$In espionage terminology, what does the term "honey trap" refer to?$A romantic or sexual relationship used to manipulate a target$A covert operation involving the use of honey as a distraction$A type of explosive device disguised as a sweet treat$A method of signaling to other spies using coded messages
+0$Which of the following is a type of cryptographic device used for secure communication in espionage?$Enigma machine$Geiger counter$X-ray scanner$Telescope
+0$What does the term "black ops" refer to in the context of espionage?$Covert operations conducted by special forces$Intelligence operations involving deception and disinformation$Cyber warfare conducted by state-sponsored hackers$Propaganda campaigns aimed at influencing public opinion
+0$Which of the following is NOT a common method of communication used by spies?$Smoke signals$Morse code$Semaphore signals$Carrier pigeon
+0$What is the codename of the Soviet intelligence officer who provided information to the British Secret Intelligence Service (MI6) during the Cold War?$Agent Red$Agent Orange$Agent Gray$Agent Blue
+0$Who is often credited as the author of the book "The Art of War," which has been studied by intelligence agencies around the world?$Sun Tzu$Niccolò Machiavelli$Karl von Clausewitz$Mao Zedong
+0$In spy terminology, what does the term "blowback" refer to?$A covert operation that goes wrong and results in unintended consequences$A signal used to trigger a predetermined action$A communication intercepted by enemy intelligence$A clandestine meeting between agents
+0$What is the name of an anonymous female person$Jane Doe$Mary Sue$Jessica White$Richard Roe
+0$When on an infiltration mission, what is a common objective for a spy?$To gather intelligence$To engage in direct combat$To establish diplomatic relations$To conduct propaganda efforts
+1$Spies can disquise themselves using face masks just like in the Mission Impossible series.$True$False
+1$$False$True
+1$$True$False
+1$$True$False

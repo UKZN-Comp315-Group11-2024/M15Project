@@ -126,7 +126,7 @@ void LevelMethods::QuestionAnswered(int option) {
 		EndLevel();
 	}
 
-	ResetPlayerPos();
+	//ResetPlayerPos();
 	DisplayNextQuestionSet();
 	
 }

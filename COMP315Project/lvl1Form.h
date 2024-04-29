@@ -10,6 +10,7 @@
 #include "customAlgs.h"
 #include "LevelMethods.h"
 #include "Destructible.h"
+#include "PictureBox.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -28,9 +29,9 @@ namespace M15Namespace {
 				LevelMethods^ LvlMethods;
 
 		private: System::Windows::Forms::Timer^ BulletTimer;
-		private: System::Windows::Forms::PictureBox^ pictureBoxB;
-		private: System::Windows::Forms::PictureBox^ pictureBoxD;
-		private: System::Windows::Forms::PictureBox^ pictureBoxC;
+
+
+
 		private: System::Windows::Forms::Timer^ QuestionTransitionTimerShow;
 
 		private: System::Windows::Forms::TextBox^ ResultTextBox;
@@ -45,19 +46,18 @@ namespace M15Namespace {
 
 
 		public:
-			Destructible^ des;
+			Destructible^ des = gcnew Destructible;
+			Destructible::DestroyFunction^ destroyFunc = gcnew Destructible::DestroyFunction(this, &lvl1Form::printFunc);
+			Destructible::DestroyFunction^ destroyFuncA = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyA);
+			Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyB);
+			Destructible::DestroyFunction^ destroyFuncC = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyC);
+			Destructible::DestroyFunction^ destroyFuncD = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyD);
 				lvl1Form()
 				{	
 					InitializeComponent();
 					//
 					//TODO: Add the constructor code here
 					
-					des = gcnew Destructible;
-					Destructible::DestroyFunction^ destroyFunc = gcnew Destructible::DestroyFunction(this, &lvl1Form::printFunc);
-					des->addObject(pictureBoxA, destroyFunc);
-					des->addObject(pictureBoxB, destroyFunc);
-					des->addObject(pictureBoxC, destroyFunc);
-					des->addObject(pictureBoxD, destroyFunc);
 					//@Daniel
 					des->SetQuestionTransitionTimer(QuestionTransitionTimerShow);
 
@@ -154,7 +154,7 @@ namespace M15Namespace {
 
 
 
-		private: System::Windows::Forms::PictureBox^ pictureBoxA;
+
 
 		private: System::Windows::Forms::TextBox^ textBoxD;
 		private: System::Windows::Forms::TextBox^ textBoxTFA;
@@ -163,15 +163,6 @@ namespace M15Namespace {
 private: System::Windows::Forms::TextBox^ textBoxTFB;
 private: System::Windows::Forms::TextBox^ textBoxQuestion;
 private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
-
-
-
-
-		
-
-
-
-
 
 
 
@@ -222,9 +213,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->textBoxTFA = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxTFB = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxD = (gcnew System::Windows::Forms::TextBox());
-					this->pictureBoxD = (gcnew System::Windows::Forms::PictureBox());
-					this->pictureBoxC = (gcnew System::Windows::Forms::PictureBox());
-					this->pictureBoxB = (gcnew System::Windows::Forms::PictureBox());
 					this->ContinueNxtLvlButton = (gcnew System::Windows::Forms::Button());
 					this->textBoxQuestion = (gcnew System::Windows::Forms::TextBox());
 					this->textBoxA = (gcnew System::Windows::Forms::TextBox());
@@ -232,7 +220,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->wasd = (gcnew System::Windows::Forms::PictureBox());
 					this->beginButton = (gcnew System::Windows::Forms::Button());
 					this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
-					this->pictureBoxA = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBoxTFA = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
@@ -248,12 +235,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxD))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxC))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxB))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -264,9 +247,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->lblMessage1->AutoSize = true;
 					this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-					this->lblMessage1->Location = System::Drawing::Point(264, 720);
+					this->lblMessage1->Location = System::Drawing::Point(330, 900);
+					this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 					this->lblMessage1->Name = L"lblMessage1";
-					this->lblMessage1->Size = System::Drawing::Size(0, 73);
+					this->lblMessage1->Size = System::Drawing::Size(0, 90);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 					this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
@@ -281,10 +265,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 					this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 					this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-					this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
+					this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
 					this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 					this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-					this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
+					this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
@@ -302,9 +286,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Controls->Add(this->textBoxTFA);
 					this->panelLogin->Controls->Add(this->textBoxTFB);
 					this->panelLogin->Controls->Add(this->textBoxD);
-					this->panelLogin->Controls->Add(this->pictureBoxD);
-					this->panelLogin->Controls->Add(this->pictureBoxC);
-					this->panelLogin->Controls->Add(this->pictureBoxB);
 					this->panelLogin->Controls->Add(this->ContinueNxtLvlButton);
 					this->panelLogin->Controls->Add(this->textBoxQuestion);
 					this->panelLogin->Controls->Add(this->textBoxA);
@@ -314,23 +295,24 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Controls->Add(this->progressBarLevel1);
 					this->panelLogin->Controls->Add(this->lblMessage1);
 					this->panelLogin->Controls->Add(this->pbGeneralMilitary);
-					this->panelLogin->Controls->Add(this->pictureBoxA);
 					this->panelLogin->Controls->Add(this->pictureBoxTFA);
 					this->panelLogin->Controls->Add(this->pictureBox1);
 					this->panelLogin->Controls->Add(this->pictureBox2);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-3, -20);
+					this->panelLogin->Location = System::Drawing::Point(-4, -25);
+					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1283, 708);
+					this->panelLogin->Size = System::Drawing::Size(1604, 885);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
 					// playerlevel1
 					// 
-					this->playerlevel1->ImageLocation = L".\\assets\\PlayerMove\\idle.gif";
-					this->playerlevel1->Location = System::Drawing::Point(40, 406);
+					this->playerlevel1->ImageLocation = L"assets/PlayerMove/idle.gif";
+					this->playerlevel1->Location = System::Drawing::Point(130, 494);
+					this->playerlevel1->Margin = System::Windows::Forms::Padding(4);
 					this->playerlevel1->Name = L"playerlevel1";
-					this->playerlevel1->Size = System::Drawing::Size(152, 88);
+					this->playerlevel1->Size = System::Drawing::Size(187, 105);
 					this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->playerlevel1->TabIndex = 35;
 					this->playerlevel1->TabStop = false;
@@ -340,93 +322,63 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// ResultTextBox
 					// 
 					this->ResultTextBox->Location = System::Drawing::Point(0, 0);
+					this->ResultTextBox->Margin = System::Windows::Forms::Padding(4);
 					this->ResultTextBox->Name = L"ResultTextBox";
-					this->ResultTextBox->Size = System::Drawing::Size(100, 20);
+					this->ResultTextBox->Size = System::Drawing::Size(124, 22);
 					this->ResultTextBox->TabIndex = 34;
 					this->ResultTextBox->Visible = false;
 					// 
 					// textBoxC
 					// 
-					this->textBoxC->Location = System::Drawing::Point(987, 445);
+					this->textBoxC->Location = System::Drawing::Point(1234, 556);
 					this->textBoxC->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxC->Name = L"textBoxC";
-					this->textBoxC->Size = System::Drawing::Size(264, 20);
+					this->textBoxC->Size = System::Drawing::Size(329, 22);
 					this->textBoxC->TabIndex = 23;
 					this->textBoxC->Visible = false;
 					// 
 					// textBoxB
 					// 
-					this->textBoxB->Location = System::Drawing::Point(987, 292);
+					this->textBoxB->Location = System::Drawing::Point(1234, 365);
 					this->textBoxB->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxB->Name = L"textBoxB";
-					this->textBoxB->Size = System::Drawing::Size(264, 20);
+					this->textBoxB->Size = System::Drawing::Size(329, 22);
 					this->textBoxB->TabIndex = 22;
 					this->textBoxB->Visible = false;
 					// 
 					// textBoxTFA
 					// 
-					this->textBoxTFA->Location = System::Drawing::Point(987, 230);
+					this->textBoxTFA->Location = System::Drawing::Point(1234, 288);
 					this->textBoxTFA->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxTFA->Name = L"textBoxTFA";
-					this->textBoxTFA->Size = System::Drawing::Size(264, 20);
+					this->textBoxTFA->Size = System::Drawing::Size(329, 22);
 					this->textBoxTFA->TabIndex = 27;
 					this->textBoxTFA->Visible = false;
 					// 
 					// textBoxTFB
 					// 
-					this->textBoxTFB->Location = System::Drawing::Point(987, 521);
+					this->textBoxTFB->Location = System::Drawing::Point(1234, 651);
 					this->textBoxTFB->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxTFB->Name = L"textBoxTFB";
-					this->textBoxTFB->Size = System::Drawing::Size(264, 20);
+					this->textBoxTFB->Size = System::Drawing::Size(329, 22);
 					this->textBoxTFB->TabIndex = 28;
 					this->textBoxTFB->Visible = false;
 					// 
 					// textBoxD
 					// 
-					this->textBoxD->Location = System::Drawing::Point(987, 598);
+					this->textBoxD->Location = System::Drawing::Point(1234, 748);
 					this->textBoxD->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxD->Name = L"textBoxD";
-					this->textBoxD->Size = System::Drawing::Size(264, 20);
+					this->textBoxD->Size = System::Drawing::Size(329, 22);
 					this->textBoxD->TabIndex = 24;
 					this->textBoxD->Visible = false;
 					// 
-					// pictureBoxD
-					// 
-					this->pictureBoxD->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxD.Image")));
-					this->pictureBoxD->Location = System::Drawing::Point(692, 533);
-					this->pictureBoxD->Name = L"pictureBoxD";
-					this->pictureBoxD->Size = System::Drawing::Size(329, 140);
-					this->pictureBoxD->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxD->TabIndex = 33;
-					this->pictureBoxD->TabStop = false;
-					this->pictureBoxD->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBoxD_Click);
-					// 
-					// pictureBoxC
-					// 
-					this->pictureBoxC->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxC.Image")));
-					this->pictureBoxC->Location = System::Drawing::Point(692, 387);
-					this->pictureBoxC->Name = L"pictureBoxC";
-					this->pictureBoxC->Size = System::Drawing::Size(329, 140);
-					this->pictureBoxC->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxC->TabIndex = 32;
-					this->pictureBoxC->TabStop = false;
-					// 
-					// pictureBoxB
-					// 
-					this->pictureBoxB->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxB.Image")));
-					this->pictureBoxB->Location = System::Drawing::Point(692, 245);
-					this->pictureBoxB->Name = L"pictureBoxB";
-					this->pictureBoxB->Size = System::Drawing::Size(329, 140);
-					this->pictureBoxB->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxB->TabIndex = 31;
-					this->pictureBoxB->TabStop = false;
-					// 
 					// ContinueNxtLvlButton
 					// 
-					this->ContinueNxtLvlButton->Location = System::Drawing::Point(573, 560);
+					this->ContinueNxtLvlButton->Location = System::Drawing::Point(716, 700);
 					this->ContinueNxtLvlButton->Margin = System::Windows::Forms::Padding(2);
 					this->ContinueNxtLvlButton->Name = L"ContinueNxtLvlButton";
-					this->ContinueNxtLvlButton->Size = System::Drawing::Size(120, 58);
+					this->ContinueNxtLvlButton->Size = System::Drawing::Size(150, 72);
 					this->ContinueNxtLvlButton->TabIndex = 30;
 					this->ContinueNxtLvlButton->Text = L"Continue";
 					this->ContinueNxtLvlButton->UseVisualStyleBackColor = true;
@@ -434,29 +386,29 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// textBoxQuestion
 					// 
-					this->textBoxQuestion->Location = System::Drawing::Point(190, 26);
+					this->textBoxQuestion->Location = System::Drawing::Point(238, 32);
 					this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxQuestion->Name = L"textBoxQuestion";
-					this->textBoxQuestion->Size = System::Drawing::Size(330, 20);
+					this->textBoxQuestion->Size = System::Drawing::Size(412, 22);
 					this->textBoxQuestion->TabIndex = 29;
 					this->textBoxQuestion->Visible = false;
 					// 
 					// textBoxA
 					// 
-					this->textBoxA->Location = System::Drawing::Point(987, 169);
+					this->textBoxA->Location = System::Drawing::Point(1234, 211);
 					this->textBoxA->Margin = System::Windows::Forms::Padding(2);
 					this->textBoxA->Name = L"textBoxA";
-					this->textBoxA->Size = System::Drawing::Size(264, 20);
+					this->textBoxA->Size = System::Drawing::Size(329, 22);
 					this->textBoxA->TabIndex = 17;
 					this->textBoxA->Visible = false;
 					// 
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(637, 639);
+					this->space->Location = System::Drawing::Point(796, 799);
 					this->space->Margin = System::Windows::Forms::Padding(2);
 					this->space->Name = L"space";
-					this->space->Size = System::Drawing::Size(31, 39);
+					this->space->Size = System::Drawing::Size(39, 49);
 					this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->space->TabIndex = 16;
 					this->space->TabStop = false;
@@ -465,10 +417,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(536, 619);
+					this->wasd->Location = System::Drawing::Point(670, 774);
 					this->wasd->Margin = System::Windows::Forms::Padding(2);
 					this->wasd->Name = L"wasd";
-					this->wasd->Size = System::Drawing::Size(96, 72);
+					this->wasd->Size = System::Drawing::Size(120, 90);
 					this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->wasd->TabIndex = 15;
 					this->wasd->TabStop = false;
@@ -481,9 +433,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-					this->beginButton->Location = System::Drawing::Point(490, 800);
+					this->beginButton->Location = System::Drawing::Point(612, 1000);
+					this->beginButton->Margin = System::Windows::Forms::Padding(4);
 					this->beginButton->Name = L"beginButton";
-					this->beginButton->Size = System::Drawing::Size(195, 50);
+					this->beginButton->Size = System::Drawing::Size(244, 62);
 					this->beginButton->TabIndex = 13;
 					this->beginButton->Text = L"Begin";
 					this->beginButton->UseVisualStyleBackColor = false;
@@ -495,38 +448,31 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(669, 32);
+					this->progressBarLevel1->Location = System::Drawing::Point(836, 40);
+					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 					this->progressBarLevel1->Maximum = 2000;
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(585, 49);
+					this->progressBarLevel1->Size = System::Drawing::Size(731, 61);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
 					// 
-					// pictureBoxA
-					// 
-					this->pictureBoxA->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxA.Image")));
-					this->pictureBoxA->Location = System::Drawing::Point(692, 95);
-					this->pictureBoxA->Name = L"pictureBoxA";
-					this->pictureBoxA->Size = System::Drawing::Size(329, 140);
-					this->pictureBoxA->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-					this->pictureBoxA->TabIndex = 18;
-					this->pictureBoxA->TabStop = false;
-					// 
 					// pictureBoxTFA
 					// 
-					this->pictureBoxTFA->Location = System::Drawing::Point(922, 95);
+					this->pictureBoxTFA->Location = System::Drawing::Point(1152, 119);
+					this->pictureBoxTFA->Margin = System::Windows::Forms::Padding(4);
 					this->pictureBoxTFA->Name = L"pictureBoxTFA";
-					this->pictureBoxTFA->Size = System::Drawing::Size(329, 290);
+					this->pictureBoxTFA->Size = System::Drawing::Size(411, 362);
 					this->pictureBoxTFA->TabIndex = 25;
 					this->pictureBoxTFA->TabStop = false;
 					this->pictureBoxTFA->Visible = false;
 					// 
 					// pictureBox1
 					// 
-					this->pictureBox1->Location = System::Drawing::Point(922, 395);
+					this->pictureBox1->Location = System::Drawing::Point(1152, 494);
+					this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 					this->pictureBox1->Name = L"pictureBox1";
-					this->pictureBox1->Size = System::Drawing::Size(329, 290);
+					this->pictureBox1->Size = System::Drawing::Size(411, 362);
 					this->pictureBox1->TabIndex = 26;
 					this->pictureBox1->TabStop = false;
 					this->pictureBox1->Visible = false;
@@ -535,9 +481,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// pictureBox2
 					// 
 					this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-					this->pictureBox2->Location = System::Drawing::Point(279, 189);
+					this->pictureBox2->Location = System::Drawing::Point(349, 236);
+					this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
 					this->pictureBox2->Name = L"pictureBox2";
-					this->pictureBox2->Size = System::Drawing::Size(20, 727);
+					this->pictureBox2->Size = System::Drawing::Size(25, 909);
 					this->pictureBox2->TabIndex = 36;
 					this->pictureBox2->TabStop = false;
 					this->pictureBox2->Visible = false;
@@ -586,13 +533,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// lvl1Form
 					// 
-					this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 					this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 					this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-					this->ClientSize = System::Drawing::Size(1264, 681);
+					this->ClientSize = System::Drawing::Size(1580, 851);
 					this->Controls->Add(this->panelLogin);
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 					this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+					this->Margin = System::Windows::Forms::Padding(4);
 					this->MaximizeBox = false;
 					this->Name = L"lvl1Form";
 					this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -605,12 +553,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->ResumeLayout(false);
 					this->panelLogin->PerformLayout();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxD))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxC))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxB))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -632,11 +576,75 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					bullet->Parent = panelLogin;
 					bullet->Location = System::Drawing::Point(playerlevel1->Location.X, playerlevel1->Location.Y);
 					bullet->Image = Image::FromFile("assets/PlayerMove/idle.gif");
-					//bullet->BringToFront();
+					bullet->BringToFront();
 					bullet->Hide();
-					BulletTimer->Stop();
-					
 				}
+					  definedPictureBox^ pictureBoxA;
+					  definedPictureBox^ pictureBoxB;
+					  definedPictureBox^ pictureBoxC;
+					  definedPictureBox^ pictureBoxD;
+
+					  void destroyA()
+					  {
+						  //remove
+						  std::cout << "A des" << std::endl;
+						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  bullet->Hide();
+
+						  pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
+
+						  
+						  des->addObject(pictureBoxA, destroyFuncA);
+						  //remove
+						  //AddDoors();
+						  LvlMethods->QuestionAnswered(0);
+						  QuestionTransitionTimerShow->Start();
+					  }
+					  void destroyB()
+					  {
+						  //remove
+						  std::cout << "B des" << std::endl;
+						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  bullet->Hide();
+
+						  pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
+						  
+						  des->addObject(pictureBoxB, destroyFuncB);
+						  //remove
+						  //AddDoors();
+						  LvlMethods->QuestionAnswered(1);
+						  QuestionTransitionTimerShow->Start();
+					  }
+					  void destroyC()
+					  {
+						  //remove
+						  std::cout << "C des" << std::endl;
+						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  bullet->Hide();
+						  
+						  pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
+						  
+						  des->addObject(pictureBoxC, destroyFuncC);
+						  //remove
+						  //AddDoors();
+						  LvlMethods->QuestionAnswered(2);
+						  QuestionTransitionTimerShow->Start();
+					  }
+					  void destroyD()
+					  {
+						  //remove 
+						  std::cout << "D des" << std::endl;
+						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  bullet->Hide();
+
+						  pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
+						  
+						  des->addObject(pictureBoxD, destroyFuncD);
+						  //remove
+						  //AddDoors();
+						  LvlMethods->QuestionAnswered(3);
+						  QuestionTransitionTimerShow->Start();
+					  }
 
 			String^ projectDirectory = Application::StartupPath;
 			String^ imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
@@ -675,33 +683,24 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 
 				msclr::interop::marshal_context context;
-				std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
-				String^ unwrapped = gcnew String(windowPrompt.c_str());
-				popup^ window = gcnew popup(unwrapped, 0, 0, "");
-				window->Visible = false;
-				this->Hide();
-				window->ShowDialog();
+				//std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+				//String^ unwrapped = gcnew String(windowPrompt.c_str());
+				//popup^ window = gcnew popup(unwrapped, 0, 0, "");
+				//window->Visible = false;
+				//this->Hide();
+				//window->ShowDialog();
 
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 				System::String^ recruitname = this->player->username;
-				//lblMessage1->Text = "Welcome, agent " + recruitname+ "\nLevel 1";
 				
 				Transition1->Start();
 
-				//msclr::interop::marshal_context context;
+				playerlevel1->ImageLocation = "assets/PlayerMove/idle.gif";
 
-				// Convert System::String^ to std::string
-				std::string stdString = context.marshal_as<std::string>(imagePath);
 
-				playerlevel1->ImageLocation = imagePath;
-
-				bullet = gcnew System::Windows::Forms::PictureBox;
-				bullet->Size = System::Drawing::Size(75, 50);
-				bullet->Parent = panelLogin;
-				bullet->Location = System::Drawing::Point(playerlevel1->Location.X, playerlevel1->Location.Y);
-				bullet->Image = Image::FromFile("assets/PlayerMove/idle.gif");
-				//bullet->BringToFront();
+				bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 				bullet->Hide();
+
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -774,6 +773,20 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				movePlayerTimer->Start();
 				Transition2->Enabled = false;
 				canshoot = true;
+
+				pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
+				pictureBoxA->Show();
+				pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
+				pictureBoxB->Show();
+				pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
+				pictureBoxC->Show();
+				pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
+				pictureBoxD->Show();
+
+				des->addObject(pictureBoxA, destroyFuncA);
+				des->addObject(pictureBoxB, destroyFuncB);
+				des->addObject(pictureBoxC, destroyFuncC);
+				des->addObject(pictureBoxD, destroyFuncD);
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(395, y1);
@@ -864,13 +877,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				}
 				if (e->KeyCode == Keys::Space)
 				{
-					if (canshoot) {
-						Image^ image = Image::FromFile("assets/PlayerMove/idle.gif");
-						bullet->BringToFront();
-						bullet->Show();
-						des->addBullet(bullet, 10, 0, playerlevel1->Location.X, playerlevel1->Location.Y);
-						BulletTimer->Start();
-					
+					if (canshoot && !isleft) {
+						
 						shootTimer->Start();
 					}
 				}
@@ -967,28 +975,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			}
 		}
 
-		//Point previousLocation;
-
-		//@jaedon: Edited and redefined player animations
-		//@avesh: was there
-		/*private: System::Void timeranimation_Tick(System::Object^ sender, System::EventArgs^ e) {
-			Point currentlocation = playerlevel1->Location;
-			String^ idlename;
-			if (!isleft) {
-				idlename = "assets/PlayerMove/idle.gif";
-			}
-			else {
-				idlename = "assets/PlayerMove/idleleft.gif";
-			}
-			if (previousLocation.X == currentlocation.X && previousLocation.Y == currentlocation.Y) {
-				playerlevel1->Image = Image::FromFile(idlename);
-				numkeyspressed++;
-			}
-
-			previousLocation.X = currentlocation.X;
-			previousLocation.Y = currentlocation.Y;
-
-		}*/
+		
 
 //@avesh: shoot animation
 String^ shootAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\shoot.gif");
@@ -1013,6 +1000,11 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 		movePlayerTimer->Start();		
 		countSpace = 0;
 		shootTimer->Stop();
+
+		bullet->Show();
+		bullet->BringToFront();
+		des->addBullet(bullet, 10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 19);
+		BulletTimer->Start();
 	}
 	
 }
@@ -1031,9 +1023,6 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 
 	   //@Daniel: timer to give player feedback
 		private: System::Void QuestionTransitionTimerShow_Tick(System::Object^ sender, System::EventArgs^ e) {
-			if (LvlMethods->AnswerGiven) {
-				LvlMethods->QuestionAnswered(des->Choice);
-			}
 			LvlMethods->DisableControls = true;
 		        if (LvlMethods->Correct) {
 					ResultTextBox->Visible = true;
@@ -1061,7 +1050,6 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			
 			
 		
-		//std::cout << QuestionTransitionTimerShow->Enabled, "\n";
 		
 }
 			   //@Daniel: puts everything back after the player get feeback for 3 seconds
@@ -1077,10 +1065,68 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 	LvlMethods->DisableControls = false;
 	QuestionTransitionTimerHide->Stop();
 
+	pictureBoxA->Show();
+	pictureBoxB->Show();
+	pictureBoxC->Show();
+	pictureBoxD->Show();
 }
 private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
+	   void AddDoors() {
+		   //des->clearDoors();
+		   if (this->LvlMethods->QuestionType == "0") {
+			   //re-prints door A
+			   std::cout << "A des" << std::endl;
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Hide();
+			   pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
+			   des->addObject(pictureBoxA, destroyFuncA);
+
+			   //re-prints door B
+			   std::cout << "B des" << std::endl;
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Hide();
+			   pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
+			   des->addObject(pictureBoxB, destroyFuncB);
+
+			   //re-prints door C
+			   std::cout << "C des" << std::endl;
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Hide();
+			   pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
+			   des->addObject(pictureBoxC, destroyFuncC);
+
+			   //re-prints door D
+			   std::cout << "D des" << std::endl;
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Hide();
+			   pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
+			   des->addObject(pictureBoxD, destroyFuncD);
+		   }
+		   //for True/False
+		   else {
+			   //re-prints door A
+			   std::cout << "A des" << std::endl;
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Hide();
+			   pictureBoxA = gcnew definedPictureBox(panelLogin, 329, 120, 850, 95, "assets/Doors/door.png", false);
+			   des->addObject(pictureBoxA, destroyFuncA);
+
+			   //re-prints door B
+			   std::cout << "B des" << std::endl;
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Hide();
+			   pictureBoxB = gcnew definedPictureBox(panelLogin, 329, 120, 850, 395, "assets/Doors/door.png", false);
+			   des->addObject(pictureBoxB, destroyFuncB);
+		   }
+
+	   }
+
+
 };
 }
+
+//@Daniel: 
