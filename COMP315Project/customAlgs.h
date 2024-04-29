@@ -60,6 +60,10 @@ public:
         }
     }
 
+    static void srandom() {
+        srand(time(0));
+    }
+
     /*method that searches for an element inside an array
     OUTPUT: if element found, the index of the element is returned.
             if the element is not found, -1 is returned.
@@ -153,7 +157,7 @@ public:
     //Usage: choosing 8 of 16 A B C D, and 2 of 4 T/F
     */
     static List<E>^ chooseRandomMfromN(List<E>^ v, int M) {
-        srand(time(0));                                 //srand() is necessary to ensure that different values are generated each time
+                                        //srand() is necessary to ensure that different values are generated each time
         List<E>^ result = gcnew List<E>;
         for (int i = 0; i < M; i++) {
             if (v->Count == 1) {
@@ -162,7 +166,7 @@ public:
                 result->Add(e);
             }
             else {
-                int random = rand() % (v->Count - 1);
+                int random = rand() % (v->Count);  //changed from (v->Count - 1) to (v->Count)
                 E e = v[random];
                 v->RemoveRange(random, 1);
                 result->Add(e);

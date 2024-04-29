@@ -15,6 +15,8 @@ using namespace System::IO;
 using namespace System::Collections::Generic;
 
 LoadQuestion::LoadQuestion(int levelNum) {
+    customAlgs<System::String^>::srandom();
+
     this->levelNum = levelNum;
 	System::String^ LevelFile = "textfiles\\level" + levelNum + "QuestionBank.txt";
 	System::IO::StreamReader^ myfile = gcnew System::IO::StreamReader(LevelFile);
