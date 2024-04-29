@@ -107,6 +107,8 @@ public:
 	/// <param name="item">The Control subclass you want to be treated as a bullet</param>
 	/// <param name="functionToCallOnDestroy">Function to call when the object is destroyed</param>
 	void addObject(Control^ item, DestroyFunction^ functionToCallOnDestroy);
+
+	int getBulletCount();
 };
 
 //Structure storing the Control object and other necessary details needed for moving bullets

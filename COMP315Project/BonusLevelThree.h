@@ -5,6 +5,7 @@
 #include "popup.h"
 #include "LoadQuestion.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -15,17 +16,17 @@ namespace M15Namespace {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for BonusLevelOne
+	/// Summary for BonusLevelThree
 	/// </summary>
 	public ref class BonusLevelThree : public System::Windows::Forms::Form
 	{
+		MusicAndSFX* sound = new MusicAndSFX();
 	public:
 		BonusLevelThree(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			
+			sound->Forest();
 		}
 
 	protected:
@@ -188,9 +189,9 @@ namespace M15Namespace {
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelThree";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"BonusLevelOne";
-			this->Load += gcnew System::EventHandler(this, &BonusLevelThree::BonusLevelOne_Load);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelThree::BonusLevelOne_KeyDown);
+			this->Text = L"BonusLevelThree";
+			this->Load += gcnew System::EventHandler(this, &BonusLevelThree::BonusLevelThree_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelThree::BonusLevelThree_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
 			this->panelBonusLevel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -208,11 +209,10 @@ namespace M15Namespace {
 		   //@aveshr
 		   array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(27);
 		   array<definedPictureBox^>^ boxes = gcnew array<definedPictureBox^>(5);
-	private: System::Void BonusLevelOne_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void BonusLevelThree_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
-
 		int x_pos, y_pos, x_size, y_size;
 		srand(time(0));
 		for (int i = 0; i < buttons->Length; i++) {
@@ -282,8 +282,7 @@ namespace M15Namespace {
 		}
 		targetNum++;
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 		   //@aveshr
 	private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Point p1 = pbGeneralMilitary->Location;
@@ -331,7 +330,7 @@ namespace M15Namespace {
 		lblMessage1->Location = Point(380, y1);
 	}
 		   //@aveshr
-	private: System::Void BonusLevelOne_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	private: System::Void BonusLevelThree_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::Enter)
 		{
 			Transition1->Stop();

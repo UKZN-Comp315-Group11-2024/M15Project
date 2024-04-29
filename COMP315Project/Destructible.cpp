@@ -86,6 +86,10 @@ void Destructible::addObject(Control ^ item, DestroyFunction^ functionToCallOnDe
 	destroyables.Add(des);
 };
 
+int Destructible::getBulletCount() {
+	return bullets.Count;
+}
+
 //@Daniel
 bool Destructible::CheckDoorHit() {
 	if (this->DoorHit) {
