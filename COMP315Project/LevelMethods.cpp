@@ -118,17 +118,19 @@ void LevelMethods::QuestionAnswered(int option) {
 	else {
 		this->Correct = false;
 	}
-	
+
 	this->ProgressBarTimer->Stop();
 	calculateTime();
-	
+
 	if (CheckLevelEnd()) {
-		EndLevel();
+		//EndLevel();
 	}
 
 	//ResetPlayerPos();
-	DisplayNextQuestionSet();
-	
+	if (this->QuestionsCompleted < 10) {
+		DisplayNextQuestionSet();
+	}
+
 }
 
 //called if timer runs out
@@ -139,7 +141,7 @@ void LevelMethods::QuestionCompleted() {
 	calculateTime();
 
 	if (CheckLevelEnd()) {
-		EndLevel();
+		//EndLevel();
 	}
 
 	ResetPlayerPos();
@@ -202,7 +204,7 @@ void LevelMethods::EndLevel() {
 	RecordPlayerStats();
 
 	//change background
-	Panel->BackgroundImage = Image::FromFile("path_to_image.jpg");
+	//Panel->BackgroundImage = Image::FromFile("path_to_image.jpg");
 
 	//disable player controlls
 	//LevelFormInstance->
