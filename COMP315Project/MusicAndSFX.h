@@ -12,15 +12,23 @@ public:
 
 	MusicAndSFX();
     ~MusicAndSFX();
+
 	void gunshot();
 	void MouseClick();
 	void FacialRegocnition();
+	void CorrectAnswer();
+	void IncorrectAnswer();
+	void Laser();
+	void BulletImpact();
+
 	void LevelOneMusic();
 	void LevelTwoMusic();
 	void LevelThreeMusic();
+
 	void OfficeNoise();
 	void Forest();
 	void NightForest();
+
 	void StopSound(boolean Stop);
 
 

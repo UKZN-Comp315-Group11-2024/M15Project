@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -54,8 +55,11 @@ bool definedPictureBox::operator ==(definedPictureBox^ b1) {
 
 
 void definedPictureBox::pictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+	MusicAndSFX* BonusSounds = new MusicAndSFX();
 	this->Hide();
 	countClick++;
+	BonusSounds->Laser();
+	//BonusSounds->gunshot();
 }
 
 int definedPictureBox::numClicks()

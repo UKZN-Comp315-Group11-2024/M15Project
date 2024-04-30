@@ -11,6 +11,8 @@
 #include "LevelMethods.h"
 #include "Destructible.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
+
 namespace M15Namespace {
 
 	using namespace System;
@@ -32,6 +34,12 @@ namespace M15Namespace {
 				//PictureBox Array
 				array<definedPictureBox^>^ pictureBoxArray;
 				definedPictureBox^ gif;
+
+				//creating music class objects
+				MusicAndSFX* soundAnswer =new MusicAndSFX();
+				MusicAndSFX* soundImpact = new MusicAndSFX();
+				MusicAndSFX* ambience = new MusicAndSFX();
+				MusicAndSFX* music = new MusicAndSFX();
 
 		private: System::Windows::Forms::Timer^ BulletTimer;
 
@@ -1159,6 +1167,7 @@ private: System::Void BulletTimer_Tick(System::Object^ sender, System::EventArgs
 	
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
 	   int count = 0;
 	//@Daniel: timer to give player feedback
 		private: System::Void QuestionTransitionTimerShow_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -1178,6 +1187,11 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					gif->Image = Image::FromFile("assets/green.gif");
 					count++;
 
+					//correct option sound effect
+					soundAnswer->CorrectAnswer();
+					soundImpact->BulletImpact();
+
+
 				} else {
 					ResultTextBox->Visible = true;
 					ResultTextBox->Text = "You Suck!!!";
@@ -1191,6 +1205,11 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
 					gif->Image = Image::FromFile("assets/red.gif");
 					count++;
+
+					//incorrect sound effect
+					soundAnswer->IncorrectAnswer();
+					soundImpact->BulletImpact();
+
 				}
 
 			

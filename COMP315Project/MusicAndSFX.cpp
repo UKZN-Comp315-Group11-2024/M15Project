@@ -22,7 +22,7 @@
 
 	void MusicAndSFX::gunshot() {
 
-		if (!sound.openFromFile(" ")) {  //loads audio file
+		if (!sound.openFromFile("assets\\ES_Gunshot Rifle 77 - SFX Producer.wav")) {  //loads audio file
 			std::cout << "sound failed to load into file" << std::endl;
 		}
 		sound.play();
@@ -52,18 +52,57 @@
 	void MusicAndSFX::FacialRegocnition() {
 		sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-		if (!sound.openFromFile(" ")) {  //loads audio file
+		if (!sound.openFromFile("assets\\ES_Sci Fi Retinal Scan - SFX Producer.wav")) {  //loads audio file
 			std::cout << "sound failed to load into file" << std::endl;
 		}
 		sound.play();   //plays what's in the buffer
 	}
 
+	void MusicAndSFX::CorrectAnswer() {
+
+		if (!sound.openFromFile("assets\\CorrectAnswerBell.wav")) {  //opens music file
+			std::cout << "could not open music file" << std::endl;
+		}
+		sound.play();
+
+		
+	}
+
+	void MusicAndSFX::IncorrectAnswer() {
+
+		if (!sound.openFromFile("assets\\ES_Buzzer 4 - SFX Producer.wav")) {  //opens music file
+			std::cout << "could not open music file" << std::endl;
+		}
+		sound.play();
+
+		
+	}
+
+	void MusicAndSFX::Laser() {
+
+		if (!sound.openFromFile("assets\\ES_Laser Gun Fire 5 - SFX Producer.wav")) {  //opens music file
+			std::cout << "could not open music file" << std::endl;
+		}
+		sound.play();
+
+
+	}
+
+	void MusicAndSFX::BulletImpact() {
+
+		if (!sound.openFromFile("assets\\ES_Bullet Impact Metal 3 - SFX Producer.wav")) {  //opens music file
+			std::cout << "could not open music file" << std::endl;
+		}
+		sound.play();
+
+
+	}
 	
 	//Music
 
 	void MusicAndSFX::LevelOneMusic() {
 
-		if (!music.openFromFile("assets/TempSoundEffect.wav")) {  //opens music file
+		if (!music.openFromFile("assets\\")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -74,7 +113,7 @@
 
 	void MusicAndSFX::LevelTwoMusic() {
 
-		if (!music.openFromFile("")) {  //opens music file
+		if (!music.openFromFile("assets\\")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -84,7 +123,7 @@
 	
 	void MusicAndSFX::LevelThreeMusic() {
 
-		if (!music.openFromFile("")) {  //opens music file
+		if (!music.openFromFile("assets\\")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -99,7 +138,7 @@
 
 	void MusicAndSFX::OfficeNoise() {
 
-		if (!Background.openFromFile("")) {  //opens music file
+		if (!Background.openFromFile("assets\\")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		Background.play();
@@ -108,7 +147,7 @@
 	}
 
 	void MusicAndSFX::Forest() {
-		if (!Background.openFromFile("assets/TempBackgroundMusic.wav")) {  //opens music file
+		if (!Background.openFromFile("assets\\")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		std::cout << "here";
@@ -120,7 +159,7 @@
 
 	void MusicAndSFX::NightForest() {
 
-		if (!Background.openFromFile("")) {  //opens music file
+		if (!Background.openFromFile("assets\\")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		Background.play();
