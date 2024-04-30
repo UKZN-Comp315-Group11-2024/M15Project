@@ -61,7 +61,7 @@ namespace M15Namespace {
 					//TODO: Add the constructor code here
 					
 					//@Daniel
-					des->SetQuestionTransitionTimer(QuestionTransitionTimerShow);
+					//des->SetQuestionTransitionTimer(QuestionTransitionTimerShow);
 
 					//@Daniel: need this to be true or listeners dont work
 					this->KeyPreview = true;

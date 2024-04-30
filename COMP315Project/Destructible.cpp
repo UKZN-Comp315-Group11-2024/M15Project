@@ -39,9 +39,6 @@ void Destructible::update() {
 				&& bulletCenterY <= (currentDestroyable->object->Location.Y + currentDestroyable->object->Size.Height);
 
 			if (xInside && yInside) {
-				//@Daniel: trynna detect which door was hit, we know how the doors are entered into the List, if we have the index of which door needs to be destroyed, we have the door
-				//this->DoorHit = true;
-				//this->Choice = j;
 				//Call delegate function
 				currentDestroyable->destructFunction();
 				//Delete Controls and remove items from queue
@@ -49,8 +46,6 @@ void Destructible::update() {
 				currentDestroyable->object->~Control();
 				destroyables.RemoveAt(j);
 				bullets.RemoveAt(i--);
-				//@Daniel: starts timer to transition between questions
-				this->QuestionTransitionTimer->Start();
 
 				//Exit the loop as the bullet can only destroy one thing at a time
 				//This break will return us back to the i-for loop
@@ -88,19 +83,4 @@ void Destructible::addObject(Control ^ item, DestroyFunction^ functionToCallOnDe
 
 int Destructible::getBulletCount() {
 	return bullets.Count;
-}
-
-//@Daniel
-bool Destructible::CheckDoorHit() {
-	if (this->DoorHit) {
-		this->DoorHit = false;
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-void Destructible::SetQuestionTransitionTimer(System::Windows::Forms::Timer^ QTTimer) {
-	this->QuestionTransitionTimer = QTTimer;
 }
