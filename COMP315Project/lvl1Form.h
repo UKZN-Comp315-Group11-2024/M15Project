@@ -76,6 +76,8 @@ namespace M15Namespace {
 
 		private: System::Windows::Forms::Label^ textBoxTFA;
 		private: System::Windows::Forms::Label^ textBoxQuestion;
+		private: System::Windows::Forms::Panel^ panelQuestion;
+
 
 		public:
 
@@ -236,6 +238,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 					this->panelLogin = (gcnew System::Windows::Forms::Panel());
+					this->panelQuestion = (gcnew System::Windows::Forms::Panel());
 					this->textBoxQuestion = (gcnew System::Windows::Forms::Label());
 					this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 					this->textBoxTFA = (gcnew System::Windows::Forms::Label());
@@ -262,6 +265,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
+					this->panelQuestion->SuspendLayout();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
@@ -303,7 +307,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 					this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 					this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-					this->panelLogin->Controls->Add(this->textBoxQuestion);
+					this->panelLogin->Controls->Add(this->panelQuestion);
 					this->panelLogin->Controls->Add(this->textBoxTFB);
 					this->panelLogin->Controls->Add(this->textBoxTFA);
 					this->panelLogin->Controls->Add(this->textBoxD);
@@ -328,12 +332,25 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
+					// panelQuestion
+					// 
+					this->panelQuestion->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelQuestion.BackgroundImage")));
+					this->panelQuestion->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+					this->panelQuestion->Controls->Add(this->textBoxQuestion);
+					this->panelQuestion->Location = System::Drawing::Point(90, 41);
+					this->panelQuestion->Name = L"panelQuestion";
+					this->panelQuestion->Size = System::Drawing::Size(750, 147);
+					this->panelQuestion->TabIndex = 44;
+					this->panelQuestion->Visible = false;
+					// 
 					// textBoxQuestion
 					// 
+					this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						static_cast<System::Byte>(0)));
 					this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
-					this->textBoxQuestion->Location = System::Drawing::Point(237, 34);
+					this->textBoxQuestion->Location = System::Drawing::Point(62, 20);
 					this->textBoxQuestion->Name = L"textBoxQuestion";
-					this->textBoxQuestion->Size = System::Drawing::Size(412, 55);
+					this->textBoxQuestion->Size = System::Drawing::Size(634, 105);
 					this->textBoxQuestion->TabIndex = 43;
 					this->textBoxQuestion->Text = L"label1";
 					// 
@@ -545,6 +562,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 					this->panelLogin->ResumeLayout(false);
 					this->panelLogin->PerformLayout();
+					this->panelQuestion->ResumeLayout(false);
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
@@ -899,6 +917,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
 				//Visible when game begins
+				this->panelQuestion->Visible = true;
 				this->progressBarLevel1->Visible = true;
 				this->playerlevel1->Visible = true;
 				this->playerlevel1->BringToFront();
