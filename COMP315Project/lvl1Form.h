@@ -1182,7 +1182,7 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					LvlMethods->Correct = false;
 					QuestionTransitionTimerHide->Start();
 					QuestionTransitionTimerShow->Stop();
-					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_correct.png");
+					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_correctMK3.png");
 					count++;
 
 				} else {
