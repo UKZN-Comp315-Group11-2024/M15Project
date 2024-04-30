@@ -28,6 +28,9 @@ namespace M15Namespace {
 		public:
 			LevelMethods^ LvlMethods;
 
+			//PictureBox Array
+			array<definedPictureBox^>^ pictureBoxArray;
+
 		private: System::Windows::Forms::Timer^ BulletTimer;
 
 
