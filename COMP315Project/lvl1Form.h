@@ -631,7 +631,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 195, "assets/Doors/opened_door.png", false);
 						openedDoor->setVisible(true);
 
-						pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 195, "assets/Doors/closed_door.png", false);
+						pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 855, 195, "assets/Doors/closed_door.png", false);
 
 						des->addObject(pictureBoxTF1, destroyFuncTF1);
 
@@ -655,7 +655,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 435, "assets/Doors/opened_door.png", false);
 						openedDoor->setVisible(true);
 
-						pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 435, "assets/Doors/closed_door.png", false);
+						pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 855, 435, "assets/Doors/closed_door.png", false);
 
 						des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -848,6 +848,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				}
 
 				openedDoor = gcnew definedPictureBox();
+
+				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 870, 195, "assets/Doors/closed_door.png", false);
+				pictureBoxTF1->Hide();
+				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 870, 435, "assets/Doors/closed_door.png", false);
+				pictureBoxTF2->Hide();
+
+				des->addObject(pictureBoxTF1, destroyFuncTF1);
+				des->addObject(pictureBoxTF2, destroyFuncTF2);
 				
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
@@ -1261,13 +1269,8 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 		pictureBoxC->Hide();
 		pictureBoxD->Hide();
 
-		pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/closed_door.png", false);
-		pictureBoxTF1->Hide();
-		pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/closed_door.png", false);
-		pictureBoxTF2->Hide();
-
-		des->addObject(pictureBoxTF1, destroyFuncTF1);
-		des->addObject(pictureBoxTF2, destroyFuncTF2);
+		pictureBoxTF1->setLocation(850, pictureBoxTF1->Location.Y);
+		pictureBoxTF2->setLocation(850, pictureBoxTF2->Location.Y);
 		pictureBoxTF1->Show();
 		pictureBoxTF2->Show();
 	}
