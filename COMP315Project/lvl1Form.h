@@ -708,7 +708,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						this->Transition2->Enabled = false;
 						this->BulletTimer->Enabled = false;
 
-						std::string windowPrompt = "Level 1 feedback (Office)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + "Points";
+						std::string windowPrompt = "Level 1 feedback (Office)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points";
 						String^ unwrapped = gcnew String(windowPrompt.c_str());
 						popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 
@@ -1096,8 +1096,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 		}
 		//@Daniel: timer for progress bar
+		long long ticks = 0;
 		private: System::Void timerProgress_Tick(System::Object^ sender, System::EventArgs^ e) {
 			this->progressBarLevel1->Increment(1);
+			LvlMethods->PlayerStats->timeTaken = ticks / 100;
+			ticks++;
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum) 
 			{
 				pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
@@ -1129,42 +1132,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		private: System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
 			if (LvlMethods->DisableControls != true) {
-				if (e->KeyCode == Keys::W)
-				{
-					move_up = true;
-					is_w_up = false;
-				}
-				if (e->KeyCode == Keys::A)
-				{
-					if (!isleft) {
-						imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
-						playerlevel1->ImageLocation = imagePath;
-					}
-					isleft = true;
-					move_left = true;
-					is_a_up = false;
-
-
-				}
-				if (e->KeyCode == Keys::S)
-				{
-					move_down = true;
-					is_s_up = false;
-
-				}
-				if (e->KeyCode == Keys::D)
-				{
-					if (isleft) {
-						imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
-						playerlevel1->ImageLocation = imagePath;
-					}
-					isleft = false;
-					move_right = true;
-					is_d_up = false;
-
-
-
-				}
+				
 				if (e->KeyCode == Keys::Space &&canshoot)
 				{
 					if (des->getBulletCount() == 0 && !isleft) {
@@ -1172,6 +1140,44 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						shootTimer->Start();
 					}
 				}
+
+			}
+
+			if (e->KeyCode == Keys::W)
+			{
+				move_up = true;
+				is_w_up = false;
+			}
+			if (e->KeyCode == Keys::A)
+			{
+				if (!isleft) {
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
+					playerlevel1->ImageLocation = imagePath;
+				}
+				isleft = true;
+				move_left = true;
+				is_a_up = false;
+
+
+			}
+			if (e->KeyCode == Keys::S)
+			{
+				move_down = true;
+				is_s_up = false;
+
+			}
+			if (e->KeyCode == Keys::D)
+			{
+				if (isleft) {
+					imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+					playerlevel1->ImageLocation = imagePath;
+				}
+				isleft = false;
+				move_right = true;
+				is_d_up = false;
+
+
+
 			}
 	
 		}

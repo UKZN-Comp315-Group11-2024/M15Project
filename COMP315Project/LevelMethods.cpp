@@ -184,12 +184,12 @@ void LevelMethods::SetButtonComponenets(System::Windows::Forms::Button^ btn) {
 }
 
 void LevelMethods::calculateTime() {
-	if (this->ProgressBarTimer->Interval < 30000) {
+	/*if (this->ProgressBarTimer->Interval < 30000) {
 		this->PlayerStats->timeTaken += this->ProgressBarTimer->Interval;
 	}
 	else {
 		this->PlayerStats->timeTaken += 30000;
-	}
+	}*/
 }
 
 void LevelMethods::ResetPlayerPos() {
