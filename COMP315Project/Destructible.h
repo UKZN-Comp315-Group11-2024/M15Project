@@ -66,15 +66,6 @@ private:
 	//List of destroyable Control objects
 	List<Destruct^> destroyables;
 public:
-	//@Daniel
-	System::Windows::Forms::Timer^ QuestionTransitionTimer;
-	int Choice = -1;
-	bool DoorHit = false;
-
-	void SetQuestionTransitionTimer(System::Windows::Forms::Timer^ QTTimer);
-
-	bool CheckDoorHit();
-
 	//Updates bullet positions and checks for collisions
 	void update();
 
