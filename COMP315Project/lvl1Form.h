@@ -587,6 +587,32 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  definedPictureBox^ pictureBoxD;
 					  definedPictureBox^ pictureBoxTF1;
 					  definedPictureBox^ pictureBoxTF2;
+
+					  void displayEndLvlScreen()
+					  {
+						  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
+						  String^ unwrapped = gcnew String(windowPrompt.c_str());
+						  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
+
+						  window->Visible = false;
+						  this->Hide();
+						  this->shootTimer->Enabled = false;
+						  this->timeranimation->Enabled = false;
+						  this->timerProgress->Enabled = false;
+						  this->movePlayerTimer->Enabled = false;
+						  this->QuestionTransitionTimerHide->Enabled = false;
+						  this->QuestionTransitionTimerShow->Enabled = false;
+						  this->Transition1->Enabled = false;
+						  this->Transition2->Enabled = false;
+						  this->BulletTimer->Enabled = false;
+
+						  window->ShowDialog();
+
+						  //this->~lvl1Form();
+						  this->Close();
+						  //LvlMethods->QuestionsCompleted--;
+					  }
+
 					  void destroyTF1()
 					  {
 						  std::cout << "T des" << std::endl;
@@ -600,27 +626,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  LvlMethods->QuestionAnswered(0);
 						  if (LvlMethods->QuestionsCompleted == 10)
 						  {
-							  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
-							  String^ unwrapped = gcnew String(windowPrompt.c_str());
-							  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
-
-							  window->Visible = false;
-							  this->Hide();
-							  this->shootTimer->Enabled = false;
-							  this->timeranimation->Enabled = false;
-							  this->timerProgress->Enabled = false;
-							  this->movePlayerTimer->Enabled = false;
-							  this->QuestionTransitionTimerHide->Enabled = false;
-							  this->QuestionTransitionTimerShow->Enabled = false;
-							  this->Transition1->Enabled = false;
-							  this->Transition2->Enabled = false;
-							  this->BulletTimer->Enabled = false;
-
-							  window->ShowDialog();
-
-							  //this->~lvl1Form();
-							  this->Close();
-							  //LvlMethods->QuestionsCompleted--;
+							  displayEndLvlScreen();
 						  }
 						  else
 						  {
@@ -639,7 +645,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  des->addObject(pictureBoxTF2, destroyFuncTF2);
 
 						  LvlMethods->QuestionAnswered(1);
-						  QuestionTransitionTimerShow->Start();
+						  if (LvlMethods->QuestionsCompleted == 10)
+						  {
+							  displayEndLvlScreen();
+						  }
+						  else
+						  {
+							  QuestionTransitionTimerShow->Start();
+						  }
 					  }
 					  void destroyA()
 					  {
@@ -659,15 +672,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  LvlMethods->QuestionAnswered(0);
 						  if (LvlMethods->QuestionsCompleted == 10)
 						  {
-							  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
-							  String^ unwrapped = gcnew String(windowPrompt.c_str());
-							  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
-
-							  window->Visible = false;
-							  this->Hide();
-							  window->ShowDialog();
-
-							  this->Close();
+							  displayEndLvlScreen();
 						  }
 						  else
 						  {
@@ -687,7 +692,15 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  //remove
 						  //AddDoors();
 						  LvlMethods->QuestionAnswered(1);
-						  QuestionTransitionTimerShow->Start();
+
+						  if (LvlMethods->QuestionsCompleted == 10)
+						  {
+							  displayEndLvlScreen();
+						  }
+						  else
+						  {
+							  QuestionTransitionTimerShow->Start();
+						  }
 					  }
 					  void destroyC()
 					  {
@@ -702,7 +715,15 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  //remove
 						  //AddDoors();
 						  LvlMethods->QuestionAnswered(2);
-						  QuestionTransitionTimerShow->Start();
+
+						  if (LvlMethods->QuestionsCompleted == 10)
+						  {
+							  displayEndLvlScreen();
+						  }
+						  else
+						  {
+							  QuestionTransitionTimerShow->Start();
+						  }
 					  }
 					  void destroyD()
 					  {
@@ -717,7 +738,15 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  //remove
 						  //AddDoors();
 						  LvlMethods->QuestionAnswered(3);
-						  QuestionTransitionTimerShow->Start();
+
+						  if (LvlMethods->QuestionsCompleted == 10)
+						  {
+							  displayEndLvlScreen();
+						  }
+						  else
+						  {
+							  QuestionTransitionTimerShow->Start();
+						  }
 					  }
 
 			String^ projectDirectory = Application::StartupPath;
@@ -868,13 +897,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				//{
 					
 				//}
+					LvlMethods->DisplayNextQuestionSet();
 				
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(395, y1);
 			beginButton->Location = Point(405, y2);
 
-			LvlMethods->DisplayNextQuestionSet();
+			/*LvlMethods->DisplayNextQuestionSet();*/
 	
 		}
 		private: System::Void panelLogin_Paint_1(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
