@@ -41,7 +41,8 @@ namespace M15Namespace {
 		private: System::Windows::Forms::TextBox^ ResultTextBox;
 		private: System::Windows::Forms::Timer^ QuestionTransitionTimerHide;
 		private: System::Windows::Forms::PictureBox^ playerlevel1;
-		private: System::Windows::Forms::PictureBox^ pictureBox2;
+		private: System::Windows::Forms::PictureBox^ Barrier;
+
 
 
 
@@ -228,7 +229,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
 					this->pictureBoxTFA = (gcnew System::Windows::Forms::PictureBox());
 					this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-					this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+					this->Barrier = (gcnew System::Windows::Forms::PictureBox());
 					this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
 					this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
@@ -245,7 +246,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->BeginInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->BeginInit();
 					this->SuspendLayout();
 					// 
 					// lblMessage1
@@ -303,7 +304,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 					this->panelLogin->Controls->Add(this->pictureBoxTFA);
 					this->panelLogin->Controls->Add(this->pictureBox1);
-					this->panelLogin->Controls->Add(this->pictureBox2);
+					this->panelLogin->Controls->Add(this->Barrier);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
 					this->panelLogin->Location = System::Drawing::Point(-4, -25);
 					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
@@ -411,7 +412,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(504, 799);
+					this->space->Location = System::Drawing::Point(775, 799);
 					this->space->Margin = System::Windows::Forms::Padding(2);
 					this->space->Name = L"space";
 					this->space->Size = System::Drawing::Size(39, 49);
@@ -423,7 +424,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(380, 775);
+					this->wasd->Location = System::Drawing::Point(651, 776);
 					this->wasd->Margin = System::Windows::Forms::Padding(2);
 					this->wasd->Name = L"wasd";
 					this->wasd->Size = System::Drawing::Size(120, 90);
@@ -484,17 +485,17 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pictureBox1->Visible = false;
 					this->pictureBox1->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBox1_Click);
 					// 
-					// pictureBox2
+					// Barrier
 					// 
-					this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-					this->pictureBox2->Location = System::Drawing::Point(349, 236);
-					this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
-					this->pictureBox2->Name = L"pictureBox2";
-					this->pictureBox2->Size = System::Drawing::Size(25, 909);
-					this->pictureBox2->TabIndex = 36;
-					this->pictureBox2->TabStop = false;
-					this->pictureBox2->Visible = false;
-					this->pictureBox2->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBox2_Click);
+					this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
+					this->Barrier->Location = System::Drawing::Point(349, 236);
+					this->Barrier->Margin = System::Windows::Forms::Padding(4);
+					this->Barrier->Name = L"Barrier";
+					this->Barrier->Size = System::Drawing::Size(25, 909);
+					this->Barrier->TabIndex = 36;
+					this->Barrier->TabStop = false;
+					this->Barrier->Visible = false;
+					this->Barrier->Click += gcnew System::EventHandler(this, &lvl1Form::pictureBox2_Click);
 					// 
 					// Transition2
 					// 
@@ -534,7 +535,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// QuestionTransitionTimerHide
 					// 
-					this->QuestionTransitionTimerHide->Interval = 2;
+					this->QuestionTransitionTimerHide->Interval = 3000;
 					this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl1Form::QuestionTransitionTimerHide_Tick);
 					// 
 					// lvl1Form
@@ -563,7 +564,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxTFA))->EndInit();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->EndInit();
 					this->ResumeLayout(false);
 
 				}
@@ -624,7 +625,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 			//bullet->Hide();
 
-						pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 195, "assets/Doors/door.png", false);
+						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 195, "assets/Doors/opened_door.png", false);
+						openedDoor->setVisible(true);
+
+						pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 195, "assets/Doors/closed_door.png", false);
 
 						des->addObject(pictureBoxTF1, destroyFuncTF1);
 
@@ -646,7 +650,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 			//bullet->Hide();
 
-						pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 435, "assets/Doors/door.png", false);
+						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 435, "assets/Doors/opened_door.png", false);
+						openedDoor->setVisible(true);
+
+						pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 435, "assets/Doors/closed_door.png", false);
 
 						des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -667,9 +674,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						//Moving bullet logic to it's own method, and calling it on shoot
 			//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 			//bullet->Hide();
+						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 195, "assets/Doors/opened_door.png", false);
+						openedDoor->setVisible(true);
 
 						
-						pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
+						pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/closed_door.png", false);
 
 						des->addObject(pictureBoxA, destroyFuncA);
 						
@@ -694,7 +703,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 			//bullet->Hide();
 
-						pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
+						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 315, "assets/Doors/opened_door.png", false);
+						openedDoor->setVisible(true);
+
+						pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/closed_door.png", false);
 						
 						des->addObject(pictureBoxB, destroyFuncB);
 						//remove
@@ -717,8 +729,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						//Moving bullet logic to it's own method, and calling it on shoot
 							//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 							//bullet->Hide();
+
+						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 435, "assets/Doors/opened_door.png", false);
+						openedDoor->setVisible(true);
 						
-						pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
+						pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/closed_door.png", false);
 						
 						des->addObject(pictureBoxC, destroyFuncC);
 						//remove
@@ -742,7 +757,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 						//bullet->Hide();
 
-						pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
+						openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 555, "assets/Doors/opened_door.png", false);
+						openedDoor->setVisible(true);
+
+						pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/closed_door.png", false);
 						
 						des->addObject(pictureBoxD, destroyFuncD);
 						//remove
@@ -762,6 +780,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			String^ projectDirectory = Application::StartupPath;
 			String^ imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 			//@avesh: text and timer
+
+			definedPictureBox^ openedDoor;
+
 			private: System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
 				std::ifstream file("textfiles/PlayerInfo.txt");
@@ -829,6 +850,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 				}
 
+				openedDoor = gcnew definedPictureBox();
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -904,13 +926,13 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				Transition2->Enabled = false;
 				canshoot = true;
 
-					pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
+					pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/closed_door.png", false);
 					pictureBoxA->Show();
-					pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
+					pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/closed_door.png", false);
 					pictureBoxB->Show();
-					pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
+					pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/closed_door.png", false);
 					pictureBoxC->Show();
-					pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
+					pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/closed_door.png", false);
 					pictureBoxD->Show();
 
 					des->addObject(pictureBoxA, destroyFuncA);
@@ -942,7 +964,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		private: System::Void beginButton_Click(System::Object^ sender, System::EventArgs^ e) {
 			Transition1->Enabled = false;
 			Transition2->Start();
-			pictureBox2->Visible = true;
+			Barrier->Visible = true;
+			
 
 			this->timerProgress->Start();
 
@@ -951,7 +974,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		private: System::Void timerProgress_Tick(System::Object^ sender, System::EventArgs^ e) {
 			
 			this->progressBarLevel1->Increment(1);
-			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum) {
+			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum) 
+			{
+				pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+				count++;
 				LvlMethods->QuestionCompleted();
 			}
 			//this->progressBarLevel1->
@@ -1079,7 +1105,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		String^ runLeftAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
 		
 		private: System::Void movePlayerTimer_Tick(System::Object^ sender, System::EventArgs^ e){
-			
+			Barrier->BringToFront();
+			playerlevel1->SendToBack();
 			if (!(is_w_up && is_a_up && is_s_up && is_d_up) && 
 				(playerlevel1->ImageLocation != runAnimation &&
 					playerlevel1->ImageLocation != runLeftAnimation))
@@ -1101,16 +1128,16 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		
 				playerlevel1->Top += -5;
 			}
-			if (move_left && playerlevel1->Left > -40)
+			if (move_left && playerlevel1->Left > -35)
 			{
 		
 				playerlevel1->Left += -5;
 			}
-			if (move_down && playerlevel1->Top < 580)
+			if (move_down && playerlevel1->Top < 600)
 			{
 				playerlevel1->Top += 5;
 			}
-			if (move_right && playerlevel1->Left < 110)
+			if (move_right && playerlevel1->Left < 160)
 			{
 				playerlevel1->Left += 5;
 			}
@@ -1211,6 +1238,13 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 	LvlMethods->DisableControls = false;
 	QuestionTransitionTimerHide->Stop();
 
+	//openDoorTF1->Hide();
+	//openDoorTF2->Hide();
+	openedDoor->Hide();
+	//openDoorB->Hide();
+	//openDoorC->Hide();
+	//openDoorD->Hide();
+
 	if (LvlMethods->QuestionType == "0")
 	{
 		pictureBoxA->Show();
@@ -1229,9 +1263,9 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 		pictureBoxC->Hide();
 		pictureBoxD->Hide();
 
-		pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/door.png", false);
+		pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/closed_door.png", false);
 		pictureBoxTF1->Hide();
-		pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/door.png", false);
+		pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/closed_door.png", false);
 		pictureBoxTF2->Hide();
 
 		des->addObject(pictureBoxTF1, destroyFuncTF1);
