@@ -32,13 +32,13 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 	
 		System::Windows::Forms::Form^ LevelFormInstance;
 
-		System::Windows::Forms::TextBox^ Question;
-		System::Windows::Forms::TextBox^ Option1;
-		System::Windows::Forms::TextBox^ Option2;
-		System::Windows::Forms::TextBox^ Option3;
-		System::Windows::Forms::TextBox^ Option4;
-		System::Windows::Forms::TextBox^ TFOption1;
-		System::Windows::Forms::TextBox^ TFOption2;
+		System::Windows::Forms::Label^ Question;
+		System::Windows::Forms::Label^ Option1;
+		System::Windows::Forms::Label^ Option2;
+		System::Windows::Forms::Label^ Option3;
+		System::Windows::Forms::Label^ Option4;
+		System::Windows::Forms::Label^ TFOption1;
+		System::Windows::Forms::Label^ TFOption2;
 
 		System::Windows::Forms::PictureBox^ PlayerImage;
 
@@ -91,7 +91,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		//returns true if they match
 		//bool CheckAnswerCorrect(System::String^ AnswerSelected, System::String^ CorrectAnswer);
 
-		void SetQuestionComponents(System::Windows::Forms::TextBox^ lblQuestion, System::Windows::Forms::TextBox^ lblOption1, System::Windows::Forms::TextBox^ lblOption2, System::Windows::Forms::TextBox^ lblOption3, System::Windows::Forms::TextBox^ lblOption4, System::Windows::Forms::TextBox^ lblTFOption1, System::Windows::Forms::TextBox^ lblTFOption2);
+		void SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2);
 
 		void SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr);
 

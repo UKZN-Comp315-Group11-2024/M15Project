@@ -11,7 +11,7 @@ LevelMethods::LevelMethods(int lvlno) {
 
 }
 
-void LevelMethods::SetQuestionComponents(System::Windows::Forms::TextBox^ lblQuestion, System::Windows::Forms::TextBox^ lblOption1, System::Windows::Forms::TextBox^ lblOption2, System::Windows::Forms::TextBox^ lblOption3, System::Windows::Forms::TextBox^ lblOption4, System::Windows::Forms::TextBox^ lblTFOption1, System::Windows::Forms::TextBox^ lblTFOption2) {
+void LevelMethods::SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2) {
 	
 	this->Question = lblQuestion;
 	this->Option1 = lblOption1;
@@ -111,8 +111,8 @@ void LevelMethods::QuestionAnswered(int option) {
 	if (canChange) {
 		this->QuestionsCompleted += 1;
 		this->QuestionsAnswered += 1;
-		this->PlayerStats->score += 1000000;
 		if (option == CorrectOptionInt) {
+			this->PlayerStats->score += 1;
 			this->PlayerStats->CorrectAnswers += 1;
 			this->Correct = true;
 		}
