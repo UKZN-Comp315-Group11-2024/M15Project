@@ -606,11 +606,21 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 							  window->Visible = false;
 							  this->Hide();
+							  this->shootTimer->Enabled = false;
+							  this->timeranimation->Enabled = false;
+							  this->timerProgress->Enabled = false;
+							  this->movePlayerTimer->Enabled = false;
+							  this->QuestionTransitionTimerHide->Enabled = false;
+							  this->QuestionTransitionTimerShow->Enabled = false;
+							  this->Transition1->Enabled = false;
+							  this->Transition2->Enabled = false;
+							  this->BulletTimer->Enabled = false;
+
 							  window->ShowDialog();
 
 							  //this->~lvl1Form();
 							  this->Close();
-							  LvlMethods->QuestionsCompleted--;
+							  //LvlMethods->QuestionsCompleted--;
 						  }
 						  else
 						  {
