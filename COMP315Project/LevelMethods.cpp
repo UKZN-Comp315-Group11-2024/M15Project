@@ -108,44 +108,55 @@ void LevelMethods::ExtractQuestionSet() {
 //called if bullet collsion with answer option
 //NB: NEEDS TO BE UPDATED FOR NEW lOADQUESTION CLASS
 void LevelMethods::QuestionAnswered(int option) {
-	this->QuestionsCompleted += 1;
-	this->QuestionsAnswered += 1;
-	this->PlayerStats->score += 1000000;
-	if (option == CorrectOptionInt) {
-		this->PlayerStats->CorrectAnswers += 1;
-		this->Correct = true;
-	}
-	else {
-		this->Correct = false;
+	if (canChange) {
+		this->QuestionsCompleted += 1;
+		this->QuestionsAnswered += 1;
+		this->PlayerStats->score += 1000000;
+		if (option == CorrectOptionInt) {
+			this->PlayerStats->CorrectAnswers += 1;
+			this->Correct = true;
+		}
+		else {
+			this->Correct = false;
+		}
+
+		this->ProgressBarTimer->Stop();
+		calculateTime();
 	}
 
-	this->ProgressBarTimer->Stop();
-	calculateTime();
 
-	if (CheckLevelEnd()) {
-		//EndLevel();
-	}
+		if (CheckLevelEnd()) {
+			//EndLevel();
+		}
 
-	//ResetPlayerPos();
-	if (this->QuestionsCompleted < 10) {
-		DisplayNextQuestionSet();
-	}
+		//ResetPlayerPos();
+		if (this->QuestionsCompleted < 10) {
+			DisplayNextQuestionSet();
+		}
+	
 
 }
 
 //called if timer runs out
 void LevelMethods::QuestionCompleted() {
-	this->AnswerGiven = false;
-	this->QuestionsCompleted += 1;
-	this->ProgressBarTimer->Stop();
-	calculateTime();
+	if (canChange) {
+		this->AnswerGiven = false;
+		this->QuestionsCompleted += 1;
+		this->ProgressBarTimer->Stop();
+		calculateTime();
 
-	if (CheckLevelEnd()) {
-		//EndLevel();
 	}
 
-	//ResetPlayerPos();
-	DisplayNextQuestionSet();
+		if (CheckLevelEnd()) {
+			//EndLevel();
+		}
+
+		if (this->QuestionsCompleted < 10) {
+			DisplayNextQuestionSet();
+		}
+
+		//ResetPlayerPos();
+	
 }
 
 void LevelMethods::SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr) {

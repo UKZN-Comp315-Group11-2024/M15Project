@@ -28,6 +28,7 @@ public ref class LevelMethods : public System::Windows::Forms::NativeWindow
 		int CorrectOptionInt = -1;
 		bool Correct = false;
 		bool AnswerGiven = true;
+		bool canChange = true;
 	
 		System::Windows::Forms::Form^ LevelFormInstance;
 
