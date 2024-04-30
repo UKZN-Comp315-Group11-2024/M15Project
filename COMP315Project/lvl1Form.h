@@ -31,6 +31,7 @@ namespace M15Namespace {
 
 				//PictureBox Array
 				array<definedPictureBox^>^ pictureBoxArray;
+				definedPictureBox^ gif;
 
 		private: System::Windows::Forms::Timer^ BulletTimer;
 
@@ -452,7 +453,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					this->progressBarLevel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 						| System::Windows::Forms::AnchorStyles::Right));
-					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+					this->progressBarLevel1->BackColor = System::Drawing::Color::Black;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
 					this->progressBarLevel1->Location = System::Drawing::Point(902, 50);
 					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
@@ -826,6 +827,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				}
 
 				openedDoor = gcnew definedPictureBox();
+				
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -922,6 +924,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					}
 					LvlMethods->DisplayNextQuestionSet();
 
+					gif = gcnew definedPictureBox(panelLogin, 466.5, 117, 714, 33, "assets/codelock.gif", false);
+					gif->setVisible(true);
+
 				
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
@@ -951,6 +956,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			{
 				pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
 				count++;
+				gif->Image = Image::FromFile("assets/red.gif");
 				LvlMethods->QuestionCompleted();
 			}
 			//this->progressBarLevel1->
@@ -1169,6 +1175,7 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					QuestionTransitionTimerHide->Start();
 					QuestionTransitionTimerShow->Stop();
 					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_correctMK3.png");
+					gif->Image = Image::FromFile("assets/green.gif");
 					count++;
 
 				} else {
@@ -1182,6 +1189,7 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					QuestionTransitionTimerHide->Start();
 					QuestionTransitionTimerShow->Stop();
 					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+					gif->Image = Image::FromFile("assets/red.gif");
 					count++;
 				}
 
