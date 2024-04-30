@@ -15,7 +15,7 @@ namespace M15Namespace {
 	/// <summary>
 	/// Summary for popup
 	/// </summary>
-	
+
 	public ref class popup2 : public System::Windows::Forms::Form
 	{
 	public:

@@ -25,7 +25,7 @@ namespace M15Namespace {
 		BonusLevelThree(void)
 		{
 			InitializeComponent();
-			
+
 			sound->Forest();
 		}
 
@@ -256,7 +256,7 @@ namespace M15Namespace {
 		int randomTargetX = 0;
 		for (int i = 0; i < boxes->Length; i++)
 		{
-			randomTargetX = rand() % 5 + i*5;
+			randomTargetX = rand() % 5 + i * 5;
 			std::cout << randomTargetX << std::endl;
 			boxes[i] = gcnew definedPictureBox(panelBonusLevel, buttons[randomTargetX]->Size.Width, buttons[randomTargetX]->Size.Height, buttons[randomTargetX]->Location.X, buttons[randomTargetX]->Location.Y, "assets/Doors/Box.png", true);
 
@@ -433,8 +433,8 @@ namespace M15Namespace {
 	}
 	private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	
-};
+
+	};
 
 
 }

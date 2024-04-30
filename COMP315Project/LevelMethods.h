@@ -19,104 +19,104 @@ using namespace System::IO;
 
 
 public ref class LevelMethods : public System::Windows::Forms::NativeWindow
-	{
-	public:
-		int QuestionsCompleted;  
-		int QuestionsAnswered; 
-		int lvlNum;
-		bool DisableControls;
-		int CorrectOptionInt = -1;
-		bool Correct = false;
-		bool AnswerGiven = true;
-		bool canChange = true;
-	
-		System::Windows::Forms::Form^ LevelFormInstance;
+{
+public:
+	int QuestionsCompleted;
+	int QuestionsAnswered;
+	int lvlNum;
+	bool DisableControls;
+	int CorrectOptionInt = -1;
+	bool Correct = false;
+	bool AnswerGiven = true;
+	bool canChange = true;
 
-		System::Windows::Forms::Label^ Question;
-		System::Windows::Forms::Label^ Option1;
-		System::Windows::Forms::Label^ Option2;
-		System::Windows::Forms::Label^ Option3;
-		System::Windows::Forms::Label^ Option4;
-		System::Windows::Forms::Label^ TFOption1;
-		System::Windows::Forms::Label^ TFOption2;
+	System::Windows::Forms::Form^ LevelFormInstance;
 
-		System::Windows::Forms::PictureBox^ PlayerImage;
+	System::Windows::Forms::Label^ Question;
+	System::Windows::Forms::Label^ Option1;
+	System::Windows::Forms::Label^ Option2;
+	System::Windows::Forms::Label^ Option3;
+	System::Windows::Forms::Label^ Option4;
+	System::Windows::Forms::Label^ TFOption1;
+	System::Windows::Forms::Label^ TFOption2;
 
-		System::Windows::Forms::Button^ ContinueButton;
+	System::Windows::Forms::PictureBox^ PlayerImage;
 
-		System::Windows::Forms::ProgressBar^ ProgressBar;
-		System::Windows::Forms::Timer^ ProgressBarTimer;
+	System::Windows::Forms::Button^ ContinueButton;
 
-		System::Windows::Forms::Panel^ Panel;
+	System::Windows::Forms::ProgressBar^ ProgressBar;
+	System::Windows::Forms::Timer^ ProgressBarTimer;
 
-		LoadQuestion^ QuestionLoader;
-		List<LoadQuestion::Question^>^ QuestionQueue;
+	System::Windows::Forms::Panel^ Panel;
 
-		System::String^ QuestionType = "";
-		System::String^ question = "";
-		System::String^ OptionA = "";
-		System::String^ OptionB = "";
-		System::String^ OptionC = "";
-		System::String^ OptionD = "";
-		System::String^ CorrectOption = "";
-		
-		playerInfo^ PlayerStats;
+	LoadQuestion^ QuestionLoader;
+	List<LoadQuestion::Question^>^ QuestionQueue;
 
-		//LevelMethods(Form^ form, int lvlNum);
-		LevelMethods(int lvlno);
+	System::String^ QuestionType = "";
+	System::String^ question = "";
+	System::String^ OptionA = "";
+	System::String^ OptionB = "";
+	System::String^ OptionC = "";
+	System::String^ OptionD = "";
+	System::String^ CorrectOption = "";
 
-		//void TransitionIn();
+	playerInfo^ PlayerStats;
 
-		//void SetTransLabel(String^ label, Control^ item);
+	//LevelMethods(Form^ form, int lvlNum);
+	LevelMethods(int lvlno);
 
-		//void ShuffelQuestionSets();
+	//void TransitionIn();
 
-		void ExtractQuestionSet();
+	//void SetTransLabel(String^ label, Control^ item);
 
-		void DisplayNextQuestionSet();
+	//void ShuffelQuestionSets();
 
-		// call this method if a question has been answered, so call this function when you detect a bullet collision with an answer's hit box
-		//increments QuestionsAnswered
-		//calls ProcessAnswer();
-		//if(T/F){} else{}
-		void QuestionAnswered(int option);
+	void ExtractQuestionSet();
 
-		void QuestionCompleted();
+	void DisplayNextQuestionSet();
 
-		//Determins which answer was selected by the player
-		//needs to take in x and y co ordinate of bullet
-		//determines if the answer selected was correct
-		//void ProcessingAnswer();
+	// call this method if a question has been answered, so call this function when you detect a bullet collision with an answer's hit box
+	//increments QuestionsAnswered
+	//calls ProcessAnswer();
+	//if(T/F){} else{}
+	void QuestionAnswered(int option);
 
-		//returns true if they match
-		//bool CheckAnswerCorrect(System::String^ AnswerSelected, System::String^ CorrectAnswer);
+	void QuestionCompleted();
 
-		void SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2);
+	//Determins which answer was selected by the player
+	//needs to take in x and y co ordinate of bullet
+	//determines if the answer selected was correct
+	//void ProcessingAnswer();
 
-		void SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr);
+	//returns true if they match
+	//bool CheckAnswerCorrect(System::String^ AnswerSelected, System::String^ CorrectAnswer);
 
-		void SetProgressBarComponent(System::Windows::Forms::ProgressBar^ PB);
-		void SetProgressBarTimerComponent(System::Windows::Forms::Timer^ PBtmr);
+	void SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2);
 
-		void SetPanelComponant(System::Windows::Forms::Panel^ Pnl);
+	void SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr);
 
-		void SetLevelFormInstance(System::Windows::Forms::Form^ lvlFrmInst);
+	void SetProgressBarComponent(System::Windows::Forms::ProgressBar^ PB);
+	void SetProgressBarTimerComponent(System::Windows::Forms::Timer^ PBtmr);
 
-		void SetButtonComponenets(System::Windows::Forms::Button^ btn);
+	void SetPanelComponant(System::Windows::Forms::Panel^ Pnl);
 
-		//void ResetLoadingBar();
+	void SetLevelFormInstance(System::Windows::Forms::Form^ lvlFrmInst);
 
-		void ResetPlayerPos();
+	void SetButtonComponenets(System::Windows::Forms::Button^ btn);
 
-		void calculateTime();
+	//void ResetLoadingBar();
 
-		//check if 10 questions have been answered, if so call end of level
-		bool CheckLevelEnd();
+	void ResetPlayerPos();
 
-		//end the level
-		void EndLevel();
+	void calculateTime();
 
-		void RecordPlayerStats();
+	//check if 10 questions have been answered, if so call end of level
+	bool CheckLevelEnd();
 
-		void DetermCorrectOptionInt();
-	};
+	//end the level
+	void EndLevel();
+
+	void RecordPlayerStats();
+
+	void DetermCorrectOptionInt();
+};

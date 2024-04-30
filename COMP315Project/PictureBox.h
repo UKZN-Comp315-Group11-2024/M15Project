@@ -7,7 +7,7 @@ using namespace System::Windows::Forms;
 using namespace System::Data;
 using namespace System::Drawing;
 
-ref class definedPictureBox : public PictureBox { 
+ref class definedPictureBox : public PictureBox {
 public:
 	definedPictureBox();
 	definedPictureBox(Panel^ panelBonusLevel, int x_size, int y_size, int x_pos, int y_pos, String^ imageLocation, bool clickable);

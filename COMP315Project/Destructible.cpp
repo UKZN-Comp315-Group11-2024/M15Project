@@ -21,8 +21,8 @@ void Destructible::update() {
 		}
 
 		//Calculate center of Bullet for bounds checking
-		int bulletCenterX = currentBullet->object->Location.X + currentBullet->object->Size.Width/2;
-		int bulletCenterY = currentBullet->object->Location.Y + currentBullet->object->Size.Height/2;
+		int bulletCenterX = currentBullet->object->Location.X + currentBullet->object->Size.Width / 2;
+		int bulletCenterY = currentBullet->object->Location.Y + currentBullet->object->Size.Height / 2;
 
 		for (int j = 0; j < destroyables.Count; j++) {
 			//Handle for the current destroyable objects
@@ -73,7 +73,7 @@ void Destructible::addBullet(Control^ item, double velocityX, double velocityY, 
 	addBullet(item, velocityX, velocityY);
 }
 
-void Destructible::addObject(Control ^ item, DestroyFunction^ functionToCallOnDestroy) {
+void Destructible::addObject(Control^ item, DestroyFunction^ functionToCallOnDestroy) {
 	//Initialise struct and add to queue
 	Destruct^ des = gcnew Destruct;
 	des->object = item;

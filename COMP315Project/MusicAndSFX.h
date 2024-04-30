@@ -11,7 +11,7 @@ public:
 	sf::Music music;//object that streams sound directly from source file
 
 	MusicAndSFX();
-    ~MusicAndSFX();
+	~MusicAndSFX();
 
 	void gunshot();
 	void MouseClick();
