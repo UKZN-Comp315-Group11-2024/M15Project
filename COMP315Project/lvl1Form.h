@@ -69,6 +69,8 @@ namespace M15Namespace {
 		private: System::Windows::Forms::Label^ textBoxTFA;
 		private: System::Windows::Forms::Label^ textBoxQuestion;
 		private: System::Windows::Forms::Panel^ panelQuestion;
+		private: System::Windows::Forms::Timer^ DelayEnd;
+
 
 
 		public:
@@ -255,6 +257,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->BulletTimer = (gcnew System::Windows::Forms::Timer(this->components));
 					this->QuestionTransitionTimerShow = (gcnew System::Windows::Forms::Timer(this->components));
 					this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
+					this->DelayEnd = (gcnew System::Windows::Forms::Timer(this->components));
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
 					this->panelQuestion->SuspendLayout();
@@ -269,10 +272,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->lblMessage1->AutoSize = true;
 					this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-					this->lblMessage1->Location = System::Drawing::Point(330, 900);
-					this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+					this->lblMessage1->Location = System::Drawing::Point(264, 720);
 					this->lblMessage1->Name = L"lblMessage1";
-					this->lblMessage1->Size = System::Drawing::Size(0, 90);
+					this->lblMessage1->Size = System::Drawing::Size(0, 73);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 					// 
@@ -286,10 +288,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 					this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 					this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-					this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
+					this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
 					this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 					this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-					this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+					this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
@@ -317,10 +319,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 					this->panelLogin->Controls->Add(this->Barrier);
 					this->panelLogin->ForeColor = System::Drawing::Color::White;
-					this->panelLogin->Location = System::Drawing::Point(-4, -25);
-					this->panelLogin->Margin = System::Windows::Forms::Padding(4);
+					this->panelLogin->Location = System::Drawing::Point(-3, -20);
 					this->panelLogin->Name = L"panelLogin";
-					this->panelLogin->Size = System::Drawing::Size(1604, 885);
+					this->panelLogin->Size = System::Drawing::Size(1283, 708);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 					// 
@@ -329,9 +330,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelQuestion->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelQuestion.BackgroundImage")));
 					this->panelQuestion->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 					this->panelQuestion->Controls->Add(this->textBoxQuestion);
-					this->panelQuestion->Location = System::Drawing::Point(90, 41);
+					this->panelQuestion->Location = System::Drawing::Point(72, 33);
+					this->panelQuestion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 					this->panelQuestion->Name = L"panelQuestion";
-					this->panelQuestion->Size = System::Drawing::Size(750, 147);
+					this->panelQuestion->Size = System::Drawing::Size(600, 118);
 					this->panelQuestion->TabIndex = 44;
 					this->panelQuestion->Visible = false;
 					// 
@@ -340,67 +342,73 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
-					this->textBoxQuestion->Location = System::Drawing::Point(62, 20);
+					this->textBoxQuestion->Location = System::Drawing::Point(50, 16);
+					this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxQuestion->Name = L"textBoxQuestion";
-					this->textBoxQuestion->Size = System::Drawing::Size(634, 105);
+					this->textBoxQuestion->Size = System::Drawing::Size(507, 84);
 					this->textBoxQuestion->TabIndex = 43;
 					this->textBoxQuestion->Text = L"label1";
 					// 
 					// textBoxTFB
 					// 
-					this->textBoxTFB->Location = System::Drawing::Point(1272, 668);
+					this->textBoxTFB->Location = System::Drawing::Point(1018, 534);
+					this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxTFB->Name = L"textBoxTFB";
-					this->textBoxTFB->Size = System::Drawing::Size(100, 23);
+					this->textBoxTFB->Size = System::Drawing::Size(80, 18);
 					this->textBoxTFB->TabIndex = 42;
 					this->textBoxTFB->Text = L"TF2";
 					// 
 					// textBoxTFA
 					// 
-					this->textBoxTFA->Location = System::Drawing::Point(1272, 326);
+					this->textBoxTFA->Location = System::Drawing::Point(1018, 261);
+					this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxTFA->Name = L"textBoxTFA";
-					this->textBoxTFA->Size = System::Drawing::Size(277, 62);
+					this->textBoxTFA->Size = System::Drawing::Size(222, 50);
 					this->textBoxTFA->TabIndex = 41;
 					this->textBoxTFA->Text = L"TF1";
 					// 
 					// textBoxD
 					// 
-					this->textBoxD->Location = System::Drawing::Point(1272, 746);
+					this->textBoxD->Location = System::Drawing::Point(1018, 597);
+					this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxD->Name = L"textBoxD";
-					this->textBoxD->Size = System::Drawing::Size(268, 72);
+					this->textBoxD->Size = System::Drawing::Size(214, 58);
 					this->textBoxD->TabIndex = 40;
 					this->textBoxD->Text = L"Option D";
 					// 
 					// textBoxC
 					// 
-					this->textBoxC->Location = System::Drawing::Point(1269, 566);
+					this->textBoxC->Location = System::Drawing::Point(1015, 453);
+					this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxC->Name = L"textBoxC";
-					this->textBoxC->Size = System::Drawing::Size(274, 64);
+					this->textBoxC->Size = System::Drawing::Size(219, 51);
 					this->textBoxC->TabIndex = 39;
 					this->textBoxC->Text = L"Option C";
 					// 
 					// textBoxB
 					// 
-					this->textBoxB->Location = System::Drawing::Point(1272, 407);
+					this->textBoxB->Location = System::Drawing::Point(1018, 326);
+					this->textBoxB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxB->Name = L"textBoxB";
-					this->textBoxB->Size = System::Drawing::Size(277, 79);
+					this->textBoxB->Size = System::Drawing::Size(222, 63);
 					this->textBoxB->TabIndex = 38;
 					this->textBoxB->Text = L"Option B";
 					// 
 					// textBoxA
 					// 
-					this->textBoxA->Location = System::Drawing::Point(1269, 248);
+					this->textBoxA->Location = System::Drawing::Point(1015, 198);
+					this->textBoxA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 					this->textBoxA->Name = L"textBoxA";
-					this->textBoxA->Size = System::Drawing::Size(280, 64);
+					this->textBoxA->Size = System::Drawing::Size(224, 51);
 					this->textBoxA->TabIndex = 37;
 					this->textBoxA->Text = L"Option A";
 					// 
 					// playerlevel1
 					// 
 					this->playerlevel1->ImageLocation = L"assets/PlayerMove/idle.gif";
-					this->playerlevel1->Location = System::Drawing::Point(130, 494);
-					this->playerlevel1->Margin = System::Windows::Forms::Padding(4);
+					this->playerlevel1->Location = System::Drawing::Point(104, 395);
 					this->playerlevel1->Name = L"playerlevel1";
-					this->playerlevel1->Size = System::Drawing::Size(187, 105);
+					this->playerlevel1->Size = System::Drawing::Size(150, 84);
 					this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->playerlevel1->TabIndex = 35;
 					this->playerlevel1->TabStop = false;
@@ -409,18 +417,17 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// ResultTextBox
 					// 
 					this->ResultTextBox->Location = System::Drawing::Point(0, 0);
-					this->ResultTextBox->Margin = System::Windows::Forms::Padding(4);
 					this->ResultTextBox->Name = L"ResultTextBox";
-					this->ResultTextBox->Size = System::Drawing::Size(124, 22);
+					this->ResultTextBox->Size = System::Drawing::Size(100, 20);
 					this->ResultTextBox->TabIndex = 34;
 					this->ResultTextBox->Visible = false;
 					// 
 					// ContinueNxtLvlButton
 					// 
-					this->ContinueNxtLvlButton->Location = System::Drawing::Point(716, 700);
+					this->ContinueNxtLvlButton->Location = System::Drawing::Point(573, 560);
 					this->ContinueNxtLvlButton->Margin = System::Windows::Forms::Padding(2);
 					this->ContinueNxtLvlButton->Name = L"ContinueNxtLvlButton";
-					this->ContinueNxtLvlButton->Size = System::Drawing::Size(150, 72);
+					this->ContinueNxtLvlButton->Size = System::Drawing::Size(120, 58);
 					this->ContinueNxtLvlButton->TabIndex = 30;
 					this->ContinueNxtLvlButton->Text = L"Continue";
 					this->ContinueNxtLvlButton->UseVisualStyleBackColor = true;
@@ -429,10 +436,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(775, 799);
+					this->space->Location = System::Drawing::Point(620, 639);
 					this->space->Margin = System::Windows::Forms::Padding(2);
 					this->space->Name = L"space";
-					this->space->Size = System::Drawing::Size(39, 49);
+					this->space->Size = System::Drawing::Size(31, 39);
 					this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->space->TabIndex = 16;
 					this->space->TabStop = false;
@@ -441,10 +448,10 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(651, 776);
+					this->wasd->Location = System::Drawing::Point(521, 621);
 					this->wasd->Margin = System::Windows::Forms::Padding(2);
 					this->wasd->Name = L"wasd";
-					this->wasd->Size = System::Drawing::Size(120, 90);
+					this->wasd->Size = System::Drawing::Size(96, 72);
 					this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 					this->wasd->TabIndex = 15;
 					this->wasd->TabStop = false;
@@ -457,10 +464,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->beginButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					this->beginButton->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-					this->beginButton->Location = System::Drawing::Point(612, 1000);
-					this->beginButton->Margin = System::Windows::Forms::Padding(4);
+					this->beginButton->Location = System::Drawing::Point(490, 800);
 					this->beginButton->Name = L"beginButton";
-					this->beginButton->Size = System::Drawing::Size(244, 62);
+					this->beginButton->Size = System::Drawing::Size(195, 50);
 					this->beginButton->TabIndex = 13;
 					this->beginButton->Text = L"Begin";
 					this->beginButton->UseVisualStyleBackColor = false;
@@ -472,21 +478,19 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::Color::Black;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(902, 50);
-					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
+					this->progressBarLevel1->Location = System::Drawing::Point(722, 40);
 					this->progressBarLevel1->Maximum = 2000;
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(562, 61);
+					this->progressBarLevel1->Size = System::Drawing::Size(450, 49);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					// 
 					// Barrier
 					// 
 					this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
-					this->Barrier->Location = System::Drawing::Point(349, 236);
-					this->Barrier->Margin = System::Windows::Forms::Padding(4);
+					this->Barrier->Location = System::Drawing::Point(279, 189);
 					this->Barrier->Name = L"Barrier";
-					this->Barrier->Size = System::Drawing::Size(25, 909);
+					this->Barrier->Size = System::Drawing::Size(20, 727);
 					this->Barrier->TabIndex = 36;
 					this->Barrier->TabStop = false;
 					this->Barrier->Visible = false;
@@ -533,16 +537,20 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->QuestionTransitionTimerHide->Interval = 1000;
 					this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl1Form::QuestionTransitionTimerHide_Tick);
 					// 
+					// DelayEnd
+					// 
+					this->DelayEnd->Interval = 2000;
+					this->DelayEnd->Tick += gcnew System::EventHandler(this, &lvl1Form::DelayEnd_Tick);
+					// 
 					// lvl1Form
 					// 
-					this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+					this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 					this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 					this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-					this->ClientSize = System::Drawing::Size(1580, 851);
+					this->ClientSize = System::Drawing::Size(1264, 681);
 					this->Controls->Add(this->panelLogin);
 					this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 					this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-					this->Margin = System::Windows::Forms::Padding(4);
 					this->MaximizeBox = false;
 					this->Name = L"lvl1Form";
 					this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -604,6 +612,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						this->Transition1->Enabled = false;
 						this->Transition2->Enabled = false;
 						this->BulletTimer->Enabled = false;
+						this->DelayEnd->Stop();
 
 						window->ShowDialog();
 
@@ -629,7 +638,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						LvlMethods->QuestionAnswered(0);
 						if (LvlMethods->QuestionsCompleted == 10)
 						{
-							displayEndLvlScreen();
+							DelayEnd->Start();
 						}
 						else
 						{
@@ -1342,6 +1351,9 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 	}
 
 
+private: System::Void DelayEnd_Tick(System::Object^ sender, System::EventArgs^ e) {
+	displayEndLvlScreen();
+}
 };
 }
 
