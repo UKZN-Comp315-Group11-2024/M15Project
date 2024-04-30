@@ -28,6 +28,10 @@ namespace M15Namespace {
 			public:
 				LevelMethods^ LvlMethods;
 
+				//PictureBox Array
+				array<definedPictureBox^>^ pictureBoxArray;
+
+
 		private: System::Windows::Forms::Timer^ BulletTimer;
 
 
@@ -56,10 +60,11 @@ namespace M15Namespace {
 			Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF2);
 				lvl1Form()
 				{	
+
 					InitializeComponent();
 					//
 					//TODO: Add the constructor code here
-					
+
 					//@Daniel
 					des->SetQuestionTransitionTimer(QuestionTransitionTimerShow);
 
@@ -407,7 +412,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// space
 					// 
 					this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-					this->space->Location = System::Drawing::Point(796, 799);
+					this->space->Location = System::Drawing::Point(504, 799);
 					this->space->Margin = System::Windows::Forms::Padding(2);
 					this->space->Name = L"space";
 					this->space->Size = System::Drawing::Size(39, 49);
@@ -419,7 +424,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// wasd
 					// 
 					this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-					this->wasd->Location = System::Drawing::Point(670, 774);
+					this->wasd->Location = System::Drawing::Point(380, 775);
 					this->wasd->Margin = System::Windows::Forms::Padding(2);
 					this->wasd->Name = L"wasd";
 					this->wasd->Size = System::Drawing::Size(120, 90);
@@ -450,11 +455,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						| System::Windows::Forms::AnchorStyles::Right));
 					this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 					this->progressBarLevel1->ForeColor = System::Drawing::Color::Chartreuse;
-					this->progressBarLevel1->Location = System::Drawing::Point(836, 40);
+					this->progressBarLevel1->Location = System::Drawing::Point(902, 50);
 					this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 					this->progressBarLevel1->Maximum = 2000;
 					this->progressBarLevel1->Name = L"progressBarLevel1";
-					this->progressBarLevel1->Size = System::Drawing::Size(731, 61);
+					this->progressBarLevel1->Size = System::Drawing::Size(562, 61);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
 					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
@@ -775,6 +780,31 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 				bullet->Hide();
 
+					//initializing picturBoxArray
+					pictureBoxArray = gcnew array<definedPictureBox^>(10);
+					int pbWidth = 45;
+					int pbHeight = 45;
+					//int horizontalGap = 10;
+					//int verticalGap = 10;
+
+					//co-ords
+					//int screenWidth = Screen::PrimaryScreen->Bounds.Width;
+					//int totalPictureBoxWidth = (pbWidth + horizontalGap) * 5 - horizontalGap;
+					//int horizontalStartPoint = (screenWidth - totalPictureBoxWidth) / 2;
+
+					System::String^ imagePath = "assets/Logos/logo_incorrect.png";
+					Image^ image = Image::FromFile(imagePath);
+					//poplating PicturBoxes
+					for (int i = 0; i < 10; i++) {
+						//pictureBoxArray[i] = gcnew definedPictureBox(panelLogin, pbWidth, pbHeight, 500 +(i * pbWidth), 400, imagePath, false);  // creates new PictureBox
+						
+						
+						pictureBoxArray[i] = gcnew definedPictureBox(panelLogin, pbWidth, pbHeight, 723 +(i * pbWidth), 100, imagePath, false); 
+						
+					}
+					
+
+
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -815,6 +845,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 		}
 
 		//@avesh: animation of the military general and text out of screen
+
 		private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
@@ -838,6 +869,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			// ensuring all stuff leaves screen before showing the player
 			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
+				//Visible when game begins
 				this->progressBarLevel1->Visible = true;
 				this->playerlevel1->Visible = true;
 				this->playerlevel1->BringToFront();
@@ -848,8 +880,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				Transition2->Enabled = false;
 				canshoot = true;
 
-				//if (LvlMethods->QuestionType == "0") 
-				//{
 					pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
 					pictureBoxA->Show();
 					pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
@@ -863,11 +893,14 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					des->addObject(pictureBoxB, destroyFuncB);
 					des->addObject(pictureBoxC, destroyFuncC);
 					des->addObject(pictureBoxD, destroyFuncD);
-				//}
-				//else
-				//{
+
 					
-				//}
+					for (int i = 0; i < 10; i++) {
+	
+						pictureBoxArray[i]->setVisible(true);
+
+					}
+	
 				
 			}
 			pbGeneralMilitary->Location = Point(x, 230);

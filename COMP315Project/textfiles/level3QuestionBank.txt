@@ -20,5 +20,5 @@ LEVEL 3 QUESTIONS
 0$What scent indicates that there may be a rain storm$Petrichor$Flowery scent$Cheese$Woody scent
 1$In the Spy Aviation Manuel, the statement “Danger close” refers to nearby hostiles approaching spy radar.$False$True
 1$Deviating from the operation objective is considered treason$True$False
-1$A met1$Incase of immediate capture a spy must activate the cyanide pill behind their molar to prevent sharing intelligence$True$False
+1$Incase of immediate capture a spy must activate the cyanide pill behind their molar to prevent sharing intelligence$True$False
 1$to locate the North Star to navigate during the night is to find the big dipper constellation$True$False
