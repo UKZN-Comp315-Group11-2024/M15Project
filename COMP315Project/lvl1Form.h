@@ -853,6 +853,12 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				}
 
 				openedDoor = gcnew definedPictureBox();
+
+				//Play background noise and music
+				ambience->OfficeNoise();
+				music->LevelOneMusic();
+
+
 				
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
@@ -1051,6 +1057,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					if (des->getBulletCount() == 0 && !isleft) {
 						
 						shootTimer->Start();
+						//soundAnswer->Laser();
+						soundAnswer->gunshot();
 					}
 				}
 			}

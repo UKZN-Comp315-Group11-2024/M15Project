@@ -58,8 +58,11 @@ void definedPictureBox::pictureBox_Click(System::Object^ sender, System::EventAr
 	MusicAndSFX* BonusSounds = new MusicAndSFX();
 	this->Hide();
 	countClick++;
+	//BonusSounds->MouseClick();
 	BonusSounds->Laser();
-	//BonusSounds->gunshot();
+	//soundAnswer->gunshot();
+	//delete BonusSounds;
+	
 }
 
 int definedPictureBox::numClicks()

@@ -8,7 +8,7 @@
 
 	MusicAndSFX::MusicAndSFX() {
 		sound.setVolume(70); // sets sound effect volume
-		Background.setVolume(60);//sets background sounds volume
+		Background.setVolume(70);//sets background sounds volume
 		music.setVolume(50); //sets music volume
 
 	}
@@ -102,7 +102,7 @@
 
 	void MusicAndSFX::LevelOneMusic() {
 
-		if (!music.openFromFile("assets\\")) {  //opens music file
+		if (!music.openFromFile("assets\\ES_Intentional Terror - Trailer Worx.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -138,7 +138,7 @@
 
 	void MusicAndSFX::OfficeNoise() {
 
-		if (!Background.openFromFile("assets\\")) {  //opens music file
+		if (!Background.openFromFile("assets\\ES_Office Walla - SFX Producer.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		Background.play();
