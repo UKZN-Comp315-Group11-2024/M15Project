@@ -3,9 +3,6 @@
 #include <iostream>
 #include "MusicAndSFX.h"
 
-
-
-
 MusicAndSFX::MusicAndSFX() {
 	sound.setVolume(70); // sets sound effect volume
 	Background.setVolume(70);//sets background sounds volume
@@ -22,7 +19,7 @@ MusicAndSFX::~MusicAndSFX() {
 
 void MusicAndSFX::gunshot() {
 
-	if (!sound.openFromFile("assets\\ES_Gunshot Rifle 77 - SFX Producer.wav")) {  //loads audio file
+	if (!sound.openFromFile("assets\\music\\ES_Gunshot Rifle 77 - SFX Producer.wav")) {  //loads audio file
 		std::cout << "sound failed to load into file" << std::endl;
 	}
 	sound.play();
@@ -43,7 +40,7 @@ void MusicAndSFX::gunshot() {
 void MusicAndSFX::MouseClick() {
 	//sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-	if (!sound.openFromFile("assets\\techsounds.wav")) {  //loads audio file
+	if (!sound.openFromFile("assets\\music\\techsounds.wav")) {  //loads audio file
 		std::cout << "sound failed to load into file" << std::endl;
 	}
 	sound.play();   //plays what's in the buffer
@@ -52,7 +49,7 @@ void MusicAndSFX::MouseClick() {
 void MusicAndSFX::FacialRegocnition() {
 	sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-	if (!sound.openFromFile("assets\\ES_Sci Fi Retinal Scan - SFX Producer.wav")) {  //loads audio file
+	if (!sound.openFromFile("assets\\music\\ES_Sci Fi Retinal Scan - SFX Producer.wav")) {  //loads audio file
 		std::cout << "sound failed to load into file" << std::endl;
 	}
 	sound.play();   //plays what's in the buffer
@@ -60,7 +57,7 @@ void MusicAndSFX::FacialRegocnition() {
 
 void MusicAndSFX::CorrectAnswer() {
 
-	if (!sound.openFromFile("assets\\CorrectAnswerBell.wav")) {  //opens music file
+	if (!sound.openFromFile("assets\\music\\CorrectAnswerBell.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	sound.play();
@@ -70,7 +67,7 @@ void MusicAndSFX::CorrectAnswer() {
 
 void MusicAndSFX::IncorrectAnswer() {
 
-	if (!sound.openFromFile("assets\\ES_Buzzer 4 - SFX Producer.wav")) {  //opens music file
+	if (!sound.openFromFile("assets\\music\\ES_Buzzer 4 - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	sound.play();
@@ -80,7 +77,7 @@ void MusicAndSFX::IncorrectAnswer() {
 
 void MusicAndSFX::Laser() {
 
-	if (!sound.openFromFile("assets\\ES_Laser Gun Fire 5 - SFX Producer.wav")) {  //opens music file
+	if (!sound.openFromFile("assets\\music\\ES_Laser Gun Fire 5 - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	sound.play();
@@ -90,7 +87,7 @@ void MusicAndSFX::Laser() {
 
 void MusicAndSFX::BulletImpact() {
 
-	if (!sound.openFromFile("assets\\ES_Bullet Impact Metal 3 - SFX Producer.wav")) {  //opens music file
+	if (!sound.openFromFile("assets\\music\\ES_Bullet Impact Metal 3 - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	sound.play();
@@ -102,7 +99,7 @@ void MusicAndSFX::BulletImpact() {
 
 void MusicAndSFX::LevelOneMusic() {
 
-	if (!music.openFromFile("assets\\ES_Intentional Terror - Trailer Worx.wav")) {  //opens music file
+	if (!music.openFromFile("assets\\music\\ES_Intentional Terror - Trailer Worx.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	music.play();
@@ -113,7 +110,7 @@ void MusicAndSFX::LevelOneMusic() {
 
 void MusicAndSFX::LevelTwoMusic() {
 
-	if (!music.openFromFile("assets\\")) {  //opens music file
+	if (!music.openFromFile("assets\\music\\")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	music.play();
@@ -123,7 +120,7 @@ void MusicAndSFX::LevelTwoMusic() {
 
 void MusicAndSFX::LevelThreeMusic() {
 
-	if (!music.openFromFile("assets\\")) {  //opens music file
+	if (!music.openFromFile("assets\\music\\")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	music.play();
@@ -138,7 +135,7 @@ void MusicAndSFX::LevelThreeMusic() {
 
 void MusicAndSFX::OfficeNoise() {
 
-	if (!Background.openFromFile("assets\\ES_Office Walla - SFX Producer.wav")) {  //opens music file
+	if (!Background.openFromFile("assets\\music\\ES_Office Walla - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	Background.play();
@@ -147,7 +144,7 @@ void MusicAndSFX::OfficeNoise() {
 }
 
 void MusicAndSFX::Forest() {
-	if (!Background.openFromFile("assets\\")) {  //opens music file
+	if (!Background.openFromFile("assets\\music\\")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	std::cout << "here";
@@ -159,7 +156,7 @@ void MusicAndSFX::Forest() {
 
 void MusicAndSFX::NightForest() {
 
-	if (!Background.openFromFile("assets\\")) {  //opens music file
+	if (!Background.openFromFile("assets\\music\\")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	Background.play();
@@ -169,19 +166,16 @@ void MusicAndSFX::NightForest() {
 
 
 
-void MusicAndSFX::StopSound(boolean Stop) { //stops music if sent boolean value true
-
-	if (Stop == true) {
-		music.stop();
-		Background.stop();
-	}
-
+void MusicAndSFX::StopSound() { //stops music if sent boolean value true
+	music.stop();
+	Background.stop();
+	sound.stop();	
 }
 
-
-
-
-
-
-
-
+void MusicAndSFX::playRandomSound(std::string path, bool loop) {
+	if (!randomSound.openFromFile(path)) {  //opens music file
+		std::cout << "could not open music file" << std::endl;
+	}
+	randomSound.play();
+	randomSound.setLoop(loop);
+}

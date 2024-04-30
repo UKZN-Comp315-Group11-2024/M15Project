@@ -381,7 +381,7 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 			std::ofstream outputFile("textfiles/PlayerInfo.txt");
 			outputFile << lines[0] << std::endl;
 			outputFile << lines[1] << std::endl;
-			outputFile << lines[2] << std::endl;
+			outputFile << lines[2];
 
 			outputFile.close();
 
