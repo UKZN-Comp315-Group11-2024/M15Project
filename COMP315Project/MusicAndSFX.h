@@ -24,6 +24,7 @@ public:
 	void LevelOneMusic();
 	void LevelTwoMusic();
 	void LevelThreeMusic();
+	void BonusLevel4();
 
 	void OfficeNoise();
 	void Forest();

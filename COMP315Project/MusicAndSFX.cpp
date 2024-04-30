@@ -43,7 +43,7 @@
 	void MusicAndSFX::MouseClick() {
 		//sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-		if (!sound.openFromFile("assets\\techsounds.wav")) {  //loads audio file
+		if (!sound.openFromFile("assets\\Mouse Click Sound Effect.wav")) {  //loads audio file
 			std::cout << "sound failed to load into file" << std::endl;
 		}
 		sound.play();   //plays what's in the buffer
@@ -113,7 +113,7 @@
 
 	void MusicAndSFX::LevelTwoMusic() {
 
-		if (!music.openFromFile("assets\\")) {  //opens music file
+		if (!music.openFromFile("assets\\ES_Thrilling Games - Phoenix Tail.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -123,7 +123,7 @@
 	
 	void MusicAndSFX::LevelThreeMusic() {
 
-		if (!music.openFromFile("assets\\")) {  //opens music file
+		if (!music.openFromFile("assets\\ES_Shivers in the Shadows - Victor Lundberg.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -131,6 +131,15 @@
 		music.setLoop(true); //loops music file
 	}
 
+	void MusicAndSFX::BonusLevel4() {
+
+		if (!music.openFromFile("assets\\ES_Empty Space - Etienne Roussel.wav")) {  //opens music file
+			std::cout << "could not open music file" << std::endl;
+		}
+		music.play();
+
+		music.setLoop(true); //loops music file
+	}
 
 
 
@@ -147,7 +156,7 @@
 	}
 
 	void MusicAndSFX::Forest() {
-		if (!Background.openFromFile("assets\\")) {  //opens music file
+		if (!Background.openFromFile("assets\\ES_Forest 3 - SFX Producer")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		std::cout << "here";
@@ -159,7 +168,7 @@
 
 	void MusicAndSFX::NightForest() {
 
-		if (!Background.openFromFile("assets\\")) {  //opens music file
+		if (!Background.openFromFile("assets\\ES_Forest 7 - SFX Producer.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		Background.play();
