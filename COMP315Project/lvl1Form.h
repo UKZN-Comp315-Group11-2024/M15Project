@@ -820,7 +820,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				int pbHeight = 45;
 
 
-				System::String^ imagePath = "assets/Logos/logo_incorrect.png";
+				System::String^ imagePath = "assets/Logos/logo_default.png";
 				Image^ image = Image::FromFile(imagePath);
 				//poplating PicturBoxes
 				for (int i = 0; i < 10; i++) {
@@ -921,13 +921,12 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					//initializing picturBoxArray
 		
 					//poplating PicturBoxes
-					for (int i = 0; i < 10; i++) {
-						//pictureBoxArray[i] = gcnew definedPictureBox(panelLogin, pbWidth, pbHeight, 500 +(i * pbWidth), 400, imagePath, false);  // creates new PictureBox
-
-
+					for (int i = 0; i < 10; i++) {						
 						pictureBoxArray[i]->setVisible(true);
 
 					}
+					LvlMethods->DisplayNextQuestionSet();
+
 				
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
@@ -1162,9 +1161,10 @@ private: System::Void BulletTimer_Tick(System::Object^ sender, System::EventArgs
 	
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-
+	   int count = 0;
 	//@Daniel: timer to give player feedback
 		private: System::Void QuestionTransitionTimerShow_Tick(System::Object^ sender, System::EventArgs^ e) {
+
 			LvlMethods->DisableControls = true;
 				if (LvlMethods->Correct) {
 					ResultTextBox->Visible = true;
@@ -1176,6 +1176,8 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					LvlMethods->Correct = false;
 					QuestionTransitionTimerHide->Start();
 					QuestionTransitionTimerShow->Stop();
+					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_correct.png");
+					count++;
 
 				} else {
 					ResultTextBox->Visible = true;
@@ -1187,6 +1189,8 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					LvlMethods->Correct = false;
 					QuestionTransitionTimerHide->Start();
 					QuestionTransitionTimerShow->Stop();
+					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+					count++;
 				}
 
 			
