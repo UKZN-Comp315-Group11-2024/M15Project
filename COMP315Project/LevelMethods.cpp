@@ -131,7 +131,7 @@ void LevelMethods::QuestionAnswered(int option) {
 
 		//ResetPlayerPos();
 		if (this->QuestionsCompleted < 10) {
-			DisplayNextQuestionSet();
+			//DisplayNextQuestionSet();
 		}
 	
 

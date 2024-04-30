@@ -227,6 +227,13 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 					this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 					this->panelLogin = (gcnew System::Windows::Forms::Panel());
+					this->textBoxQuestion = (gcnew System::Windows::Forms::Label());
+					this->textBoxTFB = (gcnew System::Windows::Forms::Label());
+					this->textBoxTFA = (gcnew System::Windows::Forms::Label());
+					this->textBoxD = (gcnew System::Windows::Forms::Label());
+					this->textBoxC = (gcnew System::Windows::Forms::Label());
+					this->textBoxB = (gcnew System::Windows::Forms::Label());
+					this->textBoxA = (gcnew System::Windows::Forms::Label());
 					this->playerlevel1 = (gcnew System::Windows::Forms::PictureBox());
 					this->ResultTextBox = (gcnew System::Windows::Forms::TextBox());
 					this->ContinueNxtLvlButton = (gcnew System::Windows::Forms::Button());
@@ -244,13 +251,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->BulletTimer = (gcnew System::Windows::Forms::Timer(this->components));
 					this->QuestionTransitionTimerShow = (gcnew System::Windows::Forms::Timer(this->components));
 					this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
-					this->textBoxA = (gcnew System::Windows::Forms::Label());
-					this->textBoxB = (gcnew System::Windows::Forms::Label());
-					this->textBoxC = (gcnew System::Windows::Forms::Label());
-					this->textBoxD = (gcnew System::Windows::Forms::Label());
-					this->textBoxTFA = (gcnew System::Windows::Forms::Label());
-					this->textBoxTFB = (gcnew System::Windows::Forms::Label());
-					this->textBoxQuestion = (gcnew System::Windows::Forms::Label());
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 					this->panelLogin->SuspendLayout();
 					(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
@@ -320,6 +320,63 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelLogin->Size = System::Drawing::Size(1604, 885);
 					this->panelLogin->TabIndex = 12;
 					this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
+					// 
+					// textBoxQuestion
+					// 
+					this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
+					this->textBoxQuestion->Location = System::Drawing::Point(237, 34);
+					this->textBoxQuestion->Name = L"textBoxQuestion";
+					this->textBoxQuestion->Size = System::Drawing::Size(412, 55);
+					this->textBoxQuestion->TabIndex = 43;
+					this->textBoxQuestion->Text = L"label1";
+					// 
+					// textBoxTFB
+					// 
+					this->textBoxTFB->Location = System::Drawing::Point(1272, 668);
+					this->textBoxTFB->Name = L"textBoxTFB";
+					this->textBoxTFB->Size = System::Drawing::Size(100, 23);
+					this->textBoxTFB->TabIndex = 42;
+					this->textBoxTFB->Text = L"TF2";
+					// 
+					// textBoxTFA
+					// 
+					this->textBoxTFA->Location = System::Drawing::Point(1272, 326);
+					this->textBoxTFA->Name = L"textBoxTFA";
+					this->textBoxTFA->Size = System::Drawing::Size(277, 62);
+					this->textBoxTFA->TabIndex = 41;
+					this->textBoxTFA->Text = L"TF1";
+					// 
+					// textBoxD
+					// 
+					this->textBoxD->Location = System::Drawing::Point(1272, 746);
+					this->textBoxD->Name = L"textBoxD";
+					this->textBoxD->Size = System::Drawing::Size(268, 72);
+					this->textBoxD->TabIndex = 40;
+					this->textBoxD->Text = L"Option D";
+					// 
+					// textBoxC
+					// 
+					this->textBoxC->Location = System::Drawing::Point(1269, 566);
+					this->textBoxC->Name = L"textBoxC";
+					this->textBoxC->Size = System::Drawing::Size(274, 64);
+					this->textBoxC->TabIndex = 39;
+					this->textBoxC->Text = L"Option C";
+					// 
+					// textBoxB
+					// 
+					this->textBoxB->Location = System::Drawing::Point(1272, 407);
+					this->textBoxB->Name = L"textBoxB";
+					this->textBoxB->Size = System::Drawing::Size(277, 79);
+					this->textBoxB->TabIndex = 38;
+					this->textBoxB->Text = L"Option B";
+					// 
+					// textBoxA
+					// 
+					this->textBoxA->Location = System::Drawing::Point(1269, 248);
+					this->textBoxA->Name = L"textBoxA";
+					this->textBoxA->Size = System::Drawing::Size(280, 64);
+					this->textBoxA->TabIndex = 37;
+					this->textBoxA->Text = L"Option A";
 					// 
 					// playerlevel1
 					// 
@@ -459,65 +516,8 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// QuestionTransitionTimerHide
 					// 
-					this->QuestionTransitionTimerHide->Interval = 1;
+					this->QuestionTransitionTimerHide->Interval = 1000;
 					this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl1Form::QuestionTransitionTimerHide_Tick);
-					// 
-					// textBoxA
-					// 
-					this->textBoxA->Location = System::Drawing::Point(1269, 248);
-					this->textBoxA->Name = L"textBoxA";
-					this->textBoxA->Size = System::Drawing::Size(280, 64);
-					this->textBoxA->TabIndex = 37;
-					this->textBoxA->Text = L"Option A";
-					// 
-					// textBoxB
-					// 
-					this->textBoxB->Location = System::Drawing::Point(1272, 407);
-					this->textBoxB->Name = L"textBoxB";
-					this->textBoxB->Size = System::Drawing::Size(277, 79);
-					this->textBoxB->TabIndex = 38;
-					this->textBoxB->Text = L"Option B";
-					// 
-					// textBoxC
-					// 
-					this->textBoxC->Location = System::Drawing::Point(1269, 566);
-					this->textBoxC->Name = L"textBoxC";
-					this->textBoxC->Size = System::Drawing::Size(274, 64);
-					this->textBoxC->TabIndex = 39;
-					this->textBoxC->Text = L"Option C";
-					// 
-					// textBoxD
-					// 
-					this->textBoxD->Location = System::Drawing::Point(1272, 746);
-					this->textBoxD->Name = L"textBoxD";
-					this->textBoxD->Size = System::Drawing::Size(268, 72);
-					this->textBoxD->TabIndex = 40;
-					this->textBoxD->Text = L"Option D";
-					// 
-					// textBoxTFA
-					// 
-					this->textBoxTFA->Location = System::Drawing::Point(1272, 326);
-					this->textBoxTFA->Name = L"textBoxTFA";
-					this->textBoxTFA->Size = System::Drawing::Size(277, 62);
-					this->textBoxTFA->TabIndex = 41;
-					this->textBoxTFA->Text = L"TF1";
-					// 
-					// textBoxTFB
-					// 
-					this->textBoxTFB->Location = System::Drawing::Point(1272, 668);
-					this->textBoxTFB->Name = L"textBoxTFB";
-					this->textBoxTFB->Size = System::Drawing::Size(100, 23);
-					this->textBoxTFB->TabIndex = 42;
-					this->textBoxTFB->Text = L"TF2";
-					// 
-					// textBoxQuestion
-					// 
-					this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
-					this->textBoxQuestion->Location = System::Drawing::Point(237, 34);
-					this->textBoxQuestion->Name = L"textBoxQuestion";
-					this->textBoxQuestion->Size = System::Drawing::Size(412, 55);
-					this->textBoxQuestion->TabIndex = 43;
-					this->textBoxQuestion->Text = L"label1";
 					// 
 					// lvl1Form
 					// 
@@ -1206,7 +1206,7 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 }
 			//@Daniel: puts everything back after the player get feeback for 3 seconds
 private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, System::EventArgs^ e) {
-
+	LvlMethods->DisplayNextQuestionSet();
 	//puts everything back
 	//hide message and set its location
 	ResultTextBox->Visible = false;
