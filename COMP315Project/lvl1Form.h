@@ -598,8 +598,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  des->addObject(pictureBoxTF1, destroyFuncTF1);
 
 						  LvlMethods->QuestionAnswered(0);
-						  if (LvlMethods->QuestionsCompleted == 10)
+						  if (LvlMethods->QuestionsCompleted >= 10)
 						  {
+							  LvlMethods->canChange = false;
 							  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
 							  String^ unwrapped = gcnew String(windowPrompt.c_str());
 							  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
@@ -610,7 +611,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 							  //this->~lvl1Form();
 							  this->Close();
-							  LvlMethods->QuestionsCompleted--;
+
 						  }
 						  else
 						  {
@@ -647,8 +648,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						  //remove
 						  //AddDoors();
 						  LvlMethods->QuestionAnswered(0);
-						  if (LvlMethods->QuestionsCompleted == 10)
+						  if (LvlMethods->QuestionsCompleted >= 10)
 						  {
+							  LvlMethods->canChange = false;
 							  std::string windowPrompt = "askfhgasufgasufgsajfhaksfjakjfhskhfaj.";
 							  String^ unwrapped = gcnew String(windowPrompt.c_str());
 							  popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
