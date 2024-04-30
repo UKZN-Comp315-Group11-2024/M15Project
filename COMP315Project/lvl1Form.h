@@ -388,9 +388,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// textBoxA
 					// 
+					this->textBoxA->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						static_cast<System::Byte>(0)));
 					this->textBoxA->Location = System::Drawing::Point(1269, 248);
 					this->textBoxA->Name = L"textBoxA";
-					this->textBoxA->Size = System::Drawing::Size(280, 64);
+					this->textBoxA->Size = System::Drawing::Size(280, 159);
 					this->textBoxA->TabIndex = 37;
 					this->textBoxA->Text = L"Option A";
 					// 
