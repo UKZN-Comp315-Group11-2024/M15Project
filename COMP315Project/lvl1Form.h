@@ -331,7 +331,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->panelQuestion->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 					this->panelQuestion->Controls->Add(this->textBoxQuestion);
 					this->panelQuestion->Location = System::Drawing::Point(72, 33);
-					this->panelQuestion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+					this->panelQuestion->Margin = System::Windows::Forms::Padding(2);
 					this->panelQuestion->Name = L"panelQuestion";
 					this->panelQuestion->Size = System::Drawing::Size(600, 118);
 					this->panelQuestion->TabIndex = 44;
@@ -539,7 +539,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					// 
 					// DelayEnd
 					// 
-					this->DelayEnd->Interval = 2000;
+					this->DelayEnd->Interval = 4000;
 					this->DelayEnd->Tick += gcnew System::EventHandler(this, &lvl1Form::DelayEnd_Tick);
 					// 
 					// lvl1Form
@@ -640,10 +640,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						{
 							DelayEnd->Start();
 						}
-						else
-						{
+						
 							QuestionTransitionTimerShow->Start();
-						}
+						
 						std::cout << LvlMethods->QuestionsCompleted << std::endl;
 					}
 					void destroyTF2()
@@ -663,12 +662,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						LvlMethods->QuestionAnswered(1);
 						if (LvlMethods->QuestionsCompleted == 10)
 						{
-							displayEndLvlScreen();
+							DelayEnd->Start();
 						}
-						else
-						{
+						
 							QuestionTransitionTimerShow->Start();
-						}
+						
 					}
 					void destroyA()
 					{
@@ -691,12 +689,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 						LvlMethods->QuestionAnswered(0);
 						if (LvlMethods->QuestionsCompleted == 10)
 						{
-							displayEndLvlScreen();
+							DelayEnd->Start();
 						}
-						else
-						{
+						
 							QuestionTransitionTimerShow->Start();
-						}
+						
 					}
 					void destroyB()
 					{
@@ -718,12 +715,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 						if (LvlMethods->QuestionsCompleted == 10)
 						{
-							displayEndLvlScreen();
+							DelayEnd->Start();
 						}
-						else
-						{
+						
 							QuestionTransitionTimerShow->Start();
-						}
+						
 					}
 					void destroyC()
 					{
@@ -745,12 +741,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 						if (LvlMethods->QuestionsCompleted == 10)
 						{
-							displayEndLvlScreen();
+							DelayEnd->Start();
 						}
-						else
-						{
+						
 							QuestionTransitionTimerShow->Start();
-						}
+						
 					}
 					void destroyD()
 					{
@@ -772,12 +767,11 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 						if (LvlMethods->QuestionsCompleted == 10)
 						{
-							displayEndLvlScreen();
+							DelayEnd->Start();
 						}
-						else
-						{
+						
 							QuestionTransitionTimerShow->Start();
-						}
+						
 					}
 
 			String^ projectDirectory = Application::StartupPath;
@@ -1200,7 +1194,7 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					pnt.Y = 260;
 					ResultTextBox->Location = pnt;
 					LvlMethods->Correct = false;
-					QuestionTransitionTimerHide->Start();
+					
 					QuestionTransitionTimerShow->Stop();
 					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_correctMK3.png");
 					gif->Image = Image::FromFile("assets/green.gif");
@@ -1214,11 +1208,14 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 					pnt.Y = 260;
 					ResultTextBox->Location = pnt;
 					LvlMethods->Correct = false;
-					QuestionTransitionTimerHide->Start();
 					QuestionTransitionTimerShow->Stop();
 					pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
 					gif->Image = Image::FromFile("assets/red.gif");
 					count++;
+				}
+
+				if (LvlMethods->QuestionsAnswered != 10) {
+					QuestionTransitionTimerHide->Start();
 				}
 
 			
