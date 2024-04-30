@@ -866,8 +866,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			beginButton->Location = Point(405, y2);
 	
 		}
-		private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-		}
 
 		//@avesh: animation of the military general and text out of screen
 
@@ -961,8 +959,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			}
 			//this->progressBarLevel1->
 			
-		}
-		private: System::Void pbGeneralMilitary_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
 		private: System::Void panelLogin_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
 		}
@@ -1155,12 +1151,6 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 	}
 	
 }
-private: System::Void progressBarLevel1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void playerLvl1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 private: System::Void BulletTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	des->update();
 }
@@ -1253,8 +1243,6 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 		pictureBoxTF2->Show();
 	}
 	
-}
-private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
