@@ -271,7 +271,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->lblMessage1->Size = System::Drawing::Size(0, 90);
 					this->lblMessage1->TabIndex = 1;
 					this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
-					this->lblMessage1->Click += gcnew System::EventHandler(this, &lvl1Form::label2_Click);
 					// 
 					// Transition1
 					// 
@@ -290,7 +289,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 					this->pbGeneralMilitary->TabIndex = 11;
 					this->pbGeneralMilitary->TabStop = false;
-					this->pbGeneralMilitary->Click += gcnew System::EventHandler(this, &lvl1Form::pbGeneralMilitary_Click);
 					// 
 					// panelLogin
 					// 
@@ -390,7 +388,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->playerlevel1->TabIndex = 35;
 					this->playerlevel1->TabStop = false;
 					this->playerlevel1->Visible = false;
-					this->playerlevel1->Click += gcnew System::EventHandler(this, &lvl1Form::playerLvl1_Click);
 					// 
 					// ResultTextBox
 					// 
@@ -465,7 +462,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					this->progressBarLevel1->Size = System::Drawing::Size(562, 61);
 					this->progressBarLevel1->TabIndex = 12;
 					this->progressBarLevel1->Visible = false;
-					this->progressBarLevel1->Click += gcnew System::EventHandler(this, &lvl1Form::progressBarLevel1_Click);
 					// 
 					// Barrier
 					// 
@@ -868,8 +864,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			beginButton->Location = Point(405, y2);
 	
 		}
-		private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-		}
 
 		//@avesh: animation of the military general and text out of screen
 
@@ -967,8 +961,6 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 			}
 			//this->progressBarLevel1->
 			
-		}
-		private: System::Void pbGeneralMilitary_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
 		private: System::Void panelLogin_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
 		}
@@ -1161,12 +1153,6 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 	}
 	
 }
-private: System::Void progressBarLevel1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void playerLvl1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
 private: System::Void BulletTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	des->update();
 }
@@ -1261,8 +1247,6 @@ private: System::Void QuestionTransitionTimerHide_Tick(System::Object^ sender, S
 		pictureBoxTF2->Show();
 	}
 	
-}
-private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
