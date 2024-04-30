@@ -28,12 +28,9 @@ namespace M15Namespace {
 			public:
 				LevelMethods^ LvlMethods;
 
+
 				//PictureBox Array
 				array<definedPictureBox^>^ pictureBoxArray;
-
-
-			//PictureBox Array
-			array<definedPictureBox^>^ pictureBoxArray;
 
 		private: System::Windows::Forms::Timer^ BulletTimer;
 
@@ -817,6 +814,21 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 				bullet->Hide();
 
+				//initializing picturBoxArray
+				pictureBoxArray = gcnew array<definedPictureBox^>(10);
+				int pbWidth = 45;
+				int pbHeight = 45;
+
+
+				System::String^ imagePath = "assets/Logos/logo_incorrect.png";
+				Image^ image = Image::FromFile(imagePath);
+				//poplating PicturBoxes
+				for (int i = 0; i < 10; i++) {
+
+					pictureBoxArray[i] = gcnew definedPictureBox(panelLogin, pbWidth, pbHeight, 723 + (i * pbWidth), 100, imagePath, false);
+
+				}
+
 			}
 			private: System::Void lvl1Form_Activated(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -905,11 +917,17 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					des->addObject(pictureBoxB, destroyFuncB);
 					des->addObject(pictureBoxC, destroyFuncC);
 					des->addObject(pictureBoxD, destroyFuncD);
-				//}
-				//else
-				//{
-					
-				//}
+
+					//initializing picturBoxArray
+		
+					//poplating PicturBoxes
+					for (int i = 0; i < 10; i++) {
+						//pictureBoxArray[i] = gcnew definedPictureBox(panelLogin, pbWidth, pbHeight, 500 +(i * pbWidth), 400, imagePath, false);  // creates new PictureBox
+
+
+						pictureBoxArray[i]->setVisible(true);
+
+					}
 				
 			}
 			pbGeneralMilitary->Location = Point(x, 230);
