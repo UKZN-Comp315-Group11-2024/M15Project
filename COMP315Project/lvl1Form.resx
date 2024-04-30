@@ -873,7 +873,7 @@
   <data name="panelQuestion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAzsAAAGLCAYAAADgeoxzAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAADJFJREFUeF7t17FpAwAQBEH3KXCoVtWBcTdSAxceh3gmmB52f34fzzcAAMA1ZgcA
+        cQAAEnEB89x6jgAADJFJREFUeF7t17FpAwAQBEH3KXCoVtWBcTdSAxceh3gmmB52f34fzzcAAMA1ZgcA
         ADjJ7AAAACeZHQAA4CSzAwAAnGR2AACAk8wOAABwktkBAABOMjsAAMBJZgcAADjJ7AAAACeZHQAA4CSz
         AwAAnGR2AACAk8wOAABwktkBAABOMjsAAMBJZgcAADjJ7AAAACeZHQAA4CSzAwAAnGR2AACAk8wOAABw
         ktkBAABOMjsAAMBJZgcAADjJ7AAAACeZHQAA4CSzAwAAnGR2AACAk8wOAABwktkBAABOMjsAAMBJXzE7
@@ -2494,6 +2494,9 @@
   </metadata>
   <metadata name="QuestionTransitionTimerHide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>591, 45</value>
+  </metadata>
+  <metadata name="DelayEnd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>799, 45</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>95</value>
