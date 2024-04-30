@@ -590,8 +590,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  void destroyTF1()
 					  {
 						  std::cout << "T des" << std::endl;
-						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-						  bullet->Hide();
+						  //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 
 						  pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 195, "assets/Doors/door.png", false);
 
@@ -631,8 +632,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  void destroyTF2()
 					  {
 						  std::cout << "F des" << std::endl;
-						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-						  bullet->Hide();
+						  //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 
 						  pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 435, "assets/Doors/door.png", false);
 
@@ -645,8 +647,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  {
 						  //remove
 						  std::cout << "A des" << std::endl;
-						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-						  bullet->Hide();
+						  //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 
 						  
 						  pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
@@ -678,8 +681,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  {
 						  //remove
 						  std::cout << "B des" << std::endl;
-						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-						  bullet->Hide();
+						  //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 
 						  pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
 						  
@@ -693,8 +697,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  {
 						  //remove
 						  std::cout << "C des" << std::endl;
-						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-						  bullet->Hide();
+						  //Moving bullet logic to it's own method, and calling it on shoot
+							//bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+							//bullet->Hide();
 						  
 						  pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
 						  
@@ -708,8 +713,9 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 					  {
 						  //remove 
 						  std::cout << "D des" << std::endl;
-						  bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-						  bullet->Hide();
+						  //Moving bullet logic to it's own method, and calling it on shoot
+						  //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+						  //bullet->Hide();
 
 						  pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
 						  
@@ -959,7 +965,7 @@ private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 				}
 				if (e->KeyCode == Keys::Space)
 				{
-					if (canshoot && !isleft) {
+					if (des->getBulletCount() == 0 && !isleft) {
 						
 						shootTimer->Start();
 					}
@@ -1083,9 +1089,9 @@ private: System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^
 		countSpace = 0;
 		shootTimer->Stop();
 
-		bullet->Show();
-		bullet->BringToFront();
-		des->addBullet(bullet, 10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 19);
+		//bullet->Show();
+		//bullet->BringToFront();
+		addBullet(10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 19);
 		BulletTimer->Start();
 	}
 	
@@ -1181,14 +1187,22 @@ private: System::Void pictureBoxD_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+	   //@Faran
+	   void addBullet(double velocityX, double velocityY, int x_pos, int y_pos) {
+			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   bullet->Show();
+			   des->addBullet(bullet, velocityX, velocityY, x_pos, y_pos);
+	   }
+
 	   //@Daniel
 	   void AddDoors() {
 		   //des->clearDoors();
 		   if (this->LvlMethods->QuestionType == "0") {
 			   //re-prints door A
 			   std::cout << "A des" << std::endl;
-			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-			   bullet->Hide();
+			   //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 			   pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxA, destroyFuncA);
 			   this->textBoxA->Show();
@@ -1196,16 +1210,18 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 
 			   //re-prints door B
 			   std::cout << "B des" << std::endl;
-			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-			   bullet->Hide();
+			   //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 			   pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxB, destroyFuncB);
 			   this->textBoxB->Show();
 
 			   //re-prints door C
 			   std::cout << "C des" << std::endl;
-			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-			   bullet->Hide();
+			   //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 			   pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxC, destroyFuncC);
 			   this->textBoxC->Show();
@@ -1213,8 +1229,9 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 
 			   //re-prints door D
 			   std::cout << "D des" << std::endl;
-			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-			   bullet->Hide();
+			   //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 			   pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxD, destroyFuncD);
 			   this->textBoxD->Show();
@@ -1223,16 +1240,18 @@ private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArg
 		   else {
 			   //re-prints door A
 			   std::cout << "A des" << std::endl;
-			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-			   bullet->Hide();
+			   //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 			   pictureBoxA = gcnew definedPictureBox(panelLogin, 329, 120, 850, 95, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxA, destroyFuncA);
 			   textBoxTFA->Show();
 
 			   //re-prints door B
 			   std::cout << "B des" << std::endl;
-			   bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
-			   bullet->Hide();
+			   //Moving bullet logic to it's own method, and calling it on shoot
+			   //bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			   //bullet->Hide();
 			   pictureBoxB = gcnew definedPictureBox(panelLogin, 329, 120, 850, 395, "assets/Doors/door.png", false);
 			   des->addObject(pictureBoxB, destroyFuncB);
 			   textBoxTFB->Show();
