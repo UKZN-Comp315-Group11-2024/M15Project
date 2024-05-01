@@ -218,7 +218,7 @@ namespace M15Namespace {
 			panelBonusLevel->BackgroundImage = backgroundImage;
 
 			
-
+			//music objects
 			ambience->OfficeNoise();
 			music->LevelOneMusic();
 
