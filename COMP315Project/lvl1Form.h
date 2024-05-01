@@ -87,10 +87,10 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
+		   /// <summary>
+		   /// Required method for Designer support - do not modify
+		   /// the contents of this method with the code editor.
+		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   this->components = (gcnew System::ComponentModel::Container());
@@ -742,7 +742,6 @@ namespace M15Namespace {
 			{
 				QuestionTransitionTimerShow->Start();
 			}
-			std::cout << LvlMethods->QuestionsCompleted << std::endl;
 		}
 		void destroyTF2()
 		{
@@ -1167,12 +1166,22 @@ namespace M15Namespace {
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
-				currentFeedbackLogoNum++;
-				LvlMethods->QuestionCompleted();
+
+				if (LvlMethods->QuestionsCompleted == 9) {
+					LvlMethods->Correct = false;
+					doFinalCheck("");
+				}
+				else {
+					currentFeedbackLogoNum++;
+					LvlMethods->QuestionCompleted();
+					soundAnswer->IncorrectAnswer();
+				}
+
 				LvlMethods->DisableControls = false;
 			}
 
 		}
+
 
 	private:
 		/*
@@ -1197,6 +1206,7 @@ namespace M15Namespace {
 			this->Transition1->Enabled = false;
 			this->Transition2->Enabled = false;
 			this->BulletTimer->Enabled = false;
+
 			if (LvlMethods->Correct)
 			{
 				ResultTextBox->Text = "Well Done!!!";
@@ -1206,8 +1216,12 @@ namespace M15Namespace {
 				ResultTextBox->Location = pnt;
 				LvlMethods->Correct = false;
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_correctMK3.png");
+
+				if (str != "") {
+					soundImpact->BulletImpact();
+				}
 				soundAnswer->CorrectAnswer();
-				soundImpact->BulletImpact();
+
 				currentFeedbackLogoNum++;
 
 			}
@@ -1220,8 +1234,11 @@ namespace M15Namespace {
 				ResultTextBox->Location = pnt;
 				LvlMethods->Correct = false;
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+
+				if (str != "") {
+					soundImpact->BulletImpact();
+				}
 				soundAnswer->IncorrectAnswer();
-				soundImpact->BulletImpact();
 
 				currentFeedbackLogoNum++;
 			}
