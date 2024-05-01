@@ -7,6 +7,7 @@ MusicAndSFX::MusicAndSFX() {
 	sound.setVolume(70); // sets sound effect volume
 	Background.setVolume(70);//sets background sounds volume
 	music.setVolume(50); //sets music volume
+	randomSound.setVolume(100);
 
 }
 

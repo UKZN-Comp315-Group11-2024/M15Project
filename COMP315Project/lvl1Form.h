@@ -1218,12 +1218,14 @@ namespace M15Namespace {
 		{
 			move_up = true;
 			is_w_up = false;
+			soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav",false);
 		}
 		if (e->KeyCode == Keys::A)
 		{
 			if (!isleft) {
 				imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
 				playerlevel1->ImageLocation = imagePath;
+				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			isleft = true;
 			move_left = true;
@@ -1236,6 +1238,8 @@ namespace M15Namespace {
 			move_down = true;
 			is_s_up = false;
 
+			soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
+
 		}
 		if (e->KeyCode == Keys::D)
 		{
@@ -1247,7 +1251,7 @@ namespace M15Namespace {
 			move_right = true;
 			is_d_up = false;
 
-
+			soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
 
 		}
 
@@ -1263,6 +1267,7 @@ namespace M15Namespace {
 		case Keys::W:
 			move_up = false;
 			is_w_up = true;
+			
 
 			break;
 		case Keys::A:
@@ -1285,6 +1290,8 @@ namespace M15Namespace {
 			break;
 		}
 
+
+
 		if (is_w_up && is_a_up && is_s_up && is_d_up)
 		{
 			if (isleft)
@@ -1296,6 +1303,7 @@ namespace M15Namespace {
 				imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 			}
 			playerlevel1->ImageLocation = imagePath;
+			soundImpact->randomSound.stop();
 		}
 	}
 		   //@avesh: Edited and redefined how the player movement works (Smooth movement)
