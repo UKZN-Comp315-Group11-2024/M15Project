@@ -215,6 +215,15 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
+    <Image Include="..\..\..\Pictures\Camera Roll\BONUS LEVEL.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\door-tut.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\Door_Tutorial.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\feedbacktutorial1.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\feedbacktutorial2.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\feedback_tutorial.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\move The player.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\Press SPACE to shoot.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\tutorialexample.png" />
     <Image Include="app.ico" />
     <Image Include="assets\Retical\ret.png" />
     <Image Include="Icon1.ico" />

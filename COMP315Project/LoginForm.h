@@ -8,6 +8,7 @@
 #include "FaceRecognition.h"
 #include "customAlgs.h"
 #include "Leaderboard.h"
+#include "TutorialForm.h"
 
 
 namespace M15Namespace {
@@ -658,7 +659,8 @@ namespace M15Namespace {
 
 	private: System::Void TutorialButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		//create instance of TutorialForm
-		//TutorialForm^ TutorialForm = gcnew TutorialForm();
+		TutorialForm^ tutorialForm = gcnew TutorialForm();
+		tutorialForm->Show();
 
 	}
 };

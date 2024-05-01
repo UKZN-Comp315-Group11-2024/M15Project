@@ -12,6 +12,7 @@
 #include "BonusLevelFour.h"
 #include "MusicAndSFX.h"
 #include "lvl2Form.h"
+#include "TutorialForm.h"
 
 using namespace System;
 using namespace M15Namespace;
@@ -63,5 +64,7 @@ int main(array<String^>^ args) {
 
 		//lvl2Form lvl2;
 		//Application::Run(% lvl2);
+	//TutorialForm TutorialForm;
+	//Application::Run(% TutorialForm);
 
 }
