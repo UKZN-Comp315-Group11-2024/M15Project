@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F2929645-AED0-3A9C-BDF6-123BA0376FF5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\jaedo\OpenCV\build\3rdparty\ippicv\ippicv_win\icv\include;C:\Users\jaedo\OpenCV\build\3rdparty\ippicv\ippicv_win\iw\include;C:\Users\jaedo\OpenCV\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\jaedo\OpenCV\build\3rdparty\ippicv\ippicv_win\icv\include;C:\Users\jaedo\OpenCV\build\3rdparty\ippicv\ippicv_win\iw\include;C:\Users\jaedo\OpenCV\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jaedo\OpenCV\opencv-4.9.0\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/jaedo/OpenCV/opencv-4.9.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/jaedo/OpenCV/opencv-4.9.0 -BC:/Users/jaedo/OpenCV/build --check-stamp-file C:/Users/jaedo/OpenCV/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindBLAS.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindJNI.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindJava.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindLAPACK.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindOpenMP.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\UseJava.cmake;C:\Program Files\CMake\share\cmake-3.29\Templates\CPackConfig.cmake.in;C:\Users\jaedo\OpenCV\build\3rdparty\ffmpeg\ffmpeg_version.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeCCompiler.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeSystem.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\3rdparty\ffmpeg\ffmpeg.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\3rdparty\ippicv\ippicv.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVCRTLinkage.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVCompilerOptimizations.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVCompilerOptions.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectApacheAnt.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectCXXCompiler.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectDirectML.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectDirectX.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectFlatbuffers.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectOpenCL.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectPython.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectTrace.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectVTK.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDownload.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVExtraTargets.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindFrameworks.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindIPP.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindIPPIW.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLAPACK.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsGUI.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsGrfmt.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsPerf.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsVideo.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindMKL.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindOpenBLAS.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindOpenEXR.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindProtobuf.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenABI.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenAndroidMK.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenConfig.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenHeaders.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenSetupVars.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVInstallLayout.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVMinDepVersions.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVModule.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVPCHSupport.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVPackaging.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVUtils.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVVersion.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\directml.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\directx.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\opencl.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\win32uitest.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\platforms\OpenCV-Windows.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\OpenCVConfig-version.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\OpenCVConfig.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\OpenCVConfig.root-WIN32.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\cmake_uninstall.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\custom_hal.hpp.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\cv_cpu_config.h.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\cvconfig.h.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\opencv_modules.hpp.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\setup_vars_win32.cmd.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\vars\EnableModeVars.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\core\include\opencv2\core\version.hpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\dnn\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\gapi\cmake\DownloadADE.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\gapi\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\highgui\cmake\detect_win32ui.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\highgui\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_dc1394.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_dshow.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_ffmpeg.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_gstreamer.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_msmf.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_obsensor.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\julia\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\matlab\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\text\cmake\FindTesseract.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\text\cmake\init.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\jaedo\OpenCV\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/jaedo/OpenCV/opencv-4.9.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/jaedo/OpenCV/opencv-4.9.0 -BC:/Users/jaedo/OpenCV/build --check-stamp-file C:/Users/jaedo/OpenCV/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindBLAS.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindJNI.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindJava.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindLAPACK.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindOpenMP.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\UseJava.cmake;C:\Program Files\CMake\share\cmake-3.29\Templates\CPackConfig.cmake.in;C:\Users\jaedo\OpenCV\build\3rdparty\ffmpeg\ffmpeg_version.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeCCompiler.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeCXXCompiler.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeRCCompiler.cmake;C:\Users\jaedo\OpenCV\build\CMakeFiles\3.29.2\CMakeSystem.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\3rdparty\ffmpeg\ffmpeg.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\3rdparty\ippicv\ippicv.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVCRTLinkage.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVCompilerOptimizations.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVCompilerOptions.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectApacheAnt.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectCXXCompiler.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectDirectML.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectDirectX.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectFlatbuffers.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectOpenCL.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectPython.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectTrace.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDetectVTK.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVDownload.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVExtraTargets.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindFrameworks.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindIPP.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindIPPIW.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLAPACK.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsGUI.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsGrfmt.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsPerf.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindLibsVideo.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindMKL.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindOpenBLAS.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindOpenEXR.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVFindProtobuf.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenABI.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenAndroidMK.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenConfig.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenHeaders.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVGenSetupVars.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVInstallLayout.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVMinDepVersions.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVModule.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVPCHSupport.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVPackaging.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVUtils.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\OpenCVVersion.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\directml.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\directx.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\opencl.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\checks\win32uitest.cpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\platforms\OpenCV-Windows.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\OpenCVConfig-version.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\OpenCVConfig.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\OpenCVConfig.root-WIN32.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\cmake_uninstall.cmake.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\custom_hal.hpp.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\cv_cpu_config.h.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\cvconfig.h.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\opencv_modules.hpp.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\templates\setup_vars_win32.cmd.in;C:\Users\jaedo\OpenCV\opencv-4.9.0\cmake\vars\EnableModeVars.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\core\include\opencv2\core\version.hpp;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\dnn\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\gapi\cmake\DownloadADE.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\gapi\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\highgui\cmake\detect_win32ui.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\highgui\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_dc1394.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_dshow.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_ffmpeg.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_gstreamer.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_msmf.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\detect_obsensor.cmake;C:\Users\jaedo\OpenCV\opencv-4.9.0\modules\videoio\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\julia\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\matlab\cmake\init.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\text\cmake\FindTesseract.cmake;C:\Users\jaedo\OpenCV\opencv_contrib-4.9.0\modules\text\cmake\init.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\jaedo\OpenCV\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\ZERO_CHECK.vcxproj">
+      <Project>{055B5727-B897-3516-BA8B-B5CFDAB84DC9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\3rdparty\libjpeg-turbo\jsimd.vcxproj">
+      <Project>{79EE2385-EA92-361B-AA42-B868EB3C48DB}</Project>
+      <Name>jsimd</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\3rdparty\openjpeg\openjp2\libopenjp2.vcxproj">
+      <Project>{EDBE5BE6-1B0C-32F5-A1C8-CF9C44033CEC}</Project>
+      <Name>libopenjp2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\apps\annotation\opencv_annotation.vcxproj">
+      <Project>{5A24EA32-1252-357B-A2D9-EF25470D92A2}</Project>
+      <Name>opencv_annotation</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\aruco\opencv_aruco.vcxproj">
+      <Project>{04D3E4A1-C2C0-3FA9-8A3B-B1F4DBCDC59C}</Project>
+      <Name>opencv_aruco</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\bgsegm\opencv_bgsegm.vcxproj">
+      <Project>{EBD54038-A2B3-31F5-983C-B1E6540A136E}</Project>
+      <Name>opencv_bgsegm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\bioinspired\opencv_bioinspired.vcxproj">
+      <Project>{5314EB30-45DD-363A-B638-87F08611E6AE}</Project>
+      <Name>opencv_bioinspired</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\calib3d\opencv_calib3d.vcxproj">
+      <Project>{8788BAD2-5A8E-3D89-9EB7-F0A066CCC56D}</Project>
+      <Name>opencv_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\calib3d\opencv_calib3d_AVX2.vcxproj">
+      <Project>{459CFA82-BBC3-3FAA-8A7E-395A0319AAAF}</Project>
+      <Name>opencv_calib3d_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ccalib\opencv_ccalib.vcxproj">
+      <Project>{416BD345-7D7E-37F1-826B-2E2649C9C6A3}</Project>
+      <Name>opencv_ccalib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_core.vcxproj">
+      <Project>{2D5CC003-2A72-3E8F-A59D-0E6F3570A41A}</Project>
+      <Name>opencv_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_core_AVX.vcxproj">
+      <Project>{178FE817-511E-34C1-B143-B405C7EDAF7B}</Project>
+      <Name>opencv_core_AVX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_core_AVX2.vcxproj">
+      <Project>{5358099F-C419-3C0D-82B1-9695310D0465}</Project>
+      <Name>opencv_core_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_core_AVX512_SKX.vcxproj">
+      <Project>{6208B977-85E8-3EA2-BC24-AD789469F6ED}</Project>
+      <Name>opencv_core_AVX512_SKX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_core_SSE4_1.vcxproj">
+      <Project>{7D6CC4E1-764E-39CC-87AA-624419C65302}</Project>
+      <Name>opencv_core_SSE4_1</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_core_SSE4_2.vcxproj">
+      <Project>{6939EF6F-F33C-3249-9561-F47FB378C9E1}</Project>
+      <Name>opencv_core_SSE4_2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\datasets\opencv_datasets.vcxproj">
+      <Project>{8D70593A-040D-361E-8FB9-296E8820B815}</Project>
+      <Name>opencv_datasets</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn\opencv_dnn.vcxproj">
+      <Project>{49F2EC44-A081-372F-A93B-88BCD63BABB2}</Project>
+      <Name>opencv_dnn</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn\opencv_dnn_AVX.vcxproj">
+      <Project>{C132A64F-3F80-3FEB-8713-0CFC8A58160A}</Project>
+      <Name>opencv_dnn_AVX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn\opencv_dnn_AVX2.vcxproj">
+      <Project>{0A0001BC-6BC8-39CA-9ADF-34EB8915852B}</Project>
+      <Name>opencv_dnn_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn\opencv_dnn_AVX512_SKX.vcxproj">
+      <Project>{4F41E881-21B6-3C97-B8CF-74D83EC0AE12}</Project>
+      <Name>opencv_dnn_AVX512_SKX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn_objdetect\opencv_dnn_objdetect.vcxproj">
+      <Project>{149F31A3-3490-3042-BAC3-3AC42ADDE5BD}</Project>
+      <Name>opencv_dnn_objdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\opencv_dnn_plugins.vcxproj">
+      <Project>{DE509914-5E75-36C4-8966-DB378394FA84}</Project>
+      <Name>opencv_dnn_plugins</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn_superres\opencv_dnn_superres.vcxproj">
+      <Project>{868D61CE-12D6-338F-8A9F-4F9FDE52AF2A}</Project>
+      <Name>opencv_dnn_superres</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dpm\opencv_dpm.vcxproj">
+      <Project>{5585776F-D12E-3101-BF6F-D52E97EE7C71}</Project>
+      <Name>opencv_dpm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\face\opencv_face.vcxproj">
+      <Project>{4B4EC7D7-152C-3220-9F6D-D6B02512B237}</Project>
+      <Name>opencv_face</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\features2d\opencv_features2d.vcxproj">
+      <Project>{6D0670FA-111B-3961-BEBF-33C5ACA37476}</Project>
+      <Name>opencv_features2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\features2d\opencv_features2d_AVX2.vcxproj">
+      <Project>{159BC180-28D4-3987-9041-A4C8128B1D01}</Project>
+      <Name>opencv_features2d_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\features2d\opencv_features2d_AVX512_SKX.vcxproj">
+      <Project>{B9EDA3EF-52AE-3427-A4EA-366BD6BE042D}</Project>
+      <Name>opencv_features2d_AVX512_SKX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\features2d\opencv_features2d_SSE4_1.vcxproj">
+      <Project>{52932004-E05E-369D-AA92-7E5775EAE280}</Project>
+      <Name>opencv_features2d_SSE4_1</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\flann\opencv_flann.vcxproj">
+      <Project>{341CDBF6-4213-3168-ACD9-E008854F865D}</Project>
+      <Name>opencv_flann</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\fuzzy\opencv_fuzzy.vcxproj">
+      <Project>{0296AAB5-3C98-34D2-9BE6-2131593926B1}</Project>
+      <Name>opencv_fuzzy</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\gapi\opencv_gapi.vcxproj">
+      <Project>{6085CB49-000F-3E27-88D6-A9999810CF2B}</Project>
+      <Name>opencv_gapi</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\gapi\opencv_gapi_AVX2.vcxproj">
+      <Project>{CC6579CC-816B-30EE-B1BD-C6CEE472509D}</Project>
+      <Name>opencv_gapi_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\gapi\opencv_gapi_SSE4_1.vcxproj">
+      <Project>{541FA735-555B-3556-A1F7-9F7D9D470D6B}</Project>
+      <Name>opencv_gapi_SSE4_1</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\hfs\opencv_hfs.vcxproj">
+      <Project>{E55C8F06-307C-3AEB-A2FE-DD2D2C3F098A}</Project>
+      <Name>opencv_hfs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\highgui\opencv_highgui.vcxproj">
+      <Project>{28F7A632-B03A-3D8B-ACB6-9E3817367808}</Project>
+      <Name>opencv_highgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\opencv_highgui_plugins.vcxproj">
+      <Project>{8E6B8421-FAB0-35BE-9EB9-E13DB386FA63}</Project>
+      <Name>opencv_highgui_plugins</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\img_hash\opencv_img_hash.vcxproj">
+      <Project>{E3DE49A6-FA32-3D93-BF03-2E23FC72E97E}</Project>
+      <Name>opencv_img_hash</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgcodecs\opencv_imgcodecs.vcxproj">
+      <Project>{C77E9704-B736-35D2-8A4D-1EF9F284337D}</Project>
+      <Name>opencv_imgcodecs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_imgproc.vcxproj">
+      <Project>{7DAADF83-1268-3E18-AFF2-DE27E3D8E6F0}</Project>
+      <Name>opencv_imgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_imgproc_AVX.vcxproj">
+      <Project>{254E476E-282C-3420-B604-B7F63115F372}</Project>
+      <Name>opencv_imgproc_AVX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_imgproc_AVX2.vcxproj">
+      <Project>{B0B4D5A0-F492-3026-80E7-2E494DA2B9CC}</Project>
+      <Name>opencv_imgproc_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_imgproc_AVX512_SKX.vcxproj">
+      <Project>{FA6D9749-09B0-37B3-A776-7ACBAD5377E2}</Project>
+      <Name>opencv_imgproc_AVX512_SKX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_imgproc_SSE4_1.vcxproj">
+      <Project>{508CB37D-312A-3110-84EB-88D71925DA54}</Project>
+      <Name>opencv_imgproc_SSE4_1</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\intensity_transform\opencv_intensity_transform.vcxproj">
+      <Project>{DFB4FA38-FF4F-38E9-8C22-62E2FBC711CF}</Project>
+      <Name>opencv_intensity_transform</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\apps\interactive-calibration\opencv_interactive-calibration.vcxproj">
+      <Project>{27384F75-CA7B-3080-B210-F42295532CC8}</Project>
+      <Name>opencv_interactive-calibration</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\line_descriptor\opencv_line_descriptor.vcxproj">
+      <Project>{77D6EDD5-3974-3F18-A04E-624888CCC6A1}</Project>
+      <Name>opencv_line_descriptor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\mcc\opencv_mcc.vcxproj">
+      <Project>{C29234A2-8468-3DA6-B7F8-65E43CAD889E}</Project>
+      <Name>opencv_mcc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ml\opencv_ml.vcxproj">
+      <Project>{64402B16-5ADC-3413-8EA1-31F2DE936D48}</Project>
+      <Name>opencv_ml</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\apps\model-diagnostics\opencv_model_diagnostics.vcxproj">
+      <Project>{1CBE5603-F563-30BE-94DD-97E092980C7A}</Project>
+      <Name>opencv_model_diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\objdetect\opencv_objdetect.vcxproj">
+      <Project>{97F244B9-FB2A-3682-BD1B-C55AE0AECAD3}</Project>
+      <Name>opencv_objdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\optflow\opencv_optflow.vcxproj">
+      <Project>{AFE89469-D29D-3FED-A108-29CE0F5EC5C1}</Project>
+      <Name>opencv_optflow</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\aruco\opencv_perf_aruco.vcxproj">
+      <Project>{348211C9-5FC2-3B5D-AFD3-6E16E709A679}</Project>
+      <Name>opencv_perf_aruco</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\bioinspired\opencv_perf_bioinspired.vcxproj">
+      <Project>{DA7E7779-794B-34B6-883B-FE614B8C0162}</Project>
+      <Name>opencv_perf_bioinspired</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\calib3d\opencv_perf_calib3d.vcxproj">
+      <Project>{260D0A48-A1A4-34DD-8472-C05C6874A019}</Project>
+      <Name>opencv_perf_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_perf_core.vcxproj">
+      <Project>{2CE3537D-2CFF-3424-8F65-FA42E747FD10}</Project>
+      <Name>opencv_perf_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn\opencv_perf_dnn.vcxproj">
+      <Project>{A7464C51-C73E-3228-A80B-8A1334737597}</Project>
+      <Name>opencv_perf_dnn</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn_superres\opencv_perf_dnn_superres.vcxproj">
+      <Project>{096E741F-34C9-38DA-B73D-B3BE5A731EDB}</Project>
+      <Name>opencv_perf_dnn_superres</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\features2d\opencv_perf_features2d.vcxproj">
+      <Project>{0A0C8DB4-1352-35FE-8D76-D71B222E79FB}</Project>
+      <Name>opencv_perf_features2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\gapi\opencv_perf_gapi.vcxproj">
+      <Project>{8CFE7027-5204-37E1-9455-0B0AD8524475}</Project>
+      <Name>opencv_perf_gapi</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgcodecs\opencv_perf_imgcodecs.vcxproj">
+      <Project>{99182C0A-6EE2-3856-9324-F705750377F3}</Project>
+      <Name>opencv_perf_imgcodecs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_perf_imgproc.vcxproj">
+      <Project>{6FC22C8B-F165-3900-8EC1-12C3285C0DAA}</Project>
+      <Name>opencv_perf_imgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\line_descriptor\opencv_perf_line_descriptor.vcxproj">
+      <Project>{BA36BD1F-49C0-37E6-99C1-F59B35E72EAD}</Project>
+      <Name>opencv_perf_line_descriptor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\objdetect\opencv_perf_objdetect.vcxproj">
+      <Project>{FADB27C9-C4D0-367A-875E-94C7BBC0B1D9}</Project>
+      <Name>opencv_perf_objdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\optflow\opencv_perf_optflow.vcxproj">
+      <Project>{66CA3CCF-E9AF-3225-80D2-093F02BCD400}</Project>
+      <Name>opencv_perf_optflow</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\photo\opencv_perf_photo.vcxproj">
+      <Project>{30C51E2C-99E3-3CFE-89C2-612757C6747F}</Project>
+      <Name>opencv_perf_photo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\reg\opencv_perf_reg.vcxproj">
+      <Project>{E69BFC1C-5E1D-323C-99F0-2FEE67ADA6B9}</Project>
+      <Name>opencv_perf_reg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\rgbd\opencv_perf_rgbd.vcxproj">
+      <Project>{82E70691-0594-3555-B059-CD3EA7A64A20}</Project>
+      <Name>opencv_perf_rgbd</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\stereo\opencv_perf_stereo.vcxproj">
+      <Project>{BDF3DA54-1539-34DA-89B8-0CF71745625A}</Project>
+      <Name>opencv_perf_stereo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\stitching\opencv_perf_stitching.vcxproj">
+      <Project>{F232E201-214F-32FD-A511-80F2D5B0F5F1}</Project>
+      <Name>opencv_perf_stitching</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\superres\opencv_perf_superres.vcxproj">
+      <Project>{244044CA-E83F-3472-BF52-C71C14AD2B63}</Project>
+      <Name>opencv_perf_superres</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\tracking\opencv_perf_tracking.vcxproj">
+      <Project>{48FD3B68-2DD7-39DC-93A0-76A0BA4007EC}</Project>
+      <Name>opencv_perf_tracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\video\opencv_perf_video.vcxproj">
+      <Project>{6A506444-7316-39AA-95D1-C7DDC8273BC6}</Project>
+      <Name>opencv_perf_video</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\videoio\opencv_perf_videoio.vcxproj">
+      <Project>{27F63A9F-C4DF-335C-A591-9D2529BABBB8}</Project>
+      <Name>opencv_perf_videoio</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\wechat_qrcode\opencv_perf_wechat_qrcode.vcxproj">
+      <Project>{D2725043-59F3-3012-B59F-8082D62847F8}</Project>
+      <Name>opencv_perf_wechat_qrcode</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xfeatures2d\opencv_perf_xfeatures2d.vcxproj">
+      <Project>{00524A1B-F388-3416-BB4B-3977743D548B}</Project>
+      <Name>opencv_perf_xfeatures2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ximgproc\opencv_perf_ximgproc.vcxproj">
+      <Project>{12375911-E662-3400-A4DF-399D2C23C44A}</Project>
+      <Name>opencv_perf_ximgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xphoto\opencv_perf_xphoto.vcxproj">
+      <Project>{43FDA77E-6D41-3D94-A5B9-898C82BE8629}</Project>
+      <Name>opencv_perf_xphoto</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\phase_unwrapping\opencv_phase_unwrapping.vcxproj">
+      <Project>{49FBE8EC-C473-3548-A558-392CDC38591A}</Project>
+      <Name>opencv_phase_unwrapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\photo\opencv_photo.vcxproj">
+      <Project>{04591C71-2C27-30D8-9DE4-E2D5C77AD84D}</Project>
+      <Name>opencv_photo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\plot\opencv_plot.vcxproj">
+      <Project>{2CD78D08-4C42-39CB-A57D-6C12D0376B07}</Project>
+      <Name>opencv_plot</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\quality\opencv_quality.vcxproj">
+      <Project>{C07EA1B3-1D9D-387B-9967-3A05E15F0A1B}</Project>
+      <Name>opencv_quality</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\rapid\opencv_rapid.vcxproj">
+      <Project>{7C362985-5ACB-3CD3-8183-0D857C4A1C7A}</Project>
+      <Name>opencv_rapid</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\reg\opencv_reg.vcxproj">
+      <Project>{6A64C27C-C980-3834-8EF3-80509A57603F}</Project>
+      <Name>opencv_reg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\rgbd\opencv_rgbd.vcxproj">
+      <Project>{74BBF0CC-0CE5-3E1D-BED2-205DDE6200B0}</Project>
+      <Name>opencv_rgbd</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\saliency\opencv_saliency.vcxproj">
+      <Project>{B7E68D3A-C380-352E-8615-1539E3B0CBF2}</Project>
+      <Name>opencv_saliency</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\shape\opencv_shape.vcxproj">
+      <Project>{7E52056A-FD40-33CC-B4C5-CFFA2763BE68}</Project>
+      <Name>opencv_shape</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\stereo\opencv_stereo.vcxproj">
+      <Project>{1C7039FD-26F2-393D-AA09-31DFD3482B56}</Project>
+      <Name>opencv_stereo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\stitching\opencv_stitching.vcxproj">
+      <Project>{660E80C5-FB27-3351-825C-2A92A1F210F8}</Project>
+      <Name>opencv_stitching</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\structured_light\opencv_structured_light.vcxproj">
+      <Project>{B0DE9F35-E146-3414-9040-4D3BA4169417}</Project>
+      <Name>opencv_structured_light</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\superres\opencv_superres.vcxproj">
+      <Project>{06FBD9B1-B0EF-3530-8C9F-8888DB8684C3}</Project>
+      <Name>opencv_superres</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\surface_matching\opencv_surface_matching.vcxproj">
+      <Project>{F9E5D65F-3688-3216-A7B5-F34B2527E25D}</Project>
+      <Name>opencv_surface_matching</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\aruco\opencv_test_aruco.vcxproj">
+      <Project>{D5F533CC-84B2-30B2-ABA2-C3F28583705E}</Project>
+      <Name>opencv_test_aruco</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\bgsegm\opencv_test_bgsegm.vcxproj">
+      <Project>{BC3CF340-D60C-363B-B87C-52AD79E498E8}</Project>
+      <Name>opencv_test_bgsegm</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\bioinspired\opencv_test_bioinspired.vcxproj">
+      <Project>{D2105DAC-35E2-3C7A-98C9-B4507CE7C7A7}</Project>
+      <Name>opencv_test_bioinspired</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\calib3d\opencv_test_calib3d.vcxproj">
+      <Project>{64DFC8A6-A1B3-36AE-86C7-C00A52869523}</Project>
+      <Name>opencv_test_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core.vcxproj">
+      <Project>{DF21D5BD-0696-3BBE-93F1-AC2A57C59E12}</Project>
+      <Name>opencv_test_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_AVX.vcxproj">
+      <Project>{FA9CA466-AE28-39D9-A07A-D2CCEAA05FBA}</Project>
+      <Name>opencv_test_core_AVX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_AVX2.vcxproj">
+      <Project>{7280D282-51ED-3A1E-AA6C-62DB6ED325E4}</Project>
+      <Name>opencv_test_core_AVX2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_AVX512_SKX.vcxproj">
+      <Project>{41D5DBB9-190A-37C0-B506-0E517A36A7A6}</Project>
+      <Name>opencv_test_core_AVX512_SKX</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_FP16.vcxproj">
+      <Project>{9D966F49-5ACF-3BDA-B624-7468D86E5033}</Project>
+      <Name>opencv_test_core_FP16</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_SSE2.vcxproj">
+      <Project>{2CE15D23-ACBE-38FD-B6CE-B6ED2E3B5D87}</Project>
+      <Name>opencv_test_core_SSE2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_SSE3.vcxproj">
+      <Project>{1F7E17BC-52AC-3E8E-8CC0-12624E69BF46}</Project>
+      <Name>opencv_test_core_SSE3</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_SSE4_1.vcxproj">
+      <Project>{2AB0B0FB-69FE-3991-BBD7-FD63E2564C3A}</Project>
+      <Name>opencv_test_core_SSE4_1</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\core\opencv_test_core_SSE4_2.vcxproj">
+      <Project>{A17C7C5E-6669-3243-A1FD-5BF971EF090A}</Project>
+      <Name>opencv_test_core_SSE4_2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn\opencv_test_dnn.vcxproj">
+      <Project>{298F767A-6C88-3B03-8A38-F3DAEB783195}</Project>
+      <Name>opencv_test_dnn</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\dnn_superres\opencv_test_dnn_superres.vcxproj">
+      <Project>{C1AA9FEB-5AFE-3074-81C2-F7AC848C33C5}</Project>
+      <Name>opencv_test_dnn_superres</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\face\opencv_test_face.vcxproj">
+      <Project>{815BA0F0-6AD3-37A4-BE43-A18FF385EF3E}</Project>
+      <Name>opencv_test_face</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\features2d\opencv_test_features2d.vcxproj">
+      <Project>{FD10533D-052E-306D-BBA0-63746AB5EC53}</Project>
+      <Name>opencv_test_features2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\flann\opencv_test_flann.vcxproj">
+      <Project>{68CFD8E9-C321-3D97-BECD-A8C4A80172B5}</Project>
+      <Name>opencv_test_flann</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\fuzzy\opencv_test_fuzzy.vcxproj">
+      <Project>{21D48CBF-4D6F-332C-9095-E16536CD5E6B}</Project>
+      <Name>opencv_test_fuzzy</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\gapi\opencv_test_gapi.vcxproj">
+      <Project>{5FB821EE-260B-3A6F-AC8D-99DA02278C76}</Project>
+      <Name>opencv_test_gapi</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\highgui\opencv_test_highgui.vcxproj">
+      <Project>{374160AB-7D3B-39B7-9566-044EDA96D534}</Project>
+      <Name>opencv_test_highgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\img_hash\opencv_test_img_hash.vcxproj">
+      <Project>{E034591E-E3DB-36AC-A22D-52A058737826}</Project>
+      <Name>opencv_test_img_hash</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgcodecs\opencv_test_imgcodecs.vcxproj">
+      <Project>{270AD9AB-B927-3596-87FB-A24AE4657247}</Project>
+      <Name>opencv_test_imgcodecs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\imgproc\opencv_test_imgproc.vcxproj">
+      <Project>{345362EA-468C-32B6-970D-7E0E601C7846}</Project>
+      <Name>opencv_test_imgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\intensity_transform\opencv_test_intensity_transform.vcxproj">
+      <Project>{D7A192AB-2316-3A31-AF0E-4842453ECAC2}</Project>
+      <Name>opencv_test_intensity_transform</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\line_descriptor\opencv_test_line_descriptor.vcxproj">
+      <Project>{41A65D94-5BCB-3512-BD29-1F13E3D12631}</Project>
+      <Name>opencv_test_line_descriptor</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\mcc\opencv_test_mcc.vcxproj">
+      <Project>{794F4647-3985-3F81-AAE6-B08B66EBA589}</Project>
+      <Name>opencv_test_mcc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ml\opencv_test_ml.vcxproj">
+      <Project>{EB81C70E-B45E-3A3D-97F4-A431A19C1151}</Project>
+      <Name>opencv_test_ml</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\objdetect\opencv_test_objdetect.vcxproj">
+      <Project>{72018079-DD53-3017-AEBE-6643B2536F94}</Project>
+      <Name>opencv_test_objdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\optflow\opencv_test_optflow.vcxproj">
+      <Project>{33588843-1968-3CF3-A7AF-D23D7AE2E1B0}</Project>
+      <Name>opencv_test_optflow</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\phase_unwrapping\opencv_test_phase_unwrapping.vcxproj">
+      <Project>{30E2F29D-E979-3383-943A-E62D8357BE5C}</Project>
+      <Name>opencv_test_phase_unwrapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\photo\opencv_test_photo.vcxproj">
+      <Project>{4D367D2A-4EDC-3333-B8E4-E61D6AB42B2C}</Project>
+      <Name>opencv_test_photo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\quality\opencv_test_quality.vcxproj">
+      <Project>{AD932094-8D10-34B6-89A0-4CFF5B072A64}</Project>
+      <Name>opencv_test_quality</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\rapid\opencv_test_rapid.vcxproj">
+      <Project>{E3DECD79-0CB9-32A5-817C-C9F400CCA9EE}</Project>
+      <Name>opencv_test_rapid</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\reg\opencv_test_reg.vcxproj">
+      <Project>{840FA1AA-AEC1-345D-A77F-CAF24C9D4128}</Project>
+      <Name>opencv_test_reg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\rgbd\opencv_test_rgbd.vcxproj">
+      <Project>{1191D481-4F60-331D-A52F-06AF77FFEF10}</Project>
+      <Name>opencv_test_rgbd</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\saliency\opencv_test_saliency.vcxproj">
+      <Project>{616AD5C8-F6F0-39F7-B0BF-78B76A8FC66B}</Project>
+      <Name>opencv_test_saliency</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\shape\opencv_test_shape.vcxproj">
+      <Project>{C6B8C264-AF7D-3438-8FD5-145E947DC402}</Project>
+      <Name>opencv_test_shape</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\stereo\opencv_test_stereo.vcxproj">
+      <Project>{633653A2-CA83-3659-9AD9-A33E83D0E62F}</Project>
+      <Name>opencv_test_stereo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\stitching\opencv_test_stitching.vcxproj">
+      <Project>{CEFF8E7E-D031-3797-B18C-5E43DA4723A7}</Project>
+      <Name>opencv_test_stitching</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\structured_light\opencv_test_structured_light.vcxproj">
+      <Project>{E1E71AF6-C8D7-3591-966D-625582E74172}</Project>
+      <Name>opencv_test_structured_light</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\superres\opencv_test_superres.vcxproj">
+      <Project>{683C15BB-ECFD-35A9-ABE8-EEEE96D648BA}</Project>
+      <Name>opencv_test_superres</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\text\opencv_test_text.vcxproj">
+      <Project>{BACA6AF2-7A78-3E84-ABFE-D390E07A64DF}</Project>
+      <Name>opencv_test_text</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\tracking\opencv_test_tracking.vcxproj">
+      <Project>{3A705307-9608-3C1E-91F9-BB2EF94B94AE}</Project>
+      <Name>opencv_test_tracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\video\opencv_test_video.vcxproj">
+      <Project>{5E0FE50B-DB74-31E5-A081-F87CA83B04C9}</Project>
+      <Name>opencv_test_video</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\videoio\opencv_test_videoio.vcxproj">
+      <Project>{5F3D360A-FF7C-3EAE-A408-17716B0068EF}</Project>
+      <Name>opencv_test_videoio</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\videostab\opencv_test_videostab.vcxproj">
+      <Project>{8490BC5D-3AF0-3B70-BCA8-D31C107FF9AF}</Project>
+      <Name>opencv_test_videostab</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\wechat_qrcode\opencv_test_wechat_qrcode.vcxproj">
+      <Project>{DF58AB97-DF0C-309F-9256-488FEE42B6AD}</Project>
+      <Name>opencv_test_wechat_qrcode</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xfeatures2d\opencv_test_xfeatures2d.vcxproj">
+      <Project>{E56FE9F5-244A-3354-B608-F2CEE2D87719}</Project>
+      <Name>opencv_test_xfeatures2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ximgproc\opencv_test_ximgproc.vcxproj">
+      <Project>{B17597A5-9728-3FD3-8D0F-E3F8FD7DA93D}</Project>
+      <Name>opencv_test_ximgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xphoto\opencv_test_xphoto.vcxproj">
+      <Project>{9A57AC1A-7E4C-33F2-BDDB-2BD322FB22E2}</Project>
+      <Name>opencv_test_xphoto</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\text\opencv_text.vcxproj">
+      <Project>{4E993309-4881-380F-BEAA-92AEC364BC16}</Project>
+      <Name>opencv_text</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\tracking\opencv_tracking.vcxproj">
+      <Project>{00148590-A505-3ACD-B709-7C24593A34FC}</Project>
+      <Name>opencv_tracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ts\opencv_ts.vcxproj">
+      <Project>{9E19AD87-9A68-3CBD-AAE1-F8B67AA703AF}</Project>
+      <Name>opencv_ts</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\apps\version\opencv_version.vcxproj">
+      <Project>{12AC90BC-6983-3A00-A666-5A0AD08FC7FA}</Project>
+      <Name>opencv_version</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\apps\version\opencv_version_win32.vcxproj">
+      <Project>{47EE63BE-726B-34E1-952C-1EC3B77B5187}</Project>
+      <Name>opencv_version_win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\video\opencv_video.vcxproj">
+      <Project>{639F865D-F442-3214-A414-B1B9C5C0EF67}</Project>
+      <Name>opencv_video</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\videoio\opencv_videoio.vcxproj">
+      <Project>{7B667762-3B21-31EA-A269-3A29E2439DF4}</Project>
+      <Name>opencv_videoio</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\.firstpass\videoio\opencv_videoio_plugins.vcxproj">
+      <Project>{893E9C68-5E85-3B25-9487-B365B05657F8}</Project>
+      <Name>opencv_videoio_plugins</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\videostab\opencv_videostab.vcxproj">
+      <Project>{00CF3F3D-F2B9-3ABF-A5AE-D796A258E220}</Project>
+      <Name>opencv_videostab</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\apps\visualisation\opencv_visualisation.vcxproj">
+      <Project>{77CE8B9C-82C2-344B-A21A-B8DD604DE6A5}</Project>
+      <Name>opencv_visualisation</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xobjdetect\tools\waldboost_detector\opencv_waldboost_detector.vcxproj">
+      <Project>{1B7E9B0F-9F8D-3F5C-A59C-68BB1A1829F2}</Project>
+      <Name>opencv_waldboost_detector</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\wechat_qrcode\opencv_wechat_qrcode.vcxproj">
+      <Project>{77B86E50-2B1D-354A-8915-7792C591AF94}</Project>
+      <Name>opencv_wechat_qrcode</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xfeatures2d\opencv_xfeatures2d.vcxproj">
+      <Project>{A0C1C961-A314-3658-B848-0846786EFB06}</Project>
+      <Name>opencv_xfeatures2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\ximgproc\opencv_ximgproc.vcxproj">
+      <Project>{D9B43244-841C-3E5F-941F-AF618D4D3F48}</Project>
+      <Name>opencv_ximgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xobjdetect\opencv_xobjdetect.vcxproj">
+      <Project>{F413C48C-C3CC-3F2C-BA86-DE6FFFFFD79B}</Project>
+      <Name>opencv_xobjdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\jaedo\OpenCV\build\modules\xphoto\opencv_xphoto.vcxproj">
+      <Project>{80437768-B380-30A0-96A3-82289F482A69}</Project>
+      <Name>opencv_xphoto</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
