@@ -12,7 +12,7 @@ LevelMethods::LevelMethods(int lvlno) {
 }
 
 void LevelMethods::SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2) {
-	
+
 	this->Question = lblQuestion;
 	this->Option1 = lblOption1;
 	this->Option2 = lblOption2;
@@ -38,16 +38,16 @@ void LevelMethods::DisplayNextQuestionSet() {
 	Question->Text = question;
 	Question->Visible = true;
 	if (QuestionType == "0") {
-		
+
 		Option1->Text = OptionA;
 		Option1->Visible = true;
 
 		Option2->Text = OptionB;
 		Option2->Visible = true;
-		
+
 		Option3->Text = OptionC;
 		Option3->Visible = true;
-		
+
 		Option4->Text = OptionD;
 		Option4->Visible = true;
 	}
@@ -125,15 +125,15 @@ void LevelMethods::QuestionAnswered(int option) {
 	}
 
 
-		if (CheckLevelEnd()) {
-			//EndLevel();
-		}
+	if (CheckLevelEnd()) {
+		//EndLevel();
+	}
 
-		//ResetPlayerPos();
-		if (this->QuestionsCompleted < 10) {
-			//DisplayNextQuestionSet();
-		}
-	
+	//ResetPlayerPos();
+	if (this->QuestionsCompleted < 10) {
+		//DisplayNextQuestionSet();
+	}
+
 
 }
 
@@ -147,16 +147,16 @@ void LevelMethods::QuestionCompleted() {
 
 	}
 
-		if (CheckLevelEnd()) {
-			//EndLevel();
-		}
+	if (CheckLevelEnd()) {
+		//EndLevel();
+	}
 
-		if (this->QuestionsCompleted < 10) {
-			DisplayNextQuestionSet();
-		}
+	if (this->QuestionsCompleted < 10) {
+		DisplayNextQuestionSet();
+	}
 
-		//ResetPlayerPos();
-	
+	//ResetPlayerPos();
+
 }
 
 void LevelMethods::SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr) {
@@ -184,12 +184,12 @@ void LevelMethods::SetButtonComponenets(System::Windows::Forms::Button^ btn) {
 }
 
 void LevelMethods::calculateTime() {
-	if (this->ProgressBarTimer->Interval < 30000) {
+	/*if (this->ProgressBarTimer->Interval < 30000) {
 		this->PlayerStats->timeTaken += this->ProgressBarTimer->Interval;
 	}
 	else {
 		this->PlayerStats->timeTaken += 30000;
-	}
+	}*/
 }
 
 void LevelMethods::ResetPlayerPos() {
@@ -223,7 +223,7 @@ void LevelMethods::EndLevel() {
 	//disable player controlls
 	//LevelFormInstance->
 	this->DisableControls = true;
-	
+
 	//hide player, loading bar, question, answer options, collonel, the controlls
 	this->PlayerImage->Visible = false;
 	this->ProgressBar->Visible = false;
@@ -234,9 +234,9 @@ void LevelMethods::EndLevel() {
 	this->Option4->Visible = false;
 	this->TFOption1->Visible = false;
 	this->TFOption2->Visible = false;
-	
+
 	//reveal player stats by calling PrintPlayerStats()
-	
+
 	//reveal button to continue to next level
 	/*Point buttonPoint = Point(536, 619);
 	ContinueButton->Location = buttonPoint;
@@ -255,16 +255,16 @@ void LevelMethods::RecordPlayerStats() {
 }
 
 void LevelMethods::DetermCorrectOptionInt() {
-		if (this->CorrectOption == this->OptionA) {
-			this->CorrectOptionInt = 0;
-		}
-		else if (this->CorrectOption == this->OptionB) {
-			this->CorrectOptionInt = 1;
-		}
-		else if (this->CorrectOption == this->OptionC) {
-			this->CorrectOptionInt = 2;
-		}
-		else if (this->CorrectOption == this->OptionD) {
-			this->CorrectOptionInt = 3;
-		}
+	if (this->CorrectOption == this->OptionA) {
+		this->CorrectOptionInt = 0;
+	}
+	else if (this->CorrectOption == this->OptionB) {
+		this->CorrectOptionInt = 1;
+	}
+	else if (this->CorrectOption == this->OptionC) {
+		this->CorrectOptionInt = 2;
+	}
+	else if (this->CorrectOption == this->OptionD) {
+		this->CorrectOptionInt = 3;
+	}
 }

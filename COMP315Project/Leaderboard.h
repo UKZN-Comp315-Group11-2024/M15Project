@@ -20,7 +20,7 @@ namespace M15Namespace {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	
+
 
 	public ref class Leaderboard : public System::Windows::Forms::Form
 	{
@@ -51,9 +51,9 @@ namespace M15Namespace {
 				while (getline(file, line))
 				{
 					v.push_back(line);
-					
+
 				}
-				
+
 
 			}
 			for (int i = 0; i < 3; i++) {
@@ -84,25 +84,25 @@ namespace M15Namespace {
 
 			std::ofstream writer(filename2);
 
-				for (int i = 0; i < 9; i++) {
-					std::string line = "";
-					std::string username = context.marshal_as<std::string>(players[i]->username);
-					line += username + "$";
-					line += std::to_string(players[i]->score);
-					line += "$";
-					line += std::to_string(players[i]->timeTaken);
-					writer << line << "\n";
-				}
+			for (int i = 0; i < 9; i++) {
+				std::string line = "";
+				std::string username = context.marshal_as<std::string>(players[i]->username);
+				line += username + "$";
+				line += std::to_string(players[i]->score);
+				line += "$";
+				line += std::to_string(players[i]->timeTaken);
+				writer << line << "\n";
+			}
 
-				std::string line2 = "";
-				std::string username2 = context.marshal_as<std::string>(players[9]->username);
-				line2 += username2 + "$";
-				line2 += std::to_string(players[9]->score);
-				line2 += "$";
-				line2 += std::to_string(players[9]->timeTaken);
-				writer << line2;
+			std::string line2 = "";
+			std::string username2 = context.marshal_as<std::string>(players[9]->username);
+			line2 += username2 + "$";
+			line2 += std::to_string(players[9]->score);
+			line2 += "$";
+			line2 += std::to_string(players[9]->timeTaken);
+			writer << line2;
 
-				writer.close();
+			writer.close();
 
 
 		}
@@ -144,86 +144,86 @@ namespace M15Namespace {
 
 
 	private: System::Windows::Forms::Timer^ timerleaderboard;
-private: System::Windows::Forms::PictureBox^ pictureboxcrosses;
-private: System::Windows::Forms::PictureBox^ pictureBox2;
-private: System::Windows::Forms::Label^ label1;
-private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::PictureBox^ pictureboxcrosses;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 
 
 
 
 
 
-	   playerInfo^ player = gcnew playerInfo;
-		// Function to update the labels each time the leaderboard is accessed. 
-		// Creates new labels from scratch and puts them in the appropriate locations
-		void UpdateLabels(List<playerInfo^>^ v) {
-			//Clear previous labels
-			ClearLabels();
-			int i = 1;
-			for each(playerInfo ^ elem in players) {
+		   playerInfo^ player = gcnew playerInfo;
+		   // Function to update the labels each time the leaderboard is accessed. 
+		   // Creates new labels from scratch and puts them in the appropriate locations
+		   void UpdateLabels(List<playerInfo^>^ v) {
+			   //Clear previous labels
+			   ClearLabels();
+			   int i = 1;
+			   for each (playerInfo ^ elem in players) {
 
-				int marginTop;
-				if (i == 1) {
-					marginTop = (i * 53) + 62;
-				}
-				else if (i == 2) {
-					marginTop = (i * 55) + 62;
-				}
-				else if (i == 3) {
-					marginTop = (i * 56) + 62;
-				}
-				else {
-					marginTop = (i * 58) + 62;
-				}
-
-
-				Label^ usernameLabel = gcnew Label();
-				Label^ scoreLabel = gcnew Label();
-
-				if (i != 10) {
-					Label^ timeLabel = gcnew Label();
-					timeLabel->Text = gcnew String(elem->timeTaken.ToString()) + " sec";
-
-					timeLabel->AutoSize = true;
-					timeLabel->BackColor = System::Drawing::Color::Gainsboro;
-					timeLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-						static_cast<System::Byte>(0)));
-					timeLabel->Location = System::Drawing::Point(770, marginTop);
-					this->Controls->Add(timeLabel);
-					timeLabel->BringToFront();
-				}
-				
-
-				usernameLabel->AutoSize = true;
-				usernameLabel->BackColor = System::Drawing::Color::Transparent;
-				usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-
-				scoreLabel->AutoSize = true;
-				scoreLabel->BackColor = System::Drawing::Color::Transparent;
-				scoreLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-				scoreLabel->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-
-				usernameLabel->Text = elem->username;
-				scoreLabel->Text = gcnew String(elem->score.ToString());
-				
+				   int marginTop;
+				   if (i == 1) {
+					   marginTop = (i * 53) + 62;
+				   }
+				   else if (i == 2) {
+					   marginTop = (i * 55) + 62;
+				   }
+				   else if (i == 3) {
+					   marginTop = (i * 56) + 62;
+				   }
+				   else {
+					   marginTop = (i * 58) + 62;
+				   }
 
 
-			
-				
-				usernameLabel->Location = System::Drawing::Point(177, marginTop);
-				this->Controls->Add(usernameLabel);
-				this->Controls->Add(scoreLabel);
+				   Label^ usernameLabel = gcnew Label();
+				   Label^ scoreLabel = gcnew Label();
 
-				scoreLabel->Location = System::Drawing::Point(568, marginTop);
-				scoreLabel->BringToFront();
-				usernameLabel->BringToFront();
-				i++;
-			}
+				   if (i != 10) {
+					   Label^ timeLabel = gcnew Label();
+					   timeLabel->Text = gcnew String(elem->timeTaken.ToString()) + " sec";
 
-		}
+					   timeLabel->AutoSize = true;
+					   timeLabel->BackColor = System::Drawing::Color::Gainsboro;
+					   timeLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						   static_cast<System::Byte>(0)));
+					   timeLabel->Location = System::Drawing::Point(770, marginTop);
+					   this->Controls->Add(timeLabel);
+					   timeLabel->BringToFront();
+				   }
+
+
+				   usernameLabel->AutoSize = true;
+				   usernameLabel->BackColor = System::Drawing::Color::Transparent;
+				   usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+					   static_cast<System::Byte>(0)));
+
+				   scoreLabel->AutoSize = true;
+				   scoreLabel->BackColor = System::Drawing::Color::Transparent;
+				   scoreLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+					   static_cast<System::Byte>(0)));
+				   scoreLabel->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+
+				   usernameLabel->Text = elem->username;
+				   scoreLabel->Text = gcnew String(elem->score.ToString());
+
+
+
+
+
+				   usernameLabel->Location = System::Drawing::Point(177, marginTop);
+				   this->Controls->Add(usernameLabel);
+				   this->Controls->Add(scoreLabel);
+
+				   scoreLabel->Location = System::Drawing::Point(568, marginTop);
+				   scoreLabel->BringToFront();
+				   usernameLabel->BringToFront();
+				   i++;
+			   }
+
+		   }
 
 	protected:
 		/// <summary>
@@ -356,7 +356,7 @@ private: System::Windows::Forms::Label^ label2;
 #pragma endregion
 
 	private: System::Void Leaderboard_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+
 		msclr::interop::marshal_context context;
 		if (context.marshal_as<std::string>(doIupdate) == "yes") {
 			LoadAllPlayers();
@@ -372,14 +372,14 @@ private: System::Windows::Forms::Label^ label2;
 	}
 	private: System::Void timerleaderboard_Tick(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void Leaderboard_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	if (e->KeyCode == Keys::Escape) {
-		this->Close();
+	private: System::Void Leaderboard_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::Escape) {
+			this->Close();
+		}
 	}
-}
-private: System::Void labelloginscroll2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void labelloginscroll2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }

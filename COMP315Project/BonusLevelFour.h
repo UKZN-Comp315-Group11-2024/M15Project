@@ -243,8 +243,8 @@ namespace M15Namespace {
 				   if (buttons[i]->Visible == true)
 				   {
 					   countNumVisible++;
-					   buttons[i]->setLocation(buttons[i]->Location.X+ buttons[i]->getSpeed(), buttons[i]->Location.Y);
-					   if (buttons[i]->Location.X >= 1300) 
+					   buttons[i]->setLocation(buttons[i]->Location.X + buttons[i]->getSpeed(), buttons[i]->Location.Y);
+					   if (buttons[i]->Location.X >= 1300)
 					   {
 						   buttons[i]->setVisible(false);
 					   }
@@ -263,7 +263,7 @@ namespace M15Namespace {
 			}
 			targetNum++;
 		}
-		
+
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -335,7 +335,7 @@ namespace M15Namespace {
 
 
 		if (countdownBar->Value < 100 && countTotalNotVisible != 36) {
-			
+
 			if (countdownBar->Value + 3 > 100)
 			{
 				countdownBar->Value += (100 - countdownBar->Value);
@@ -430,7 +430,7 @@ namespace M15Namespace {
 	private: System::Void TargetMoveTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 		update();
 	}
-};
+	};
 
 
 }

@@ -205,6 +205,7 @@ namespace M15Namespace {
 			this->Name = L"FaceRecognition";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Face Identifier";
+			this->Load += gcnew System::EventHandler(this, &FaceRecognition::FaceRecognition_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
@@ -215,7 +216,7 @@ namespace M15Namespace {
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+
 		std::ofstream ofs("textfiles\\communication.txt", std::ofstream::trunc);  // Open/create a file named "test.txt" for writing
 
 		if (ofs.is_open()) {  // Check if the file was successfully opened
@@ -225,96 +226,98 @@ namespace M15Namespace {
 		ofs.close();  // Close the file after writing
 		this->Close();
 	}
-private: System::Void timerfacerec_Tick(System::Object^ sender, System::EventArgs^ e) {
-	int x; //Removed y as it was never used
-	Point p1 = lblrecognize1->Location;
-	Point p2 = lblrecognize2->Location;
-	x = p1.X;
+	private: System::Void timerfacerec_Tick(System::Object^ sender, System::EventArgs^ e) {
+		int x; //Removed y as it was never used
+		Point p1 = lblrecognize1->Location;
+		Point p2 = lblrecognize2->Location;
+		x = p1.X;
 
-	if (x == 1260) {
-		x = -640;
-		lblrecognize1->Visible = false;
+		if (x == 1260) {
+			x = -640;
+			lblrecognize1->Visible = false;
+		}
+
+		if (p2.X == 628) {
+
+			x = -640;
+			lblrecognize1->Visible = false;
+		}
+
+		if (!(p2.X > -10 && p2.X < 630)) {
+			x += 3;
+			lblrecognize1->Visible = true;
+		}
+
+		lblrecognize1->Location = Point(x, 123);
+		x = p2.X;
+
+		if (x == 1260) {
+			x = -640;
+			lblrecognize2->Visible = false;
+		}
+
+		if (p1.X == 628) {
+			x = -640;
+			lblrecognize2->Visible = false;
+		}
+
+		if (!(p1.X > -10 && p1.X < 630)) {
+			x += 3;
+			lblrecognize2->Visible = true;
+		}
+
+		lblrecognize2->Location = Point(x, 123);
+
+		p1 = lbladd1->Location;
+		p2 = lbladd2->Location;
+		x = p1.X;
+
+		if (x == 1260) {
+			x = -640;
+			lbladd1->Visible = false;
+		}
+
+		if (p2.X == 628) {
+
+			x = -640;
+			lbladd1->Visible = false;
+		}
+
+		if (!(p2.X > -10 && p2.X < 630)) {
+			x += 4;
+			lbladd1->Visible = true;
+		}
+
+		lbladd1->Location = Point(x, 251);
+		x = p2.X;
+
+		if (x == 1260) {
+			x = -640;
+			lbladd2->Visible = false;
+		}
+
+		if (p1.X == 628) {
+			x = -640;
+			lbladd2->Visible = false;
+		}
+
+		if (!(p1.X > -10 && p1.X < 630)) {
+			x += 4;
+			lbladd2->Visible = true;
+		}
+
+		lbladd2->Location = Point(x, 251);
 	}
+	private: System::Void dummy_Click(System::Object^ sender, System::EventArgs^ e) {
+		std::ofstream ofs("textfiles\\communication.txt");  // Open/create a file named "test.txt" for writing
 
-	if (p2.X == 628) {
-
-		x = -640;
-		lblrecognize1->Visible = false;
+		if (ofs.is_open()) {  // Check if the file was successfully opened
+			ofs << "0"; //0 meaning login should close
+		}
+		ofs.close();  // Close the file after writing
+		this->Close();
 	}
-
-	if (!(p2.X > -10 && p2.X < 630)) {
-		x+=3;
-		lblrecognize1->Visible = true;
+	private: System::Void FaceRecognition_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-
-	lblrecognize1->Location = Point(x, 123);
-	x = p2.X;
-
-	if (x == 1260) {
-		x = -640;
-		lblrecognize2->Visible = false;
-	}
-
-	if (p1.X == 628) {
-		x = -640;
-		lblrecognize2->Visible = false;
-	}
-
-	if (!(p1.X > -10 && p1.X < 630)) {
-		x+=3;
-		lblrecognize2->Visible = true;
-	}
-
-	lblrecognize2->Location = Point(x, 123);
-
-	p1 = lbladd1->Location;
-	p2 = lbladd2->Location;
-	x = p1.X;
-
-	if (x == 1260) {
-		x = -640;
-		lbladd1->Visible = false;
-	}
-
-	if (p2.X == 628) {
-
-		x = -640;
-		lbladd1->Visible = false;
-	}
-
-	if (!(p2.X > -10 && p2.X < 630)) {
-		x +=4;
-		lbladd1->Visible = true;
-	}
-
-	lbladd1->Location = Point(x, 251);
-	x = p2.X;
-
-	if (x == 1260) {
-		x = -640;
-		lbladd2->Visible = false;
-	}
-
-	if (p1.X == 628) {
-		x = -640;
-		lbladd2->Visible = false;
-	}
-
-	if (!(p1.X > -10 && p1.X < 630)) {
-		x +=4;
-		lbladd2->Visible = true;
-	}
-
-	lbladd2->Location = Point(x, 251);
-}
-private: System::Void dummy_Click(System::Object^ sender, System::EventArgs^ e) {
-	std::ofstream ofs("textfiles\\communication.txt");  // Open/create a file named "test.txt" for writing
-
-	if (ofs.is_open()) {  // Check if the file was successfully opened
-		ofs << "0"; //0 meaning login should close
-	}
-	ofs.close();  // Close the file after writing
-	this->Close();
-}
-};
+	};
 }

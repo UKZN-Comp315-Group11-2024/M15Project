@@ -9,9 +9,10 @@ public:
 	sf::Music sound; // @jaedon: changed this to Music since the other one didn't seem to work
 	sf::Music Background; //object that streams sound directly from source file
 	sf::Music music;//object that streams sound directly from source file
+	sf::Music randomSound;
 
 	MusicAndSFX();
-    ~MusicAndSFX();
+	~MusicAndSFX();
 
 	void gunshot();
 	void MouseClick();
@@ -30,7 +31,8 @@ public:
 	void Forest();
 	void NightForest();
 
-	void StopSound(boolean Stop);
+	void StopSound();
+	void playRandomSound(std::string path, bool loop);
 
 
 

@@ -2,7 +2,7 @@
 @Author mnqobimngadi
 Source: https://gaylelynds.com/world-of-espionage/test-your-spy-q/
 LEVEL 1 QUESTIONS
-0$What is a Juliet spy?$A female spy who seduces for her country$A female spy using \"actress\" as a cover$A woman tricked into being a spy$A male spy who dresses as a woman
+0$What is a Juliet spy?$A female spy who seduces for her country$A female spy using "actress" as a cover$A woman tricked into being a spy$A male spy who dresses as a woman
 0$What is MI6's equivalent in the USA?$The CIA$The NSA$Army Intelligence$The FBI
 0$What is a blowback?$A lie planted abroard but accepted as truth when it blows back home$An event that happens out of sight$Drugs given to a prisoner$A term from WW1 originally describing a strong wind
 0$Who receives the President's Daily Brief?$The President, Vice, and a few cabinet members$The President's laundry team$The press at the White House$The White House Staff
