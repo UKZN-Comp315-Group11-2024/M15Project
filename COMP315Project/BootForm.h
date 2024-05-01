@@ -212,7 +212,7 @@ namespace M15Namespace {
 			   // 
 			   // timerVideo
 			   // 
-			   this->timerVideo->Interval = 93000;
+			   this->timerVideo->Interval = 73000;
 			   this->timerVideo->Tick += gcnew System::EventHandler(this, &BootForm::timerVideo_Tick);
 			   // 
 			   // timerfade

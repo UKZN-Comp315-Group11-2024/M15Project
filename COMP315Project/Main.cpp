@@ -22,8 +22,8 @@ int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	//BootForm form;
-	//Application::Run(% form);
+	BootForm form;
+	Application::Run(% form);
 
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
@@ -33,8 +33,8 @@ int main(array<String^>^ args) {
 	//MusicAndSFX *m = new MusicAndSFX();
 	//m->LevelOneMusic();
 
-	lvl1Form lvl1form;
-	Application::Run(% lvl1form);
+	//lvl1Form lvl1form;
+	//Application::Run(% lvl1form);
 
 	//Leaderboard leaderboard;
 	//Application::Run(% leaderboard);
