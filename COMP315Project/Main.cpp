@@ -11,6 +11,7 @@
 #include "BonusLevelThree.h"
 #include "BonusLevelFour.h"
 #include "MusicAndSFX.h"
+#include "lvl2Form.h"
 
 using namespace System;
 using namespace M15Namespace;
@@ -50,8 +51,8 @@ int main(array<String^>^ args) {
 		//BonusLevelOne bonusLevelOne;
 		//Application::Run(% bonusLevelOne);
 
-		BonusLevelThree bonusLevelThree;
-		Application::Run(% bonusLevelThree);
+		//BonusLevelThree bonusLevelThree;
+		//Application::Run(% bonusLevelThree);
 
 
 		//BonusLevelTwo bnt;
@@ -59,5 +60,8 @@ int main(array<String^>^ args) {
 
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
+
+		lvl2Form lvl2;
+		Application::Run(% lvl2);
 
 }
