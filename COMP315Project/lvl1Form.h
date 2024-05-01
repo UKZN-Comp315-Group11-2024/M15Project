@@ -1175,7 +1175,7 @@ namespace M15Namespace {
 			{
 				pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
 				count++;
-				gif->Image = Image::FromFile("assets/red.gif");
+				//->Image = Image::FromFile("assets/red.gif");
 				LvlMethods->QuestionCompleted();
 			}
 			//this->progressBarLevel1->
