@@ -20,10 +20,7 @@ namespace M15Namespace {
 	/// </summary>
 	public ref class BonusLevelThree : public System::Windows::Forms::Form
 	{
-		//music objects
 		MusicAndSFX* sound = new MusicAndSFX();
-		MusicAndSFX* ambience = new MusicAndSFX();
-		MusicAndSFX* music = new MusicAndSFX();
 	public:
 		BonusLevelThree(void)
 		{
@@ -216,12 +213,6 @@ namespace M15Namespace {
 
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
-
-		//music objects
-		ambience->NightForest();
-		music->LevelThreeMusic();
-
-
 		int x_pos, y_pos, x_size, y_size;
 		srand(time(0));
 		for (int i = 0; i < buttons->Length; i++) {
@@ -411,12 +402,6 @@ namespace M15Namespace {
 
 				outputFile.close();
 
-				//stops background music
-				ambience->StopSound();
-				music->StopSound();
-				delete ambience;
-				delete music;
-
 				std::string windowPrompt = "\nBonus Level One Feedback (9 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
@@ -431,12 +416,6 @@ namespace M15Namespace {
 				std::string windowPrompt = "\nBonus Level One Feedback (9 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
-
-				//stops background music
-				ambience->StopSound();
-				music->StopSound();
-				delete ambience;
-				delete music;
 
 				window->Visible = false;
 				this->Hide();

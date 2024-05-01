@@ -5,7 +5,6 @@
 #include "popup.h"
 #include "LoadQuestion.h"
 #include "PictureBox.h"
-#include "MusicAndSFX.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -21,9 +20,6 @@ namespace M15Namespace {
 	public ref class BonusLevelFour : public System::Windows::Forms::Form
 	{
 	public:
-
-		MusicAndSFX* music = new MusicAndSFX();
-
 		BonusLevelFour(void)
 		{
 			InitializeComponent();
@@ -219,9 +215,6 @@ namespace M15Namespace {
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackground.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
 
-		music->BonusLevel4();
-		
-
 		int x_pos, y_pos, x_size, y_size, speed;
 		srand(time(0));
 		for (int i = 0; i < buttons->Length; i++) {
@@ -416,23 +409,12 @@ namespace M15Namespace {
 				window->ShowDialog();
 
 				this->Close();
-
-				//stops background music
-				music->StopSound();
-				delete music;
-
-				
 			}
 			else
 			{
 				std::string windowPrompt = "\nBonus Level One Feedback (12 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
-
-				//stops background music
-				music->StopSound();
-				delete music;
-			
 
 				window->Visible = false;
 				this->Hide();
