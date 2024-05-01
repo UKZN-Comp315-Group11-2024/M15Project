@@ -21,9 +21,6 @@ namespace M15Namespace {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for lvl1Form
-	/// </summary>
 	public ref class lvl1Form : public System::Windows::Forms::Form
 	{
 
@@ -65,9 +62,6 @@ namespace M15Namespace {
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~lvl1Form()
 		{
 			if (components)
@@ -91,12 +85,6 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ space;
 	private: System::Windows::Forms::Timer^ shootTimer;
 	private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
-		   /// <summary>
-		   /// Required designer variable.
-		   /// </summary>
-
-
-
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -482,14 +470,17 @@ namespace M15Namespace {
 
 
 	private:
+		// Player object
 		playerInfo^ player;
-		bool finalcheckdone = false;
 
 		LevelMethods^ LvlMethods;
+
+		// Music objects
 		MusicAndSFX* soundAnswer = new MusicAndSFX();
 		MusicAndSFX* soundImpact = new MusicAndSFX();
 		MusicAndSFX* ambience = new MusicAndSFX();
 		MusicAndSFX* music = new MusicAndSFX();
+
 		array<definedPictureBox^>^ pictureBoxArray;
 
 		Destructible^ des = gcnew Destructible;
@@ -515,7 +506,7 @@ namespace M15Namespace {
 
 		String^ projectDirectory = Application::StartupPath;
 		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
-		
+
 		String^ playerRunRightGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
 		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
 		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\shoot.gif");
@@ -580,7 +571,6 @@ namespace M15Namespace {
 
 			this->player = p;
 
-
 			msclr::interop::marshal_context context;
 			std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
@@ -595,7 +585,6 @@ namespace M15Namespace {
 			Transition1->Start();
 
 			playerlevel1->ImageLocation = "assets/PlayerMove/idle.gif";
-
 
 			bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
 			bullet->Hide();
@@ -622,7 +611,6 @@ namespace M15Namespace {
 
 			ambience->OfficeNoise();
 			music->LevelOneMusic();
-
 		}
 
 		/*
@@ -900,7 +888,7 @@ namespace M15Namespace {
 				textBoxD->ForeColor = System::Drawing::Color::Green;
 			}
 		}
-		
+
 	private:
 		/*
 			Checks when the keys for moving and shooting are being pressed
@@ -923,6 +911,7 @@ namespace M15Namespace {
 			{
 				move_up = true;
 				is_w_up = false;
+				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			if (e->KeyCode == Keys::A)
 			{
@@ -932,11 +921,13 @@ namespace M15Namespace {
 				isleft = true;
 				move_left = true;
 				is_a_up = false;
+				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			if (e->KeyCode == Keys::S)
 			{
 				move_down = true;
 				is_s_up = false;
+				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			if (e->KeyCode == Keys::D)
 			{
@@ -946,6 +937,7 @@ namespace M15Namespace {
 				isleft = false;
 				move_right = true;
 				is_d_up = false;
+				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 		}
 
@@ -994,6 +986,8 @@ namespace M15Namespace {
 					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
+
+				soundImpact->randomSound.stop();
 			}
 		}
 
