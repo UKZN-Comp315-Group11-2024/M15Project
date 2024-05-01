@@ -5,6 +5,7 @@
 #include "popup.h"
 #include "LoadQuestion.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -19,7 +20,12 @@ namespace M15Namespace {
 	/// </summary>
 	public ref class BonusLevelOne : public System::Windows::Forms::Form
 	{
+
 	public:
+		//music objects
+	     	MusicAndSFX* ambience = new MusicAndSFX();
+		    MusicAndSFX* music = new MusicAndSFX();
+
 		BonusLevelOne(void)
 		{
 			InitializeComponent();
@@ -211,7 +217,13 @@ namespace M15Namespace {
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/PurpleOfficeBackground.png");
 			panelBonusLevel->BackgroundImage = backgroundImage;
 
-			int x_pos;
+			
+
+			ambience->OfficeNoise();
+			music->LevelOneMusic();
+
+
+			int x_pos; 
 			int y_pos;
 			srand(time(0));
 			for (int i = 0; i < buttons->Length; i++) {
@@ -385,6 +397,14 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 
 			outputFile.close();
 
+
+			//stops background music
+			ambience->StopSound();
+			music->StopSound();
+			delete ambience;
+			delete music;
+
+
 			std::string windowPrompt = "\nBonus Level One Feedback (7 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) +"\nPrevious Score: " + std::to_string(currScore)+"\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
@@ -400,11 +420,21 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 			
+			
+			//stops background music
+			ambience->StopSound();
+			music->StopSound();
+			delete ambience;
+			delete music;
+
+
 			window->Visible = false;
 			this->Hide();
 			window->ShowDialog();
 
 			this->Close();
+
+
 		}
 
 		

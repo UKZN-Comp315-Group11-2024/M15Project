@@ -766,40 +766,25 @@ namespace M15Namespace {
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
-			LvlMethods->QuestionAnswered(1);
-			if (LvlMethods->QuestionsCompleted == 10)
-			{
-				doFinalCheck("F");
-			}
-			else
-			{
-				QuestionTransitionTimerShow->Start();
-			}
-		}
-		void destroyA()
+	}
+		   //@Daniel: timer for progress bar
+		   long long ticks = 0;
+	private: System::Void timerProgress_Tick(System::Object^ sender, System::EventArgs^ e) {
+		this->progressBarLevel1->Increment(1);
+		LvlMethods->PlayerStats->timeTaken = ticks / 100;
+		ticks++;
+		if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 		{
-			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 195, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
-
-
-			pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/closed_door.png", false);
-
-			des->addObject(pictureBoxA, destroyFuncA);
-
-			LvlMethods->QuestionAnswered(0);
-			if (LvlMethods->QuestionsCompleted == 10)
-			{
-				doFinalCheck("A");
-			}
-			else
-			{
-				QuestionTransitionTimerShow->Start();
-			}
+			pictureBoxArray[count]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+			count++;
+			LvlMethods->QuestionCompleted();
+			LvlMethods->DisableControls = false;
 		}
-		void destroyB()
-		{
-			changeLabelColors();
+		//this->progressBarLevel1->
+
+	}
+	private: System::Void panelLogin_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
+	}
 
 			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 315, "assets/Doors/opened_door.png", false);
 			openedDoor->setVisible(true);
@@ -956,16 +941,16 @@ namespace M15Namespace {
 		System::Void lvl1Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
 
-			switch (e->KeyCode)
-			{
-			case Keys::W:
-				move_up = false;
-				is_w_up = true;
+		switch (e->KeyCode)
+		{
+		case Keys::W:
+			move_up = false;
+			is_w_up = true;
 
-				break;
-			case Keys::A:
-				move_left = false;
-				is_a_up = true;
+			break;
+		case Keys::A:
+			move_left = false;
+			is_a_up = true;
 
 				break;
 			case Keys::S:
@@ -983,19 +968,24 @@ namespace M15Namespace {
 				break;
 			}
 
-			if (is_w_up && is_a_up && is_s_up && is_d_up)
+		if (is_w_up && is_a_up && is_s_up && is_d_up)
+		{
+			if (isleft)
 			{
-				if (isleft)
-				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idleleft.gif");
-				}
-				else
-				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
-				}
-				playerlevel1->ImageLocation = playerIdleGifPath;
+				imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idleleft.gif");
 			}
+			else
+			{
+				imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
+			}
+			playerlevel1->ImageLocation = imagePath;
 		}
+	}
+		   //@avesh: Edited and redefined how the player movement works (Smooth movement)
+		   //@jaedon: Edited and redefined player animations
+		   //@avesh: Edited and redefined player movement and animations
+		   String^ runAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+		   String^ runLeftAnimation = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
 
 		/*
 			Updates the player location when the appropriate keys are being pressed
