@@ -182,6 +182,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="TutorialForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -208,6 +211,7 @@
     <ClCompile Include="playerInfo.cpp" />
     <ClCompile Include="popup.cpp" />
     <ClCompile Include="COMP315Project.cpp" />
+    <ClCompile Include="TutorialForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
@@ -255,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="popup.resx">
       <DependentUpon>popup.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TutorialForm.resx">
+      <DependentUpon>TutorialForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

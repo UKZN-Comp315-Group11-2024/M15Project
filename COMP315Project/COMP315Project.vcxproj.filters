@@ -71,6 +71,21 @@
     <ClInclude Include="BonusLevelThree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BonusLevelFour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="facerec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lvl2Form.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicAndSFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="COMP315Project.cpp">
@@ -110,6 +125,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PictureBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusLevelFour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusLevelThree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BonusLevelTwo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lvl2Form.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicAndSFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="playerInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

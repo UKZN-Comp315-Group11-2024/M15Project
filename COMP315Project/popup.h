@@ -94,6 +94,7 @@ namespace M15Namespace {
 			   this->pictureboxbackground->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureboxbackground->TabIndex = 0;
 			   this->pictureboxbackground->TabStop = false;
+			   this->pictureboxbackground->Click += gcnew System::EventHandler(this, &popup::pictureboxbackground_Click);
 			   // 
 			   // lblText
 			   // 
@@ -135,11 +136,12 @@ namespace M15Namespace {
 			   // 
 			   this->backgroundPictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->backgroundPictureBox->Location = System::Drawing::Point(0, 0);
-			   this->backgroundPictureBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			   this->backgroundPictureBox->Margin = System::Windows::Forms::Padding(2);
 			   this->backgroundPictureBox->Name = L"backgroundPictureBox";
 			   this->backgroundPictureBox->Size = System::Drawing::Size(1264, 681);
 			   this->backgroundPictureBox->TabIndex = 3;
 			   this->backgroundPictureBox->TabStop = false;
+			   this->backgroundPictureBox->Click += gcnew System::EventHandler(this, &popup::backgroundPictureBox_Click);
 			   // 
 			   // popup
 			   // 
@@ -240,5 +242,9 @@ namespace M15Namespace {
 		}
 
 	}
-	};
+	private: System::Void backgroundPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void pictureboxbackground_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }
