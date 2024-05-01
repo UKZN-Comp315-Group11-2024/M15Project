@@ -34,7 +34,7 @@ definedPictureBox::definedPictureBox(Panel^ panelBonusLevel, int x_size, int y_s
 	this->Visible = false;
 }
 
-void definedPictureBox::setLocation(int x, int y) {
+void definedPictureBox::setLocation(const int& x, const int& y) {
 	this->Location = System::Drawing::Point(x, y);
 }
 

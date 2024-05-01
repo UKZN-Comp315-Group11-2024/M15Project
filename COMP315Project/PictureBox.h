@@ -12,7 +12,7 @@ public:
 	definedPictureBox();
 	definedPictureBox(Panel^ panelBonusLevel, int x_size, int y_size, int x_pos, int y_pos, String^ imageLocation, bool clickable);
 
-	void setLocation(int x, int y);
+	void setLocation(const int& x, const int& y);
 	void setVisible(bool visible);
 	bool operator ==(definedPictureBox^ b1);
 	void pictureBox_Click(System::Object^ sender, System::EventArgs^ e);
