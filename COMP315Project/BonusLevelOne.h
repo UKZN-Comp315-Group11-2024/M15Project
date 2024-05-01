@@ -22,7 +22,7 @@ namespace M15Namespace {
 	{
 
 	public:
-
+		//music objects
 	     	MusicAndSFX* ambience = new MusicAndSFX();
 		    MusicAndSFX* music = new MusicAndSFX();
 
@@ -397,6 +397,8 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 
 			outputFile.close();
 
+
+			//stops background music
 			ambience->StopSound();
 			music->StopSound();
 			delete ambience;
@@ -418,6 +420,8 @@ private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ 
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 			
+			
+			//stops background music
 			ambience->StopSound();
 			music->StopSound();
 			delete ambience;

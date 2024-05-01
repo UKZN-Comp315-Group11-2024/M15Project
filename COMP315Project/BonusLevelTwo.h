@@ -5,6 +5,8 @@
 #include "popup.h"
 #include "LoadQuestion.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
+
 namespace M15Namespace {
 
 	using namespace System;
@@ -20,6 +22,10 @@ namespace M15Namespace {
 	public ref class BonusLevelTwo : public System::Windows::Forms::Form
 	{
 	public:
+		//music objects
+		MusicAndSFX* ambience = new MusicAndSFX();
+		MusicAndSFX* music = new MusicAndSFX();
+
 		BonusLevelTwo(void)
 		{
 			InitializeComponent();
@@ -212,6 +218,10 @@ namespace M15Namespace {
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/BattlefieldSolidFloor.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
 
+
+		ambience->Forest();
+		music->LevelTwoMusic();
+
 		int x_pos;
 		int y_pos;
 		srand(time(0));
@@ -394,12 +404,25 @@ namespace M15Namespace {
 				window->ShowDialog();
 
 				this->Close();
+
+				//stops background music
+				ambience->StopSound();
+				music->StopSound();
+				delete ambience;
+				delete music;
 			}
 			else
 			{
 				std::string windowPrompt = "\nBonus Level Two Feedback (10 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/BattlefieldSolidFloorDark.png");
+
+				//stops background music
+				ambience->StopSound();
+				music->StopSound();
+				delete ambience;
+				delete music;
+
 
 				window->Visible = false;
 				this->Hide();

@@ -15,6 +15,7 @@ MusicAndSFX::~MusicAndSFX() {
 
 }
 //useful code-https://www.sfml-dev.org/tutorials/2.6/audio-sounds.php
+//All music is from:h ttps://www.epidemicsound.com/sound-effects/search/?term=running%20footsteps
 
 //Sound effects
 
@@ -41,7 +42,7 @@ void MusicAndSFX::gunshot() {
 void MusicAndSFX::MouseClick() {
 	//sf::SoundBuffer buffer; //stores small sounds that can fit in memory
 
-	if (!sound.openFromFile("assets\\music\\techsounds.wav")) {  //loads audio file
+	if (!sound.openFromFile("assets\\music\\Mouse Click Sound Effect.wav")) {  //loads audio file
 		std::cout << "sound failed to load into file" << std::endl;
 	}
 	sound.play();   //plays what's in the buffer
@@ -111,7 +112,7 @@ void MusicAndSFX::LevelOneMusic() {
 
 void MusicAndSFX::LevelTwoMusic() {
 
-		if (!music.openFromFile("assets\\")) {  //opens music file
+		if (!music.openFromFile("assets\\music\\ES_Thrilling Games - Phoenix Tail.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -121,7 +122,7 @@ void MusicAndSFX::LevelTwoMusic() {
 
 void MusicAndSFX::LevelThreeMusic() {
 
-		if (!music.openFromFile("assets\\")) {  //opens music file
+		if (!music.openFromFile("assets\\music\\ES_Shivers in the Shadows - Victor Lundberg.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -131,7 +132,7 @@ void MusicAndSFX::LevelThreeMusic() {
 
 	void MusicAndSFX::BonusLevel4() {
 
-		if (!music.openFromFile("assets\\ES_Empty Space - Etienne Roussel.wav")) {  //opens music file
+		if (!music.openFromFile("assets\\music\\ES_Empty Space - Etienne Roussel.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
@@ -154,7 +155,7 @@ void MusicAndSFX::OfficeNoise() {
 }
 
 	void MusicAndSFX::Forest() {
-		if (!Background.openFromFile("assets\\")) {  //opens music file
+		if (!Background.openFromFile("assets\\music\\ES_Forest 3 - SFX Producer.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		std::cout << "here";
@@ -166,7 +167,7 @@ void MusicAndSFX::OfficeNoise() {
 
 void MusicAndSFX::NightForest() {
 
-		if (!Background.openFromFile("assets\\")) {  //opens music file
+		if (!Background.openFromFile("assets\\music\\.ES_Forest 7 - SFX Producer.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		Background.play();
