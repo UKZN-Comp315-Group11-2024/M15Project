@@ -167,4 +167,39 @@
     <Text Include="textfiles\UsersAlphabetical.txt" />
     <Text Include="textfiles\communicaton.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\bin\openal32.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-window-d-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-window-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-system-d-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-system-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-network-d-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-network-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-graphics-d-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-graphics-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-audio-d-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-audio-2.dll">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

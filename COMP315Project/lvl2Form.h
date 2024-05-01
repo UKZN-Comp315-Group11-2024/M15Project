@@ -191,6 +191,7 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1604, 885);
 			   this->panelLogin->TabIndex = 12;
+			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl2Form::panelLogin_Paint);
 			   // 
 			   // textBoxTFB
 			   // 
@@ -1099,11 +1100,6 @@ namespace M15Namespace {
 				soundAnswer->IncorrectAnswer();
 				soundImpact->BulletImpact();
 			}
-
-
-
-
-
 		}
 
 		/*
@@ -1328,5 +1324,7 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
+private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
 };
 }

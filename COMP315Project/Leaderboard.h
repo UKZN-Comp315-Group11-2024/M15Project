@@ -31,255 +31,6 @@ namespace M15Namespace {
 
 		}
 
-
-		// Load the current player info from the playerinfo.txt
-		void LoadCurrentPlayerData(std::string filename, std::string filename2)
-		{
-			std::ifstream file(filename);
-			playerInfo^ p = gcnew playerInfo;
-			std::string line;
-			std::vector<std::string> v;
-
-			// Read each line into a vector and erase the line
-			if (file.is_open())
-			{
-				while (getline(file, line))
-				{
-					v.push_back(line);
-					eraseLine(filename, line);
-				}
-			}
-			// Assign the data to a new playerinfo object
-			for (int i = 0; i < 3; i++) {
-				std::string s = v[i];
-				if (i == 0) {
-					p->username = gcnew String(s.c_str());
-				}
-
-				else if (i == 1) {
-					p->score = std::stoi(s);
-
-				}
-				else {
-					p->timeTaken = std::stoi(s);
-				}
-
-			}
-			file.close();
-			this->player = p;
-			// Check for any duplicate usernames
-			bool playerExists = false;
-			for each (playerInfo ^ p in players)
-			{
-				if (p->username == player->username)
-				{
-					playerExists = true;
-					break;
-				}
-			}
-			msclr::interop::marshal_context context;
-			if (!playerExists)
-			{
-				// Insert the new player object into the players and write to the leaderboard.txt
-				std::ofstream writer(filename2);
-				players = customAlgs<playerInfo^>::insertScore(players, p);
-				players->Reverse();
-				for (int i = 0; i < players->Count; i++) {
-					std::string line = "";
-					std::string username = context.marshal_as<std::string>(players[i]->username);
-					line += username + "$";
-					line += std::to_string(players[i]->score);
-					line += "$";
-					line += std::to_string(players[i]->timeTaken);
-					writer << line << "\n";
-				}
-				writer.close();	
-				
-			}
-
-		}
-
-		// Load all players from the leaderboard.txt to the players list
-		void LoadAllPlayers() {
-			System::IO::StreamReader^ file = gcnew System::IO::StreamReader(msclr::interop::marshal_as<System::String^>("textfiles/Leaderboard.txt"));
-			System::String^ line;
-
-			while ((line = file->ReadLine()) != nullptr) {
-				int score = 0;
-				int time;
-				int pos = line->IndexOf('$');
-				std::string username = msclr::interop::marshal_as<std::string>(line->Substring(0, pos));
-				line = line->Remove(0, pos + 1);
-				for (int i = 0; i < 1; i++) {
-					pos = line->IndexOf('$');
-					score = score + System::Int32::Parse(line->Substring(0, pos));
-					line = line->Remove(0, pos + 1);
-				}
-				time = System::Int32::Parse(line);
-				playerInfo^ p = gcnew playerInfo;
-				p->username = gcnew String(username.c_str());
-				p->score = score;
-				p->timeTaken = time;
-				//players->Add(p);
-				players = customAlgs<playerInfo^>::insertScore(players, p); 
-			}
-			players->Reverse();
-			copyPlayers(players);
-			//UpdateLabels(players);
-			file->Close();
-		}
-
-
-		// Clear each line from the playerinfo.txt
-		void eraseLine(std::string filename, std::string exline) {
-			std::ifstream file(filename);
-			std::ofstream outputFile("temp.txt");
-			std::string line;
-
-			while (getline(file, line)) {
-				if (line != exline) {
-					outputFile << line << std::endl;
-				}
-			}
-			remove(filename.c_str());
-			rename("temp.txt", filename.c_str());
-		}
-
-	private:
-		List <playerInfo^>^ players = gcnew List <playerInfo^>;
-		List <playerInfo^>^ partPlayers = gcnew List <playerInfo^>;
-		String^ doIupdate;
-
-
-
-	private: System::Windows::Forms::Timer^ timerleaderboard;
-private: System::Windows::Forms::PictureBox^ pictureboxcrosses;
-private: System::Windows::Forms::PictureBox^ pictureBox2;
-private: System::Windows::Forms::Label^ label1;
-private: System::Windows::Forms::Label^ label2;
-
-
-	   playerInfo^ player = gcnew playerInfo;
-		// Function to update and draw the labels each time the leaderboard is accessed. 
-		// Creates new labels from scratch and puts them in the appropriate locations
-		void UpdateLabels(List<playerInfo^>^ v) {
-			//Clear previous labels
-			ClearLabels();
-			int i = 1;
-
-			// A label for the scroll instruction
-			Label^ press = gcnew Label();
-			press->AutoSize = true;
-			press->BackColor = System::Drawing::Color::Transparent;
-			press->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			press->ForeColor = System::Drawing::Color::White;
-			press->Text = L"press <space> to scroll";
-			press->Location = System::Drawing::Point(770, 642);
-			this->Controls->Add(press);
-			press->BringToFront();
-
-			// Printing each label out to the leaderboard form
-			for each(playerInfo ^ elem in v) {
-
-				int marginTop;
-				if (i == 1) {
-					marginTop = (i * 53) + 62;
-				}
-				else if (i == 2) {
-					marginTop = (i * 55) + 62;
-				}
-				else if (i == 3) {
-					marginTop = (i * 56) + 62;
-				}
-				else {
-					marginTop = (i * 58) + 62;
-				}
-
-				Label^ usernameLabel = gcnew Label();
-				Label^ scoreLabel = gcnew Label();
-				Label^ timeLabel = gcnew Label();
-				 
-				if (i < 10) {
-					usernameLabel->AutoSize = true;
-					usernameLabel->BackColor = System::Drawing::Color::Transparent;
-					usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-						static_cast<System::Byte>(0)));
-					
-					usernameLabel->Text = elem->username;
-					usernameLabel->Location = System::Drawing::Point(177, marginTop);
-
-					scoreLabel->AutoSize = true;
-					scoreLabel->BackColor = System::Drawing::Color::Transparent;
-					scoreLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-						static_cast<System::Byte>(0)));
-					scoreLabel->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-					
-					scoreLabel->Text = gcnew String(elem->score.ToString());
-					scoreLabel->Location = System::Drawing::Point(568, marginTop);
-					
-					
-					timeLabel->Text = gcnew String(elem->timeTaken.ToString()) + " sec";
-					timeLabel->AutoSize = true;
-					timeLabel->BackColor = System::Drawing::Color::Gainsboro;
-					timeLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-						static_cast<System::Byte>(0)));
-					timeLabel->Location = System::Drawing::Point(770, marginTop);
-
-					this->Controls->Add(usernameLabel);
-					this->Controls->Add(scoreLabel);
-					this->Controls->Add(timeLabel);
-					
-
-					usernameLabel->BringToFront();
-					scoreLabel->BringToFront();
-					timeLabel->BringToFront();
-					
-				}
-				i++;
-			}
-
-		}
-
-		// Show the next 9 or so players on to the screen until all players are shown
-		void nextPlayers() {
-			int x = 9;
-			// restart the leaderboard
-			if (partPlayers->Count <= 0) {
-				copyPlayers(players);
-				UpdateLabels(partPlayers);
-			}
-			// delete every player object that has already been displayed
-			else {
-				for each (playerInfo ^ elem in players) {
-					if (x <= 0) {
-						break;
-					}
-					else {
-						bool found = false;
-						for each (playerInfo ^ elem2 in partPlayers) {
-							if (elem == elem2) {
-								found = true;
-								break;
-							}
-						}
-						if (found) {
-							partPlayers->Remove(elem);
-							x--;
-						}
-					}
-				}
-				UpdateLabels(partPlayers);
-			}
-		}
-
-		// make a copy of the players list to avoid the loss of data
-		void copyPlayers(List<playerInfo^>^ v) {
-			for each (playerInfo ^ elem in v) {
-				partPlayers->Add(elem);
-			}
-		}
-		
 	protected:
 		~Leaderboard()
 		{
@@ -289,32 +40,17 @@ private: System::Windows::Forms::Label^ label2;
 			}
 		}
 
-	private:
-
-		System::Windows::Forms::PictureBox^ pictureBox1;
-
-
 	private: System::ComponentModel::IContainer^ components;
-
-	private:
-
-	internal:
-
-	protected:
+	private: System::Windows::Forms::Timer^ timerleaderboard;
+	private: System::Windows::Forms::PictureBox^ pictureboxcrosses;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
-		// Clears the created labels from memory
-		void ClearLabels()
-		{
-			this->Controls->Clear();
-
-		}
-
-
 #pragma region Windows Form Designer generated code
 
 		void InitializeComponent(void)
@@ -402,12 +138,260 @@ private: System::Windows::Forms::Label^ label2;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
+
 #pragma endregion
 
+	private:
+		List <playerInfo^>^ players = gcnew List <playerInfo^>;
+		List <playerInfo^>^ partPlayers = gcnew List <playerInfo^>;
+		String^ doIupdate;
+
+	private:
+		// Load the current player info from the playerinfo.txt
+		void LoadCurrentPlayerData(std::string filename, std::string filename2)
+		{
+			std::ifstream file(filename);
+			playerInfo^ p = gcnew playerInfo;
+			std::string line;
+			std::vector<std::string> v;
+
+			// Read each line into a vector and erase the line
+			if (file.is_open())
+			{
+				while (getline(file, line))
+				{
+					v.push_back(line);
+					eraseLine(filename, line);
+				}
+			}
+			// Assign the data to a new playerinfo object
+			for (int i = 0; i < 3; i++) {
+				std::string s = v[i];
+				if (i == 0) {
+					p->username = gcnew String(s.c_str());
+				}
+
+				else if (i == 1) {
+					p->score = std::stoi(s);
+
+				}
+				else {
+					p->timeTaken = std::stoi(s);
+				}
+
+			}
+			file.close();
+			this->player = p;
+			// Check for any duplicate usernames
+			bool playerExists = false;
+			for each (playerInfo ^ p in players)
+			{
+				if (p->username == player->username)
+				{
+					playerExists = true;
+					break;
+				}
+			}
+			msclr::interop::marshal_context context;
+			if (!playerExists)
+			{
+				// Insert the new player object into the players and write to the leaderboard.txt
+				std::ofstream writer(filename2);
+				players = customAlgs<playerInfo^>::insertScore(players, p);
+				players->Reverse();
+				for (int i = 0; i < players->Count; i++) {
+					std::string line = "";
+					std::string username = context.marshal_as<std::string>(players[i]->username);
+					line += username + "$";
+					line += std::to_string(players[i]->score);
+					line += "$";
+					line += std::to_string(players[i]->timeTaken);
+					writer << line << "\n";
+				}
+				writer.close();
+
+			}
+
+		}
+
+		// Load all players from the leaderboard.txt to the players list
+		void LoadAllPlayers() {
+			System::IO::StreamReader^ file = gcnew System::IO::StreamReader(msclr::interop::marshal_as<System::String^>("textfiles/Leaderboard.txt"));
+			System::String^ line;
+
+			while ((line = file->ReadLine()) != nullptr) {
+				int score = 0;
+				int time;
+				int pos = line->IndexOf('$');
+				std::string username = msclr::interop::marshal_as<std::string>(line->Substring(0, pos));
+				line = line->Remove(0, pos + 1);
+				for (int i = 0; i < 1; i++) {
+					pos = line->IndexOf('$');
+					score = score + System::Int32::Parse(line->Substring(0, pos));
+					line = line->Remove(0, pos + 1);
+				}
+				time = System::Int32::Parse(line);
+				playerInfo^ p = gcnew playerInfo;
+				p->username = gcnew String(username.c_str());
+				p->score = score;
+				p->timeTaken = time;
+				//players->Add(p);
+				players = customAlgs<playerInfo^>::insertScore(players, p);
+			}
+			players->Reverse();
+			copyPlayers(players);
+			//UpdateLabels(players);
+			file->Close();
+		}
+
+
+		// Clear each line from the playerinfo.txt
+		void eraseLine(std::string filename, std::string exline) {
+			std::ifstream file(filename);
+			std::ofstream outputFile("temp.txt");
+			std::string line;
+
+			while (getline(file, line)) {
+				if (line != exline) {
+					outputFile << line << std::endl;
+				}
+			}
+			remove(filename.c_str());
+			rename("temp.txt", filename.c_str());
+		}
+
+		playerInfo^ player = gcnew playerInfo;
+		// Function to update and draw the labels each time the leaderboard is accessed. 
+		// Creates new labels from scratch and puts them in the appropriate locations
+		void UpdateLabels(List<playerInfo^>^ v) {
+			//Clear previous labels
+			ClearLabels();
+			int i = 1;
+
+			// A label for the scroll instruction
+			Label^ press = gcnew Label();
+			press->AutoSize = true;
+			press->BackColor = System::Drawing::Color::Transparent;
+			press->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			press->ForeColor = System::Drawing::Color::White;
+			press->Text = L"press <space> to scroll";
+			press->Location = System::Drawing::Point(770, 642);
+			this->Controls->Add(press);
+			press->BringToFront();
+
+			// Printing each label out to the leaderboard form
+			for each (playerInfo ^ elem in v) {
+
+				int marginTop;
+				if (i == 1) {
+					marginTop = (i * 53) + 62;
+				}
+				else if (i == 2) {
+					marginTop = (i * 55) + 62;
+				}
+				else if (i == 3) {
+					marginTop = (i * 56) + 62;
+				}
+				else {
+					marginTop = (i * 58) + 62;
+				}
+
+				Label^ usernameLabel = gcnew Label();
+				Label^ scoreLabel = gcnew Label();
+				Label^ timeLabel = gcnew Label();
+
+				if (i < 10) {
+					usernameLabel->AutoSize = true;
+					usernameLabel->BackColor = System::Drawing::Color::Transparent;
+					usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						static_cast<System::Byte>(0)));
+
+					usernameLabel->Text = elem->username;
+					usernameLabel->Location = System::Drawing::Point(177, marginTop);
+
+					scoreLabel->AutoSize = true;
+					scoreLabel->BackColor = System::Drawing::Color::Transparent;
+					scoreLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						static_cast<System::Byte>(0)));
+					scoreLabel->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+
+					scoreLabel->Text = gcnew String(elem->score.ToString());
+					scoreLabel->Location = System::Drawing::Point(568, marginTop);
+
+
+					timeLabel->Text = gcnew String(elem->timeTaken.ToString()) + " sec";
+					timeLabel->AutoSize = true;
+					timeLabel->BackColor = System::Drawing::Color::Gainsboro;
+					timeLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						static_cast<System::Byte>(0)));
+					timeLabel->Location = System::Drawing::Point(770, marginTop);
+
+					this->Controls->Add(usernameLabel);
+					this->Controls->Add(scoreLabel);
+					this->Controls->Add(timeLabel);
+
+
+					usernameLabel->BringToFront();
+					scoreLabel->BringToFront();
+					timeLabel->BringToFront();
+
+				}
+				i++;
+			}
+
+		}
+
+		// Show the next 9 or so players on to the screen until all players are shown
+		void nextPlayers() {
+			int x = 9;
+			// restart the leaderboard
+			if (partPlayers->Count <= 0) {
+				copyPlayers(players);
+				UpdateLabels(partPlayers);
+			}
+			// delete every player object that has already been displayed
+			else {
+				for each (playerInfo ^ elem in players) {
+					if (x <= 0) {
+						break;
+					}
+					else {
+						bool found = false;
+						for each (playerInfo ^ elem2 in partPlayers) {
+							if (elem == elem2) {
+								found = true;
+								break;
+							}
+						}
+						if (found) {
+							partPlayers->Remove(elem);
+							x--;
+						}
+					}
+				}
+				UpdateLabels(partPlayers);
+			}
+		}
+
+		// make a copy of the players list to avoid the loss of data
+		void copyPlayers(List<playerInfo^>^ v) {
+			for each (playerInfo ^ elem in v) {
+				partPlayers->Add(elem);
+			}
+		}
+
+		// Clears the created labels from memory
+		void ClearLabels()
+		{
+			this->Controls->Clear();
+
+		}
+
 	// Loading the leaderboard
-	private: System::Void Leaderboard_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: 
+		System::Void Leaderboard_Load(System::Object^ sender, System::EventArgs^ e) {
 		msclr::interop::marshal_context context;
 		// Updating the player data from the playerinfo.txt to the leaderboard.txt
 		if (context.marshal_as<std::string>(doIupdate) == "yes") {
