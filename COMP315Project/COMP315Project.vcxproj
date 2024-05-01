@@ -153,6 +153,7 @@
     </ClInclude>
     <ClInclude Include="customAlgs.h" />
     <ClInclude Include="Destructible.h" />
+    <ClInclude Include="facerec.h" />
     <ClInclude Include="FaceRecognition.h">
       <FileType>CppForm</FileType>
     </ClInclude>
