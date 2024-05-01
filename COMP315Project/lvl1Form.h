@@ -63,6 +63,10 @@ namespace M15Namespace {
 		Destructible::DestroyFunction^ destroyFuncC = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyC);
 		Destructible::DestroyFunction^ destroyFuncD = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyD);
 		Destructible::DestroyFunction^ destroyFuncTF1 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF1);
+		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF2);
+		Destructible::DestroyFunction^ destroyFuncSafety = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroySafety);
+
+
 	private: System::Windows::Forms::Label^ textBoxA;
 	private: System::Windows::Forms::Label^ textBoxB;
 	private: System::Windows::Forms::Label^ textBoxD;
@@ -74,6 +78,7 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ textBoxQuestion;
 	private: System::Windows::Forms::Timer^ timerfinal;
 	private: System::Windows::Forms::PictureBox^ pbstart;
+	private: System::Windows::Forms::Button^ btnsafety;
 
 
 
@@ -82,7 +87,7 @@ namespace M15Namespace {
 	public:
 
 	public:
-		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF2);
+		
 		lvl1Form()
 		{
 			InitializeComponent();
@@ -239,6 +244,7 @@ namespace M15Namespace {
 			this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->btnsafety = (gcnew System::Windows::Forms::Button());
 			this->pbstart = (gcnew System::Windows::Forms::PictureBox());
 			this->textBoxQuestion = (gcnew System::Windows::Forms::Label());
 			this->textBoxTFA = (gcnew System::Windows::Forms::Label());
@@ -307,6 +313,7 @@ namespace M15Namespace {
 			this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panelLogin->Controls->Add(this->btnsafety);
 			this->panelLogin->Controls->Add(this->pbstart);
 			this->panelLogin->Controls->Add(this->textBoxQuestion);
 			this->panelLogin->Controls->Add(this->textBoxTFA);
@@ -331,6 +338,18 @@ namespace M15Namespace {
 			this->panelLogin->TabIndex = 12;
 			this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl1Form::panelLogin_Paint_1);
 			// 
+			// btnsafety
+			// 
+			this->btnsafety->ForeColor = System::Drawing::Color::Transparent;
+			this->btnsafety->Location = System::Drawing::Point(1239, 3);
+			this->btnsafety->Name = L"btnsafety";
+			this->btnsafety->Size = System::Drawing::Size(116, 659);
+			this->btnsafety->TabIndex = 45;
+			this->btnsafety->Text = L"button1";
+			this->btnsafety->UseVisualStyleBackColor = true;
+			this->btnsafety->Visible = false;
+			this->btnsafety->Click += gcnew System::EventHandler(this, &lvl1Form::btnsafety_Click);
+			// 
 			// pbstart
 			// 
 			this->pbstart->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbstart.Image")));
@@ -341,7 +360,6 @@ namespace M15Namespace {
 			this->pbstart->TabIndex = 44;
 			this->pbstart->TabStop = false;
 			this->pbstart->Click += gcnew System::EventHandler(this, &lvl1Form::pbstart_Click);
-			this->pbstart->Focus();
 			// 
 			// textBoxQuestion
 			// 
@@ -493,7 +511,7 @@ namespace M15Namespace {
 			this->progressBarLevel1->Location = System::Drawing::Point(722, 40);
 			this->progressBarLevel1->Maximum = 2000;
 			this->progressBarLevel1->Name = L"progressBarLevel1";
-			this->progressBarLevel1->Size = System::Drawing::Size(450, 49);
+			this->progressBarLevel1->Size = System::Drawing::Size(463, 49);
 			this->progressBarLevel1->TabIndex = 12;
 			this->progressBarLevel1->Visible = false;
 			// 
@@ -930,6 +948,23 @@ namespace M15Namespace {
 			  }
 		  }
 
+		  Button^ buttonsafety;
+		  void destroySafety() {
+			  buttonsafety = gcnew Button;
+			  buttonsafety->ForeColor = System::Drawing::Color::Transparent;
+			  buttonsafety->Location = System::Drawing::Point(1239, 3);
+			  buttonsafety->Name = L"buttonsafety";
+			  buttonsafety->Size = System::Drawing::Size(116, 659);
+			  buttonsafety->TabIndex = 45;
+			  buttonsafety->Text = L"button1";
+			  buttonsafety->UseVisualStyleBackColor = true;
+			  buttonsafety->Parent = panelLogin;
+			  buttonsafety->Hide();
+			  des->addObject(buttonsafety, destroyFuncSafety);
+		  }
+
+
+
 		  String^ projectDirectory = Application::StartupPath;
 		  String^ imagePath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
 		  //@avesh: text and timer
@@ -1009,6 +1044,8 @@ namespace M15Namespace {
 
 		textBoxQuestion->BackgroundImage = Image::FromFile("assets/Backgrounds/alt.png");
 		textBoxQuestion->BackgroundImageLayout = ImageLayout::Stretch;
+
+		des->addObject(this->btnsafety, destroyFuncSafety);
 
 		ambience->OfficeNoise();
 		music->LevelOneMusic();
@@ -1547,6 +1584,8 @@ namespace M15Namespace {
 			panelLogin->Focus();
 		}
 	}
+private: System::Void btnsafety_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
 
