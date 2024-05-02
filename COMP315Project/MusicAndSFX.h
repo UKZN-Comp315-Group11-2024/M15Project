@@ -25,11 +25,14 @@ public:
 	void LevelOneMusic();
 	void LevelTwoMusic();
 	void LevelThreeMusic();
-	void BonusLevel4();
+	void Level4Music();
+	void bonusLevels();
 
 	void OfficeNoise();
 	void Forest();
 	void NightForest();
+	void Space();
+
 
 	void StopSound();
 	void playRandomSound(std::string path, bool loop);
