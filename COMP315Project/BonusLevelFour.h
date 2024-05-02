@@ -5,6 +5,7 @@
 #include "popup.h"
 #include "LoadQuestion.h"
 #include "PictureBox.h"
+#include "MusicAndSFX.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -19,6 +20,9 @@ namespace M15Namespace {
 	/// </summary>
 	public ref class BonusLevelFour : public System::Windows::Forms::Form
 	{
+		MusicAndSFX* ambience = new MusicAndSFX();
+		MusicAndSFX* music = new MusicAndSFX();
+
 	public:
 		BonusLevelFour(void)
 		{
@@ -107,18 +111,19 @@ namespace M15Namespace {
 			this->panelBonusLevel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-9, -20);
+			this->panelBonusLevel->Location = System::Drawing::Point(-14, -30);
+			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
+			this->panelBonusLevel->Size = System::Drawing::Size(1920, 1080);
 			this->panelBonusLevel->TabIndex = 13;
 			this->panelBonusLevel->Click += gcnew System::EventHandler(this, &BonusLevelFour::panelLogin_Click);
+			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelFour::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(-14, -26);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox1->Location = System::Drawing::Point(-21, -39);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(80, 40);
+			this->pictureBox1->Size = System::Drawing::Size(120, 60);
 			this->pictureBox1->TabIndex = 13;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -126,20 +131,21 @@ namespace M15Namespace {
 			// 
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
-			this->countdownBar->Location = System::Drawing::Point(374, 60);
-			this->countdownBar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->countdownBar->Location = System::Drawing::Point(561, 90);
 			this->countdownBar->Name = L"countdownBar";
-			this->countdownBar->Size = System::Drawing::Size(503, 37);
+			this->countdownBar->Size = System::Drawing::Size(754, 56);
 			this->countdownBar->TabIndex = 12;
+			this->countdownBar->Click += gcnew System::EventHandler(this, &BonusLevelFour::countdownBar_Click);
 			// 
 			// lblMessage1
 			// 
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 27, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(304, 720);
+			this->lblMessage1->Location = System::Drawing::Point(456, 1080);
+			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 41);
+			this->lblMessage1->Size = System::Drawing::Size(0, 60);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			// 
@@ -148,10 +154,10 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-390, 345);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(446, 672);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -183,11 +189,10 @@ namespace M15Namespace {
 			// 
 			// BonusLevelFour
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+			this->AutoScaleDimensions = System::Drawing::SizeF(144, 144);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1264, 680);
+			this->ClientSize = System::Drawing::Size(1896, 1020);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelFour";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -214,6 +219,9 @@ namespace M15Namespace {
 
 		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackground.png");
 		panelBonusLevel->BackgroundImage = backgroundImage;
+
+		ambience->Space();
+		music->bonusLevels();
 
 		int x_pos, y_pos, x_size, y_size, speed;
 		srand(time(0));
@@ -409,12 +417,24 @@ namespace M15Namespace {
 				window->ShowDialog();
 
 				this->Close();
+
+				//stops background music
+				ambience->StopSound();
+				music->StopSound();
+				delete ambience;
+				delete music;
 			}
 			else
 			{
 				std::string windowPrompt = "\nBonus Level One Feedback (12 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 				String^ unwrapped = gcnew String(windowPrompt.c_str());
 				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
+
+				//stops background music
+				ambience->StopSound();
+				music->StopSound();
+				delete ambience;
+				delete music;
 
 				window->Visible = false;
 				this->Hide();
@@ -430,7 +450,11 @@ namespace M15Namespace {
 	private: System::Void TargetMoveTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 		update();
 	}
-	};
+	private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+private: System::Void countdownBar_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 
 
 }

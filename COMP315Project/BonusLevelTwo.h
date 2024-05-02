@@ -220,7 +220,7 @@ namespace M15Namespace {
 
 
 		ambience->Forest();
-		music->LevelTwoMusic();
+		music->bonusLevels();
 
 		int x_pos;
 		int y_pos;
