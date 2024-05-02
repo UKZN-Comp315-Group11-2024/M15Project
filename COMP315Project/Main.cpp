@@ -38,11 +38,11 @@ int main(array<String^>^ args) {
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
-	//MusicAndSFX *m = new MusicAndSFX();
-	//m->LevelOneMusic();
+	MusicAndSFX *m = new MusicAndSFX();
+	m->LevelOneMusic();
 
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
+	lvl1Form lvl1form;
+	Application::Run(% lvl1form);
 
 	//Leaderboard leaderboard("yes");
 	//Application::Run(% leaderboard);
