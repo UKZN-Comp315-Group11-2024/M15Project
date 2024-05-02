@@ -141,8 +141,8 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			   this->panelLogin->Controls->Add(this->TutorialButton);
 			   this->panelLogin->Controls->Add(this->pictureboxlockgif);
+			   this->panelLogin->Controls->Add(this->TutorialButton);
 			   this->panelLogin->Controls->Add(this->pbleaderboard);
 			   this->panelLogin->Controls->Add(this->label2);
 			   this->panelLogin->Controls->Add(this->pictureBox3);
@@ -167,7 +167,7 @@ namespace M15Namespace {
 			   this->TutorialButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->TutorialButton->ForeColor = System::Drawing::Color::Black;
-			   this->TutorialButton->Location = System::Drawing::Point(82, 595);
+			   this->TutorialButton->Location = System::Drawing::Point(48, 540);
 			   this->TutorialButton->Name = L"TutorialButton";
 			   this->TutorialButton->Size = System::Drawing::Size(165, 94);
 			   this->TutorialButton->TabIndex = 13;
