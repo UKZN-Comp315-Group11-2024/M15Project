@@ -19,9 +19,7 @@ namespace M15Namespace {
 		TutorialForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			
 		}
 
 	protected:
@@ -37,22 +35,20 @@ namespace M15Namespace {
 			}
 		}
 
-	protected:
-
 	private:
 
 		List<String^>^ pictures = gcnew List<String^>;
 		int currentSlideIndex = 0;
 		MusicAndSFX* sound = new MusicAndSFX;
 
-	private: System::Windows::Forms::Button^ btnNext;
-	private: System::Windows::Forms::Button^ previousButton;
-	private: System::Windows::Forms::PictureBox^ pbImage;
-	private: System::Windows::Forms::Label^ lbltut;
-	private: System::Windows::Forms::Label^ lblnumber;
+	    private: System::Windows::Forms::Button^ btnNext;
+	    private: System::Windows::Forms::Button^ previousButton;
+	    private: System::Windows::Forms::PictureBox^ pbImage;
+	    private: System::Windows::Forms::Label^ lbltut;
+	    private: System::Windows::Forms::Label^ lblnumber;
 
 
-		   System::ComponentModel::Container^ components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -157,6 +153,8 @@ namespace M15Namespace {
 		   }
 #pragma endregion
 	private: System::Void TutorialForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		
+		//adding tutorial images to List
 		pictures->Add("assets\\tutorial\\1.png");
 		pictures->Add("assets\\tutorial\\2.png");
 		pictures->Add("assets\\tutorial\\3.png");
@@ -165,15 +163,18 @@ namespace M15Namespace {
 		pictures->Add("assets\\tutorial\\6.png");
 		pictures->Add("assets\\tutorial\\7.png");
 
+		//initially sets background to first tutorial image
 		this->pbImage->Image = Image::FromFile("assets\\tutorial\\1.png");
 		this->currentSlideIndex = 0;
 		this->lblnumber->Text = 1 + "/7";
 	}
 
-		   void updateImage() {
-			   this->pbImage->Image = Image::FromFile(pictures[currentSlideIndex]);
-			   this->lblnumber->Text = (currentSlideIndex + 1) + "/7";
-		   }
+	void updateImage() {
+		this->pbImage->Image = Image::FromFile(pictures[currentSlideIndex]);
+		this->lblnumber->Text = (currentSlideIndex + 1) + "/7";
+	}
+
+	//changes background to the previous tutorial image when the next button is clicked
 	private: System::Void previousButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
 		if (currentSlideIndex > 0) {
@@ -182,6 +183,8 @@ namespace M15Namespace {
 
 		updateImage();
 	}
+
+    //changes background to the next tutorial image when the next button is clicked
 	private: System::Void btnNext_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
 		if (currentSlideIndex < 6) {
@@ -197,6 +200,7 @@ namespace M15Namespace {
 		}
 
 	}
+
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void TutorialForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
