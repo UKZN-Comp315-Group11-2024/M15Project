@@ -65,8 +65,8 @@ int main(array<String^>^ args) {
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
 
-		//lvl2Form lvl2;
-		//Application::Run(% lvl2);
+		lvl2Form lvl2;
+		Application::Run(% lvl2);
 
 		//lvl3Form lvl3;
 		//Application::Run(% lvl3);

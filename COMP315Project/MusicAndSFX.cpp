@@ -130,12 +130,22 @@ void MusicAndSFX::LevelThreeMusic() {
 	music.setLoop(true); //loops music file
 }
 
-	void MusicAndSFX::BonusLevel4() {
+	void MusicAndSFX::Level4Music() {
 
 		if (!music.openFromFile("assets\\music\\ES_Empty Space - Etienne Roussel.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
 		music.play();
+
+		music.setLoop(true); //loops music file
+	}
+
+	void MusicAndSFX::bonusLevels() {
+
+		if (!music.openFromFile("assets\\music\\ES_Spy Game - Jon Sumner.wav")) {  //opens music file
+			std::cout << "could not open music file" << std::endl;
+		}
+		music.play();  
 
 		music.setLoop(true); //loops music file
 	}
@@ -171,6 +181,16 @@ void MusicAndSFX::NightForest() {
 			std::cout << "could not open music file" << std::endl;
 		}
 		Background.play();
+
+	Background.setLoop(true); //loops music file
+}
+
+void MusicAndSFX::Space() {
+
+	if (!Background.openFromFile("assets\\music\\.ES_Drone Empty Void - SFX Producer.wav")) {  //opens music file
+		std::cout << "could not open music file" << std::endl;
+	}
+	Background.play();
 
 	Background.setLoop(true); //loops music file
 }

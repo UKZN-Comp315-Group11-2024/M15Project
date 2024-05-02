@@ -614,8 +614,8 @@ namespace M15Namespace {
 
 			des->addObject(this->btnsafety, destroyFuncSafety);
 
-			ambience->OfficeNoise();
-			music->LevelOneMusic();
+			ambience->NightForest();
+			music->LevelThreeMusic();
 		}
 
 		/*
