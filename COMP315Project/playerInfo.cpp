@@ -9,11 +9,22 @@ playerInfo::playerInfo() {
 }
 
 bool playerInfo::operator<(playerInfo^ p2) {
-	return (this->score < p2->score);
+	if (this->score == p2->score) {
+		return this->timeTaken > p2->timeTaken;
+	}
+	else {
+		return (this->score < p2->score);
+	}
+	
 }
 
 bool playerInfo::operator>(playerInfo^ p2) {
-	return (this->score > p2->score);
+	if (this->score == p2->score) {
+		return this->timeTaken < p2->timeTaken;
+	}
+	else {
+		return (this->score > p2->score);
+	}
 }
 
 bool playerInfo::operator==(playerInfo^ p2) {

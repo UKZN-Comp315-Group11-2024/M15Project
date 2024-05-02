@@ -87,10 +87,10 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
+		   /// <summary>
+		   /// Required method for Designer support - do not modify
+		   /// the contents of this method with the code editor.
+		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   this->components = (gcnew System::ComponentModel::Container());
@@ -216,13 +216,13 @@ namespace M15Namespace {
 			   // 
 			   // textBoxQuestion
 			   // 
-			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 22.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 16.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
 			   this->textBoxQuestion->Location = System::Drawing::Point(0, 20);
 			   this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxQuestion->Name = L"textBoxQuestion";
-			   this->textBoxQuestion->Padding = System::Windows::Forms::Padding(40, 0, 40, 0);
+			   this->textBoxQuestion->Padding = System::Windows::Forms::Padding(56, 0, 56, 0);
 			   this->textBoxQuestion->Size = System::Drawing::Size(651, 168);
 			   this->textBoxQuestion->TabIndex = 43;
 			   this->textBoxQuestion->Text = L"label1";
@@ -449,7 +449,7 @@ namespace M15Namespace {
 			   this->MaximizeBox = false;
 			   this->Name = L"lvl1Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			   this->Text = L"Level 1";
+			   this->Text = L"Level 1 of 4";
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &lvl1Form::lvl1Form_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &lvl1Form::lvl1Form_Load);
 			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl1Form::lvl1Form_KeyDown);
@@ -742,7 +742,6 @@ namespace M15Namespace {
 			{
 				QuestionTransitionTimerShow->Start();
 			}
-			std::cout << LvlMethods->QuestionsCompleted << std::endl;
 		}
 		void destroyTF2()
 		{
@@ -1167,12 +1166,22 @@ namespace M15Namespace {
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
-				currentFeedbackLogoNum++;
-				LvlMethods->QuestionCompleted();
+
+				if (LvlMethods->QuestionsCompleted == 9) {
+					LvlMethods->Correct = false;
+					doFinalCheck("");
+				}
+				else {
+					currentFeedbackLogoNum++;
+					LvlMethods->QuestionCompleted();
+					soundAnswer->IncorrectAnswer();
+				}
+
 				LvlMethods->DisableControls = false;
 			}
 
 		}
+
 
 	private:
 		/*
@@ -1197,6 +1206,7 @@ namespace M15Namespace {
 			this->Transition1->Enabled = false;
 			this->Transition2->Enabled = false;
 			this->BulletTimer->Enabled = false;
+
 			if (LvlMethods->Correct)
 			{
 				ResultTextBox->Text = "Well Done!!!";
@@ -1206,8 +1216,12 @@ namespace M15Namespace {
 				ResultTextBox->Location = pnt;
 				LvlMethods->Correct = false;
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_correctMK3.png");
+
+				if (str != "") {
+					soundImpact->BulletImpact();
+				}
 				soundAnswer->CorrectAnswer();
-				soundImpact->BulletImpact();
+
 				currentFeedbackLogoNum++;
 
 			}
@@ -1220,8 +1234,11 @@ namespace M15Namespace {
 				ResultTextBox->Location = pnt;
 				LvlMethods->Correct = false;
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+
+				if (str != "") {
+					soundImpact->BulletImpact();
+				}
 				soundAnswer->IncorrectAnswer();
-				soundImpact->BulletImpact();
 
 				currentFeedbackLogoNum++;
 			}
@@ -1272,7 +1289,7 @@ namespace M15Namespace {
 			delete soundImpact;
 			delete music;
 
-			std::string windowPrompt = "Level 1 feedback (Office)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points";
+			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 

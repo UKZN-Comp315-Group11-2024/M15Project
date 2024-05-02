@@ -50,7 +50,7 @@ namespace M15Namespace {
 
 			this->KeyPreview = true;
 
-			this->LvlMethods = gcnew LevelMethods(1);
+			this->LvlMethods = gcnew LevelMethods(2);
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
 			this->LvlMethods->SetPlayerComponent(playerlevel1);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
@@ -84,7 +84,7 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ wasd;
 	private: System::Windows::Forms::PictureBox^ space;
 	private: System::Windows::Forms::Timer^ shootTimer;
-	private: System::Windows::Forms::Button^ ContinueNxtLvlButton;
+
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -99,6 +99,7 @@ namespace M15Namespace {
 			   this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 			   this->btnsafety = (gcnew System::Windows::Forms::Button());
 			   this->pbstart = (gcnew System::Windows::Forms::PictureBox());
 			   this->textBoxQuestion = (gcnew System::Windows::Forms::Label());
@@ -109,12 +110,10 @@ namespace M15Namespace {
 			   this->textBoxA = (gcnew System::Windows::Forms::Label());
 			   this->playerlevel1 = (gcnew System::Windows::Forms::PictureBox());
 			   this->ResultTextBox = (gcnew System::Windows::Forms::TextBox());
-			   this->ContinueNxtLvlButton = (gcnew System::Windows::Forms::Button());
 			   this->space = (gcnew System::Windows::Forms::PictureBox());
 			   this->wasd = (gcnew System::Windows::Forms::PictureBox());
 			   this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
 			   this->Barrier = (gcnew System::Windows::Forms::PictureBox());
-			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 			   this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
@@ -168,6 +167,7 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->Controls->Add(this->btnsafety);
 			   this->panelLogin->Controls->Add(this->pbstart);
 			   this->panelLogin->Controls->Add(this->textBoxQuestion);
@@ -178,19 +178,32 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->textBoxA);
 			   this->panelLogin->Controls->Add(this->playerlevel1);
 			   this->panelLogin->Controls->Add(this->ResultTextBox);
-			   this->panelLogin->Controls->Add(this->ContinueNxtLvlButton);
 			   this->panelLogin->Controls->Add(this->space);
 			   this->panelLogin->Controls->Add(this->wasd);
 			   this->panelLogin->Controls->Add(this->progressBarLevel1);
 			   this->panelLogin->Controls->Add(this->lblMessage1);
 			   this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 			   this->panelLogin->Controls->Add(this->Barrier);
-			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(-3, -20);
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1283, 708);
 			   this->panelLogin->TabIndex = 12;
+			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl2Form::panelLogin_Paint);
+			   // 
+			   // textBoxTFB
+			   // 
+			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxTFB->Location = System::Drawing::Point(1030, 494);
+			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFB->Name = L"textBoxTFB";
+			   this->textBoxTFB->Size = System::Drawing::Size(193, 70);
+			   this->textBoxTFB->TabIndex = 42;
+			   this->textBoxTFB->Text = L"TF2";
+			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxTFB->Visible = false;
 			   // 
 			   // btnsafety
 			   // 
@@ -216,13 +229,13 @@ namespace M15Namespace {
 			   // 
 			   // textBoxQuestion
 			   // 
-			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 22.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 16.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
 			   this->textBoxQuestion->Location = System::Drawing::Point(0, 20);
 			   this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxQuestion->Name = L"textBoxQuestion";
-			   this->textBoxQuestion->Padding = System::Windows::Forms::Padding(40, 0, 40, 0);
+			   this->textBoxQuestion->Padding = System::Windows::Forms::Padding(56, 0, 56, 0);
 			   this->textBoxQuestion->Size = System::Drawing::Size(651, 168);
 			   this->textBoxQuestion->TabIndex = 43;
 			   this->textBoxQuestion->Text = L"label1";
@@ -234,10 +247,10 @@ namespace M15Namespace {
 			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1007, 261);
+			   this->textBoxTFA->Location = System::Drawing::Point(1030, 289);
 			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxTFA->Name = L"textBoxTFA";
-			   this->textBoxTFA->Size = System::Drawing::Size(260, 65);
+			   this->textBoxTFA->Size = System::Drawing::Size(190, 65);
 			   this->textBoxTFA->TabIndex = 41;
 			   this->textBoxTFA->Text = L"TF1";
 			   this->textBoxTFA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -248,10 +261,10 @@ namespace M15Namespace {
 			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxD->Location = System::Drawing::Point(1007, 536);
+			   this->textBoxD->Location = System::Drawing::Point(1030, 540);
 			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxD->Name = L"textBoxD";
-			   this->textBoxD->Size = System::Drawing::Size(260, 157);
+			   this->textBoxD->Size = System::Drawing::Size(240, 96);
 			   this->textBoxD->TabIndex = 40;
 			   this->textBoxD->Text = L"Option D";
 			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -262,10 +275,10 @@ namespace M15Namespace {
 			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxC->Location = System::Drawing::Point(1007, 414);
+			   this->textBoxC->Location = System::Drawing::Point(1030, 426);
 			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxC->Name = L"textBoxC";
-			   this->textBoxC->Size = System::Drawing::Size(260, 150);
+			   this->textBoxC->Size = System::Drawing::Size(240, 96);
 			   this->textBoxC->TabIndex = 39;
 			   this->textBoxC->Text = L"Option C";
 			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -276,10 +289,10 @@ namespace M15Namespace {
 			   this->textBoxB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxB->Location = System::Drawing::Point(1004, 293);
+			   this->textBoxB->Location = System::Drawing::Point(1030, 330);
 			   this->textBoxB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxB->Name = L"textBoxB";
-			   this->textBoxB->Size = System::Drawing::Size(263, 154);
+			   this->textBoxB->Size = System::Drawing::Size(240, 96);
 			   this->textBoxB->TabIndex = 38;
 			   this->textBoxB->Text = L"Option B";
 			   this->textBoxB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -291,10 +304,10 @@ namespace M15Namespace {
 			   this->textBoxA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxA->Location = System::Drawing::Point(1004, 230);
+			   this->textBoxA->Location = System::Drawing::Point(1030, 209);
 			   this->textBoxA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxA->Name = L"textBoxA";
-			   this->textBoxA->Size = System::Drawing::Size(265, 96);
+			   this->textBoxA->Size = System::Drawing::Size(240, 96);
 			   this->textBoxA->TabIndex = 37;
 			   this->textBoxA->Text = L"Option A";
 			   this->textBoxA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -303,7 +316,7 @@ namespace M15Namespace {
 			   // playerlevel1
 			   // 
 			   this->playerlevel1->ImageLocation = L"assets/PlayerMove/idle.gif";
-			   this->playerlevel1->Location = System::Drawing::Point(104, 395);
+			   this->playerlevel1->Location = System::Drawing::Point(40, 394);
 			   this->playerlevel1->Name = L"playerlevel1";
 			   this->playerlevel1->Size = System::Drawing::Size(150, 84);
 			   this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -318,17 +331,6 @@ namespace M15Namespace {
 			   this->ResultTextBox->Size = System::Drawing::Size(100, 20);
 			   this->ResultTextBox->TabIndex = 34;
 			   this->ResultTextBox->Visible = false;
-			   // 
-			   // ContinueNxtLvlButton
-			   // 
-			   this->ContinueNxtLvlButton->Location = System::Drawing::Point(573, 560);
-			   this->ContinueNxtLvlButton->Margin = System::Windows::Forms::Padding(2);
-			   this->ContinueNxtLvlButton->Name = L"ContinueNxtLvlButton";
-			   this->ContinueNxtLvlButton->Size = System::Drawing::Size(120, 58);
-			   this->ContinueNxtLvlButton->TabIndex = 30;
-			   this->ContinueNxtLvlButton->Text = L"Continue";
-			   this->ContinueNxtLvlButton->UseVisualStyleBackColor = true;
-			   this->ContinueNxtLvlButton->Visible = false;
 			   // 
 			   // space
 			   // 
@@ -370,26 +372,13 @@ namespace M15Namespace {
 			   // Barrier
 			   // 
 			   this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
-			   this->Barrier->Location = System::Drawing::Point(282, 189);
+			   this->Barrier->Location = System::Drawing::Point(211, 191);
 			   this->Barrier->Name = L"Barrier";
-			   this->Barrier->Size = System::Drawing::Size(20, 727);
+			   this->Barrier->Size = System::Drawing::Size(30, 674);
+			   this->Barrier->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->Barrier->TabIndex = 36;
 			   this->Barrier->TabStop = false;
 			   this->Barrier->Visible = false;
-			   // 
-			   // textBoxTFB
-			   // 
-			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFB->Location = System::Drawing::Point(1007, 481);
-			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxTFB->Name = L"textBoxTFB";
-			   this->textBoxTFB->Size = System::Drawing::Size(260, 151);
-			   this->textBoxTFB->TabIndex = 42;
-			   this->textBoxTFB->Text = L"TF2";
-			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxTFB->Visible = false;
 			   // 
 			   // Transition2
 			   // 
@@ -449,7 +438,7 @@ namespace M15Namespace {
 			   this->MaximizeBox = false;
 			   this->Name = L"lvl2Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			   this->Text = L"Level 1";
+			   this->Text = L"Level 2 of 4";
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &lvl2Form::lvl2Form_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &lvl2Form::lvl2Form_Load);
 			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl2Form::lvl2Form_KeyDown);
@@ -572,7 +561,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+			std::string windowPrompt = "Welcome to the second level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place on the M15 testing grounds. \nThe targets are a bit smaller now. If you miss one?\nWell, that's 10 seconds added to your time!\nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "");
 			window->Visible = false;
@@ -667,6 +656,8 @@ namespace M15Namespace {
 
 			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
+
+				this->Barrier->Visible = true;
 				this->progressBarLevel1->Visible = true;
 				this->playerlevel1->Visible = true;
 				this->playerlevel1->BringToFront();
@@ -677,13 +668,13 @@ namespace M15Namespace {
 				Transition2->Enabled = false;
 				canshoot = true;
 
-				pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/closed_door.png", false);
+				pictureBoxA = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bush1.png", false);
 				pictureBoxA->Show();
-				pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/closed_door.png", false);
+				pictureBoxB = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bush1.png", false);
 				pictureBoxB->Show();
-				pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/closed_door.png", false);
+				pictureBoxC = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bush1.png", false);
 				pictureBoxC->Show();
-				pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/closed_door.png", false);
+				pictureBoxD = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bush1.png", false);
 				pictureBoxD->Show();
 
 				des->addObject(pictureBoxA, destroyFuncA);
@@ -710,7 +701,6 @@ namespace M15Namespace {
 		System::Void pbstart_Click(System::Object^ sender, System::EventArgs^ e) {
 			Transition1->Enabled = false;
 			Transition2->Start();
-			Barrier->Visible = true;
 			this->timerProgress->Start();
 		}
 
@@ -726,10 +716,10 @@ namespace M15Namespace {
 		void destroyTF1()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 195, "assets/Doors/opened_door.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush_explode.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 195, "assets/Doors/closed_door.png", false);
+			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush1.png", false);
 
 			des->addObject(pictureBoxTF1, destroyFuncTF1);
 
@@ -742,15 +732,14 @@ namespace M15Namespace {
 			{
 				QuestionTransitionTimerShow->Start();
 			}
-			std::cout << LvlMethods->QuestionsCompleted << std::endl;
 		}
 		void destroyTF2()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 435, "assets/Doors/opened_door.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush_explode.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 855, 435, "assets/Doors/closed_door.png", false);
+			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush1.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -767,11 +756,11 @@ namespace M15Namespace {
 		void destroyA()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 195, "assets/Doors/opened_door.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bush_explode.png", false);
 			openedDoor->setVisible(true);
 
 
-			pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 850, 195, "assets/Doors/closed_door.png", false);
+			pictureBoxA = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bush1.png", false);
 
 			des->addObject(pictureBoxA, destroyFuncA);
 
@@ -789,10 +778,10 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 315, "assets/Doors/opened_door.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bush_explode.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 850, 315, "assets/Doors/closed_door.png", false);
+			pictureBoxB = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bush1.png", false);
 
 			des->addObject(pictureBoxB, destroyFuncB);
 
@@ -811,10 +800,10 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 435, "assets/Doors/opened_door.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bush_explode.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 850, 435, "assets/Doors/closed_door.png", false);
+			pictureBoxC = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bush1.png", false);
 
 			des->addObject(pictureBoxC, destroyFuncC);
 
@@ -833,10 +822,10 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 850, 555, "assets/Doors/opened_door.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bush_explode.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 850, 555, "assets/Doors/closed_door.png", false);
+			pictureBoxD = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bush1.png", false);
 
 			des->addObject(pictureBoxD, destroyFuncD);
 			LvlMethods->QuestionAnswered(3);
@@ -855,6 +844,7 @@ namespace M15Namespace {
 			Respawns the safety barrier beyond the questions if a bullet happens to get pass the doors
 		*/
 		void destroySafety() {
+			ticks += 1000;
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
@@ -1026,7 +1016,7 @@ namespace M15Namespace {
 			{
 				playerlevel1->Top += 5;
 			}
-			if (move_right && playerlevel1->Left < 160)
+			if (move_right && playerlevel1->Left < 100)
 			{
 				playerlevel1->Left += 5;
 			}
@@ -1101,11 +1091,6 @@ namespace M15Namespace {
 				soundAnswer->IncorrectAnswer();
 				soundImpact->BulletImpact();
 			}
-
-
-
-
-
 		}
 
 		/*
@@ -1137,9 +1122,9 @@ namespace M15Namespace {
 				pictureBoxC->Hide();
 				pictureBoxD->Hide();
 
-				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/closed_door.png", false);
+				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush1.png", false);
 				pictureBoxTF1->Hide();
-				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/closed_door.png", false);
+				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush1.png", false);
 				pictureBoxTF2->Hide();
 
 				des->addObject(pictureBoxTF1, destroyFuncTF1);
@@ -1167,12 +1152,22 @@ namespace M15Namespace {
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
-				currentFeedbackLogoNum++;
-				LvlMethods->QuestionCompleted();
+
+				if (LvlMethods->QuestionsCompleted == 9) {
+					LvlMethods->Correct = false;
+					doFinalCheck("");
+				}
+				else {
+					currentFeedbackLogoNum++;
+					LvlMethods->QuestionCompleted();
+					soundAnswer->IncorrectAnswer();
+				}
+
 				LvlMethods->DisableControls = false;
 			}
 
 		}
+
 
 	private:
 		/*
@@ -1197,6 +1192,7 @@ namespace M15Namespace {
 			this->Transition1->Enabled = false;
 			this->Transition2->Enabled = false;
 			this->BulletTimer->Enabled = false;
+
 			if (LvlMethods->Correct)
 			{
 				ResultTextBox->Text = "Well Done!!!";
@@ -1206,8 +1202,12 @@ namespace M15Namespace {
 				ResultTextBox->Location = pnt;
 				LvlMethods->Correct = false;
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_correctMK3.png");
+
+				if (str != "") {
+					soundImpact->BulletImpact();
+				}
 				soundAnswer->CorrectAnswer();
-				soundImpact->BulletImpact();
+
 				currentFeedbackLogoNum++;
 
 			}
@@ -1220,20 +1220,23 @@ namespace M15Namespace {
 				ResultTextBox->Location = pnt;
 				LvlMethods->Correct = false;
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
+
+				if (str != "") {
+					soundImpact->BulletImpact();
+				}
 				soundAnswer->IncorrectAnswer();
-				soundImpact->BulletImpact();
 
 				currentFeedbackLogoNum++;
 			}
 			if (str == "T")
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 195, "assets/Doors/opened_door.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush_explode.png", false);
 				openedDoor->BringToFront();
 				openedDoor->setVisible(true);
 			}
 			else if (str == "F")
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 855, 435, "assets/Doors/opened_door.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush_explode.png", false);
 				openedDoor->setVisible(true);
 				openedDoor->BringToFront();
 			}
@@ -1242,6 +1245,7 @@ namespace M15Namespace {
 			timerfinal->Start();
 
 		}
+
 
 		/*
 			Saves the player score and time taken to PlayerInfo.txt for later use
@@ -1272,9 +1276,9 @@ namespace M15Namespace {
 			delete soundImpact;
 			delete music;
 
-			std::string windowPrompt = "Level 1 feedback (Office)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points";
+			std::string windowPrompt = "Level 2 of 4 feedback (Testing grounds)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points" + "\n" + "Score after Level 1: " + std::to_string(this->player->score) + " Points\n" + "\n\n" + "Total score: " + std::to_string(this->player->score + LvlMethods->PlayerStats->score);
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/BattlefieldSolidFloorDark.png");
 
 			window->Visible = false;
 			this->Hide();
@@ -1311,5 +1315,7 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-	};
+private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+};
 }
