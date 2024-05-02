@@ -168,11 +168,9 @@ void MusicAndSFX::OfficeNoise() {
 		if (!Background.openFromFile("assets\\music\\ES_Forest 3 - SFX Producer.wav")) {  //opens music file
 			std::cout << "could not open music file" << std::endl;
 		}
-		std::cout << "here";
 		Background.play();
 
 	Background.setLoop(true); //loops music file
-	std::cout << "exited";
 }
 
 void MusicAndSFX::NightForest() {
