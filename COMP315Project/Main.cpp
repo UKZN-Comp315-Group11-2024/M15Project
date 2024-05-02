@@ -41,8 +41,8 @@ int main(array<String^>^ args) {
 	//MusicAndSFX *m = new MusicAndSFX();
 	//m->LevelOneMusic();
 
-	lvl1Form lvl1form;
-	Application::Run(% lvl1form);
+	//lvl1Form lvl1form;
+	//Application::Run(% lvl1form);
 
 	//Leaderboard leaderboard("yes");
 	//Application::Run(% leaderboard);
@@ -73,10 +73,10 @@ int main(array<String^>^ args) {
 		//lvl2Form lvl2;
 		//Application::Run(% lvl2);
 
-		//lvl2Form lvl2;
-		//Application::Run(% lvl2);
+		lvl1Form lvl2;
+		Application::Run(% lvl2);
 
-	FaceRecognition fr;
-	Application::Run(% fr);
+	//FaceRecognition fr;
+	//Application::Run(% fr);
 
 }
