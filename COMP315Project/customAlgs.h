@@ -172,10 +172,13 @@ public:
 		return result;
 	}
 
+
 	static void srandom() {
 
 		srand(time(0));
 	}
+
+
 	/*method to shuffle a vector
 	OUTPUT: the method returns the shuffled vector
 	//TIME COMPLEXITY: O(n). This time complexity is also also clearly optimal.

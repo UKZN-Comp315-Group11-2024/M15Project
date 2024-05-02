@@ -1,19 +1,24 @@
 #include "pch.h"
+
 #include "BootForm.h"
 #include "LoginForm.h"
-#include "lvl1Form.h"
+#include "TutorialForm.h"
+#include "Leaderboard.h"
+
+#include "MusicAndSFX.h"
 #include "PlayerInfo.h"
 #include "popup.h"
 #include "LoadQuestion.h"
-#include "Leaderboard.h"
+
+#include "lvl1Form.h"
+#include "lvl2Form.h"
+#include "lvl3Form.h"
+#include "lvl4Form.h"
+
 #include "BonusLevelOne.h"
 #include "BonusLevelTwo.h"
 #include "BonusLevelThree.h"
 #include "BonusLevelFour.h"
-#include "MusicAndSFX.h"
-#include "lvl2Form.h"
-#include "TutorialForm.h"
-#include "lvl3Form.h"
 
 using namespace System;
 using namespace M15Namespace;
@@ -36,11 +41,11 @@ int main(array<String^>^ args) {
 	//MusicAndSFX *m = new MusicAndSFX();
 	//m->LevelOneMusic();
 
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
+	lvl1Form lvl1form;
+	Application::Run(% lvl1form);
 
-	Leaderboard leaderboard("yes");
-	Application::Run(% leaderboard);
+	//Leaderboard leaderboard("yes");
+	//Application::Run(% leaderboard);
 
 	//TutorialForm tut;
 	//Application::Run(% tut);
@@ -68,7 +73,10 @@ int main(array<String^>^ args) {
 		//lvl2Form lvl2;
 		//Application::Run(% lvl2);
 
-		//lvl3Form lvl3;
-		//Application::Run(% lvl3);
+		//lvl2Form lvl2;
+		//Application::Run(% lvl2);
+
+	FaceRecognition fr;
+	Application::Run(% fr);
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include "facerec.h"
 
 namespace M15Namespace {
 
@@ -57,7 +58,7 @@ namespace M15Namespace {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
+	facerec* f = new facerec;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -205,6 +206,7 @@ namespace M15Namespace {
 			this->Name = L"FaceRecognition";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Face Identifier";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &FaceRecognition::FaceRecognition_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &FaceRecognition::FaceRecognition_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -220,7 +222,6 @@ namespace M15Namespace {
 		std::ofstream ofs("textfiles\\communication.txt", std::ofstream::trunc);  // Open/create a file named "test.txt" for writing
 
 		if (ofs.is_open()) {  // Check if the file was successfully opened
-			std::cout << "hi";
 			ofs << "1"; //1 meaning login should not close
 		}
 		ofs.close();  // Close the file after writing
@@ -228,8 +229,8 @@ namespace M15Namespace {
 	}
 	private: System::Void timerfacerec_Tick(System::Object^ sender, System::EventArgs^ e) {
 		int x; //Removed y as it was never used
-		Point p1 = lblrecognize1->Location;
-		Point p2 = lblrecognize2->Location;
+		System::Drawing::Point p1 = lblrecognize1->Location;
+		System::Drawing::Point p2 = lblrecognize2->Location;
 		x = p1.X;
 
 		if (x == 1260) {
@@ -248,7 +249,7 @@ namespace M15Namespace {
 			lblrecognize1->Visible = true;
 		}
 
-		lblrecognize1->Location = Point(x, 123);
+		lblrecognize1->Location = System::Drawing::Point(x, 123);
 		x = p2.X;
 
 		if (x == 1260) {
@@ -266,7 +267,7 @@ namespace M15Namespace {
 			lblrecognize2->Visible = true;
 		}
 
-		lblrecognize2->Location = Point(x, 123);
+		lblrecognize2->Location = System::Drawing::Point(x, 123);
 
 		p1 = lbladd1->Location;
 		p2 = lbladd2->Location;
@@ -288,7 +289,7 @@ namespace M15Namespace {
 			lbladd1->Visible = true;
 		}
 
-		lbladd1->Location = Point(x, 251);
+		lbladd1->Location = System::Drawing::Point(x, 251);
 		x = p2.X;
 
 		if (x == 1260) {
@@ -306,7 +307,7 @@ namespace M15Namespace {
 			lbladd2->Visible = true;
 		}
 
-		lbladd2->Location = Point(x, 251);
+		lbladd2->Location = System::Drawing::Point(x, 251);
 	}
 	private: System::Void dummy_Click(System::Object^ sender, System::EventArgs^ e) {
 		std::ofstream ofs("textfiles\\communication.txt");  // Open/create a file named "test.txt" for writing
@@ -318,6 +319,26 @@ namespace M15Namespace {
 		this->Close();
 	}
 	private: System::Void FaceRecognition_Load(System::Object^ sender, System::EventArgs^ e) {
+		int choice;
+		
+		std::cout << "1. Recognise Face\n";
+		std::cout << "2. Add Face\n";
+		std::cout << "Choose One: ";
+		std::cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			f->FaceRecognitionNew();
+			break;
+		case 2:
+			f->addFace();
+			f->eigenFaceTrainer();
+			break;
+		}
+		
 	}
-	};
+	private: System::Void FaceRecognition_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		delete f;
+	}
+};
 }
