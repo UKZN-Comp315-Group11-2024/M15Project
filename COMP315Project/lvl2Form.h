@@ -600,6 +600,7 @@ namespace M15Namespace {
 			des->addObject(this->btnsafety, destroyFuncSafety);
 
 			ambience->Forest();
+			ambience->playRandomSound("assets\\music\\ES_Fire Bonfire 2 - SFX Producer.wav", true);
 			music->LevelTwoMusic();
 		}
 
