@@ -28,8 +28,8 @@ int main(array<String^>^ args) {
 
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
+	lvl1Form lvl1form;
+	Application::Run(% lvl1form);
 
 	//MusicAndSFX *m = new MusicAndSFX();
 	//m->LevelOneMusic();
@@ -61,7 +61,7 @@ int main(array<String^>^ args) {
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
 
-		lvl2Form lvl2;
-		Application::Run(% lvl2);
+		//lvl2Form lvl2;
+		//Application::Run(% lvl2);
 
 }
