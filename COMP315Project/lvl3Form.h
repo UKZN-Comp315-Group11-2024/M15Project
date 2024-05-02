@@ -41,6 +41,8 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ pbstart;
 	private: System::Windows::Forms::PictureBox^ Barrier2;
 	private: System::Windows::Forms::Label^ DigitalStopWatch;
+	private: System::Windows::Forms::Label^ MissLabel;
+	private: System::Windows::Forms::Timer^ missTimer;
 	private: System::Windows::Forms::Button^ btnsafety;
 
 
@@ -125,6 +127,8 @@ namespace M15Namespace {
 			   this->QuestionTransitionTimerShow = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerfinal = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->MissLabel = (gcnew System::Windows::Forms::Label());
+			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->BeginInit();
@@ -169,6 +173,7 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->MissLabel);
 			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->Controls->Add(this->btnsafety);
@@ -193,7 +198,6 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1603, 885);
 			   this->panelLogin->TabIndex = 12;
-			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl3Form::panelLogin_Paint);
 			   // 
 			   // DigitalStopWatch
 			   // 
@@ -202,7 +206,7 @@ namespace M15Namespace {
 			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Red;
-			   this->DigitalStopWatch->Location = System::Drawing::Point(904, 182);
+			   this->DigitalStopWatch->Location = System::Drawing::Point(896, 187);
 			   this->DigitalStopWatch->Name = L"DigitalStopWatch";
 			   this->DigitalStopWatch->Size = System::Drawing::Size(110, 31);
 			   this->DigitalStopWatch->TabIndex = 48;
@@ -259,7 +263,6 @@ namespace M15Namespace {
 			   this->textBoxQuestion->Text = L"label1";
 			   this->textBoxQuestion->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			   this->textBoxQuestion->Visible = false;
-			   this->textBoxQuestion->Click += gcnew System::EventHandler(this, &lvl3Form::textBoxQuestion_Click);
 			   // 
 			   // textBoxTFA
 			   // 
@@ -456,6 +459,26 @@ namespace M15Namespace {
 			   // 
 			   this->timerfinal->Interval = 2000;
 			   this->timerfinal->Tick += gcnew System::EventHandler(this, &lvl3Form::timerfinal_Tick);
+			   // 
+			   // MissLabel
+			   // 
+			   this->MissLabel->AutoSize = true;
+			   this->MissLabel->BackColor = System::Drawing::Color::Black;
+			   this->MissLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->MissLabel->ForeColor = System::Drawing::Color::Red;
+			   this->MissLabel->Location = System::Drawing::Point(1205, 195);
+			   this->MissLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			   this->MissLabel->Name = L"MissLabel";
+			   this->MissLabel->Size = System::Drawing::Size(250, 23);
+			   this->MissLabel->TabIndex = 49;
+			   this->MissLabel->Text = L"Missed!! +10 seconds";
+			   this->MissLabel->Visible = false;
+			   // 
+			   // missTimer
+			   // 
+			   this->missTimer->Interval = 500;
+			   this->missTimer->Tick += gcnew System::EventHandler(this, &lvl3Form::missTimer_Tick);
 			   // 
 			   // lvl3Form
 			   // 
@@ -877,6 +900,8 @@ namespace M15Namespace {
 			Respawns the safety barrier beyond the questions if a bullet happens to get pass the doors
 		*/
 		void destroySafety() {
+			MissLabel->Show();
+			missTimer->Start();
 			ticks += 1000;
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
@@ -1376,9 +1401,18 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
-private: System::Void textBoxQuestion_Click(System::Object^ sender, System::EventArgs^ e) {
+	   int countMissTimer = 0;
+private: System::Void missTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (countMissTimer == 0)
+	{
+		countMissTimer++;
+	}
+	else
+	{
+		MissLabel->Hide();
+		countMissTimer = 0;
+		missTimer->Stop();
+	}
 }
 };
 }
