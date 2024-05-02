@@ -39,6 +39,8 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ textBoxQuestion;
 	private: System::Windows::Forms::Timer^ timerfinal;
 	private: System::Windows::Forms::PictureBox^ pbstart;
+	private: System::Windows::Forms::Label^ DigitalStopWatch;
+
 	private: System::Windows::Forms::Button^ btnsafety;
 
 
@@ -52,11 +54,8 @@ namespace M15Namespace {
 
 			this->LvlMethods = gcnew LevelMethods(2);
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
-			this->LvlMethods->SetPlayerComponent(playerlevel1);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
 			this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
-			this->LvlMethods->SetPanelComponant(panelLogin);
-			this->LvlMethods->SetLevelFormInstance(this);
 
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 		}
@@ -124,6 +123,7 @@ namespace M15Namespace {
 			   this->QuestionTransitionTimerShow = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerfinal = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->BeginInit();
@@ -168,6 +168,7 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->Controls->Add(this->btnsafety);
 			   this->panelLogin->Controls->Add(this->pbstart);
@@ -426,6 +427,19 @@ namespace M15Namespace {
 			   this->timerfinal->Interval = 2000;
 			   this->timerfinal->Tick += gcnew System::EventHandler(this, &lvl2Form::timerfinal_Tick);
 			   // 
+			   // DigitalStopWatch
+			   // 
+			   this->DigitalStopWatch->AutoSize = true;
+			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Black;
+			   this->DigitalStopWatch->Location = System::Drawing::Point(731, 151);
+			   this->DigitalStopWatch->Name = L"DigitalStopWatch";
+			   this->DigitalStopWatch->Size = System::Drawing::Size(51, 20);
+			   this->DigitalStopWatch->TabIndex = 46;
+			   this->DigitalStopWatch->Text = L"label1";
+			   this->DigitalStopWatch->Visible = false;
+			   // 
 			   // lvl2Form
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(144, 144);
@@ -666,6 +680,8 @@ namespace M15Namespace {
 				this->pbstart->Enabled = false;
 				this->wasd->Visible = true;
 				this->space->Visible = true;
+				//@Daniel
+				this->DigitalStopWatch->Visible = true;
 				movePlayerTimer->Start();
 				Transition2->Enabled = false;
 				canshoot = true;
@@ -1151,16 +1167,37 @@ namespace M15Namespace {
 			this->progressBarLevel1->Increment(1);
 			LvlMethods->PlayerStats->timeTaken = ticks / 100;
 			ticks++;
+			//@Daniel : added total timer
+			DigitalStopWatch->Text = "Total time: " + System::Convert::ToString(LvlMethods->PlayerStats->timeTaken);
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
 
 				if (LvlMethods->QuestionsCompleted == 9) {
 					LvlMethods->Correct = false;
-					doFinalCheck("");
-				}
-				else {
+					doFinalCheck(""); // @Daniel
+				}else {
 					currentFeedbackLogoNum++;
+					if (LvlMethods->QuestionsCompleted == 8) {
+						pictureBoxA->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxB->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxC->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxD->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxA->Hide();
+						pictureBoxB->Hide();
+						pictureBoxC->Hide();
+						pictureBoxD->Hide();
+
+						pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/closed_door.png", false);
+						pictureBoxTF1->Hide();
+						pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/closed_door.png", false);
+						pictureBoxTF2->Hide();
+
+						des->addObject(pictureBoxTF1, destroyFuncTF1);
+						des->addObject(pictureBoxTF2, destroyFuncTF2);
+						pictureBoxTF1->Show();
+						pictureBoxTF2->Show();
+					}
 					LvlMethods->QuestionCompleted();
 					soundAnswer->IncorrectAnswer();
 				}

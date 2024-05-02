@@ -1,37 +1,25 @@
 #pragma once
-//#include "PlayerInfo.h"
-#include <string>
 #include "LoadQuestion.h"
 #include <windows.h>
 
-//Co-Ordinates of the bullet apon collision
-/*ref struct BulletInfo {
-
-	int CoOrdX, CoOrdY;
-
-};*/
-using namespace System;
-using namespace System::Windows::Forms;
-using namespace System::Collections::Generic;
-using namespace System::Diagnostics;
-using namespace System::Drawing;
-using namespace System::IO;
-
-
-public ref class LevelMethods : public System::Windows::Forms::NativeWindow
+public ref class LevelMethods 
 {
 public:
+	//Question tracking variables
 	int QuestionsCompleted;
 	int QuestionsAnswered;
-	int lvlNum;
-	bool DisableControls;
 	int CorrectOptionInt = -1;
+	
+	//Number representing the level
+	int lvlNum;
+	
+	//Set true to disable player input
+	bool DisableControls;
+	
+	//determines wether to increment CorrectOptionInt or not
 	bool Correct = false;
-	bool AnswerGiven = true;
-	bool canChange = true;
 
-	System::Windows::Forms::Form^ LevelFormInstance;
-
+	//Label handles 
 	System::Windows::Forms::Label^ Question;
 	System::Windows::Forms::Label^ Option1;
 	System::Windows::Forms::Label^ Option2;
@@ -40,18 +28,14 @@ public:
 	System::Windows::Forms::Label^ TFOption1;
 	System::Windows::Forms::Label^ TFOption2;
 
-	System::Windows::Forms::PictureBox^ PlayerImage;
-
-	System::Windows::Forms::Button^ ContinueButton;
-
+	//Progress bar and its timer handles
 	System::Windows::Forms::ProgressBar^ ProgressBar;
 	System::Windows::Forms::Timer^ ProgressBarTimer;
 
-	System::Windows::Forms::Panel^ Panel;
+	//List storing Question struct objects
+	List<LoadQuestion::Question^>^ QuestionList;
 
-	LoadQuestion^ QuestionLoader;
-	List<LoadQuestion::Question^>^ QuestionQueue;
-
+	//Strings containing the question and its options
 	System::String^ QuestionType = "";
 	System::String^ question = "";
 	System::String^ OptionA = "";
@@ -60,63 +44,24 @@ public:
 	System::String^ OptionD = "";
 	System::String^ CorrectOption = "";
 
+	//Instance of a struct used to track player statistics during a level
 	playerInfo^ PlayerStats;
 
-	//LevelMethods(Form^ form, int lvlNum);
+	//constructor
 	LevelMethods(int lvlno);
 
-	//void TransitionIn();
-
-	//void SetTransLabel(String^ label, Control^ item);
-
-	//void ShuffelQuestionSets();
-
-	void ExtractQuestionSet();
-
+	//Methods for displaying questions
 	void DisplayNextQuestionSet();
-
-	// call this method if a question has been answered, so call this function when you detect a bullet collision with an answer's hit box
-	//increments QuestionsAnswered
-	//calls ProcessAnswer();
-	//if(T/F){} else{}
+	void ExtractQuestionSet();
+	void DetermCorrectOptionInt();
+	
+	//Methods for handeling when a question is answered 
 	void QuestionAnswered(int option);
-
 	void QuestionCompleted();
 
-	//Determins which answer was selected by the player
-	//needs to take in x and y co ordinate of bullet
-	//determines if the answer selected was correct
-	//void ProcessingAnswer();
-
-	//returns true if they match
-	//bool CheckAnswerCorrect(System::String^ AnswerSelected, System::String^ CorrectAnswer);
-
+	//Sets variouse components that need to be accessed from LevelMethods
 	void SetQuestionComponents(System::Windows::Forms::Label^ lblQuestion, System::Windows::Forms::Label^ lblOption1, System::Windows::Forms::Label^ lblOption2, System::Windows::Forms::Label^ lblOption3, System::Windows::Forms::Label^ lblOption4, System::Windows::Forms::Label^ lblTFOption1, System::Windows::Forms::Label^ lblTFOption2);
-
-	void SetPlayerComponent(System::Windows::Forms::PictureBox^ plyr);
-
 	void SetProgressBarComponent(System::Windows::Forms::ProgressBar^ PB);
 	void SetProgressBarTimerComponent(System::Windows::Forms::Timer^ PBtmr);
 
-	void SetPanelComponant(System::Windows::Forms::Panel^ Pnl);
-
-	void SetLevelFormInstance(System::Windows::Forms::Form^ lvlFrmInst);
-
-	void SetButtonComponenets(System::Windows::Forms::Button^ btn);
-
-	//void ResetLoadingBar();
-
-	void ResetPlayerPos();
-
-	void calculateTime();
-
-	//check if 10 questions have been answered, if so call end of level
-	bool CheckLevelEnd();
-
-	//end the level
-	void EndLevel();
-
-	void RecordPlayerStats();
-
-	void DetermCorrectOptionInt();
 };
