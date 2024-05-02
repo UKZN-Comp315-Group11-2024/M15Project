@@ -12,6 +12,7 @@
 #include "BonusLevelFour.h"
 #include "MusicAndSFX.h"
 #include "lvl2Form.h"
+#include "TutorialForm.h"
 #include "lvl3Form.h"
 #include "lvl4Form.h"
 
@@ -42,6 +43,8 @@ int main(array<String^>^ args) {
 	//Leaderboard leaderboard("No");
 	//Application::Run(% leaderboard);
 
+	//TutorialForm tut;
+	//Application::Run(% tut);
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
