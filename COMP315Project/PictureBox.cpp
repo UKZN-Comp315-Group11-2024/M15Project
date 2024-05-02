@@ -56,11 +56,14 @@ bool definedPictureBox::operator ==(definedPictureBox^ b1) {
 
 void definedPictureBox::pictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
 	MusicAndSFX* BonusSounds = new MusicAndSFX();
+	MusicAndSFX* BonusSFX = new MusicAndSFX();
 	this->Hide();
 	countClick++;
 	//BonusSounds->MouseClick();
-	BonusSounds->Laser();
-	//soundAnswer->gunshot();
+	//BonusSounds->Laser();
+	BonusSounds->gunshot();
+	//BonusSFX->randomSound("assets\\music\\ES_Human Grunt 15 - SFX Producer.wav",false);
+
 	//delete BonusSounds;
 	
 }

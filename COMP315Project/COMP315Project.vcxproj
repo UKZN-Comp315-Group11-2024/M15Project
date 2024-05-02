@@ -174,6 +174,12 @@
     <ClInclude Include="lvl2Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="lvl3Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="lvl4Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MusicAndSFX.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PictureBox.h" />
@@ -199,6 +205,8 @@
     <ClCompile Include="LoadQuestion.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="lvl2Form.cpp" />
+    <ClCompile Include="lvl3Form.cpp" />
+    <ClCompile Include="lvl4Form.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MusicAndSFX.cpp" />
     <ClCompile Include="pch.cpp">
@@ -215,6 +223,15 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\orbgif.gif" />
+    <Image Include="..\..\..\Pictures\Camera Roll\BONUS LEVEL.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\door-tut.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\Door_Tutorial.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\feedbacktutorial1.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\feedbacktutorial2.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\feedback_tutorial.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\move The player.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\Press SPACE to shoot.png" />
+    <Image Include="..\..\..\Pictures\Camera Roll\tutorialexample.png" />
     <Image Include="app.ico" />
     <Image Include="assets\Retical\ret.png" />
     <Image Include="Icon1.ico" />
@@ -257,6 +274,12 @@
     <EmbeddedResource Include="lvl2Form.resx">
       <DependentUpon>lvl2Form.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="lvl3Form.resx">
+      <DependentUpon>lvl3Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lvl4Form.resx">
+      <DependentUpon>lvl4Form.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="popup.resx">
       <DependentUpon>popup.h</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +310,19 @@
   <ItemGroup>
     <Text Include="textfiles\communicaton.txt" />
     <Text Include="textfiles\UsersAlphabetical.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\bin\openal32.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-audio-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-audio-d-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-graphics-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-graphics-d-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-network-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-network-d-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-system-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-system-d-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-window-2.dll" />
+    <None Include="..\..\..\..\..\Downloads\bin\sfml-window-d-2.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
