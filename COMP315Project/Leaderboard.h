@@ -202,7 +202,7 @@ namespace M15Namespace {
 				// Insert the new player object into the players and write to the leaderboard.txt
 				std::ofstream writer(filename2);
 				players = customAlgs<playerInfo^>::insertScore(players, p);
-		
+				//players->Reverse();
 				for (int i = 0; i < players->Count; i++) {
 					std::string line = "";
 					std::string username = context.marshal_as<std::string>(players[i]->username);
@@ -213,7 +213,6 @@ namespace M15Namespace {
 					writer << line << "\n";
 				}
 				writer.close();
-
 			}
 
 		}
@@ -242,7 +241,7 @@ namespace M15Namespace {
 				//players->Add(p);
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 			}
-			players->Reverse();
+			//players->Reverse();
 			copyPlayers(players);
 
 			msclr::interop::marshal_context context;
@@ -444,13 +443,13 @@ namespace M15Namespace {
 		if (context.marshal_as<std::string>(doIupdate) == "yes") {
 			LoadAllPlayers();
 			LoadCurrentPlayerData("textfiles/PlayerInfo.txt", "textfiles/Leaderboard.txt");
-			UpdateLabels(players);
+			UpdateLabels(partPlayers);
 		}
 		else {
 			// Update and show all players to screen
 			LoadAllPlayers();
-			//players->Reverse();
-			UpdateLabels(players);
+			//partPlayers->Reverse();
+			UpdateLabels(partPlayers);
 			//players->Reverse();
 		}
 
