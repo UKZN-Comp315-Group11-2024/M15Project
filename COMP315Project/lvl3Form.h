@@ -249,7 +249,7 @@ namespace M15Namespace {
 			   // 
 			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 16.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			   this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxQuestion->ForeColor = System::Drawing::Color::White;
 			   this->textBoxQuestion->Location = System::Drawing::Point(0, 25);
 			   this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxQuestion->Name = L"textBoxQuestion";
@@ -355,7 +355,7 @@ namespace M15Namespace {
 			   // 
 			   this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
 			   this->space->Location = System::Drawing::Point(775, 798);
-			   this->space->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			   this->space->Margin = System::Windows::Forms::Padding(2);
 			   this->space->Name = L"space";
 			   this->space->Size = System::Drawing::Size(38, 48);
 			   this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -367,7 +367,7 @@ namespace M15Namespace {
 			   // 
 			   this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
 			   this->wasd->Location = System::Drawing::Point(652, 777);
-			   this->wasd->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			   this->wasd->Margin = System::Windows::Forms::Padding(2);
 			   this->wasd->Name = L"wasd";
 			   this->wasd->Size = System::Drawing::Size(120, 90);
 			   this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -392,7 +392,7 @@ namespace M15Namespace {
 			   // 
 			   this->Barrier2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier2.Image")));
 			   this->Barrier2->Location = System::Drawing::Point(278, 238);
-			   this->Barrier2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			   this->Barrier2->Margin = System::Windows::Forms::Padding(2);
 			   this->Barrier2->Name = L"Barrier2";
 			   this->Barrier2->Size = System::Drawing::Size(90, 323);
 			   this->Barrier2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -625,7 +625,7 @@ namespace M15Namespace {
 
 			openedDoor = gcnew definedPictureBox();
 
-			textBoxQuestion->BackgroundImage = Image::FromFile("assets/Backgrounds/alt.png");
+			textBoxQuestion->BackgroundImage = Image::FromFile("assets/Backgrounds/im.png");
 			textBoxQuestion->BackgroundImageLayout = ImageLayout::Stretch;
 
 			des->addObject(this->btnsafety, destroyFuncSafety);
@@ -749,10 +749,10 @@ namespace M15Namespace {
 		void destroyTF1()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_opened.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_closed.png", false);
+			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxTF1, destroyFuncTF1);
 
@@ -1161,9 +1161,9 @@ namespace M15Namespace {
 				pictureBoxC->Hide();
 				pictureBoxD->Hide();
 
-				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_closed.png", false);
+				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/bunker_closed.png", false);
 				pictureBoxTF1->Hide();
-				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_closed.png", false);
+				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/bunker_closed.png", false);
 				pictureBoxTF2->Hide();
 
 				des->addObject(pictureBoxTF1, destroyFuncTF1);
