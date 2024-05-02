@@ -42,11 +42,11 @@ namespace M15Namespace {
 	private:
 
 		List<String^>^ pictures = gcnew List<String^>;
-		int index = 0;
+		int currentSlideIndex = 0;
 		MusicAndSFX* sound = new MusicAndSFX;
 
 	private: System::Windows::Forms::Button^ btnNext;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ previousButton;
 	private: System::Windows::Forms::PictureBox^ pbImage;
 	private: System::Windows::Forms::Label^ lbltut;
 	private: System::Windows::Forms::Label^ lblnumber;
@@ -63,7 +63,7 @@ namespace M15Namespace {
 		   {
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(TutorialForm::typeid));
 			   this->btnNext = (gcnew System::Windows::Forms::Button());
-			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->previousButton = (gcnew System::Windows::Forms::Button());
 			   this->pbImage = (gcnew System::Windows::Forms::PictureBox());
 			   this->lbltut = (gcnew System::Windows::Forms::Label());
 			   this->lblnumber = (gcnew System::Windows::Forms::Label());
@@ -83,18 +83,18 @@ namespace M15Namespace {
 			   this->btnNext->UseVisualStyleBackColor = true;
 			   this->btnNext->Click += gcnew System::EventHandler(this, &TutorialForm::btnNext_Click);
 			   // 
-			   // button1
+			   // previousButton
 			   // 
-			   this->button1->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->previousButton->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->button1->ForeColor = System::Drawing::Color::Red;
-			   this->button1->Location = System::Drawing::Point(12, 582);
-			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(201, 87);
-			   this->button1->TabIndex = 1;
-			   this->button1->Text = L"Previous";
-			   this->button1->UseVisualStyleBackColor = true;
-			   this->button1->Click += gcnew System::EventHandler(this, &TutorialForm::button1_Click);
+			   this->previousButton->ForeColor = System::Drawing::Color::Red;
+			   this->previousButton->Location = System::Drawing::Point(12, 582);
+			   this->previousButton->Name = L"previousButton";
+			   this->previousButton->Size = System::Drawing::Size(201, 87);
+			   this->previousButton->TabIndex = 1;
+			   this->previousButton->Text = L"Previous";
+			   this->previousButton->UseVisualStyleBackColor = true;
+			   this->previousButton->Click += gcnew System::EventHandler(this, &TutorialForm::previousButton_Click);
 			   // 
 			   // pbImage
 			   // 
@@ -140,7 +140,7 @@ namespace M15Namespace {
 			   this->Controls->Add(this->lblnumber);
 			   this->Controls->Add(this->lbltut);
 			   this->Controls->Add(this->pbImage);
-			   this->Controls->Add(this->button1);
+			   this->Controls->Add(this->previousButton);
 			   this->Controls->Add(this->btnNext);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -166,31 +166,30 @@ namespace M15Namespace {
 		pictures->Add("assets\\tutorial\\7.png");
 
 		this->pbImage->Image = Image::FromFile("assets\\tutorial\\1.png");
-		this->index = 0;
+		this->currentSlideIndex = 0;
 		this->lblnumber->Text = 1 + "/7";
 	}
 
 		   void updateImage() {
-			   this->pbImage->Image = Image::FromFile(pictures[index]);
-			   this->lblnumber->Text = (index + 1) + "/7";
+			   this->pbImage->Image = Image::FromFile(pictures[currentSlideIndex]);
+			   this->lblnumber->Text = (currentSlideIndex + 1) + "/7";
 		   }
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void previousButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
-		if (index > 0) {
-			index--;
+		if (currentSlideIndex > 0) {
+			currentSlideIndex--;
 		}
 
 		updateImage();
 	}
 	private: System::Void btnNext_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
-		if (index < 6) {
-			index++;
-			std::cout << index;
+		if (currentSlideIndex < 6) {
+			currentSlideIndex++;
 			updateImage();
 		}
 
-		else if (index == 6) {
+		else if (currentSlideIndex == 6) {
 			if (MessageBox::Show("Are you ready to return to login?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes)
 			{
 				this->Close();
