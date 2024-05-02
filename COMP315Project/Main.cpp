@@ -1,19 +1,24 @@
 #include "pch.h"
+
 #include "BootForm.h"
 #include "LoginForm.h"
-#include "lvl1Form.h"
+#include "TutorialForm.h"
+#include "Leaderboard.h"
+
+#include "MusicAndSFX.h"
 #include "PlayerInfo.h"
 #include "popup.h"
 #include "LoadQuestion.h"
-#include "Leaderboard.h"
+
+#include "lvl1Form.h"
+#include "lvl2Form.h"
+#include "lvl3Form.h"
+#include "lvl4Form.h"
+
 #include "BonusLevelOne.h"
 #include "BonusLevelTwo.h"
 #include "BonusLevelThree.h"
 #include "BonusLevelFour.h"
-#include "MusicAndSFX.h"
-#include "lvl2Form.h"
-#include "TutorialForm.h"
-#include "lvl3Form.h"
 
 using namespace System;
 using namespace M15Namespace;
@@ -28,8 +33,8 @@ int main(array<String^>^ args) {
 	//BootForm form;
 	//Application::Run(% form);
 
-	//LoginForm loginForm;
-	//Application::Run(% loginForm);
+	LoginForm loginForm;
+	Application::Run(% loginForm);
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
@@ -53,7 +58,7 @@ int main(array<String^>^ args) {
 		//Application::Run(% P);
 
 		//BonusLevelOne bonusLevelOne;
-		//Application::Run(% bonusLevelOne);
+	    //Application::Run(% bonusLevelOne);
 
 		//BonusLevelThree bonusLevelThree;
 		//Application::Run(% bonusLevelThree);
@@ -68,7 +73,9 @@ int main(array<String^>^ args) {
 		//lvl2Form lvl2;
 		//Application::Run(% lvl2);
 
-		//lvl3Form lvl3;
-		//Application::Run(% lvl3);
+		//lvl2Form lvl2;
+		//Application::Run(% lvl2);
+
+	
 
 }

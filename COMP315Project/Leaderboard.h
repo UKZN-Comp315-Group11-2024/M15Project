@@ -200,6 +200,8 @@ namespace M15Namespace {
 			{
 				// Insert the new player object into the players and write to the leaderboard.txt
 				std::ofstream writer(filename2);
+
+				players->Reverse();
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 				players->Reverse();
 				for (int i = 0; i < players->Count; i++) {
@@ -212,8 +214,9 @@ namespace M15Namespace {
 					writer << line << "\n";
 				}
 				writer.close();
-
 			}
+			copyPlayers(players);
+			UpdateLabels(players);
 
 		}
 
@@ -242,13 +245,7 @@ namespace M15Namespace {
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 			}
 			players->Reverse();
-			copyPlayers(players);
 
-			msclr::interop::marshal_context context;
-			for each (playerInfo^ p in players) {
-				std::cout << context.marshal_as<std::string>(p->username)<<"\n";
-			}
-			//UpdateLabels(players);
 			file->Close();
 		}
 
@@ -314,8 +311,17 @@ namespace M15Namespace {
 				if (i < 10) {
 					usernameLabel->AutoSize = true;
 					usernameLabel->BackColor = System::Drawing::Color::Transparent;
+					
+					if (elem->username == this->player->username) {
+						usernameLabel->ForeColor = System::Drawing::Color::Red;
+					}
+
 					usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
+
+					
+					
+
 
 					usernameLabel->Text = elem->username;
 					usernameLabel->Location = System::Drawing::Point(177, marginTop);
@@ -412,9 +418,8 @@ namespace M15Namespace {
 		else {
 			// Update and show all players to screen
 			LoadAllPlayers();
-			//players->Reverse();
-			UpdateLabels(players);
-			//players->Reverse();
+			copyPlayers(players);
+			UpdateLabels(players);		
 		}
 
 	}

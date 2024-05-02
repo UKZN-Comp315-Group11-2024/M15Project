@@ -220,7 +220,6 @@ namespace M15Namespace {
 		std::ofstream ofs("textfiles\\communication.txt", std::ofstream::trunc);  // Open/create a file named "test.txt" for writing
 
 		if (ofs.is_open()) {  // Check if the file was successfully opened
-			std::cout << "hi";
 			ofs << "1"; //1 meaning login should not close
 		}
 		ofs.close();  // Close the file after writing

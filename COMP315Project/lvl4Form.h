@@ -47,6 +47,7 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Button^ btnsafety;
 	private: System::Windows::Forms::Label^ textBoxTFB;
 	private: System::Windows::Forms::Panel^ panelLogin;
+	private: System::Windows::Forms::Label^ DigitalStopWatch;
 
 
 
@@ -72,11 +73,8 @@ namespace M15Namespace {
 
 			this->LvlMethods = gcnew LevelMethods(3);
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
-			this->LvlMethods->SetPlayerComponent(playerlevel1);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
 			this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
-			this->LvlMethods->SetPanelComponant(panelLogin);
-			this->LvlMethods->SetLevelFormInstance(this);
 
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 		}
@@ -144,6 +142,7 @@ namespace M15Namespace {
 			   this->btnsafety = (gcnew System::Windows::Forms::Button());
 			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
@@ -207,10 +206,9 @@ namespace M15Namespace {
 			   // Barrier
 			   // 
 			   this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
-			   this->Barrier->Location = System::Drawing::Point(384, 287);
-			   this->Barrier->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			   this->Barrier->Location = System::Drawing::Point(256, 191);
 			   this->Barrier->Name = L"Barrier";
-			   this->Barrier->Size = System::Drawing::Size(82, 770);
+			   this->Barrier->Size = System::Drawing::Size(55, 513);
 			   this->Barrier->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->Barrier->TabIndex = 36;
 			   this->Barrier->TabStop = false;
@@ -221,10 +219,10 @@ namespace M15Namespace {
 			   this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			   this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			   this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			   this->pbGeneralMilitary->Location = System::Drawing::Point(-390, 346);
+			   this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 231);
 			   this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			   this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			   this->pbGeneralMilitary->Size = System::Drawing::Size(445, 672);
+			   this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 			   this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pbGeneralMilitary->TabIndex = 11;
 			   this->pbGeneralMilitary->TabStop = false;
@@ -234,10 +232,9 @@ namespace M15Namespace {
 			   this->lblMessage1->AutoSize = true;
 			   this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lblMessage1->Location = System::Drawing::Point(396, 1080);
-			   this->lblMessage1->Margin = System::Windows::Forms::Padding(5, 0, 5, 0);
+			   this->lblMessage1->Location = System::Drawing::Point(264, 720);
 			   this->lblMessage1->Name = L"lblMessage1";
-			   this->lblMessage1->Size = System::Drawing::Size(0, 110);
+			   this->lblMessage1->Size = System::Drawing::Size(0, 73);
 			   this->lblMessage1->TabIndex = 1;
 			   this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
 			   // 
@@ -247,21 +244,20 @@ namespace M15Namespace {
 				   | System::Windows::Forms::AnchorStyles::Right));
 			   this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			   this->progressBarLevel1->ForeColor = System::Drawing::Color::DarkOrange;
-			   this->progressBarLevel1->Location = System::Drawing::Point(1082, 60);
-			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			   this->progressBarLevel1->Location = System::Drawing::Point(721, 40);
 			   this->progressBarLevel1->Maximum = 2000;
 			   this->progressBarLevel1->Name = L"progressBarLevel1";
-			   this->progressBarLevel1->Size = System::Drawing::Size(695, 73);
+			   this->progressBarLevel1->Size = System::Drawing::Size(463, 49);
 			   this->progressBarLevel1->TabIndex = 12;
 			   this->progressBarLevel1->Visible = false;
 			   // 
 			   // wasd
 			   // 
 			   this->wasd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"wasd.Image")));
-			   this->wasd->Location = System::Drawing::Point(781, 931);
-			   this->wasd->Margin = System::Windows::Forms::Padding(2);
+			   this->wasd->Location = System::Drawing::Point(521, 621);
+			   this->wasd->Margin = System::Windows::Forms::Padding(1);
 			   this->wasd->Name = L"wasd";
-			   this->wasd->Size = System::Drawing::Size(144, 108);
+			   this->wasd->Size = System::Drawing::Size(96, 72);
 			   this->wasd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->wasd->TabIndex = 15;
 			   this->wasd->TabStop = false;
@@ -270,10 +266,10 @@ namespace M15Namespace {
 			   // space
 			   // 
 			   this->space->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"space.Image")));
-			   this->space->Location = System::Drawing::Point(930, 959);
-			   this->space->Margin = System::Windows::Forms::Padding(2);
+			   this->space->Location = System::Drawing::Point(620, 639);
+			   this->space->Margin = System::Windows::Forms::Padding(1);
 			   this->space->Name = L"space";
-			   this->space->Size = System::Drawing::Size(47, 59);
+			   this->space->Size = System::Drawing::Size(31, 39);
 			   this->space->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->space->TabIndex = 16;
 			   this->space->TabStop = false;
@@ -282,19 +278,17 @@ namespace M15Namespace {
 			   // ResultTextBox
 			   // 
 			   this->ResultTextBox->Location = System::Drawing::Point(0, 0);
-			   this->ResultTextBox->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
 			   this->ResultTextBox->Name = L"ResultTextBox";
-			   this->ResultTextBox->Size = System::Drawing::Size(148, 26);
+			   this->ResultTextBox->Size = System::Drawing::Size(100, 20);
 			   this->ResultTextBox->TabIndex = 34;
 			   this->ResultTextBox->Visible = false;
 			   // 
 			   // playerlevel1
 			   // 
 			   this->playerlevel1->ImageLocation = L"assets/PlayerMove/spaceship.png";
-			   this->playerlevel1->Location = System::Drawing::Point(73, 590);
-			   this->playerlevel1->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			   this->playerlevel1->Location = System::Drawing::Point(49, 393);
 			   this->playerlevel1->Name = L"playerlevel1";
-			   this->playerlevel1->Size = System::Drawing::Size(146, 96);
+			   this->playerlevel1->Size = System::Drawing::Size(97, 64);
 			   this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->playerlevel1->TabIndex = 35;
 			   this->playerlevel1->TabStop = false;
@@ -306,10 +300,10 @@ namespace M15Namespace {
 			   this->textBoxA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxA->Location = System::Drawing::Point(1546, 313);
-			   this->textBoxA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxA->Location = System::Drawing::Point(1031, 209);
+			   this->textBoxA->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxA->Name = L"textBoxA";
-			   this->textBoxA->Size = System::Drawing::Size(360, 144);
+			   this->textBoxA->Size = System::Drawing::Size(240, 96);
 			   this->textBoxA->TabIndex = 37;
 			   this->textBoxA->Text = L"Option A";
 			   this->textBoxA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -320,10 +314,10 @@ namespace M15Namespace {
 			   this->textBoxB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxB->Location = System::Drawing::Point(1546, 494);
-			   this->textBoxB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxB->Location = System::Drawing::Point(1031, 329);
+			   this->textBoxB->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxB->Name = L"textBoxB";
-			   this->textBoxB->Size = System::Drawing::Size(360, 144);
+			   this->textBoxB->Size = System::Drawing::Size(240, 96);
 			   this->textBoxB->TabIndex = 38;
 			   this->textBoxB->Text = L"Option B";
 			   this->textBoxB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -334,10 +328,10 @@ namespace M15Namespace {
 			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxC->Location = System::Drawing::Point(1546, 638);
-			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxC->Location = System::Drawing::Point(1031, 425);
+			   this->textBoxC->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxC->Name = L"textBoxC";
-			   this->textBoxC->Size = System::Drawing::Size(360, 144);
+			   this->textBoxC->Size = System::Drawing::Size(240, 96);
 			   this->textBoxC->TabIndex = 39;
 			   this->textBoxC->Text = L"Option C";
 			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -348,10 +342,10 @@ namespace M15Namespace {
 			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxD->Location = System::Drawing::Point(1546, 810);
-			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxD->Location = System::Drawing::Point(1031, 540);
+			   this->textBoxD->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxD->Name = L"textBoxD";
-			   this->textBoxD->Size = System::Drawing::Size(360, 144);
+			   this->textBoxD->Size = System::Drawing::Size(240, 96);
 			   this->textBoxD->TabIndex = 40;
 			   this->textBoxD->Text = L"Option D";
 			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -362,10 +356,10 @@ namespace M15Namespace {
 			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1546, 433);
-			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFA->Location = System::Drawing::Point(1031, 289);
+			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxTFA->Name = L"textBoxTFA";
-			   this->textBoxTFA->Size = System::Drawing::Size(286, 97);
+			   this->textBoxTFA->Size = System::Drawing::Size(191, 65);
 			   this->textBoxTFA->TabIndex = 41;
 			   this->textBoxTFA->Text = L"TF1";
 			   this->textBoxTFA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -376,11 +370,11 @@ namespace M15Namespace {
 			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 16.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			   this->textBoxQuestion->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxQuestion->Location = System::Drawing::Point(0, 30);
-			   this->textBoxQuestion->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxQuestion->Location = System::Drawing::Point(0, 20);
+			   this->textBoxQuestion->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxQuestion->Name = L"textBoxQuestion";
-			   this->textBoxQuestion->Padding = System::Windows::Forms::Padding(84, 0, 84, 0);
-			   this->textBoxQuestion->Size = System::Drawing::Size(977, 252);
+			   this->textBoxQuestion->Padding = System::Windows::Forms::Padding(56, 0, 56, 0);
+			   this->textBoxQuestion->Size = System::Drawing::Size(651, 168);
 			   this->textBoxQuestion->TabIndex = 43;
 			   this->textBoxQuestion->Text = L"label1";
 			   this->textBoxQuestion->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -390,10 +384,9 @@ namespace M15Namespace {
 			   // pbstart
 			   // 
 			   this->pbstart->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbstart.Image")));
-			   this->pbstart->Location = System::Drawing::Point(600, 1050);
-			   this->pbstart->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			   this->pbstart->Location = System::Drawing::Point(400, 700);
 			   this->pbstart->Name = L"pbstart";
-			   this->pbstart->Size = System::Drawing::Size(374, 374);
+			   this->pbstart->Size = System::Drawing::Size(249, 249);
 			   this->pbstart->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbstart->TabIndex = 44;
 			   this->pbstart->TabStop = false;
@@ -402,10 +395,9 @@ namespace M15Namespace {
 			   // btnsafety
 			   // 
 			   this->btnsafety->ForeColor = System::Drawing::Color::Transparent;
-			   this->btnsafety->Location = System::Drawing::Point(1859, 5);
-			   this->btnsafety->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			   this->btnsafety->Location = System::Drawing::Point(1239, 3);
 			   this->btnsafety->Name = L"btnsafety";
-			   this->btnsafety->Size = System::Drawing::Size(174, 989);
+			   this->btnsafety->Size = System::Drawing::Size(116, 659);
 			   this->btnsafety->TabIndex = 45;
 			   this->btnsafety->Text = L"button1";
 			   this->btnsafety->UseVisualStyleBackColor = true;
@@ -416,10 +408,10 @@ namespace M15Namespace {
 			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFB->Location = System::Drawing::Point(1546, 740);
-			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFB->Location = System::Drawing::Point(1031, 493);
+			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
 			   this->textBoxTFB->Name = L"textBoxTFB";
-			   this->textBoxTFB->Size = System::Drawing::Size(289, 106);
+			   this->textBoxTFB->Size = System::Drawing::Size(193, 71);
 			   this->textBoxTFB->TabIndex = 42;
 			   this->textBoxTFB->Text = L"TF2";
 			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -430,6 +422,7 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->Controls->Add(this->btnsafety);
 			   this->panelLogin->Controls->Add(this->pbstart);
@@ -448,22 +441,35 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->pbGeneralMilitary);
 			   this->panelLogin->Controls->Add(this->Barrier);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
-			   this->panelLogin->Location = System::Drawing::Point(-5, -30);
-			   this->panelLogin->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
+			   this->panelLogin->Location = System::Drawing::Point(-3, -20);
 			   this->panelLogin->Name = L"panelLogin";
-			   this->panelLogin->Size = System::Drawing::Size(1925, 1062);
+			   this->panelLogin->Size = System::Drawing::Size(1283, 708);
 			   this->panelLogin->TabIndex = 12;
+			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl4Form::panelLogin_Paint);
+			   // 
+			   // DigitalStopWatch
+			   // 
+			   this->DigitalStopWatch->AutoSize = true;
+			   this->DigitalStopWatch->BackColor = System::Drawing::Color::Black;
+			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Red;
+			   this->DigitalStopWatch->Location = System::Drawing::Point(724, 127);
+			   this->DigitalStopWatch->Name = L"DigitalStopWatch";
+			   this->DigitalStopWatch->Size = System::Drawing::Size(88, 23);
+			   this->DigitalStopWatch->TabIndex = 48;
+			   this->DigitalStopWatch->Text = L"label1";
+			   this->DigitalStopWatch->Visible = false;
 			   // 
 			   // lvl4Form
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(144, 144);
+			   this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			   this->ClientSize = System::Drawing::Size(1896, 1021);
+			   this->ClientSize = System::Drawing::Size(1264, 681);
 			   this->Controls->Add(this->panelLogin);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			   this->Margin = System::Windows::Forms::Padding(5, 5, 5, 5);
 			   this->MaximizeBox = false;
 			   this->Name = L"lvl4Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -690,6 +696,7 @@ namespace M15Namespace {
 				this->playerlevel1->Visible = true;
 				this->playerlevel1->BringToFront();
 				this->pbstart->Enabled = false;
+				this->DigitalStopWatch->Visible = true;
 				this->wasd->Visible = true;
 				this->space->Visible = true;
 				movePlayerTimer->Start();
@@ -876,6 +883,7 @@ namespace M15Namespace {
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
+			ambience->playRandomSound("assets\\music\\ouch.wav", false);
 		}
 
 		/*
@@ -1182,6 +1190,7 @@ namespace M15Namespace {
 			this->progressBarLevel1->Increment(1);
 			LvlMethods->PlayerStats->timeTaken = ticks / 100;
 			ticks++;
+			DigitalStopWatch->Text = "Total time: " + System::Convert::ToString(LvlMethods->PlayerStats->timeTaken);
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
 				pictureBoxArray[currentFeedbackLogoNum]->Image = Image::FromFile("assets/Logos/logo_incorrect.png");
@@ -1193,6 +1202,26 @@ namespace M15Namespace {
 				else {
 					currentFeedbackLogoNum++;
 					LvlMethods->QuestionCompleted();
+					if (LvlMethods->QuestionsCompleted == 8) {
+						pictureBoxA->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxB->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxC->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxD->setLocation(870, pictureBoxA->Location.Y);
+						pictureBoxA->Hide();
+						pictureBoxB->Hide();
+						pictureBoxC->Hide();
+						pictureBoxD->Hide();
+
+						pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 195, "assets/Doors/bunker_closed.png", false);
+						pictureBoxTF1->Hide();
+						pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 150, 240, 850, 435, "assets/Doors/bunker_closed.png", false);
+						pictureBoxTF2->Hide();
+
+						des->addObject(pictureBoxTF1, destroyFuncTF1);
+						des->addObject(pictureBoxTF2, destroyFuncTF2);
+						pictureBoxTF1->Show();
+						pictureBoxTF2->Show();
+					}
 					soundAnswer->IncorrectAnswer();
 				}
 
@@ -1350,5 +1379,7 @@ namespace M15Namespace {
 		}
 	private: System::Void textBoxQuestion_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
 };
 }
