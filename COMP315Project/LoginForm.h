@@ -8,6 +8,8 @@
 #include "FaceRecognition.h"
 #include "customAlgs.h"
 #include "Leaderboard.h"
+#include "TutorialForm.h"
+#include "MusicAndSFX.h"
 
 
 namespace M15Namespace {
@@ -63,6 +65,7 @@ namespace M15Namespace {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::Panel^ panelLogin;
 	private: System::Windows::Forms::Label^ lblSuggestor;
 	protected:
@@ -92,6 +95,7 @@ namespace M15Namespace {
 		/// Required designer variable.
 		/// </summary>
 		int logindots = 0;
+		MusicAndSFX* sound = new MusicAndSFX;
 	private: System::Windows::Forms::PictureBox^ pbleaderboard;
 	private: System::Windows::Forms::Button^ TutorialButton;
 
@@ -160,12 +164,12 @@ namespace M15Namespace {
 			   // 
 			   // TutorialButton
 			   // 
-			   this->TutorialButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->TutorialButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->TutorialButton->ForeColor = System::Drawing::Color::Black;
-			   this->TutorialButton->Location = System::Drawing::Point(124, 595);
+			   this->TutorialButton->Location = System::Drawing::Point(82, 595);
 			   this->TutorialButton->Name = L"TutorialButton";
-			   this->TutorialButton->Size = System::Drawing::Size(116, 53);
+			   this->TutorialButton->Size = System::Drawing::Size(165, 94);
 			   this->TutorialButton->TabIndex = 13;
 			   this->TutorialButton->Text = L"Tutorial";
 			   this->TutorialButton->UseVisualStyleBackColor = true;
@@ -365,6 +369,7 @@ namespace M15Namespace {
 			   this->Name = L"LoginForm";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			   this->Text = L"Spy Login";
+			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &LoginForm::LoginForm_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
@@ -624,6 +629,7 @@ namespace M15Namespace {
 		this->Close();
 	}
 	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+		sound->playRandomSound("assets\\chime.wav", false);
 		FaceRecognition^ facerec = gcnew FaceRecognition();
 		std::string comm;
 		this->Visible = false;
@@ -649,6 +655,7 @@ namespace M15Namespace {
 	private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void pbleaderboard_Click(System::Object^ sender, System::EventArgs^ e) {
+		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
 		Leaderboard^ leaderboard = gcnew Leaderboard("no");
 		leaderboard->Visible = false;
 		this->Hide();
@@ -657,9 +664,15 @@ namespace M15Namespace {
 	}
 
 	private: System::Void TutorialButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		//create instance of TutorialForm
-		//TutorialForm^ TutorialForm = gcnew TutorialForm();
-
+		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
+		TutorialForm^ tut = gcnew TutorialForm();
+		tut->Visible = false;
+		this->Hide();
+		tut->ShowDialog();
+		this->Show();
 	}
+private: System::Void LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	delete sound;
+}
 };
 }
