@@ -202,13 +202,13 @@ namespace M15Namespace {
 			   // 
 			   this->MissLabel->AutoSize = true;
 			   this->MissLabel->BackColor = System::Drawing::Color::Black;
-			   this->MissLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->MissLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->MissLabel->ForeColor = System::Drawing::Color::Red;
-			   this->MissLabel->Location = System::Drawing::Point(1175, 196);
+			   this->MissLabel->Location = System::Drawing::Point(1193, 196);
 			   this->MissLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->MissLabel->Name = L"MissLabel";
-			   this->MissLabel->Size = System::Drawing::Size(292, 27);
+			   this->MissLabel->Size = System::Drawing::Size(354, 31);
 			   this->MissLabel->TabIndex = 47;
 			   this->MissLabel->Text = L"Missed!! +10 seconds";
 			   this->MissLabel->Visible = false;
@@ -220,7 +220,7 @@ namespace M15Namespace {
 			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Red;
-			   this->DigitalStopWatch->Location = System::Drawing::Point(896, 195);
+			   this->DigitalStopWatch->Location = System::Drawing::Point(908, 192);
 			   this->DigitalStopWatch->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->DigitalStopWatch->Name = L"DigitalStopWatch";
 			   this->DigitalStopWatch->Size = System::Drawing::Size(110, 31);
@@ -568,6 +568,8 @@ namespace M15Namespace {
 
 		int currentFeedbackLogoNum = 0;
 
+		int countMissTimer = 0;
+
 	private:
 		/*
 			Loads/instantiates certain UI elements
@@ -894,6 +896,7 @@ namespace M15Namespace {
 
 		/*
 			Respawns the safety barrier beyond the questions if a bullet happens to get pass the doors
+			Shows the player that 10 seconds has been added to their time
 		*/
 		void destroySafety() {
 			MissLabel->Show();
@@ -903,6 +906,23 @@ namespace M15Namespace {
 			pbSafety->Hide();
 			ambience->playRandomSound("assets\\music\\ouch.wav", false);
 			des->addObject(pbSafety, destroyFuncSafety);
+		}
+
+		/*
+			Hides the "+10 seconds" label 1 second after the player misses a target
+			Shows the player that 10 seconds has been added to their time
+		*/
+		System::Void missTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+			if (countMissTimer == 0)
+			{
+				countMissTimer++;
+			}
+			else
+			{
+				MissLabel->Hide();
+				countMissTimer = 0;
+				missTimer->Stop();
+			}
 		}
 
 		/*
@@ -1391,20 +1411,5 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-
-		int countMissTimer = 0;
-private: System::Void missTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
-	if (countMissTimer == 0)
-	{
-		countMissTimer++;
-	}
-	else
-	{
-		MissLabel->Hide();
-		countMissTimer = 0;
-		missTimer->Stop();
-	}
-
-}
 };
 }

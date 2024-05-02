@@ -400,7 +400,7 @@ namespace M15Namespace {
 			   this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			   this->progressBarLevel1->ForeColor = System::Drawing::Color::DarkOrange;
 			   this->progressBarLevel1->Location = System::Drawing::Point(902, 50);
-			   this->progressBarLevel1->Maximum = 2000;
+			   this->progressBarLevel1->Maximum = 1500;
 			   this->progressBarLevel1->Name = L"progressBarLevel1";
 			   this->progressBarLevel1->Size = System::Drawing::Size(578, 62);
 			   this->progressBarLevel1->TabIndex = 12;
@@ -573,6 +573,8 @@ namespace M15Namespace {
 		int countSpacePress = 0;
 
 		int currentFeedbackLogoNum = 0;
+
+		int countMissTimer = 0;
 
 	private:
 		/*
@@ -898,6 +900,7 @@ namespace M15Namespace {
 
 		/*
 			Respawns the safety barrier beyond the questions if a bullet happens to get pass the doors
+			Shows the player that 10 seconds has been added to their time
 		*/
 		void destroySafety() {
 			MissLabel->Show();
@@ -909,6 +912,21 @@ namespace M15Namespace {
 			ambience->playRandomSound("assets\\music\\ouch.wav", false);
 		}
 
+		/*
+			Hides the "+10 seconds" label 1 second after the player misses a target
+		*/
+		System::Void missTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+			if (countMissTimer == 0)
+			{
+				countMissTimer++;
+			}
+			else
+			{
+				MissLabel->Hide();
+				countMissTimer = 0;
+				missTimer->Stop();
+			}
+		}
 		/*
 			Changes the text of the options to indicate if their chosen answer is correct (green) or incorrect (red)
 		*/
@@ -1136,7 +1154,7 @@ namespace M15Namespace {
 				currentFeedbackLogoNum++;
 
 				soundAnswer->CorrectAnswer();
-				soundImpact->playRandomSound("assets\\music\\ES_Explosion Grenade 3 - SFX Producer.wav",false);
+				soundImpact->playRandomSound("assets\\music\\ES_Explosion Grenade 3 - SFX Producer.wav", false);
 
 			}
 			else {
@@ -1401,18 +1419,5 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-	   int countMissTimer = 0;
-private: System::Void missTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
-	if (countMissTimer == 0)
-	{
-		countMissTimer++;
-	}
-	else
-	{
-		MissLabel->Hide();
-		countMissTimer = 0;
-		missTimer->Stop();
-	}
-}
-};
+	};
 }
