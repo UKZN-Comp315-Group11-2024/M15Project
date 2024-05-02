@@ -201,6 +201,8 @@ namespace M15Namespace {
 			{
 				// Insert the new player object into the players and write to the leaderboard.txt
 				std::ofstream writer(filename2);
+
+				players->Reverse();
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 				//players->Reverse();
 				for (int i = 0; i < players->Count; i++) {
@@ -214,6 +216,8 @@ namespace M15Namespace {
 				}
 				writer.close();
 			}
+			copyPlayers(players);
+			UpdateLabels(players);
 
 		}
 
@@ -241,14 +245,8 @@ namespace M15Namespace {
 				//players->Add(p);
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 			}
-			//players->Reverse();
-			copyPlayers(players);
+			players->Reverse();
 
-			msclr::interop::marshal_context context;
-			for each (playerInfo^ p in players) {
-				std::cout << context.marshal_as<std::string>(p->username)<<"\n";
-			}
-			//UpdateLabels(players);
 			file->Close();
 		}
 
@@ -313,47 +311,22 @@ namespace M15Namespace {
 				Label^ timeLabel = gcnew Label();
 
 				if (i < 10) {
-					if (elem == currentPlayer) {
-						usernameLabel->AutoSize = true;
-						usernameLabel->BackColor = System::Drawing::Color::Transparent;
+					usernameLabel->AutoSize = true;
+					usernameLabel->BackColor = System::Drawing::Color::Transparent;
+					
+					if (elem->username == this->player->username) {
 						usernameLabel->ForeColor = System::Drawing::Color::Red;
-						usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-							static_cast<System::Byte>(0)));
-
-						usernameLabel->Text = elem->username;
-						usernameLabel->Location = System::Drawing::Point(177, marginTop);
-
-						scoreLabel->AutoSize = true;
-						scoreLabel->BackColor = System::Drawing::Color::Transparent;
-						scoreLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-							static_cast<System::Byte>(0)));
-						scoreLabel->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-						scoreLabel->Text = gcnew String(elem->score.ToString());
-						scoreLabel->Location = System::Drawing::Point(568, marginTop);
-
-						timeLabel->Text = gcnew String(elem->timeTaken.ToString()) + " sec";
-						timeLabel->AutoSize = true;
-						timeLabel->BackColor = System::Drawing::Color::Gainsboro;
-						timeLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-							static_cast<System::Byte>(0)));
-						timeLabel->Location = System::Drawing::Point(770, marginTop);
-
-						this->Controls->Add(usernameLabel);
-						this->Controls->Add(scoreLabel);
-						this->Controls->Add(timeLabel);
-
-						usernameLabel->BringToFront();
-						scoreLabel->BringToFront();
-						timeLabel->BringToFront();
 					}
-					else {
-						usernameLabel->AutoSize = true;
-						usernameLabel->BackColor = System::Drawing::Color::Transparent;
-						usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-							static_cast<System::Byte>(0)));
 
-						usernameLabel->Text = elem->username;
-						usernameLabel->Location = System::Drawing::Point(177, marginTop);
+					usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+						static_cast<System::Byte>(0)));
+
+					
+					
+
+
+					usernameLabel->Text = elem->username;
+					usernameLabel->Location = System::Drawing::Point(177, marginTop);
 
 						scoreLabel->AutoSize = true;
 						scoreLabel->BackColor = System::Drawing::Color::Transparent;
@@ -448,9 +421,8 @@ namespace M15Namespace {
 		else {
 			// Update and show all players to screen
 			LoadAllPlayers();
-			//partPlayers->Reverse();
-			UpdateLabels(partPlayers);
-			//players->Reverse();
+			copyPlayers(players);
+			UpdateLabels(players);		
 		}
 
 	}

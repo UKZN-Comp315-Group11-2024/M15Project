@@ -53,11 +53,8 @@ namespace M15Namespace {
 
 			this->LvlMethods = gcnew LevelMethods(3);
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
-			this->LvlMethods->SetPlayerComponent(playerlevel1);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
 			this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
-			this->LvlMethods->SetPanelComponant(panelLogin);
-			this->LvlMethods->SetLevelFormInstance(this);
 
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 		}
@@ -193,6 +190,7 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1283, 708);
 			   this->panelLogin->TabIndex = 12;
+			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl3Form::panelLogin_Paint);
 			   // 
 			   // textBoxTFB
 			   // 
@@ -1336,5 +1334,7 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
+private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
 };
 }
