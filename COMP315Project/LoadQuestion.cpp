@@ -1,8 +1,4 @@
 #include "pch.h"      //ORIGINAL
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <queue>
 #include "customAlgs.h"
 #include "LoadQuestion.h"
 
@@ -10,45 +6,47 @@
 //De-Standardizing: @Daniel
 //Debugging: @Jaedon
 
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
-
 LoadQuestion::LoadQuestion(int levelNum) {
-    customAlgs<System::String^>::srandom();
+    
+    //
+    customAlgs<String^>::srandom();
 
+    //int value representing the level
     this->levelNum = levelNum;
-	System::String^ LevelFile = "textfiles\\level" + levelNum + "QuestionBank.txt";
-	System::IO::StreamReader^ myfile = gcnew System::IO::StreamReader(LevelFile);
-	System::String^ sline;
 
+    //used for reading a file line by line
+	String^ LevelFile = "textfiles\\level" + levelNum + "QuestionBank.txt";
+	StreamReader^ myfile = gcnew StreamReader(LevelFile);
+	String^ sline;
+
+    //gets the question type, question and its answers and places then in a struct which is then added to a queue
     while ((sline = myfile->ReadLine()) != nullptr) {
         int pos = sline->IndexOf("$");
-        if (pos == 1) {         //only do all this if it's actually a question and not some other line in the textfile
+        if (pos == 1) {         
             Question^ currentQuestion = gcnew Question;
             currentQuestion->QuestionType = sline->Substring(0, pos);
             sline = sline->Remove(0, pos + 1);
             if (currentQuestion->QuestionType == "0") {
                 pos = sline->IndexOf('$');
-                currentQuestion->question = sline->Substring(0, pos);   // stores the question
-                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
+                currentQuestion->question = sline->Substring(0, pos);   
+                sline = sline->Remove(0, pos + 1); 
 
                 pos = sline->IndexOf('$');
-                currentQuestion->CorrectOption = sline->Substring(0, pos);  // stores option A
+                currentQuestion->CorrectOption = sline->Substring(0, pos); 
                 currentQuestion->OptionA = sline->Substring(0, pos);
-                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
+                sline = sline->Remove(0, pos + 1); 
 
                 pos = sline->IndexOf('$');
-                currentQuestion->OptionB = sline->Substring(0, pos);  // stores option B
-                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
+                currentQuestion->OptionB = sline->Substring(0, pos);  
+                sline = sline->Remove(0, pos + 1); 
 
                 pos = sline->IndexOf('$');
-                currentQuestion->OptionC = sline->Substring(0, pos); // stores option C
-                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
+                currentQuestion->OptionC = sline->Substring(0, pos);
+                sline = sline->Remove(0, pos + 1); 
 
                 //The remaining bit is the last option, pos would be -1 here, gives an error when doing substring with negative length
                 //pos = sline->IndexOf('$');
-                currentQuestion->OptionD = sline;  // stores option D
+                currentQuestion->OptionD = sline; 
                 
                 mcqQuestions->Add(currentQuestion);
 
@@ -58,7 +56,7 @@ LoadQuestion::LoadQuestion(int levelNum) {
                 optionsShuffle->Add(currentQuestion->OptionC);
                 optionsShuffle->Add(currentQuestion->OptionD);
 
-                optionsShuffle = customAlgs<System::String^>::shuffle(optionsShuffle);
+                optionsShuffle = customAlgs<String^>::shuffle(optionsShuffle);
 
                 currentQuestion->OptionA = optionsShuffle[0];
                 currentQuestion->OptionB = optionsShuffle[1];
@@ -68,17 +66,17 @@ LoadQuestion::LoadQuestion(int levelNum) {
             }
             else {
                 pos = sline->IndexOf('$');
-                currentQuestion->question = sline->Substring(0, pos);   // stores the question
-                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
+                currentQuestion->question = sline->Substring(0, pos);   
+                sline = sline->Remove(0, pos + 1); 
 
                 pos = sline->IndexOf('$');
-                currentQuestion->CorrectOption = sline->Substring(0, pos);  // stores option A
+                currentQuestion->CorrectOption = sline->Substring(0, pos);  
                 currentQuestion->OptionA = sline->Substring(0, pos);
-                sline = sline->Remove(0, pos + 1); // erase(0, pos + 1) equivalent
+                sline = sline->Remove(0, pos + 1); 
 
                 //The remaining bit is the last option, pos would be -1 here, gives an error when doing subtring with negative length
                 //pos = sline->IndexOf('$');
-                currentQuestion->OptionB = sline;  // stores option B
+                currentQuestion->OptionB = sline;  
 
                 //storing into Vector
                 tfQuestions->Add(currentQuestion);
@@ -103,9 +101,10 @@ LoadQuestion::LoadQuestion(int levelNum) {
     levelQuestions = customAlgs<Question^>::chooseRandomMfromN(mcqQuestions, 8);
     tempTFvector = customAlgs<Question^>::chooseRandomMfromN(tfQuestions, 2);
 
-    //Randomized Questions are now Combined
+    //Randomized Questions are placed into levelQuestions
     levelQuestions->AddRange(tempTFvector);
 
+    //used for testing the question output
     for each (Question ^ q in levelQuestions) {
         displayQuestions->Enqueue(q);
     }
@@ -113,7 +112,7 @@ LoadQuestion::LoadQuestion(int levelNum) {
     printQuestions();
 }
 
-//@Jaedon: method that's useful for debugging
+//method that's useful for debugging
 void LoadQuestion::printQuestions() {
     std::cout << "LEVEL " << levelNum << " QUESTIONS: " << "\n\n";
     for each (Question ^ q in displayQuestions) {
