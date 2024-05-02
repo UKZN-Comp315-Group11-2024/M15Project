@@ -271,7 +271,7 @@ namespace M15Namespace {
 			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1295, 327);
+			   this->textBoxTFA->Location = System::Drawing::Point(1259, 326);
 			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxTFA->Name = L"textBoxTFA";
 			   this->textBoxTFA->Size = System::Drawing::Size(325, 81);
@@ -285,10 +285,10 @@ namespace M15Namespace {
 			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxD->Location = System::Drawing::Point(1277, 700);
+			   this->textBoxD->Location = System::Drawing::Point(1259, 670);
 			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxD->Name = L"textBoxD";
-			   this->textBoxD->Size = System::Drawing::Size(325, 132);
+			   this->textBoxD->Size = System::Drawing::Size(325, 196);
 			   this->textBoxD->TabIndex = 40;
 			   this->textBoxD->Text = L"Option D";
 			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -299,10 +299,10 @@ namespace M15Namespace {
 			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxC->Location = System::Drawing::Point(1259, 494);
+			   this->textBoxC->Location = System::Drawing::Point(1259, 518);
 			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxC->Name = L"textBoxC";
-			   this->textBoxC->Size = System::Drawing::Size(325, 151);
+			   this->textBoxC->Size = System::Drawing::Size(325, 188);
 			   this->textBoxC->TabIndex = 39;
 			   this->textBoxC->Text = L"Option C";
 			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -423,10 +423,10 @@ namespace M15Namespace {
 			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFB->Location = System::Drawing::Point(1295, 614);
+			   this->textBoxTFB->Location = System::Drawing::Point(1259, 601);
 			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxTFB->Name = L"textBoxTFB";
-			   this->textBoxTFB->Size = System::Drawing::Size(325, 102);
+			   this->textBoxTFB->Size = System::Drawing::Size(325, 189);
 			   this->textBoxTFB->TabIndex = 42;
 			   this->textBoxTFB->Text = L"TF2";
 			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -547,11 +547,11 @@ namespace M15Namespace {
 		definedPictureBox^ pbSafety;
 
 		String^ projectDirectory = Application::StartupPath;
-		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
+		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/idle.gif");
 
-		String^ playerRunRightGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
-		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
-		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\shoot.gif");
+		String^ playerRunRightGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/run.gif");
+		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/runleft.gif");
+		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/shoot.gif");
 
 		bool isleft;
 		bool canshoot = false;
@@ -955,7 +955,7 @@ namespace M15Namespace {
 			{
 				move_up = true;
 				is_w_up = false;
-				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
+				soundImpact->playRandomSound("assets/music/ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			if (e->KeyCode == Keys::A)
 			{
@@ -965,13 +965,13 @@ namespace M15Namespace {
 				isleft = true;
 				move_left = true;
 				is_a_up = false;
-				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
+				soundImpact->playRandomSound("assets/music/ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			if (e->KeyCode == Keys::S)
 			{
 				move_down = true;
 				is_s_up = false;
-				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
+				soundImpact->playRandomSound("assets/music/ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 			if (e->KeyCode == Keys::D)
 			{
@@ -981,7 +981,7 @@ namespace M15Namespace {
 				isleft = false;
 				move_right = true;
 				is_d_up = false;
-				soundImpact->playRandomSound("assets\\music\\ES_Footsteps Grass 2 - SFX Producer.wav", false);
+				soundImpact->playRandomSound("assets/music/ES_Footsteps Grass 2 - SFX Producer.wav", false);
 			}
 		}
 
@@ -1023,11 +1023,11 @@ namespace M15Namespace {
 			{
 				if (isleft)
 				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idleleft.gif");
+					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/idleleft.gif");
 				}
 				else
 				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\idle.gif");
+					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/dle.gif");
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
 
@@ -1049,11 +1049,11 @@ namespace M15Namespace {
 
 				if (isleft)
 				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
+					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/runleft.gif");
 				}
 				else
 				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\run.gif");
+					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/run.gif");
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
 			}
