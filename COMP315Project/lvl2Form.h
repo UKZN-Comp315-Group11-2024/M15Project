@@ -1278,7 +1278,7 @@ namespace M15Namespace {
 
 			std::string windowPrompt = "Level 2 of 4 feedback (Testing grounds)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points" + "\n" + "Score after Level 1: " + std::to_string(this->player->score) + " Points\n" + "\n\n" + "Total score: " + std::to_string(this->player->score + LvlMethods->PlayerStats->score);
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/BattlefieldSolidFloorDark.png");
 
 			window->Visible = false;
 			this->Hide();
