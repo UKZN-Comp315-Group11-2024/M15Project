@@ -12,6 +12,8 @@
 #include "BonusLevelFour.h"
 #include "MusicAndSFX.h"
 #include "lvl2Form.h"
+#include "TutorialForm.h"
+#include "lvl3Form.h"
 
 using namespace System;
 using namespace M15Namespace;
@@ -26,8 +28,8 @@ int main(array<String^>^ args) {
 	//BootForm form;
 	//Application::Run(% form);
 
-	//LoginForm loginForm;
-	//Application::Run(% loginForm);
+	LoginForm loginForm;
+	Application::Run(% loginForm);
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
@@ -37,9 +39,11 @@ int main(array<String^>^ args) {
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
-	//Leaderboard leaderboard;
+	//Leaderboard leaderboard("yes");
 	//Application::Run(% leaderboard);
 
+	//TutorialForm tut;
+	//Application::Run(% tut);
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
@@ -61,7 +65,10 @@ int main(array<String^>^ args) {
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
 
-		lvl2Form lvl2;
-		Application::Run(% lvl2);
+		//lvl2Form lvl2;
+		//Application::Run(% lvl2);
+
+		//lvl3Form lvl3;
+		//Application::Run(% lvl3);
 
 }
