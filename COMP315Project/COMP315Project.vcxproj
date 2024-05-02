@@ -174,9 +174,6 @@
     <ClInclude Include="lvl2Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="lvl3form.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="MusicAndSFX.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PictureBox.h" />
@@ -202,7 +199,6 @@
     <ClCompile Include="LoadQuestion.cpp" />
     <ClCompile Include="lvl1Form.cpp" />
     <ClCompile Include="lvl2Form.cpp" />
-    <ClCompile Include="lvl3form.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MusicAndSFX.cpp" />
     <ClCompile Include="pch.cpp">
@@ -260,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="lvl2Form.resx">
       <DependentUpon>lvl2Form.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="lvl3form.resx">
-      <DependentUpon>lvl3form.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="popup.resx">
       <DependentUpon>popup.h</DependentUpon>
