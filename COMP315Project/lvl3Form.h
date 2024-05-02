@@ -21,7 +21,7 @@ namespace M15Namespace {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	public ref class lvl2Form : public System::Windows::Forms::Form
+	public ref class lvl3Form : public System::Windows::Forms::Form
 	{
 
 	private: System::Windows::Forms::Timer^ BulletTimer;
@@ -39,18 +39,19 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ textBoxQuestion;
 	private: System::Windows::Forms::Timer^ timerfinal;
 	private: System::Windows::Forms::PictureBox^ pbstart;
+	private: System::Windows::Forms::PictureBox^ Barrier2;
 	private: System::Windows::Forms::Button^ btnsafety;
 
 
 	public:
 
-		lvl2Form()
+		lvl3Form()
 		{
 			InitializeComponent();
 
 			this->KeyPreview = true;
 
-			this->LvlMethods = gcnew LevelMethods(2);
+			this->LvlMethods = gcnew LevelMethods(3);
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
 			this->LvlMethods->SetPlayerComponent(playerlevel1);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
@@ -62,7 +63,7 @@ namespace M15Namespace {
 		}
 
 	protected:
-		~lvl2Form()
+		~lvl3Form()
 		{
 			if (components)
 			{
@@ -94,7 +95,7 @@ namespace M15Namespace {
 		   void InitializeComponent(void)
 		   {
 			   this->components = (gcnew System::ComponentModel::Container());
-			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(lvl2Form::typeid));
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(lvl3Form::typeid));
 			   this->lblMessage1 = (gcnew System::Windows::Forms::Label());
 			   this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
@@ -113,6 +114,7 @@ namespace M15Namespace {
 			   this->space = (gcnew System::Windows::Forms::PictureBox());
 			   this->wasd = (gcnew System::Windows::Forms::PictureBox());
 			   this->progressBarLevel1 = (gcnew System::Windows::Forms::ProgressBar());
+			   this->Barrier2 = (gcnew System::Windows::Forms::PictureBox());
 			   this->Barrier = (gcnew System::Windows::Forms::PictureBox());
 			   this->Transition2 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerProgress = (gcnew System::Windows::Forms::Timer(this->components));
@@ -130,6 +132,7 @@ namespace M15Namespace {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier2))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -148,7 +151,7 @@ namespace M15Namespace {
 			   // Transition1
 			   // 
 			   this->Transition1->Interval = 1;
-			   this->Transition1->Tick += gcnew System::EventHandler(this, &lvl2Form::Transition1_Tick);
+			   this->Transition1->Tick += gcnew System::EventHandler(this, &lvl3Form::Transition1_Tick);
 			   // 
 			   // pbGeneralMilitary
 			   // 
@@ -184,6 +187,7 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->progressBarLevel1);
 			   this->panelLogin->Controls->Add(this->lblMessage1);
 			   this->panelLogin->Controls->Add(this->pbGeneralMilitary);
+			   this->panelLogin->Controls->Add(this->Barrier2);
 			   this->panelLogin->Controls->Add(this->Barrier);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(-4, -25);
@@ -191,7 +195,6 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1604, 885);
 			   this->panelLogin->TabIndex = 12;
-			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &lvl2Form::panelLogin_Paint);
 			   // 
 			   // textBoxTFB
 			   // 
@@ -229,7 +232,7 @@ namespace M15Namespace {
 			   this->pbstart->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbstart->TabIndex = 44;
 			   this->pbstart->TabStop = false;
-			   this->pbstart->Click += gcnew System::EventHandler(this, &lvl2Form::pbstart_Click);
+			   this->pbstart->Click += gcnew System::EventHandler(this, &lvl3Form::pbstart_Click);
 			   // 
 			   // textBoxQuestion
 			   // 
@@ -320,7 +323,7 @@ namespace M15Namespace {
 			   // playerlevel1
 			   // 
 			   this->playerlevel1->ImageLocation = L"assets/PlayerMove/idle.gif";
-			   this->playerlevel1->Location = System::Drawing::Point(50, 492);
+			   this->playerlevel1->Location = System::Drawing::Point(61, 492);
 			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->playerlevel1->Name = L"playerlevel1";
 			   this->playerlevel1->Size = System::Drawing::Size(188, 105);
@@ -376,13 +379,24 @@ namespace M15Namespace {
 			   this->progressBarLevel1->TabIndex = 12;
 			   this->progressBarLevel1->Visible = false;
 			   // 
+			   // Barrier2
+			   // 
+			   this->Barrier2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier2.Image")));
+			   this->Barrier2->Location = System::Drawing::Point(279, 238);
+			   this->Barrier2->Name = L"Barrier2";
+			   this->Barrier2->Size = System::Drawing::Size(90, 324);
+			   this->Barrier2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->Barrier2->TabIndex = 46;
+			   this->Barrier2->TabStop = false;
+			   this->Barrier2->Visible = false;
+			   // 
 			   // Barrier
 			   // 
 			   this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
-			   this->Barrier->Location = System::Drawing::Point(264, 239);
+			   this->Barrier->Location = System::Drawing::Point(270, 557);
 			   this->Barrier->Margin = System::Windows::Forms::Padding(4);
 			   this->Barrier->Name = L"Barrier";
-			   this->Barrier->Size = System::Drawing::Size(38, 842);
+			   this->Barrier->Size = System::Drawing::Size(90, 324);
 			   this->Barrier->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->Barrier->TabIndex = 36;
 			   this->Barrier->TabStop = false;
@@ -391,18 +405,18 @@ namespace M15Namespace {
 			   // Transition2
 			   // 
 			   this->Transition2->Interval = 1;
-			   this->Transition2->Tick += gcnew System::EventHandler(this, &lvl2Form::Transition2_Tick);
+			   this->Transition2->Tick += gcnew System::EventHandler(this, &lvl3Form::Transition2_Tick);
 			   // 
 			   // timerProgress
 			   // 
 			   this->timerProgress->Interval = 1;
-			   this->timerProgress->Tick += gcnew System::EventHandler(this, &lvl2Form::timerProgress_Tick);
+			   this->timerProgress->Tick += gcnew System::EventHandler(this, &lvl3Form::timerProgress_Tick);
 			   // 
 			   // movePlayerTimer
 			   // 
 			   this->movePlayerTimer->Enabled = true;
 			   this->movePlayerTimer->Interval = 1;
-			   this->movePlayerTimer->Tick += gcnew System::EventHandler(this, &lvl2Form::movePlayerTimer_Tick);
+			   this->movePlayerTimer->Tick += gcnew System::EventHandler(this, &lvl3Form::movePlayerTimer_Tick);
 			   // 
 			   // timeranimation
 			   // 
@@ -412,29 +426,29 @@ namespace M15Namespace {
 			   // shootTimer
 			   // 
 			   this->shootTimer->Interval = 200;
-			   this->shootTimer->Tick += gcnew System::EventHandler(this, &lvl2Form::shootTimer_Tick);
+			   this->shootTimer->Tick += gcnew System::EventHandler(this, &lvl3Form::shootTimer_Tick);
 			   // 
 			   // BulletTimer
 			   // 
 			   this->BulletTimer->Interval = 1;
-			   this->BulletTimer->Tick += gcnew System::EventHandler(this, &lvl2Form::BulletTimer_Tick);
+			   this->BulletTimer->Tick += gcnew System::EventHandler(this, &lvl3Form::BulletTimer_Tick);
 			   // 
 			   // QuestionTransitionTimerShow
 			   // 
 			   this->QuestionTransitionTimerShow->Interval = 1;
-			   this->QuestionTransitionTimerShow->Tick += gcnew System::EventHandler(this, &lvl2Form::QuestionTransitionTimerShow_Tick);
+			   this->QuestionTransitionTimerShow->Tick += gcnew System::EventHandler(this, &lvl3Form::QuestionTransitionTimerShow_Tick);
 			   // 
 			   // QuestionTransitionTimerHide
 			   // 
 			   this->QuestionTransitionTimerHide->Interval = 1000;
-			   this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl2Form::QuestionTransitionTimerHide_Tick);
+			   this->QuestionTransitionTimerHide->Tick += gcnew System::EventHandler(this, &lvl3Form::QuestionTransitionTimerHide_Tick);
 			   // 
 			   // timerfinal
 			   // 
 			   this->timerfinal->Interval = 2000;
-			   this->timerfinal->Tick += gcnew System::EventHandler(this, &lvl2Form::timerfinal_Tick);
+			   this->timerfinal->Tick += gcnew System::EventHandler(this, &lvl3Form::timerfinal_Tick);
 			   // 
-			   // lvl2Form
+			   // lvl3Form
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
@@ -445,13 +459,13 @@ namespace M15Namespace {
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
-			   this->Name = L"lvl2Form";
+			   this->Name = L"lvl3Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			   this->Text = L"Level 1";
-			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &lvl2Form::lvl2Form_FormClosing);
-			   this->Load += gcnew System::EventHandler(this, &lvl2Form::lvl2Form_Load);
-			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl2Form::lvl2Form_KeyDown);
-			   this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl2Form::lvl2Form_KeyUp);
+			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &lvl3Form::lvl3Form_FormClosing);
+			   this->Load += gcnew System::EventHandler(this, &lvl3Form::lvl3Form_Load);
+			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl3Form::lvl3Form_KeyDown);
+			   this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl3Form::lvl3Form_KeyUp);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
@@ -459,6 +473,7 @@ namespace M15Namespace {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier2))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->EndInit();
 			   this->ResumeLayout(false);
 
@@ -482,13 +497,13 @@ namespace M15Namespace {
 		array<definedPictureBox^>^ pictureBoxArray;
 
 		Destructible^ des = gcnew Destructible;
-		Destructible::DestroyFunction^ destroyFuncA = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyA);
-		Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyB);
-		Destructible::DestroyFunction^ destroyFuncC = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyC);
-		Destructible::DestroyFunction^ destroyFuncD = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyD);
-		Destructible::DestroyFunction^ destroyFuncTF1 = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyTF1);
-		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyTF2);
-		Destructible::DestroyFunction^ destroyFuncSafety = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroySafety);
+		Destructible::DestroyFunction^ destroyFuncA = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyA);
+		Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyB);
+		Destructible::DestroyFunction^ destroyFuncC = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyC);
+		Destructible::DestroyFunction^ destroyFuncD = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyD);
+		Destructible::DestroyFunction^ destroyFuncTF1 = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyTF1);
+		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyTF2);
+		Destructible::DestroyFunction^ destroyFuncSafety = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroySafety);
 
 		definedPictureBox^ bullet;
 
@@ -535,7 +550,7 @@ namespace M15Namespace {
 			Initalizes the player info object with info from PlayerInfo.txt
 			Plays the levels' (background) music
 		*/
-		System::Void lvl2Form_Load(System::Object^ sender, System::EventArgs^ e) {
+		System::Void lvl3Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
@@ -570,7 +585,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the second level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place on the M15 testing grounds. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+			std::string windowPrompt = "Welcome to the third level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place in the M15 forest. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "");
 			window->Visible = false;
@@ -665,7 +680,7 @@ namespace M15Namespace {
 
 			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
-
+				this->Barrier2->Visible = true;
 				this->Barrier->Visible = true;
 				this->progressBarLevel1->Visible = true;
 				this->playerlevel1->Visible = true;
@@ -677,13 +692,13 @@ namespace M15Namespace {
 				Transition2->Enabled = false;
 				canshoot = true;
 
-				pictureBoxA = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bush1.png", false);
+				pictureBoxA = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bunker_closed.png", false);
 				pictureBoxA->Show();
-				pictureBoxB = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bush1.png", false);
+				pictureBoxB = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bunker_closed.png", false);
 				pictureBoxB->Show();
-				pictureBoxC = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bush1.png", false);
+				pictureBoxC = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bunker_closed.png", false);
 				pictureBoxC->Show();
-				pictureBoxD = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bush1.png", false);
+				pictureBoxD = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bunker_closed.png", false);
 				pictureBoxD->Show();
 
 				des->addObject(pictureBoxA, destroyFuncA);
@@ -725,10 +740,10 @@ namespace M15Namespace {
 		void destroyTF1()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush_explode.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush1.png", false);
+			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxTF1, destroyFuncTF1);
 
@@ -745,10 +760,10 @@ namespace M15Namespace {
 		void destroyTF2()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush_explode.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush1.png", false);
+			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -765,11 +780,11 @@ namespace M15Namespace {
 		void destroyA()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bush_explode.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
 
-			pictureBoxA = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bush1.png", false);
+			pictureBoxA = gcnew definedPictureBox(panelLogin, 90, 80, 850, 215, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxA, destroyFuncA);
 
@@ -787,10 +802,10 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bush_explode.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxB = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bush1.png", false);
+			pictureBoxB = gcnew definedPictureBox(panelLogin, 90, 80, 850, 335, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxB, destroyFuncB);
 
@@ -809,10 +824,10 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bush_explode.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxC = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bush1.png", false);
+			pictureBoxC = gcnew definedPictureBox(panelLogin, 90, 80, 850, 455, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxC, destroyFuncC);
 
@@ -831,10 +846,10 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bush_explode.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxD = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bush1.png", false);
+			pictureBoxD = gcnew definedPictureBox(panelLogin, 90, 80, 850, 575, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxD, destroyFuncD);
 			LvlMethods->QuestionAnswered(3);
@@ -893,7 +908,7 @@ namespace M15Namespace {
 			Checks when the keys for moving and shooting are being pressed
 			Sets the required player animations
 		*/
-		System::Void lvl2Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		System::Void lvl3Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
 			if (LvlMethods->DisableControls != true) {
 
@@ -944,7 +959,7 @@ namespace M15Namespace {
 			Checks when the keys for moving aren't being pressed
 			Sets the required player animations
 		*/
-		System::Void lvl2Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		System::Void lvl3Form_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
 
 			switch (e->KeyCode)
@@ -1100,6 +1115,11 @@ namespace M15Namespace {
 				soundAnswer->IncorrectAnswer();
 				soundImpact->BulletImpact();
 			}
+
+
+
+
+
 		}
 
 		/*
@@ -1131,9 +1151,9 @@ namespace M15Namespace {
 				pictureBoxC->Hide();
 				pictureBoxD->Hide();
 
-				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush1.png", false);
+				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_closed.png", false);
 				pictureBoxTF1->Hide();
-				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush1.png", false);
+				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_closed.png", false);
 				pictureBoxTF2->Hide();
 
 				des->addObject(pictureBoxTF1, destroyFuncTF1);
@@ -1239,13 +1259,13 @@ namespace M15Namespace {
 			}
 			if (str == "T")
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bush_explode.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/bunker_opened.png", false);
 				openedDoor->BringToFront();
 				openedDoor->setVisible(true);
 			}
 			else if (str == "F")
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bush_explode.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_opened.png", false);
 				openedDoor->setVisible(true);
 				openedDoor->BringToFront();
 			}
@@ -1317,14 +1337,12 @@ namespace M15Namespace {
 			Yes: Closes the game (No progress saved)
 			No: Closes the confirmation prompt (Game stays open)
 		*/
-		System::Void lvl2Form_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		System::Void lvl3Form_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 			if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
 			{
 				e->Cancel = true;
 				panelLogin->Focus();
 			}
 		}
-private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-}
 };
 }
