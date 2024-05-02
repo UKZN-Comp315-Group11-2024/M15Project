@@ -7,6 +7,7 @@
 #include "customAlgs.h"
 #include "PlayerInfo.h"
 #include "string.h"
+#include "MusicAndSFX.h"
 
 
 
@@ -47,7 +48,10 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 
+
+
 	private:
+		MusicAndSFX* sound = new MusicAndSFX;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -76,10 +80,9 @@ namespace M15Namespace {
 			// 
 			this->pictureboxcrosses->BackColor = System::Drawing::Color::Transparent;
 			this->pictureboxcrosses->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureboxcrosses.Image")));
-			this->pictureboxcrosses->Location = System::Drawing::Point(80, 346);
-			this->pictureboxcrosses->Margin = System::Windows::Forms::Padding(4);
+			this->pictureboxcrosses->Location = System::Drawing::Point(64, 277);
 			this->pictureboxcrosses->Name = L"pictureboxcrosses";
-			this->pictureboxcrosses->Size = System::Drawing::Size(92, 518);
+			this->pictureboxcrosses->Size = System::Drawing::Size(74, 414);
 			this->pictureboxcrosses->TabIndex = 10;
 			this->pictureboxcrosses->TabStop = false;
 			// 
@@ -87,10 +90,9 @@ namespace M15Namespace {
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(901, 786);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox2->Location = System::Drawing::Point(721, 629);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(664, 62);
+			this->pictureBox2->Size = System::Drawing::Size(531, 50);
 			this->pictureBox2->TabIndex = 11;
 			this->pictureBox2->TabStop = false;
 			// 
@@ -98,29 +100,27 @@ namespace M15Namespace {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Location = System::Drawing::Point(49, 270);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(39, 216);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 16);
+			this->label1->Size = System::Drawing::Size(0, 13);
 			this->label1->TabIndex = 12;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::Color::Transparent;
-			this->label2->Location = System::Drawing::Point(49, 214);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(39, 171);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 16);
+			this->label2->Size = System::Drawing::Size(35, 13);
 			this->label2->TabIndex = 13;
 			this->label2->Text = L"label2";
 			// 
 			// Leaderboard
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1578, 841);
+			this->ClientSize = System::Drawing::Size(1262, 673);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureboxcrosses);
 			this->Controls->Add(this->label1);
@@ -128,16 +128,18 @@ namespace M15Namespace {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
-			this->MaximumSize = System::Drawing::Size(1596, 888);
+			this->MaximumSize = System::Drawing::Size(1280, 718);
 			this->Name = L"Leaderboard";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Top Spies";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Leaderboard::Leaderboard_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &Leaderboard::Leaderboard_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Leaderboard::Leaderboard_KeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxcrosses))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
 		}
 
 #pragma endregion
@@ -241,6 +243,11 @@ namespace M15Namespace {
 			}
 			players->Reverse();
 			copyPlayers(players);
+
+			msclr::interop::marshal_context context;
+			for each (playerInfo^ p in players) {
+				std::cout << context.marshal_as<std::string>(p->username)<<"\n";
+			}
 			//UpdateLabels(players);
 			file->Close();
 		}
@@ -266,10 +273,12 @@ namespace M15Namespace {
 		// Creates new labels from scratch and puts them in the appropriate locations
 		void UpdateLabels(List<playerInfo^>^ v) {
 			//Clear previous labels
+			sound->playRandomSound("assets/leaderboardflicker.wav", false);
 			ClearLabels();
 			int i = 1;
 
 			// A label for the scroll instruction
+			
 			Label^ press = gcnew Label();
 			press->AutoSize = true;
 			press->BackColor = System::Drawing::Color::Transparent;
@@ -340,6 +349,7 @@ namespace M15Namespace {
 				}
 				i++;
 			}
+			sound->randomSound.stop();
 
 		}
 
@@ -402,7 +412,7 @@ namespace M15Namespace {
 		else {
 			// Update and show all players to screen
 			LoadAllPlayers();
-			players->Reverse();
+			//players->Reverse();
 			UpdateLabels(players);
 			//players->Reverse();
 		}
@@ -426,6 +436,9 @@ private: System::Void Leaderboard_KeyDown(System::Object^ sender, System::Window
 private: System::Void labelloginscroll2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void Leaderboard_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	delete sound;
 }
 };
 }
