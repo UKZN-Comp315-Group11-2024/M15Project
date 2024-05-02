@@ -199,12 +199,13 @@ namespace M15Namespace {
 			   // DigitalStopWatch
 			   // 
 			   this->DigitalStopWatch->AutoSize = true;
-			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->DigitalStopWatch->BackColor = System::Drawing::Color::Black;
+			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Black;
-			   this->DigitalStopWatch->Location = System::Drawing::Point(718, 147);
+			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Red;
+			   this->DigitalStopWatch->Location = System::Drawing::Point(724, 147);
 			   this->DigitalStopWatch->Name = L"DigitalStopWatch";
-			   this->DigitalStopWatch->Size = System::Drawing::Size(51, 20);
+			   this->DigitalStopWatch->Size = System::Drawing::Size(88, 23);
 			   this->DigitalStopWatch->TabIndex = 47;
 			   this->DigitalStopWatch->Text = L"label1";
 			   this->DigitalStopWatch->Visible = false;
@@ -257,6 +258,7 @@ namespace M15Namespace {
 			   this->textBoxQuestion->Text = L"label1";
 			   this->textBoxQuestion->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			   this->textBoxQuestion->Visible = false;
+			   this->textBoxQuestion->Click += gcnew System::EventHandler(this, &lvl1Form::textBoxQuestion_Click);
 			   // 
 			   // textBoxTFA
 			   // 
@@ -888,6 +890,7 @@ namespace M15Namespace {
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
+			ambience->playRandomSound("assets\\music\\ouch.wav", false);
 		}
 
 		/*
@@ -1382,5 +1385,7 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-	};
+	private: System::Void textBoxQuestion_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

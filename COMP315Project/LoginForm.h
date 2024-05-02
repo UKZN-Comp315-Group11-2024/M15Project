@@ -646,7 +646,6 @@ namespace M15Namespace {
 			this->Visible = true;
 		}
 		else if (comm == "0") {
-			std::cout << "closing";
 			this->Close();
 		}
 
