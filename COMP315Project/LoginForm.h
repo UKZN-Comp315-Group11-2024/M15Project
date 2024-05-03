@@ -111,8 +111,8 @@ namespace M15Namespace {
 			   this->components = (gcnew System::ComponentModel::Container());
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
-			   this->TutorialButton = (gcnew System::Windows::Forms::Button());
 			   this->pictureboxlockgif = (gcnew System::Windows::Forms::PictureBox());
+			   this->TutorialButton = (gcnew System::Windows::Forms::Button());
 			   this->pbleaderboard = (gcnew System::Windows::Forms::PictureBox());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
@@ -162,19 +162,6 @@ namespace M15Namespace {
 			   this->panelLogin->TabIndex = 3;
 			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &LoginForm::panelLogin_Paint);
 			   // 
-			   // TutorialButton
-			   // 
-			   this->TutorialButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->TutorialButton->ForeColor = System::Drawing::Color::Black;
-			   this->TutorialButton->Location = System::Drawing::Point(48, 540);
-			   this->TutorialButton->Name = L"TutorialButton";
-			   this->TutorialButton->Size = System::Drawing::Size(165, 94);
-			   this->TutorialButton->TabIndex = 13;
-			   this->TutorialButton->Text = L"Tutorial";
-			   this->TutorialButton->UseVisualStyleBackColor = true;
-			   this->TutorialButton->Click += gcnew System::EventHandler(this, &LoginForm::TutorialButton_Click);
-			   // 
 			   // pictureboxlockgif
 			   // 
 			   this->pictureboxlockgif->BackColor = System::Drawing::Color::Black;
@@ -187,6 +174,19 @@ namespace M15Namespace {
 			   this->pictureboxlockgif->TabStop = false;
 			   this->pictureboxlockgif->Visible = false;
 			   this->pictureboxlockgif->Click += gcnew System::EventHandler(this, &LoginForm::pictureboxlockgif_Click);
+			   // 
+			   // TutorialButton
+			   // 
+			   this->TutorialButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->TutorialButton->ForeColor = System::Drawing::Color::Black;
+			   this->TutorialButton->Location = System::Drawing::Point(48, 540);
+			   this->TutorialButton->Name = L"TutorialButton";
+			   this->TutorialButton->Size = System::Drawing::Size(165, 94);
+			   this->TutorialButton->TabIndex = 13;
+			   this->TutorialButton->Text = L"Tutorial";
+			   this->TutorialButton->UseVisualStyleBackColor = true;
+			   this->TutorialButton->Click += gcnew System::EventHandler(this, &LoginForm::TutorialButton_Click);
 			   // 
 			   // pbleaderboard
 			   // 

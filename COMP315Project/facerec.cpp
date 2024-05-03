@@ -12,8 +12,17 @@
 
 #include <fstream>
 #include <sstream>
+#include <chrono>
 
 #include "facerec.h"
+#include "FaceRecognition.h"
+
+/*Original source code from: https://github.com/ssj-ali/Face-Detection-Recognition/blob/master/Project1c%2B%2B/main.cpp */
+/*Adapted: The original file was console based. Additionally, it was only able to identify a user based on a number.
+Also, it would infinite loop since that was the only thing in the program. All of these have been changed to fit this project.
+The program is now graphical, can identify the user based on their username, and will count the user as successfully recognized when
+the model has had over 1000 confidence that the user is some fixed existing user, for at least 3 seconds. At this point, the loop will break.
+Thereafter, functionality was added to return to the original form*/
 
 void facerec::detectAndDisplay(cv::Mat frame)
 {
@@ -84,10 +93,9 @@ void facerec::detectAndDisplay(cv::Mat frame)
 
 }
 
-void facerec::addFace()
+void facerec::addFace(std::string s)
 {
-	std::cout << "\nEnter Your Name:  ";
-	std::cin >> name;
+	name = s;
 
 	cv::VideoCapture capture(0);
 
@@ -109,7 +117,6 @@ void facerec::addFace()
 	{
 		capture >> frame;
 
-		//imshow("Camera", frame);
 		detectAndDisplay(frame);
 		i++;
 		if (i == 10)
@@ -117,14 +124,13 @@ void facerec::addFace()
 			std::cout << "Face Added";
 			break;
 		}
-		//break;
+
 		int c = cv::waitKey(10);
 
 		if (27 == char(c))
 		{
 			break;
 		}
-		//imshow("Output Capture", frame);
 	}
 
 	return;
@@ -135,8 +141,6 @@ void facerec::dbread(std::vector<cv::Mat>& images, std::vector<int>& labels) {
 	std::vector<cv::String> fn;
 	filename = "Faces\\";;
 	cv::glob(filename, fn, false);
-
-	//glob("C:\\Users\\Asus\\Desktop\\Faces\\Ali\\*.jpg", fn, false);
 
 	size_t count = fn.size();
 
@@ -173,8 +177,7 @@ void facerec::eigenFaceTrainer() {
 	cv::waitKey(10000);
 }
 
-void facerec::FaceRecognitionNew() {
-	std::cout << "start recognizing..." << std::endl;
+bool facerec::FaceRecognitionNew() {
 
 	//load pre-trained data sets
 	cv::Ptr<cv::face::FaceRecognizer>  model = cv::face::FisherFaceRecognizer::create();
@@ -185,32 +188,29 @@ void facerec::FaceRecognitionNew() {
 	int img_width = testSample.cols;
 	int img_height = testSample.rows;
 
-
-	//lbpcascades/lbpcascade_frontalface.xml
-
-	std::string window = "Capture - face detection";
+	std::string window = "Face recognition AI";
 
 	if (!face_cascade.load("OpenCV\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_alt.xml")) {
 		std::cout << " Error loading file" << std::endl;
-		return;
+		return false;
 	}
 
 	cv::VideoCapture cap(0);
-	//VideoCapture cap("C:/Users/lsf-admin/Pictures/Camera Roll/video000.mp4");
 
 	if (!cap.isOpened())
 	{
 		std::cout << "exit" << std::endl;
-		return;
+		return false;
 	}
 
-	//double fps = cap.get(CV_CAP_PROP_FPS);
-	//cout << " Frames per seconds " << fps << endl;
 	cv::namedWindow(window, 1);
 	long count = 0;
 	std::string Pname = "";
-
-	while (true)
+	int conf = 0;
+	auto timeStartStart = std::chrono::high_resolution_clock::now();
+	auto timeStart = std::chrono::high_resolution_clock::now();
+	auto timeNow = std::chrono::high_resolution_clock::now();
+	while (std::chrono::duration_cast<std::chrono::seconds>(timeNow - timeStartStart).count() < 10)
 	{
 		std::vector<cv::Rect> faces;
 		cv::Mat frame;
@@ -218,8 +218,8 @@ void facerec::FaceRecognitionNew() {
 		cv::Mat original;
 
 		cap >> frame;
-		//cap.read(frame);
-		count = count + 1;//count frames;
+	
+		count = count + 1;
 
 		if (!frame.empty()) {
 
@@ -228,20 +228,15 @@ void facerec::FaceRecognitionNew() {
 
 			//convert image to gray scale and equalize
 			cv::cvtColor(original, graySacleFrame, cv::COLOR_BGR2GRAY);
-			//equalizeHist(graySacleFrame, graySacleFrame);
 
 			//detect face in gray image
 			face_cascade.detectMultiScale(graySacleFrame, faces, 1.1, 3, 0, cv::Size(90, 90));
 
 			//number of faces detected
-			//cout << faces.size() << " faces detected" << endl;
 			std::string frameset = std::to_string(count);
 			std::string faceset = std::to_string(faces.size());
 
 			int width = 0, height = 0;
-
-			//region of interest
-			//cv::Rect roi;
 
 			for (int i = 0; i < faces.size(); i++)
 			{
@@ -259,9 +254,13 @@ void facerec::FaceRecognitionNew() {
 				int label = -1; double confidence = 0;
 				model->predict(face_resized, label, confidence);
 
-				std::cout << " confidence " << confidence << " Label: " << label << std::endl;
+				if (confidence < 1000 || label == 0) {
+					timeStart = std::chrono::high_resolution_clock::now();
+				}
 
-				Pname = std::to_string(label);
+				std::cout << " confidence " << confidence << " Label: " << label << std::endl;
+				conf = confidence;
+				Pname = InttoName(label);
 
 				//drawing green rectagle in recognize face
 				rectangle(original, face_i, CV_RGB(0, 255, 0), 1);
@@ -272,19 +271,53 @@ void facerec::FaceRecognitionNew() {
 
 				//name the person who is in the image
 				putText(original, text, cv::Point(pos_x, pos_y), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
-				//cv::imwrite("E:/FDB/"+frameset+".jpg", cropImg);
 
 			}
 
 
 			putText(original, "Frames: " + frameset, cv::Point(30, 60), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
 			putText(original, "No. of Persons detected: " + std::to_string(faces.size()), cv::Point(30, 90), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
+			putText(original, "Confidence: " + std::to_string(conf), cv::Point(30, 120), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
 			//display to the winodw
 			cv::imshow(window, original);
 
-			//cout << "model infor " << model->getDouble("threshold") << endl;
 
 		}
+
+		timeNow = std::chrono::high_resolution_clock::now();
+		if (std::chrono::duration_cast<std::chrono::seconds>(timeNow - timeStart).count() > 2.5) {
+			cv::destroyAllWindows();
+			return true;
+		}
+
 		if (cv::waitKey(30) >= 0) break;
 	}
+	cv::destroyAllWindows();
+	return false;
+}
+
+std::string facerec::InttoName(int num) {
+	std::string line;
+	std::ifstream file("textfiles/usernameFaceNum.txt");
+
+	if (file.is_open())
+	{
+		getline(file, line);
+		while (getline(file, line))
+		{
+			int pos = line.find("$");
+			int i = std::stoi(line.substr(0, pos));
+			line.erase(0, pos + 1);
+			if (i == num) {
+				file.close();
+				return line;
+			}
+		}
+
+	}
+	file.close();
+}
+
+void facerec::goToLogin() {
+
 }

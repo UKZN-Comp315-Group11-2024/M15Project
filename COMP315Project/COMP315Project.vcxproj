@@ -310,6 +310,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="textfiles\communicaton.txt" />
+    <Text Include="textfiles\facialRecOutput.txt" />
+    <Text Include="textfiles\usernameFaceNum.txt" />
     <Text Include="textfiles\UsersAlphabetical.txt" />
   </ItemGroup>
   <ItemGroup>
