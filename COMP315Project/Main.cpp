@@ -73,10 +73,10 @@ int main(array<String^>^ args) {
 		//lvl3Form lvl3;
 		//Application::Run(% lvl3);
 
-		lvl1Form lvl2;
-		Application::Run(% lvl2);
-		//lvl4Form lvl4;
-		//Application::Run(% lvl4);
+		//lvl1Form lvl2;
+		//Application::Run(% lvl2);
+		lvl4Form lvl4;
+		Application::Run(% lvl4);
 
 	//FaceRecognition fr;
 	//Application::Run(% fr);
