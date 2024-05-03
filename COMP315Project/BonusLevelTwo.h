@@ -90,7 +90,6 @@ namespace M15Namespace {
 			this->panelBonusLevel->Name = L"panelBonusLevel";
 			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
 			this->panelBonusLevel->TabIndex = 13;
-			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelTwo::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
@@ -349,7 +348,6 @@ namespace M15Namespace {
 		   updates countdown bar
 		   when full, updates points and closes the form
 		   provides feedback on a popup form
-
 		*/
 		System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
 
@@ -462,7 +460,5 @@ namespace M15Namespace {
 				}
 			}
 		}
-	private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
 };
 }
