@@ -27,14 +27,7 @@
 #include "SFML/Audio.hpp"
 #include <cliext/list>
 
-//include opencv core
-#include "opencv2/core/core.hpp"
-#include "opencv2/core.hpp"
-#include "opencv2/face.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/objdetect.hpp"
-#include "opencv2/opencv.hpp"
-#include <direct.h>
+
 
 //user defined headers
 //Only add here if the header is unlikely to ever change in the future
