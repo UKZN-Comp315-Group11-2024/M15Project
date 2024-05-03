@@ -55,6 +55,7 @@ namespace M15Namespace {
 
 	private: System::Windows::Forms::PictureBox^ pbRandObject4;
 	private: System::Windows::Forms::Label^ lvl1Brief;
+	private: System::Windows::Forms::PictureBox^ pbRandObject6;
 
 
 
@@ -122,6 +123,7 @@ namespace M15Namespace {
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			   this->lvl1Brief = (gcnew System::Windows::Forms::Label());
+			   this->pbRandObject6 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbRandObject5 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbRandObject4 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbRandObject3 = (gcnew System::Windows::Forms::PictureBox());
@@ -157,6 +159,7 @@ namespace M15Namespace {
 			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject6))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject5))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject4))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject3))->BeginInit();
@@ -205,6 +208,7 @@ namespace M15Namespace {
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			   this->panelLogin->Controls->Add(this->lvl1Brief);
+			   this->panelLogin->Controls->Add(this->pbRandObject6);
 			   this->panelLogin->Controls->Add(this->pbRandObject5);
 			   this->panelLogin->Controls->Add(this->pbRandObject4);
 			   this->panelLogin->Controls->Add(this->pbRandObject3);
@@ -246,10 +250,21 @@ namespace M15Namespace {
 			   this->lvl1Brief->Size = System::Drawing::Size(342, 593);
 			   this->lvl1Brief->TabIndex = 60;
 			   // 
+			   // pbRandObject6
+			   // 
+			   this->pbRandObject6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject6.Image")));
+			   this->pbRandObject6->Location = System::Drawing::Point(845, 523);
+			   this->pbRandObject6->Name = L"pbRandObject6";
+			   this->pbRandObject6->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbRandObject6->TabIndex = 61;
+			   this->pbRandObject6->TabStop = false;
+			   this->pbRandObject6->Visible = false;
+			   // 
 			   // pbRandObject5
 			   // 
 			   this->pbRandObject5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject5.Image")));
-			   this->pbRandObject5->Location = System::Drawing::Point(914, 703);
+			   this->pbRandObject5->Location = System::Drawing::Point(914, 698);
 			   this->pbRandObject5->Name = L"pbRandObject5";
 			   this->pbRandObject5->Size = System::Drawing::Size(92, 125);
 			   this->pbRandObject5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -260,7 +275,7 @@ namespace M15Namespace {
 			   // pbRandObject4
 			   // 
 			   this->pbRandObject4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject4.Image")));
-			   this->pbRandObject4->Location = System::Drawing::Point(802, 562);
+			   this->pbRandObject4->Location = System::Drawing::Point(651, 596);
 			   this->pbRandObject4->Name = L"pbRandObject4";
 			   this->pbRandObject4->Size = System::Drawing::Size(92, 125);
 			   this->pbRandObject4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -271,7 +286,7 @@ namespace M15Namespace {
 			   // pbRandObject3
 			   // 
 			   this->pbRandObject3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject3.Image")));
-			   this->pbRandObject3->Location = System::Drawing::Point(902, 412);
+			   this->pbRandObject3->Location = System::Drawing::Point(700, 432);
 			   this->pbRandObject3->Name = L"pbRandObject3";
 			   this->pbRandObject3->Size = System::Drawing::Size(92, 125);
 			   this->pbRandObject3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -282,7 +297,7 @@ namespace M15Namespace {
 			   // pbRandObject2
 			   // 
 			   this->pbRandObject2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject2.Image")));
-			   this->pbRandObject2->Location = System::Drawing::Point(775, 288);
+			   this->pbRandObject2->Location = System::Drawing::Point(556, 339);
 			   this->pbRandObject2->MaximumSize = System::Drawing::Size(92, 125);
 			   this->pbRandObject2->Name = L"pbRandObject2";
 			   this->pbRandObject2->Size = System::Drawing::Size(92, 125);
@@ -294,7 +309,7 @@ namespace M15Namespace {
 			   // pbRandObject1
 			   // 
 			   this->pbRandObject1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject1.Image")));
-			   this->pbRandObject1->Location = System::Drawing::Point(877, 261);
+			   this->pbRandObject1->Location = System::Drawing::Point(806, 261);
 			   this->pbRandObject1->Name = L"pbRandObject1";
 			   this->pbRandObject1->Size = System::Drawing::Size(92, 125);
 			   this->pbRandObject1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -599,6 +614,7 @@ namespace M15Namespace {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject6))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject5))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject4))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject3))->EndInit();
@@ -614,7 +630,6 @@ namespace M15Namespace {
 		   }
 
 #pragma endregion
-
 
 	private:
 		// Player object
@@ -641,7 +656,6 @@ namespace M15Namespace {
 
 		//Destructable objects (obstactles) 
 		Destructible::DestroyFunction^ destroyFuncRandomObject = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyRandomObject);
-
 
 		definedPictureBox^ bullet;
 
@@ -692,7 +706,7 @@ namespace M15Namespace {
 		*/
 		System::Void lvl2Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
-			lvl1Brief->Text = "Level 2 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the bush you wish to select.\n\n• If an option is obstructed, destroy its obstructions.\n\n• You will be granted 18 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Press Start To Begin>";
+			lvl1Brief->Text = "Level 2 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the bush you wish to select.\n\n• If a bush is obstructed, destroy its obstructions.\n\n• You will be granted 18 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
@@ -771,7 +785,7 @@ namespace M15Namespace {
 			des->addObject(this->pbRandObject3, destroyFuncRandomObject);
 			des->addObject(this->pbRandObject4, destroyFuncRandomObject);
 			des->addObject(this->pbRandObject5, destroyFuncRandomObject);
-
+			des->addObject(this->pbRandObject6, destroyFuncRandomObject);
 
 			ambience->Forest();
 			ambience->playRandomSound("assets\\music\\grassburning.wav", true);
@@ -881,9 +895,7 @@ namespace M15Namespace {
 				pbRandObject3->Visible = true;
 				pbRandObject4->Visible = true;
 				pbRandObject5->Visible = true;
-
-
-
+				pbRandObject6->Visible = true;
 			}
 			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
@@ -1052,7 +1064,7 @@ namespace M15Namespace {
 		}
 
 		void destroyRandomObject() {
-
+			bullet == pbRandObject1;
 		}
 
 		/*
