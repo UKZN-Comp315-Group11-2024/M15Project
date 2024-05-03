@@ -1026,7 +1026,7 @@ namespace M15Namespace {
 				}
 				else
 				{
-					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/dle.gif");
+					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/idle.gif");
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
 
