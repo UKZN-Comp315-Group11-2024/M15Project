@@ -264,7 +264,6 @@ namespace M15Namespace {
 			   this->textBoxQuestion->Text = L"label1";
 			   this->textBoxQuestion->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			   this->textBoxQuestion->Visible = false;
-			   this->textBoxQuestion->Click += gcnew System::EventHandler(this, &lvl1Form::textBoxQuestion_Click);
 			   // 
 			   // textBoxTFA
 			   // 
@@ -1396,7 +1395,5 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-	private: System::Void textBoxQuestion_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
 };
 }
