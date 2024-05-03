@@ -250,9 +250,9 @@ namespace M15Namespace {
 			   // pbObstacle6
 			   // 
 			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
-			   this->pbObstacle6->Location = System::Drawing::Point(523, 649);
+			   this->pbObstacle6->Location = System::Drawing::Point(426, 626);
 			   this->pbObstacle6->Name = L"pbObstacle6";
-			   this->pbObstacle6->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle6->Size = System::Drawing::Size(191, 169);
 			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle6->TabIndex = 55;
 			   this->pbObstacle6->TabStop = false;
@@ -272,7 +272,7 @@ namespace M15Namespace {
 			   // pbObstacle5
 			   // 
 			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
-			   this->pbObstacle5->Location = System::Drawing::Point(867, 492);
+			   this->pbObstacle5->Location = System::Drawing::Point(858, 492);
 			   this->pbObstacle5->Name = L"pbObstacle5";
 			   this->pbObstacle5->Size = System::Drawing::Size(92, 125);
 			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -294,9 +294,9 @@ namespace M15Namespace {
 			   // pbObstacle2
 			   // 
 			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
-			   this->pbObstacle2->Location = System::Drawing::Point(601, 390);
+			   this->pbObstacle2->Location = System::Drawing::Point(567, 454);
 			   this->pbObstacle2->Name = L"pbObstacle2";
-			   this->pbObstacle2->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle2->Size = System::Drawing::Size(126, 61);
 			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle2->TabIndex = 51;
 			   this->pbObstacle2->TabStop = false;

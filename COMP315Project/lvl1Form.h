@@ -300,6 +300,66 @@ namespace M15Namespace {
 			   this->pbObstacle1->TabIndex = 55;
 			   this->pbObstacle1->TabStop = false;
 			   // 
+			   // pbObstacle6
+			   // 
+			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
+			   this->pbObstacle6->Location = System::Drawing::Point(960, 311);
+			   this->pbObstacle6->Name = L"pbObstacle6";
+			   this->pbObstacle6->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle6->TabIndex = 60;
+			   this->pbObstacle6->TabStop = false;
+			   // 
+			   // pbObstacle5
+			   // 
+			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
+			   this->pbObstacle5->Location = System::Drawing::Point(662, 655);
+			   this->pbObstacle5->Name = L"pbObstacle5";
+			   this->pbObstacle5->Size = System::Drawing::Size(129, 116);
+			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle5->TabIndex = 59;
+			   this->pbObstacle5->TabStop = false;
+			   // 
+			   // pbObstacle4
+			   // 
+			   this->pbObstacle4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle4.Image")));
+			   this->pbObstacle4->Location = System::Drawing::Point(505, 686);
+			   this->pbObstacle4->Name = L"pbObstacle4";
+			   this->pbObstacle4->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle4->TabIndex = 58;
+			   this->pbObstacle4->TabStop = false;
+			   // 
+			   // pbObstacle3
+			   // 
+			   this->pbObstacle3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle3.Image")));
+			   this->pbObstacle3->Location = System::Drawing::Point(820, 454);
+			   this->pbObstacle3->Name = L"pbObstacle3";
+			   this->pbObstacle3->Size = System::Drawing::Size(206, 180);
+			   this->pbObstacle3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle3->TabIndex = 57;
+			   this->pbObstacle3->TabStop = false;
+			   // 
+			   // pbObstacle2
+			   // 
+			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
+			   this->pbObstacle2->Location = System::Drawing::Point(651, 412);
+			   this->pbObstacle2->Name = L"pbObstacle2";
+			   this->pbObstacle2->Size = System::Drawing::Size(129, 116);
+			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle2->TabIndex = 56;
+			   this->pbObstacle2->TabStop = false;
+			   // 
+			   // pbObstacle1
+			   // 
+			   this->pbObstacle1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle1.Image")));
+			   this->pbObstacle1->Location = System::Drawing::Point(422, 256);
+			   this->pbObstacle1->Name = L"pbObstacle1";
+			   this->pbObstacle1->Size = System::Drawing::Size(206, 180);
+			   this->pbObstacle1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle1->TabIndex = 55;
+			   this->pbObstacle1->TabStop = false;
+			   // 
 			   // lvl1Brief
 			   // 
 			   this->lvl1Brief->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,

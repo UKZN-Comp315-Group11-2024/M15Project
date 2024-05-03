@@ -275,9 +275,9 @@ namespace M15Namespace {
 			   // pbRandObject4
 			   // 
 			   this->pbRandObject4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject4.Image")));
-			   this->pbRandObject4->Location = System::Drawing::Point(651, 596);
+			   this->pbRandObject4->Location = System::Drawing::Point(472, 483);
 			   this->pbRandObject4->Name = L"pbRandObject4";
-			   this->pbRandObject4->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject4->Size = System::Drawing::Size(271, 238);
 			   this->pbRandObject4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbRandObject4->TabIndex = 51;
 			   this->pbRandObject4->TabStop = false;
@@ -286,9 +286,9 @@ namespace M15Namespace {
 			   // pbRandObject3
 			   // 
 			   this->pbRandObject3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject3.Image")));
-			   this->pbRandObject3->Location = System::Drawing::Point(700, 432);
+			   this->pbRandObject3->Location = System::Drawing::Point(681, 412);
 			   this->pbRandObject3->Name = L"pbRandObject3";
-			   this->pbRandObject3->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject3->Size = System::Drawing::Size(105, 45);
 			   this->pbRandObject3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbRandObject3->TabIndex = 50;
 			   this->pbRandObject3->TabStop = false;
@@ -297,7 +297,7 @@ namespace M15Namespace {
 			   // pbRandObject2
 			   // 
 			   this->pbRandObject2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject2.Image")));
-			   this->pbRandObject2->Location = System::Drawing::Point(556, 339);
+			   this->pbRandObject2->Location = System::Drawing::Point(518, 275);
 			   this->pbRandObject2->MaximumSize = System::Drawing::Size(92, 125);
 			   this->pbRandObject2->Name = L"pbRandObject2";
 			   this->pbRandObject2->Size = System::Drawing::Size(92, 125);
