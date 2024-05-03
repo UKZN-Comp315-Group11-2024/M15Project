@@ -29,7 +29,7 @@ public:
 	List<Question^>^ levelQuestions = gcnew List<Question^>;
 	
 	//pre-rendomization data structures containing questions:
-	Queue<Question^>^ QuestionQueue = gcnew Queue<Question^>;
+	System::Collections::Generic::Queue<Question^>^ QuestionQueue = gcnew System::Collections::Generic::Queue<Question^>;
 	List<Question^>^ tfQuestions = gcnew List<Question^>;
 	List<Question^>^ mcqQuestions = gcnew List<Question^>;
 	
@@ -40,7 +40,7 @@ public:
 	List<String^>^ optionsShuffle = gcnew List<String^>;
 
 	//used for debugging:
-	Queue<Question^>^ displayQuestions = gcnew Queue<Question^>;
+	System::Collections::Generic::Queue<Question^>^ displayQuestions = gcnew System::Collections::Generic::Queue<Question^>;
 	void printQuestions();
 
 };
