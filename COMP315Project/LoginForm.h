@@ -96,10 +96,13 @@ namespace M15Namespace {
 		/// </summary>
 		int logindots = 0;
 		MusicAndSFX* sound = new MusicAndSFX;
-	private: System::Windows::Forms::PictureBox^ pbleaderboard;
-	private: System::Windows::Forms::Button^ TutorialButton;
+		List<playerInfo^>^ userlist;
+		bool tutorialWatched = false;
 
-		   List<playerInfo^>^ userlist;
+
+		private: System::Windows::Forms::PictureBox^ pbleaderboard;
+		private: System::Windows::Forms::Button^ TutorialButton;
+		
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -507,16 +510,27 @@ namespace M15Namespace {
 	private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::Enter && (lblWarning->Text == "Alias available" || lblWarning->Text == "Alias available\n->(Max alias length)")) {
 			// Show a message to indicate that the next form will be displayed
-			e->SuppressKeyPress = true;
-			TutorialButton->Hide();
-			pictureboxlockgif->Visible = true;
-			timerlockgif->Enabled = true;
-			timerlockgif->Start();
-			PlaySound(NULL, NULL, 0);
-			PlaySound(TEXT("assets\\techsounds"), NULL, SND_FILENAME | SND_ASYNC);
-
-			//std::cout<<"Show next form";
-			//MessageBox::Show("Show next form", "Next Form", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			if (!tutorialWatched) {
+				if (MessageBox::Show("Are you sure you want to log in without watching the tutorial?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::Yes)
+				{
+					e->SuppressKeyPress = true;
+					TutorialButton->Hide();
+					pictureboxlockgif->Visible = true;
+					timerlockgif->Enabled = true;
+					timerlockgif->Start();
+					PlaySound(NULL, NULL, 0);
+					PlaySound(TEXT("assets\\techsounds"), NULL, SND_FILENAME | SND_ASYNC);
+				}
+			}
+			else {
+				e->SuppressKeyPress = true;
+				TutorialButton->Hide();
+				pictureboxlockgif->Visible = true;
+				timerlockgif->Enabled = true;
+				timerlockgif->Start();
+				PlaySound(NULL, NULL, 0);
+				PlaySound(TEXT("assets\\techsounds"), NULL, SND_FILENAME | SND_ASYNC);
+			}
 		}
 	}
 
@@ -629,33 +643,58 @@ namespace M15Namespace {
 		this->Close();
 	}
 	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
-		sound->playRandomSound("assets\\chime.wav", false);
-		FaceRecognition^ facerec = gcnew FaceRecognition();
-		std::string comm;
-		this->Visible = false;
-		this->Hide();
-		facerec->ShowDialog();
-		std::fstream file;
-		file.open("textfiles/communication.txt", std::ios::in);
-		if (file.is_open()) {
-			getline(file, comm);
-		}
-		file.close();
-		if (comm == "1") {
+		if (!tutorialWatched) {
+			if (MessageBox::Show("Are you sure you want to start facial recognition without watching the tutorial?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::Yes)
+			{
+				sound->playRandomSound("assets\\chime.wav", false);
+				FaceRecognition^ facerec = gcnew FaceRecognition();
+				std::string comm;
+				this->Visible = false;
+				this->Hide();
+				facerec->ShowDialog();
+				std::fstream file;
+				file.open("textfiles/communication.txt", std::ios::in);
+				if (file.is_open()) {
+					getline(file, comm);
+				}
+				file.close();
+				if (comm == "1") {
 
-			this->Visible = true;
+					this->Visible = true;
+				}
+				else if (comm == "0") {
+					this->Close();
+				}
+			}
 		}
-		else if (comm == "0") {
-			this->Close();
-		}
+		else {
+			sound->playRandomSound("assets\\chime.wav", false);
+			FaceRecognition^ facerec = gcnew FaceRecognition();
+			std::string comm;
+			this->Visible = false;
+			this->Hide();
+			facerec->ShowDialog();
+			std::fstream file;
+			file.open("textfiles/communication.txt", std::ios::in);
+			if (file.is_open()) {
+				getline(file, comm);
+			}
+			file.close();
+			if (comm == "1") {
 
+				this->Visible = true;
+			}
+			else if (comm == "0") {
+				this->Close();
+			}
+		}
 
 	}
 	private: System::Void label2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void pbleaderboard_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
-		Leaderboard^ leaderboard = gcnew Leaderboard("no");
+		Leaderboard^ leaderboard = gcnew Leaderboard("yes");
 		leaderboard->Visible = false;
 		this->Hide();
 		leaderboard->ShowDialog();
@@ -664,6 +703,7 @@ namespace M15Namespace {
 
 	private: System::Void TutorialButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
+		tutorialWatched = true;
 		TutorialForm^ tut = gcnew TutorialForm();
 		tut->Visible = false;
 		this->Hide();

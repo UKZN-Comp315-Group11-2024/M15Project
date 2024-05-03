@@ -221,6 +221,37 @@ namespace M15Namespace {
 				}
 				writer.close();
 			}
+			else {
+				std::ofstream writer(filename2);
+				//If the player already exists, replace their score with the max of their old score and their current score
+				for (int i=0; i<players->Count; i++)
+				{
+					if (p->username == players[i]->username)
+					{
+						if (p > players[i]) {
+							players->RemoveAt(i);
+							players->Reverse();
+							players = customAlgs<playerInfo^>::insertScore(players, p);
+							players->Reverse();
+
+						}
+					}
+				}
+				
+				
+				// Write every player from the players list into the leaderboard.txt
+				for (int i = 0; i < players->Count; i++) {
+					std::string line = "";
+					std::string username = context.marshal_as<std::string>(players[i]->username);
+					line += username + "$";
+					line += std::to_string(players[i]->score);
+					line += "$";
+					line += std::to_string(players[i]->timeTaken);
+					writer << line << "\n";
+				}
+				writer.close();
+
+			}
 			// Make a copy of the players and update the labels
 			copyPlayers(players);
 			UpdateLabels(players);
