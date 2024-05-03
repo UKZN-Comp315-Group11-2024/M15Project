@@ -1065,6 +1065,7 @@ namespace M15Namespace {
 
 		void destroyRandomObject() {
 			bullet == pbRandObject1;
+			soundImpact->playRandomSound("assets\\music\\ES_Explosion Grenade 3 - SFX Producer.wav", false);
 		}
 
 		/*
