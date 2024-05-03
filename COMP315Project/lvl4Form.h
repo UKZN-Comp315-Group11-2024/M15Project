@@ -996,7 +996,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the third level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place in the M15 forest. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "");
 			window->Visible = false;

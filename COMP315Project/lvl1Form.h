@@ -120,6 +120,12 @@ namespace M15Namespace {
 			   this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->pbObstacle6 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle5 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle4 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle3 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle2 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle1 = (gcnew System::Windows::Forms::PictureBox());
 			   this->lvl1Brief = (gcnew System::Windows::Forms::Label());
 			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 			   this->textBoxTFA = (gcnew System::Windows::Forms::Label());
@@ -147,25 +153,19 @@ namespace M15Namespace {
 			   this->QuestionTransitionTimerShow = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerfinal = (gcnew System::Windows::Forms::Timer(this->components));
-			   this->pbObstacle1 = (gcnew System::Windows::Forms::PictureBox());
-			   this->pbObstacle2 = (gcnew System::Windows::Forms::PictureBox());
-			   this->pbObstacle3 = (gcnew System::Windows::Forms::PictureBox());
-			   this->pbObstacle4 = (gcnew System::Windows::Forms::PictureBox());
-			   this->pbObstacle5 = (gcnew System::Windows::Forms::PictureBox());
-			   this->pbObstacle6 = (gcnew System::Windows::Forms::PictureBox());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle5))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle4))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle3))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle2))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle1))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle2))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle3))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle4))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle5))->BeginInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // lblMessage1
@@ -234,6 +234,66 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1604, 885);
 			   this->panelLogin->TabIndex = 12;
+			   // 
+			   // pbObstacle6
+			   // 
+			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
+			   this->pbObstacle6->Location = System::Drawing::Point(960, 311);
+			   this->pbObstacle6->Name = L"pbObstacle6";
+			   this->pbObstacle6->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle6->TabIndex = 60;
+			   this->pbObstacle6->TabStop = false;
+			   // 
+			   // pbObstacle5
+			   // 
+			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
+			   this->pbObstacle5->Location = System::Drawing::Point(662, 655);
+			   this->pbObstacle5->Name = L"pbObstacle5";
+			   this->pbObstacle5->Size = System::Drawing::Size(129, 116);
+			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle5->TabIndex = 59;
+			   this->pbObstacle5->TabStop = false;
+			   // 
+			   // pbObstacle4
+			   // 
+			   this->pbObstacle4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle4.Image")));
+			   this->pbObstacle4->Location = System::Drawing::Point(505, 686);
+			   this->pbObstacle4->Name = L"pbObstacle4";
+			   this->pbObstacle4->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle4->TabIndex = 58;
+			   this->pbObstacle4->TabStop = false;
+			   // 
+			   // pbObstacle3
+			   // 
+			   this->pbObstacle3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle3.Image")));
+			   this->pbObstacle3->Location = System::Drawing::Point(820, 454);
+			   this->pbObstacle3->Name = L"pbObstacle3";
+			   this->pbObstacle3->Size = System::Drawing::Size(206, 180);
+			   this->pbObstacle3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle3->TabIndex = 57;
+			   this->pbObstacle3->TabStop = false;
+			   // 
+			   // pbObstacle2
+			   // 
+			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
+			   this->pbObstacle2->Location = System::Drawing::Point(651, 412);
+			   this->pbObstacle2->Name = L"pbObstacle2";
+			   this->pbObstacle2->Size = System::Drawing::Size(129, 116);
+			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle2->TabIndex = 56;
+			   this->pbObstacle2->TabStop = false;
+			   // 
+			   // pbObstacle1
+			   // 
+			   this->pbObstacle1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle1.Image")));
+			   this->pbObstacle1->Location = System::Drawing::Point(422, 256);
+			   this->pbObstacle1->Name = L"pbObstacle1";
+			   this->pbObstacle1->Size = System::Drawing::Size(206, 180);
+			   this->pbObstacle1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle1->TabIndex = 55;
+			   this->pbObstacle1->TabStop = false;
 			   // 
 			   // lvl1Brief
 			   // 
@@ -500,66 +560,6 @@ namespace M15Namespace {
 			   this->timerfinal->Interval = 2000;
 			   this->timerfinal->Tick += gcnew System::EventHandler(this, &lvl1Form::timerfinal_Tick);
 			   // 
-			   // pbObstacle1
-			   // 
-			   this->pbObstacle1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle1.Image")));
-			   this->pbObstacle1->Location = System::Drawing::Point(560, 255);
-			   this->pbObstacle1->Name = L"pbObstacle1";
-			   this->pbObstacle1->Size = System::Drawing::Size(92, 125);
-			   this->pbObstacle1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			   this->pbObstacle1->TabIndex = 55;
-			   this->pbObstacle1->TabStop = false;
-			   // 
-			   // pbObstacle2
-			   // 
-			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
-			   this->pbObstacle2->Location = System::Drawing::Point(722, 412);
-			   this->pbObstacle2->Name = L"pbObstacle2";
-			   this->pbObstacle2->Size = System::Drawing::Size(92, 125);
-			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			   this->pbObstacle2->TabIndex = 56;
-			   this->pbObstacle2->TabStop = false;
-			   // 
-			   // pbObstacle3
-			   // 
-			   this->pbObstacle3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle3.Image")));
-			   this->pbObstacle3->Location = System::Drawing::Point(922, 514);
-			   this->pbObstacle3->Name = L"pbObstacle3";
-			   this->pbObstacle3->Size = System::Drawing::Size(92, 125);
-			   this->pbObstacle3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			   this->pbObstacle3->TabIndex = 57;
-			   this->pbObstacle3->TabStop = false;
-			   // 
-			   // pbObstacle4
-			   // 
-			   this->pbObstacle4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle4.Image")));
-			   this->pbObstacle4->Location = System::Drawing::Point(551, 612);
-			   this->pbObstacle4->Name = L"pbObstacle4";
-			   this->pbObstacle4->Size = System::Drawing::Size(92, 125);
-			   this->pbObstacle4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			   this->pbObstacle4->TabIndex = 58;
-			   this->pbObstacle4->TabStop = false;
-			   // 
-			   // pbObstacle5
-			   // 
-			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
-			   this->pbObstacle5->Location = System::Drawing::Point(871, 686);
-			   this->pbObstacle5->Name = L"pbObstacle5";
-			   this->pbObstacle5->Size = System::Drawing::Size(92, 125);
-			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			   this->pbObstacle5->TabIndex = 59;
-			   this->pbObstacle5->TabStop = false;
-			   // 
-			   // pbObstacle6
-			   // 
-			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
-			   this->pbObstacle6->Location = System::Drawing::Point(960, 311);
-			   this->pbObstacle6->Name = L"pbObstacle6";
-			   this->pbObstacle6->Size = System::Drawing::Size(92, 125);
-			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			   this->pbObstacle6->TabIndex = 60;
-			   this->pbObstacle6->TabStop = false;
-			   // 
 			   // lvl1Form
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
@@ -581,17 +581,17 @@ namespace M15Namespace {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle5))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle4))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle3))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle2))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle1))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle2))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle3))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle4))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle5))->EndInit();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->EndInit();
 			   this->ResumeLayout(false);
 
 		   }
