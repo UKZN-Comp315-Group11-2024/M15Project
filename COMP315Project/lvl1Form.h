@@ -41,7 +41,6 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ pbstart;
 	private: System::Windows::Forms::Label^ MissLabel;
 	private: System::Windows::Forms::Label^ DigitalStopWatch;
-
 	private: System::Windows::Forms::Button^ btnsafety;
 
 
@@ -714,7 +713,6 @@ namespace M15Namespace {
 				this->pbstart->Enabled = false;
 				this->wasd->Visible = true;
 				this->space->Visible = true;
-				//@Daniel
 				this->DigitalStopWatch->Visible = true;
 				movePlayerTimer->Start();
 				Transition2->Enabled = false;
@@ -1207,7 +1205,6 @@ namespace M15Namespace {
 			this->progressBarLevel1->Increment(1);
 			LvlMethods->PlayerStats->timeTaken = ticks / 100;
 			ticks++;
-			//@Daniel : added total timer
 			DigitalStopWatch->Text = "Total time: " + System::Convert::ToString(LvlMethods->PlayerStats->timeTaken);
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
@@ -1220,7 +1217,6 @@ namespace M15Namespace {
 				else {
 					currentFeedbackLogoNum++;
 					LvlMethods->QuestionCompleted();
-					//@Daniel : patch
 					if (LvlMethods->QuestionsCompleted == 8) {
 						pictureBoxA->setLocation(870, pictureBoxA->Location.Y);
 						pictureBoxB->setLocation(870, pictureBoxA->Location.Y);
@@ -1397,5 +1393,5 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-};
+	};
 }
