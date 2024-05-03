@@ -794,10 +794,10 @@ namespace M15Namespace {
 		void destroyTF2()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_opened.png", false);
+			openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/bunker_opened.png", false);
 			openedDoor->setVisible(true);
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/bunker_closed.png", false);
+			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/bunker_closed.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -1380,13 +1380,8 @@ namespace M15Namespace {
 			delete soundImpact;
 			delete music;
 
-			std::string windowPrompt = "Level 3 of 4 feedback (Jungle)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points" + "\n" + "Score after Level 2: " + std::to_string(this->player->score) + " Points\n" + "\n\n" + "Total score: " + std::to_string(this->player->score + LvlMethods->PlayerStats->score);
-			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
-
-			window->Visible = false;
-			this->Hide();
-
+			int levelTimeTaken = LvlMethods->PlayerStats->timeTaken;
+			int levelScore = LvlMethods->PlayerStats->score;
 
 			msclr::interop::marshal_context context;
 			std::ofstream writer("textfiles/PlayerInfo.txt");
@@ -1400,6 +1395,13 @@ namespace M15Namespace {
 			writer << this->player->score << "\n";
 			writer << this->player->timeTaken;
 			writer.close();
+
+			std::string windowPrompt = "Level 3 of 4 feedback (Forest)\n\n\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points\n\nOverall time taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nOverall score: " + std::to_string(levelScore) + " Points";
+			String^ unwrapped = gcnew String(windowPrompt.c_str());
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
+
+			window->Visible = false;
+			this->Hide();
 
 			window->ShowDialog();
 

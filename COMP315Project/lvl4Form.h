@@ -505,7 +505,7 @@ namespace M15Namespace {
 			   this->MaximizeBox = false;
 			   this->Name = L"lvl4Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			   this->Text = L"Level 1";
+			   this->Text = L"Level 4 of 4";
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &lvl4Form::lvl4Form_FormClosing);
 			   this->Load += gcnew System::EventHandler(this, &lvl4Form::lvl4Form_Load);
 			   this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &lvl4Form::lvl4Form_KeyDown);
@@ -1456,13 +1456,8 @@ namespace M15Namespace {
 			delete soundImpact;
 			delete music;
 
-			std::string windowPrompt = "Level 1 feedback (Office)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points";
-			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
-
-			window->Visible = false;
-			this->Hide();
-
+			int levelTimeTaken = LvlMethods->PlayerStats->timeTaken;
+			int levelScore = LvlMethods->PlayerStats->score;
 
 			msclr::interop::marshal_context context;
 			std::ofstream writer("textfiles/PlayerInfo.txt");
@@ -1476,6 +1471,13 @@ namespace M15Namespace {
 			writer << this->player->score << "\n";
 			writer << this->player->timeTaken;
 			writer.close();
+
+			std::string windowPrompt = "Level 4 feedback (Final Level - Space)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points\n\nOverall time taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nOverall score: " + std::to_string(levelScore) + " Points";
+			String^ unwrapped = gcnew String(windowPrompt.c_str());
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
+
+			window->Visible = false;
+			this->Hide();
 
 			window->ShowDialog();
 

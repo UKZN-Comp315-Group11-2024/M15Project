@@ -70,11 +70,11 @@ int main(array<String^>^ args) {
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
 
-		lvl2Form lvl2;
-		Application::Run(% lvl2);
-
-		//lvl4Form lvl2;
+		//lvl2Form lvl2;
 		//Application::Run(% lvl2);
+
+		lvl3Form lvl2;
+		Application::Run(% lvl2);
 
 	//FaceRecognition fr;
 	//Application::Run(% fr);
