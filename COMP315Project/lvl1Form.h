@@ -591,7 +591,7 @@ namespace M15Namespace {
 		*/
 		System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
-			lvl1Brief->Text = "Level 1 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the option you wish to select.\n\n• If an option is obstructed, destroy its obstructions.\n\n• You will be granted 20 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Press Start To Begin>";
+			lvl1Brief->Text = "Level 1 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the door you wish to select.\n\n• If an option is obstructed, destroy its obstructions.\n\n• You will be granted 20 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Press Start To Begin>";
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
@@ -731,6 +731,8 @@ namespace M15Namespace {
 
 			if (!(x1 >= -325) && !(y1 <= 900) && !(y2 <= 1000) && !(x2 <= 1650))
 			{
+
+				this->Barrier->Visible = true;
 				this->progressBarLevel1->Visible = true;
 				this->playerlevel1->Visible = true;
 				this->playerlevel1->BringToFront();
@@ -766,7 +768,7 @@ namespace M15Namespace {
 			}
 			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
-			pbstart->Location = Point(405, y2);
+			pbstart->Location = Point(500, y2);
 			lvl1Brief->Location = Point(x2, 210);
 		}
 
@@ -776,7 +778,6 @@ namespace M15Namespace {
 		System::Void pbstart_Click(System::Object^ sender, System::EventArgs^ e) {
 			Transition1->Enabled = false;
 			Transition2->Start();
-			Barrier->Visible = true;
 			this->timerProgress->Start();
 		}
 
