@@ -205,7 +205,7 @@ namespace M15Namespace {
 			   this->MissLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->MissLabel->ForeColor = System::Drawing::Color::Red;
-			   this->MissLabel->Location = System::Drawing::Point(1193, 196);
+			   this->MissLabel->Location = System::Drawing::Point(1193, 192);
 			   this->MissLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->MissLabel->Name = L"MissLabel";
 			   this->MissLabel->Size = System::Drawing::Size(354, 31);
@@ -217,13 +217,13 @@ namespace M15Namespace {
 			   // 
 			   this->DigitalStopWatch->AutoSize = true;
 			   this->DigitalStopWatch->BackColor = System::Drawing::Color::Black;
-			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Courier New", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->DigitalStopWatch->Font = (gcnew System::Drawing::Font(L"Courier New", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->DigitalStopWatch->ForeColor = System::Drawing::Color::Red;
 			   this->DigitalStopWatch->Location = System::Drawing::Point(908, 192);
 			   this->DigitalStopWatch->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->DigitalStopWatch->Name = L"DigitalStopWatch";
-			   this->DigitalStopWatch->Size = System::Drawing::Size(110, 31);
+			   this->DigitalStopWatch->Size = System::Drawing::Size(116, 31);
 			   this->DigitalStopWatch->TabIndex = 46;
 			   this->DigitalStopWatch->Text = L"label1";
 			   this->DigitalStopWatch->Visible = false;
@@ -1372,12 +1372,8 @@ namespace M15Namespace {
 			delete soundImpact;
 			delete music;
 
-			std::string windowPrompt = "Level 2 of 4 feedback (Testing grounds)\n\nTime Taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points" + "\n" + "Score after Level 1: " + std::to_string(this->player->score) + " Points\n" + "\n\n" + "Total score: " + std::to_string(this->player->score + LvlMethods->PlayerStats->score);
-			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/BattlefieldSolidFloorDark.png");
-
-			window->Visible = false;
-			this->Hide();
+			int levelTimeTaken = LvlMethods->PlayerStats->timeTaken;
+			int levelScore = LvlMethods->PlayerStats->score;
 
 
 			msclr::interop::marshal_context context;
@@ -1392,6 +1388,14 @@ namespace M15Namespace {
 			writer << this->player->score << "\n";
 			writer << this->player->timeTaken;
 			writer.close();
+
+
+			std::string windowPrompt = "Level 2 of 4 feedback (Testing grounds)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points\n\nOverall time taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nOverall score: " + std::to_string(levelScore) + " Points";
+			String^ unwrapped = gcnew String(windowPrompt.c_str());
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/battlefieldDark.png");
+
+			window->Visible = false;
+			this->Hide();
 
 			window->ShowDialog();
 

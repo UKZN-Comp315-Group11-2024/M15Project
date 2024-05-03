@@ -83,7 +83,7 @@ void LevelMethods::QuestionAnswered(int option) {
 		this->QuestionsCompleted += 1;
 		this->QuestionsAnswered += 1;
 		if (option == CorrectOptionInt) {
-			this->PlayerStats->score += 1;
+			this->PlayerStats->score += 100;
 			this->PlayerStats->CorrectAnswers += 1;
 			this->Correct = true;
 		}

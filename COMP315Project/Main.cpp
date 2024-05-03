@@ -64,14 +64,14 @@ int main(array<String^>^ args) {
 		//Application::Run(% bonusLevelThree);
 
 
-		BonusLevelTwo bnt;
-		Application::Run(% bnt);
+		//BonusLevelTwo bnt;
+		//Application::Run(% bnt);
 
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
 
-		//lvl2Form lvl2;
-		//Application::Run(% lvl2);
+		lvl2Form lvl2;
+		Application::Run(% lvl2);
 
 		//lvl4Form lvl2;
 		//Application::Run(% lvl2);
