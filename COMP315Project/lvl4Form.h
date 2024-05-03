@@ -145,6 +145,7 @@ namespace M15Namespace {
 			   this->pbstart = (gcnew System::Windows::Forms::PictureBox());
 			   this->btnsafety = (gcnew System::Windows::Forms::Button());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->lvl1Brief = (gcnew System::Windows::Forms::Label());
 			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 			   this->textBoxTFA = (gcnew System::Windows::Forms::Label());
 			   this->textBoxD = (gcnew System::Windows::Forms::Label());
@@ -154,7 +155,6 @@ namespace M15Namespace {
 			   this->MissLabel = (gcnew System::Windows::Forms::Label());
 			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
-			   this->lvl1Brief = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
@@ -219,7 +219,7 @@ namespace M15Namespace {
 			   // 
 			   this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
 			   this->Barrier->Location = System::Drawing::Point(320, 239);
-			   this->Barrier->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Barrier->Margin = System::Windows::Forms::Padding(4);
 			   this->Barrier->Name = L"Barrier";
 			   this->Barrier->Size = System::Drawing::Size(69, 641);
 			   this->Barrier->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -259,7 +259,7 @@ namespace M15Namespace {
 			   this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			   this->progressBarLevel1->ForeColor = System::Drawing::Color::DarkOrange;
 			   this->progressBarLevel1->Location = System::Drawing::Point(901, 50);
-			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->progressBarLevel1->Maximum = 1200;
 			   this->progressBarLevel1->Name = L"progressBarLevel1";
 			   this->progressBarLevel1->Size = System::Drawing::Size(579, 61);
@@ -293,7 +293,7 @@ namespace M15Namespace {
 			   // ResultTextBox
 			   // 
 			   this->ResultTextBox->Location = System::Drawing::Point(0, 0);
-			   this->ResultTextBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->ResultTextBox->Margin = System::Windows::Forms::Padding(4);
 			   this->ResultTextBox->Name = L"ResultTextBox";
 			   this->ResultTextBox->Size = System::Drawing::Size(124, 22);
 			   this->ResultTextBox->TabIndex = 34;
@@ -303,7 +303,7 @@ namespace M15Namespace {
 			   // 
 			   this->playerlevel1->ImageLocation = L"assets/PlayerMove/spaceship.png";
 			   this->playerlevel1->Location = System::Drawing::Point(61, 491);
-			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->playerlevel1->Name = L"playerlevel1";
 			   this->playerlevel1->Size = System::Drawing::Size(121, 80);
 			   this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -330,7 +330,7 @@ namespace M15Namespace {
 			   // 
 			   this->pbstart->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbstart.Image")));
 			   this->pbstart->Location = System::Drawing::Point(500, 875);
-			   this->pbstart->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pbstart->Margin = System::Windows::Forms::Padding(4);
 			   this->pbstart->Name = L"pbstart";
 			   this->pbstart->Size = System::Drawing::Size(311, 311);
 			   this->pbstart->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -342,7 +342,7 @@ namespace M15Namespace {
 			   // 
 			   this->btnsafety->ForeColor = System::Drawing::Color::Transparent;
 			   this->btnsafety->Location = System::Drawing::Point(1549, 4);
-			   this->btnsafety->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->btnsafety->Margin = System::Windows::Forms::Padding(4);
 			   this->btnsafety->Name = L"btnsafety";
 			   this->btnsafety->Size = System::Drawing::Size(145, 824);
 			   this->btnsafety->TabIndex = 45;
@@ -377,10 +377,20 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->Barrier);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(-4, -25);
-			   this->panelLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1604, 885);
 			   this->panelLogin->TabIndex = 12;
+			   // 
+			   // lvl1Brief
+			   // 
+			   this->lvl1Brief->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lvl1Brief->ForeColor = System::Drawing::Color::Black;
+			   this->lvl1Brief->Location = System::Drawing::Point(1650, 264);
+			   this->lvl1Brief->Name = L"lvl1Brief";
+			   this->lvl1Brief->Size = System::Drawing::Size(342, 593);
+			   this->lvl1Brief->TabIndex = 60;
 			   // 
 			   // textBoxTFB
 			   // 
@@ -480,6 +490,7 @@ namespace M15Namespace {
 			   this->MissLabel->Size = System::Drawing::Size(313, 29);
 			   this->MissLabel->TabIndex = 49;
 			   this->MissLabel->Text = L"Missed!! +10 seconds";
+			   this->MissLabel->Visible = false;
 			   // 
 			   // DigitalStopWatch
 			   // 
@@ -502,16 +513,6 @@ namespace M15Namespace {
 			   this->missTimer->Interval = 500;
 			   this->missTimer->Tick += gcnew System::EventHandler(this, &lvl4Form::missTimer_Tick);
 			   // 
-			   // lvl1Brief
-			   // 
-			   this->lvl1Brief->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->lvl1Brief->ForeColor = System::Drawing::Color::Black;
-			   this->lvl1Brief->Location = System::Drawing::Point(1650, 264);
-			   this->lvl1Brief->Name = L"lvl1Brief";
-			   this->lvl1Brief->Size = System::Drawing::Size(342, 593);
-			   this->lvl1Brief->TabIndex = 60;
-			   // 
 			   // lvl4Form
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
@@ -521,7 +522,7 @@ namespace M15Namespace {
 			   this->Controls->Add(this->panelLogin);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			   this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
 			   this->Name = L"lvl4Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -617,6 +618,8 @@ namespace M15Namespace {
 		*/
 		System::Void lvl4Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
+			lvl1Brief->Text = "Level 4 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the meteor you wish to select.\n\n• If a meteor is obstructed, destroy its obstructions.\n\n• You will be granted 12 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
+
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
 			std::vector<std::string> v;
@@ -698,11 +701,12 @@ namespace M15Namespace {
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 			Point p3 = pbstart->Location;
-			int x = p1.X, y1 = p2.Y, y2 = p3.Y;
+			Point p4 = lvl1Brief->Location;
+			int x1 = p1.X, y1 = p2.Y, y2 = p3.Y, x2 = p4.X;
 
-			if (x <= 40)
+			if (x1 <= 40)
 			{
-				x += 10;
+				x1 += 10;
 			}
 			if (y1 >= 400)
 			{
@@ -712,11 +716,15 @@ namespace M15Namespace {
 			{
 				y2 -= 10;
 			}
+			if (x2 >= 1060)
+			{
+				x2 -= 10;
+			}
 
-			pbGeneralMilitary->Location = Point(x, 230);
+			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
 			pbstart->Location = Point(405, y2);
-
+			lvl1Brief->Location = Point(x2, 220);
 		}
 
 		/*
@@ -727,12 +735,12 @@ namespace M15Namespace {
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 			Point p3 = pbstart->Location;
+			Point p4 = lvl1Brief->Location;
+			int x1 = p1.X, y1 = p2.Y, y2 = p3.Y, x2 = p4.X;
 
-			int x = p1.X, y1 = p2.Y, y2 = p3.Y;
-
-			if (x >= -325)
+			if (x1 >= -325)
 			{
-				x -= 10;
+				x1 -= 10;
 			}
 			if (y1 <= 900)
 			{
@@ -742,8 +750,12 @@ namespace M15Namespace {
 			{
 				y2 += 10;
 			}
+			if (x2 <= 1650)
+			{
+				x2 += 10;
+			}
 
-			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
+			if (!(x1 >= -325) && !(y1 <= 900) && !(y2 <= 1000))
 			{
 				this->Barrier->Visible = true;
 				this->progressBarLevel1->Visible = true;
@@ -779,9 +791,10 @@ namespace M15Namespace {
 
 
 			}
-			pbGeneralMilitary->Location = Point(x, 230);
+			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
 			pbstart->Location = Point(405, y2);
+			lvl1Brief->Location = Point(x2, 220);
 		}
 
 		/*
@@ -806,7 +819,7 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_1.png", false);
+			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 770, 215, "assets/Doors/meteor_1.png", false);
 
 			des->addObject(pictureBoxTF1, destroyFuncTF1);
 
@@ -835,7 +848,7 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/meteor_1.png", false);
+			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 770, 455, "assets/Doors/meteor_1.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -843,11 +856,11 @@ namespace M15Namespace {
 
 			if (LvlMethods->Correct)
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/meteor_explode_right.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 770, 455, "assets/Doors/meteor_explode_right.png", false);
 			}
 			else
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_explode.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 770, 455, "assets/Doors/meteor_explode.png", false);
 			}
 			openedDoor->setVisible(true);
 
@@ -1286,9 +1299,9 @@ namespace M15Namespace {
 				pictureBoxC->Hide();
 				pictureBoxD->Hide();
 
-				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_1.png", false);
+				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 770, 215, "assets/Doors/meteor_1.png", false);
 				pictureBoxTF1->Hide();
-				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_1.png", false);
+				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 770, 455, "assets/Doors/meteor_1.png", false);
 				pictureBoxTF2->Hide();
 
 				des->addObject(pictureBoxTF1, destroyFuncTF1);
@@ -1418,11 +1431,11 @@ namespace M15Namespace {
 				openedDoor->BringToFront();
 				if (LvlMethods->Correct)
 				{
-					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_explode_right.png", false);
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 770, 215, "assets/Doors/meteor_explode_right.png", false);
 				}
 				else
 				{
-					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_explode.png", false);
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 770, 215, "assets/Doors/meteor_explode.png", false);
 				}
 				openedDoor->setVisible(true);
 
@@ -1432,11 +1445,11 @@ namespace M15Namespace {
 				openedDoor->BringToFront();
 				if (LvlMethods->Correct)
 				{
-					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_explode_right.png", false);
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 770, 455, "assets/Doors/meteor_explode_right.png", false);
 				}
 				else
 				{
-					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_explode.png", false);
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 770, 455, "assets/Doors/meteor_explode.png", false);
 				}
 				openedDoor->setVisible(true);
 			}

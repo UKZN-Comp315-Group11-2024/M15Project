@@ -756,7 +756,7 @@ namespace M15Namespace {
 
 			playerlevel1->ImageLocation = "assets/PlayerMove/idle.gif";
 
-			bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			bullet = gcnew definedPictureBox(panelLogin, 8, 4, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/9.png", false);
 			bullet->Hide();
 
 			pictureBoxArray = gcnew array<definedPictureBox^>(10);
@@ -1288,7 +1288,7 @@ namespace M15Namespace {
 			Instantiates a new bullet (called when a bullet has been destroyed)
 		*/
 		void addBullet(double velocityX, double velocityY, int x_pos, int y_pos) {
-			bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			bullet = gcnew definedPictureBox(panelLogin, 8, 4, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/9.png", false);
 			bullet->Show();
 			des->addBullet(bullet, velocityX, velocityY, x_pos, y_pos);
 		}

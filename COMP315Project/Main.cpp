@@ -73,7 +73,7 @@ int main(array<String^>^ args) {
 		//lvl3Form lvl3;
 		//Application::Run(% lvl3);
 
-		lvl2Form lvl2;
+		lvl1Form lvl2;
 		Application::Run(% lvl2);
 		//lvl4Form lvl4;
 		//Application::Run(% lvl4);
