@@ -33,8 +33,8 @@ int main(array<String^>^ args) {
 	//BootForm form;
 	//Application::Run(% form);
 
-	LoginForm loginForm;
-	Application::Run(% loginForm);
+	//LoginForm loginForm;
+	//Application::Run(% loginForm);
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
 
@@ -73,10 +73,10 @@ int main(array<String^>^ args) {
 		//lvl3Form lvl3;
 		//Application::Run(% lvl3);
 
-		//lvl2Form lvl2;
+		//lvl1Form lvl2;
 		//Application::Run(% lvl2);
-		//lvl4Form lvl4;
-		//Application::Run(% lvl4);
+		lvl4Form lvl4;
+		Application::Run(% lvl4);
 
 	//FaceRecognition fr;
 	//Application::Run(% fr);

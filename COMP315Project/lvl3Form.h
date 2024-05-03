@@ -250,7 +250,7 @@ namespace M15Namespace {
 			   // pbObstacle6
 			   // 
 			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
-			   this->pbObstacle6->Location = System::Drawing::Point(492, 652);
+			   this->pbObstacle6->Location = System::Drawing::Point(523, 649);
 			   this->pbObstacle6->Name = L"pbObstacle6";
 			   this->pbObstacle6->Size = System::Drawing::Size(92, 125);
 			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -261,7 +261,7 @@ namespace M15Namespace {
 			   // pbObstacle4
 			   // 
 			   this->pbObstacle4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle4.Image")));
-			   this->pbObstacle4->Location = System::Drawing::Point(721, 545);
+			   this->pbObstacle4->Location = System::Drawing::Point(705, 568);
 			   this->pbObstacle4->Name = L"pbObstacle4";
 			   this->pbObstacle4->Size = System::Drawing::Size(92, 125);
 			   this->pbObstacle4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -272,7 +272,7 @@ namespace M15Namespace {
 			   // pbObstacle5
 			   // 
 			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
-			   this->pbObstacle5->Location = System::Drawing::Point(832, 581);
+			   this->pbObstacle5->Location = System::Drawing::Point(867, 492);
 			   this->pbObstacle5->Name = L"pbObstacle5";
 			   this->pbObstacle5->Size = System::Drawing::Size(92, 125);
 			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -283,7 +283,7 @@ namespace M15Namespace {
 			   // pbObstacle3
 			   // 
 			   this->pbObstacle3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle3.Image")));
-			   this->pbObstacle3->Location = System::Drawing::Point(756, 390);
+			   this->pbObstacle3->Location = System::Drawing::Point(797, 334);
 			   this->pbObstacle3->Name = L"pbObstacle3";
 			   this->pbObstacle3->Size = System::Drawing::Size(92, 125);
 			   this->pbObstacle3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -294,7 +294,7 @@ namespace M15Namespace {
 			   // pbObstacle2
 			   // 
 			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
-			   this->pbObstacle2->Location = System::Drawing::Point(620, 390);
+			   this->pbObstacle2->Location = System::Drawing::Point(601, 390);
 			   this->pbObstacle2->Name = L"pbObstacle2";
 			   this->pbObstacle2->Size = System::Drawing::Size(92, 125);
 			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -706,7 +706,7 @@ namespace M15Namespace {
 		*/
 		System::Void lvl3Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
-			lvl1Brief->Text = "Level 3 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the bunker you wish to select.\n\n• If an option is obstructed, destroy its obstructions.\n\n• You will be granted 15 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Press Start To Begin>";
+			lvl1Brief->Text = "Level 3 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the bunker you wish to select.\n\n• If a bunker is obstructed, destroy its obstructions.\n\n• You will be granted 15 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
@@ -756,7 +756,7 @@ namespace M15Namespace {
 
 			playerlevel1->ImageLocation = "assets/PlayerMove/idle.gif";
 
-			bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			bullet = gcnew definedPictureBox(panelLogin, 8, 4, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/9.png", false);
 			bullet->Hide();
 
 			pictureBoxArray = gcnew array<definedPictureBox^>(10);
@@ -1288,7 +1288,7 @@ namespace M15Namespace {
 			Instantiates a new bullet (called when a bullet has been destroyed)
 		*/
 		void addBullet(double velocityX, double velocityY, int x_pos, int y_pos) {
-			bullet = gcnew definedPictureBox(panelLogin, 7, 2, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/3.png", false);
+			bullet = gcnew definedPictureBox(panelLogin, 8, 4, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/9.png", false);
 			bullet->Show();
 			des->addBullet(bullet, velocityX, velocityY, x_pos, y_pos);
 		}

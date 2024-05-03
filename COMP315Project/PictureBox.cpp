@@ -66,6 +66,7 @@ void definedPictureBox::pictureBox_Click(System::Object^ sender, System::EventAr
 	}
 	else
 	{
+		BonusSounds->playRandomSound("assets\\music\\ES_Human Grunt 15 - SFX Producer.wav", false);
 		BonusSounds->gunshot();
 	}
 }

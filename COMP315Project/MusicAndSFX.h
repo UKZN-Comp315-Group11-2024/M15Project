@@ -10,6 +10,7 @@ public:
 	sf::Music Background; //object that streams sound directly from source file
 	sf::Music music;//object that streams sound directly from source file
 	sf::Music randomSound;
+	sf::Music Thrusters;
 
 	MusicAndSFX();
 	~MusicAndSFX();
@@ -32,6 +33,7 @@ public:
 	void Forest();
 	void NightForest();
 	void Space();
+	void Thruster();
 
 
 	void StopSound();

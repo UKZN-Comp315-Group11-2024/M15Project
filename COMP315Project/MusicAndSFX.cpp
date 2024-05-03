@@ -8,7 +8,7 @@ MusicAndSFX::MusicAndSFX() {
 	Background.setVolume(70);//sets background sounds volume
 	music.setVolume(50); //sets music volume
 	randomSound.setVolume(100);
-
+	Thrusters.setVolume(50);
 }
 
 MusicAndSFX::~MusicAndSFX() {
@@ -90,6 +90,16 @@ void MusicAndSFX::Laser() {
 void MusicAndSFX::BulletImpact() {
 
 	if (!sound.openFromFile("assets\\music\\ES_Bullet Impact Metal 3 - SFX Producer.wav")) {  //opens music file
+		std::cout << "could not open music file" << std::endl;
+	}
+	sound.play();
+
+
+}
+
+void MusicAndSFX::Thruster() {
+
+	if (!sound.openFromFile("assets\\music\\ES_Rocket Booster 9 - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	sound.play();
