@@ -794,11 +794,11 @@ namespace M15Namespace {
 
 			if (LvlMethods->Correct)
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_explode_right.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/meteor_explode_right.png", false);
 			}
 			else
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_explode.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/meteor_explode.png", false);
 			}
 			openedDoor->setVisible(true);
 
@@ -815,7 +815,7 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_1.png", false);
+			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/meteor_1.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -823,7 +823,7 @@ namespace M15Namespace {
 
 			if (LvlMethods->Correct)
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_explode_right.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/meteor_explode_right.png", false);
 			}
 			else
 			{
@@ -1472,7 +1472,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
-			std::string windowPrompt = "Level 4 feedback (Final Level - Space)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points\n\nOverall time taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nOverall score: " + std::to_string(levelScore) + " Points";
+			std::string windowPrompt = "Level 4 feedback (Final Level - Space)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
 

@@ -1372,7 +1372,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
-			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points\n\nOverall time taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nOverall score: " + std::to_string(levelScore) + " Points";
+			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 
