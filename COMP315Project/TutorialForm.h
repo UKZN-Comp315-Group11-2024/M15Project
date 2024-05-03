@@ -9,13 +9,11 @@ namespace M15Namespace {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for TutorialForm
-	/// </summary>
 	public ref class TutorialForm : public System::Windows::Forms::Form
 	{
 	public:
 
+		//(Auto Generated)
 		TutorialForm(void)
 		{
 			InitializeComponent();
@@ -23,9 +21,7 @@ namespace M15Namespace {
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+		/// Clean up any resources being used.(Auto Generated)
 		~TutorialForm()
 		{
 			if (components)
@@ -37,10 +33,16 @@ namespace M15Namespace {
 
 	private:
 
+		//List contianing picture locations
 		List<String^>^ pictures = gcnew List<String^>;
+
+		//tracks which picture should currently be displayed
 		int currentSlideIndex = 0;
+
+		//music object
 		MusicAndSFX* sound = new MusicAndSFX;
 
+		//Components
 	    private: System::Windows::Forms::Button^ btnNext;
 	    private: System::Windows::Forms::Button^ previousButton;
 	    private: System::Windows::Forms::PictureBox^ pbImage;
@@ -51,7 +53,7 @@ namespace M15Namespace {
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
+		   /// <summary>(Auto Generated)
 		   /// Required method for Designer support - do not modify
 		   /// the contents of this method with the code editor.
 		   /// </summary>
