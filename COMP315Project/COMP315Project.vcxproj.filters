@@ -89,6 +89,9 @@
     <ClInclude Include="lvl3Form.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lvl4Form.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="COMP315Project.cpp">
@@ -151,8 +154,14 @@
     <ClCompile Include="TutorialForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="facerec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lvl4Form.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="lvl3Form.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +175,33 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\Retical\ret.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\BONUS LEVEL.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\door-tut.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\Door_Tutorial.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\feedbacktutorial1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\feedbacktutorial2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\feedback_tutorial.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\move The player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\Press SPACE to shoot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\Pictures\Camera Roll\tutorialexample.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
