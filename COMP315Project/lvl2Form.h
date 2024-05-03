@@ -42,6 +42,20 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ DigitalStopWatch;
 	private: System::Windows::Forms::Label^ MissLabel;
 	private: System::Windows::Forms::Timer^ missTimer;
+	private: System::Windows::Forms::PictureBox^ pbRandObject1;
+	private: System::Windows::Forms::PictureBox^ pbRandObject2;
+	private: System::Windows::Forms::PictureBox^ pbRandObject3;
+	private: System::Windows::Forms::PictureBox^ pbRandObject5;
+
+	private: System::Windows::Forms::PictureBox^ pbRandObject4;
+
+
+
+
+
+
+
+
 
 	private: System::Windows::Forms::Button^ btnsafety;
 
@@ -100,6 +114,11 @@ namespace M15Namespace {
 			   this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->pbRandObject5 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbRandObject4 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbRandObject3 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbRandObject2 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbRandObject1 = (gcnew System::Windows::Forms::PictureBox());
 			   this->MissLabel = (gcnew System::Windows::Forms::Label());
 			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
@@ -130,6 +149,11 @@ namespace M15Namespace {
 			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject5))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject4))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject3))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject2))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
@@ -172,6 +196,11 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->pbRandObject5);
+			   this->panelLogin->Controls->Add(this->pbRandObject4);
+			   this->panelLogin->Controls->Add(this->pbRandObject3);
+			   this->panelLogin->Controls->Add(this->pbRandObject2);
+			   this->panelLogin->Controls->Add(this->pbRandObject1);
 			   this->panelLogin->Controls->Add(this->MissLabel);
 			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
@@ -197,6 +226,62 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1604, 885);
 			   this->panelLogin->TabIndex = 12;
+			   // 
+			   // pbRandObject5
+			   // 
+			   this->pbRandObject5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject5.Image")));
+			   this->pbRandObject5->Location = System::Drawing::Point(914, 703);
+			   this->pbRandObject5->Name = L"pbRandObject5";
+			   this->pbRandObject5->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbRandObject5->TabIndex = 52;
+			   this->pbRandObject5->TabStop = false;
+			   this->pbRandObject5->Visible = false;
+			   // 
+			   // pbRandObject4
+			   // 
+			   this->pbRandObject4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject4.Image")));
+			   this->pbRandObject4->Location = System::Drawing::Point(802, 562);
+			   this->pbRandObject4->Name = L"pbRandObject4";
+			   this->pbRandObject4->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbRandObject4->TabIndex = 51;
+			   this->pbRandObject4->TabStop = false;
+			   this->pbRandObject4->Visible = false;
+			   // 
+			   // pbRandObject3
+			   // 
+			   this->pbRandObject3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject3.Image")));
+			   this->pbRandObject3->Location = System::Drawing::Point(902, 412);
+			   this->pbRandObject3->Name = L"pbRandObject3";
+			   this->pbRandObject3->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbRandObject3->TabIndex = 50;
+			   this->pbRandObject3->TabStop = false;
+			   this->pbRandObject3->Visible = false;
+			   // 
+			   // pbRandObject2
+			   // 
+			   this->pbRandObject2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject2.Image")));
+			   this->pbRandObject2->Location = System::Drawing::Point(775, 288);
+			   this->pbRandObject2->MaximumSize = System::Drawing::Size(92, 125);
+			   this->pbRandObject2->Name = L"pbRandObject2";
+			   this->pbRandObject2->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbRandObject2->TabIndex = 49;
+			   this->pbRandObject2->TabStop = false;
+			   this->pbRandObject2->Visible = false;
+			   // 
+			   // pbRandObject1
+			   // 
+			   this->pbRandObject1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject1.Image")));
+			   this->pbRandObject1->Location = System::Drawing::Point(877, 261);
+			   this->pbRandObject1->Name = L"pbRandObject1";
+			   this->pbRandObject1->Size = System::Drawing::Size(92, 125);
+			   this->pbRandObject1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbRandObject1->TabIndex = 48;
+			   this->pbRandObject1->TabStop = false;
+			   this->pbRandObject1->Visible = false;
 			   // 
 			   // MissLabel
 			   // 
@@ -495,6 +580,11 @@ namespace M15Namespace {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject5))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject4))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject3))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject2))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbRandObject1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
@@ -529,6 +619,10 @@ namespace M15Namespace {
 		Destructible::DestroyFunction^ destroyFuncTF1 = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyTF1);
 		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyTF2);
 		Destructible::DestroyFunction^ destroyFuncSafety = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroySafety);
+
+		//Destructable objects (obstactles) 
+		Destructible::DestroyFunction^ destroyFuncRandomObject = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyRandomObject);
+
 
 		definedPictureBox^ bullet;
 
@@ -649,6 +743,14 @@ namespace M15Namespace {
 
 			des->addObject(this->btnsafety, destroyFuncSafety);
 
+			//destructable objects(they're all barrels for, will change later)
+			des->addObject(this->pbRandObject1, destroyFuncRandomObject);
+			des->addObject(this->pbRandObject2, destroyFuncRandomObject);
+			des->addObject(this->pbRandObject3, destroyFuncRandomObject);
+			des->addObject(this->pbRandObject4, destroyFuncRandomObject);
+			des->addObject(this->pbRandObject5, destroyFuncRandomObject);
+
+
 			ambience->Forest();
 			ambience->playRandomSound("assets\\music\\grassburning.wav", true);
 			music->LevelTwoMusic();
@@ -741,6 +843,14 @@ namespace M15Namespace {
 
 				}
 				LvlMethods->DisplayNextQuestionSet();
+				
+				//make obstacles visible
+				pbRandObject1->Visible = true;
+				pbRandObject2->Visible = true;
+				pbRandObject3->Visible = true;
+				pbRandObject4->Visible = true;
+				pbRandObject5->Visible = true;
+
 
 
 			}
@@ -894,6 +1004,7 @@ namespace M15Namespace {
 			}
 		}
 
+
 		/*
 			Respawns the safety barrier beyond the questions if a bullet happens to get pass the doors
 			Shows the player that 10 seconds has been added to their time
@@ -906,6 +1017,10 @@ namespace M15Namespace {
 			pbSafety->Hide();
 			ambience->playRandomSound("assets\\music\\ouch.wav", false);
 			des->addObject(pbSafety, destroyFuncSafety);
+		}
+
+		void destroyRandomObject() {
+
 		}
 
 		/*

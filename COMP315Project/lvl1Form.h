@@ -533,6 +533,11 @@ namespace M15Namespace {
 		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyTF2);
 		Destructible::DestroyFunction^ destroyFuncSafety = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroySafety);
 
+		//random object
+		Destructible::DestroyFunction^ destroyFuncRandomObject = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyRandomObject);
+
+
+
 		definedPictureBox^ bullet;
 
 		definedPictureBox^ pictureBoxA;
@@ -649,6 +654,7 @@ namespace M15Namespace {
 			textBoxQuestion->BackgroundImageLayout = ImageLayout::Stretch;
 
 			des->addObject(this->btnsafety, destroyFuncSafety);
+			
 
 			ambience->OfficeNoise();
 			music->LevelOneMusic();
@@ -901,6 +907,12 @@ namespace M15Namespace {
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
 			ambience->playRandomSound("assets\\music\\ouch.wav", false);
+		}
+
+		//random object (barrel)
+		void destroyRandomObject() {
+			
+
 		}
 
 		/*

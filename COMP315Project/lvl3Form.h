@@ -43,6 +43,17 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ DigitalStopWatch;
 	private: System::Windows::Forms::Label^ MissLabel;
 	private: System::Windows::Forms::Timer^ missTimer;
+	private: System::Windows::Forms::PictureBox^ pbObstacle1;
+	private: System::Windows::Forms::PictureBox^ pbObstacle2;
+	private: System::Windows::Forms::PictureBox^ pbObstacle3;
+	private: System::Windows::Forms::PictureBox^ pbObstacle4;
+	private: System::Windows::Forms::PictureBox^ pbObstacle5;
+	private: System::Windows::Forms::PictureBox^ pbObstacle6;
+
+
+
+
+
 	private: System::Windows::Forms::Button^ btnsafety;
 
 
@@ -100,6 +111,12 @@ namespace M15Namespace {
 			   this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->pbObstacle6 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle4 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle5 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle3 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle2 = (gcnew System::Windows::Forms::PictureBox());
+			   this->pbObstacle1 = (gcnew System::Windows::Forms::PictureBox());
 			   this->MissLabel = (gcnew System::Windows::Forms::Label());
 			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
@@ -131,6 +148,12 @@ namespace M15Namespace {
 			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle4))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle5))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle3))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle2))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->BeginInit();
@@ -173,6 +196,12 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->pbObstacle6);
+			   this->panelLogin->Controls->Add(this->pbObstacle4);
+			   this->panelLogin->Controls->Add(this->pbObstacle5);
+			   this->panelLogin->Controls->Add(this->pbObstacle3);
+			   this->panelLogin->Controls->Add(this->pbObstacle2);
+			   this->panelLogin->Controls->Add(this->pbObstacle1);
 			   this->panelLogin->Controls->Add(this->MissLabel);
 			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
@@ -198,6 +227,72 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1603, 885);
 			   this->panelLogin->TabIndex = 12;
+			   // 
+			   // pbObstacle6
+			   // 
+			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
+			   this->pbObstacle6->Location = System::Drawing::Point(492, 652);
+			   this->pbObstacle6->Name = L"pbObstacle6";
+			   this->pbObstacle6->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle6->TabIndex = 55;
+			   this->pbObstacle6->TabStop = false;
+			   this->pbObstacle6->Visible = false;
+			   // 
+			   // pbObstacle4
+			   // 
+			   this->pbObstacle4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle4.Image")));
+			   this->pbObstacle4->Location = System::Drawing::Point(721, 545);
+			   this->pbObstacle4->Name = L"pbObstacle4";
+			   this->pbObstacle4->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle4->TabIndex = 54;
+			   this->pbObstacle4->TabStop = false;
+			   this->pbObstacle4->Visible = false;
+			   // 
+			   // pbObstacle5
+			   // 
+			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
+			   this->pbObstacle5->Location = System::Drawing::Point(832, 581);
+			   this->pbObstacle5->Name = L"pbObstacle5";
+			   this->pbObstacle5->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle5->TabIndex = 53;
+			   this->pbObstacle5->TabStop = false;
+			   this->pbObstacle5->Visible = false;
+			   // 
+			   // pbObstacle3
+			   // 
+			   this->pbObstacle3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle3.Image")));
+			   this->pbObstacle3->Location = System::Drawing::Point(756, 390);
+			   this->pbObstacle3->Name = L"pbObstacle3";
+			   this->pbObstacle3->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle3->TabIndex = 52;
+			   this->pbObstacle3->TabStop = false;
+			   this->pbObstacle3->Visible = false;
+			   // 
+			   // pbObstacle2
+			   // 
+			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
+			   this->pbObstacle2->Location = System::Drawing::Point(620, 390);
+			   this->pbObstacle2->Name = L"pbObstacle2";
+			   this->pbObstacle2->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle2->TabIndex = 51;
+			   this->pbObstacle2->TabStop = false;
+			   this->pbObstacle2->Visible = false;
+			   // 
+			   // pbObstacle1
+			   // 
+			   this->pbObstacle1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle1.Image")));
+			   this->pbObstacle1->Location = System::Drawing::Point(663, 249);
+			   this->pbObstacle1->Name = L"pbObstacle1";
+			   this->pbObstacle1->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			   this->pbObstacle1->TabIndex = 50;
+			   this->pbObstacle1->TabStop = false;
+			   this->pbObstacle1->Visible = false;
 			   // 
 			   // MissLabel
 			   // 
@@ -500,6 +595,12 @@ namespace M15Namespace {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle4))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle5))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle3))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle2))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbstart))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->playerlevel1))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->space))->EndInit();
@@ -535,6 +636,7 @@ namespace M15Namespace {
 		Destructible::DestroyFunction^ destroyFuncTF1 = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyTF1);
 		Destructible::DestroyFunction^ destroyFuncTF2 = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyTF2);
 		Destructible::DestroyFunction^ destroyFuncSafety = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroySafety);
+		Destructible::DestroyFunction^ destroyFuncObstacle = gcnew Destructible::DestroyFunction(this, &lvl3Form::destroyObstacle);
 
 		definedPictureBox^ bullet;
 
@@ -654,6 +756,15 @@ namespace M15Namespace {
 			textBoxQuestion->BackgroundImageLayout = ImageLayout::Stretch;
 
 			des->addObject(this->btnsafety, destroyFuncSafety);
+			//Obstacles
+			//destructable objects(they're all barrels for, will change later)
+			des->addObject(this->pbObstacle1, destroyFuncObstacle);
+			des->addObject(this->pbObstacle2, destroyFuncObstacle);
+			des->addObject(this->pbObstacle3, destroyFuncObstacle);
+			des->addObject(this->pbObstacle4, destroyFuncObstacle);
+			des->addObject(this->pbObstacle5, destroyFuncObstacle);
+			des->addObject(this->pbObstacle6, destroyFuncObstacle);
+			
 
 			ambience->NightForest();
 			music->LevelThreeMusic();
@@ -744,6 +855,15 @@ namespace M15Namespace {
 					pictureBoxArray[i]->setVisible(true);
 
 				}
+
+				//displaying obstacles
+				pbObstacle1->Visible = true;
+				pbObstacle2->Visible = true;
+				pbObstacle3->Visible = true;
+				pbObstacle4->Visible = true;
+				pbObstacle5->Visible = true;
+				pbObstacle6->Visible = true;
+
 				LvlMethods->DisplayNextQuestionSet();
 
 
@@ -910,6 +1030,11 @@ namespace M15Namespace {
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
 			ambience->playRandomSound("assets\\music\\ouch.wav", false);
+		}
+
+		void destroyObstacle(){
+
+
 		}
 
 		/*
