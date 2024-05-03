@@ -234,8 +234,17 @@ namespace M15Namespace {
 				}
 			}
 
-			lblMessage1->Text = "Welcome To The Second Bonus Level:\n\nMore rogue assassins to a total of 30\nare trying to intercept us.\nThey are smaller in size so\nensure each shot is done with precision.\n\nNeutralize the threat!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
+			lblMessage1->Text = "Welcome To The Second Bonus Level:\n\nMore rogue assassins - a total of 30\nare trying to intercept us.\nThey are smaller in size so\nensure each shot is done with precision.\n\nNeutralize the threat!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
 			Transition1->Start();
+		}
+
+		System::Void BonusLevelTwo_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			if (e->KeyCode == Keys::Enter && Transition1->Enabled == true)
+			{
+				Transition1->Stop();
+				Transition1->Enabled = false;
+				Transition2->Start();
+			}
 		}
 
 		System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -246,7 +255,7 @@ namespace M15Namespace {
 
 			if (x <= 40)
 			{
-				x += 10;
+				x += 6;
 			}
 			if (y1 >= 220)
 			{
@@ -256,6 +265,7 @@ namespace M15Namespace {
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(380, y1);
 		}
+
 		System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
@@ -271,7 +281,6 @@ namespace M15Namespace {
 				y1 += 15;
 			}
 
-			// ensuring all stuff leaves screen before showing the player
 			if (!(x >= -325) && !(y1 <= 900))
 			{
 				panelBonusLevel->Cursor = gcnew System::Windows::Forms::Cursor("assets/Retical/ShootRetical2.cur");
@@ -290,15 +299,6 @@ namespace M15Namespace {
 				TargetTimer->Stop();
 			}
 			targetNum++;
-		}
-
-		System::Void BonusLevelTwo_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-			if (e->KeyCode == Keys::Enter && Transition1->Enabled == true)
-			{
-				Transition1->Stop();
-				Transition1->Enabled = false;
-				Transition2->Start();
-			}
 		}
 
 		System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {

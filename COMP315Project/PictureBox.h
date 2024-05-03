@@ -19,8 +19,10 @@ public:
 	int numClicks();
 	void setSpeed(int speed);
 	int definedPictureBox::getSpeed();
+	void setAudioClickType(String^ audioType);
 
 private:
 	int countClick = 0;
 	int speed = 0;
+	String^ audioType;
 };

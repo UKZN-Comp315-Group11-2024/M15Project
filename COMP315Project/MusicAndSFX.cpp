@@ -185,7 +185,7 @@ void MusicAndSFX::NightForest() {
 
 void MusicAndSFX::Space() {
 
-	if (!Background.openFromFile("assets\\music\\.ES_Drone Empty Void - SFX Producer.wav")) {  //opens music file
+	if (!Background.openFromFile("assets\\music\\ES_Drone Empty Void - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	Background.play();
