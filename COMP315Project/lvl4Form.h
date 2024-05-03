@@ -480,7 +480,7 @@ namespace M15Namespace {
 			   // pbAsteroid18
 			   // 
 			   this->pbAsteroid18->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid18.Image")));
-			   this->pbAsteroid18->Location = System::Drawing::Point(429, 720);
+			   this->pbAsteroid18->Location = System::Drawing::Point(438, 645);
 			   this->pbAsteroid18->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid18->Name = L"pbAsteroid18";
 			   this->pbAsteroid18->Size = System::Drawing::Size(44, 42);
@@ -492,7 +492,7 @@ namespace M15Namespace {
 			   // pbAsteroid6
 			   // 
 			   this->pbAsteroid6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid6.Image")));
-			   this->pbAsteroid6->Location = System::Drawing::Point(651, 252);
+			   this->pbAsteroid6->Location = System::Drawing::Point(788, 267);
 			   this->pbAsteroid6->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid6->Name = L"pbAsteroid6";
 			   this->pbAsteroid6->Size = System::Drawing::Size(42, 42);
@@ -504,7 +504,7 @@ namespace M15Namespace {
 			   // pbAsteroid12
 			   // 
 			   this->pbAsteroid12->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid12.Image")));
-			   this->pbAsteroid12->Location = System::Drawing::Point(469, 553);
+			   this->pbAsteroid12->Location = System::Drawing::Point(487, 447);
 			   this->pbAsteroid12->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid12->Name = L"pbAsteroid12";
 			   this->pbAsteroid12->Size = System::Drawing::Size(51, 45);
@@ -516,7 +516,7 @@ namespace M15Namespace {
 			   // pbAsteroid17
 			   // 
 			   this->pbAsteroid17->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid17.Image")));
-			   this->pbAsteroid17->Location = System::Drawing::Point(406, 634);
+			   this->pbAsteroid17->Location = System::Drawing::Point(431, 530);
 			   this->pbAsteroid17->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid17->Name = L"pbAsteroid17";
 			   this->pbAsteroid17->Size = System::Drawing::Size(51, 39);
@@ -528,7 +528,7 @@ namespace M15Namespace {
 			   // pbAsteroid5
 			   // 
 			   this->pbAsteroid5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid5.Image")));
-			   this->pbAsteroid5->Location = System::Drawing::Point(406, 792);
+			   this->pbAsteroid5->Location = System::Drawing::Point(420, 734);
 			   this->pbAsteroid5->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid5->Name = L"pbAsteroid5";
 			   this->pbAsteroid5->Size = System::Drawing::Size(98, 70);
@@ -540,7 +540,7 @@ namespace M15Namespace {
 			   // pbAsteroid14
 			   // 
 			   this->pbAsteroid14->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid14.Image")));
-			   this->pbAsteroid14->Location = System::Drawing::Point(694, 601);
+			   this->pbAsteroid14->Location = System::Drawing::Point(757, 598);
 			   this->pbAsteroid14->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid14->Name = L"pbAsteroid14";
 			   this->pbAsteroid14->Size = System::Drawing::Size(44, 39);
@@ -552,7 +552,7 @@ namespace M15Namespace {
 			   // pbAsteroid13
 			   // 
 			   this->pbAsteroid13->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid13.Image")));
-			   this->pbAsteroid13->Location = System::Drawing::Point(727, 532);
+			   this->pbAsteroid13->Location = System::Drawing::Point(811, 530);
 			   this->pbAsteroid13->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid13->Name = L"pbAsteroid13";
 			   this->pbAsteroid13->Size = System::Drawing::Size(44, 39);
@@ -564,7 +564,7 @@ namespace M15Namespace {
 			   // pbAsteroid11
 			   // 
 			   this->pbAsteroid11->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid11.Image")));
-			   this->pbAsteroid11->Location = System::Drawing::Point(678, 482);
+			   this->pbAsteroid11->Location = System::Drawing::Point(743, 482);
 			   this->pbAsteroid11->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid11->Name = L"pbAsteroid11";
 			   this->pbAsteroid11->Size = System::Drawing::Size(44, 39);
@@ -576,7 +576,7 @@ namespace M15Namespace {
 			   // pbAsteroid3
 			   // 
 			   this->pbAsteroid3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid3.Image")));
-			   this->pbAsteroid3->Location = System::Drawing::Point(572, 532);
+			   this->pbAsteroid3->Location = System::Drawing::Point(605, 547);
 			   this->pbAsteroid3->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid3->Name = L"pbAsteroid3";
 			   this->pbAsteroid3->Size = System::Drawing::Size(120, 90);
@@ -588,7 +588,7 @@ namespace M15Namespace {
 			   // pbAsteroid15
 			   // 
 			   this->pbAsteroid15->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid15.Image")));
-			   this->pbAsteroid15->Location = System::Drawing::Point(513, 648);
+			   this->pbAsteroid15->Location = System::Drawing::Point(513, 587);
 			   this->pbAsteroid15->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid15->Name = L"pbAsteroid15";
 			   this->pbAsteroid15->Size = System::Drawing::Size(32, 25);
@@ -600,7 +600,7 @@ namespace M15Namespace {
 			   // pbAsteroid16
 			   // 
 			   this->pbAsteroid16->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid16.Image")));
-			   this->pbAsteroid16->Location = System::Drawing::Point(657, 662);
+			   this->pbAsteroid16->Location = System::Drawing::Point(723, 682);
 			   this->pbAsteroid16->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid16->Name = L"pbAsteroid16";
 			   this->pbAsteroid16->Size = System::Drawing::Size(48, 36);
@@ -612,7 +612,7 @@ namespace M15Namespace {
 			   // pbAsteroid19
 			   // 
 			   this->pbAsteroid19->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid19.Image")));
-			   this->pbAsteroid19->Location = System::Drawing::Point(497, 754);
+			   this->pbAsteroid19->Location = System::Drawing::Point(513, 682);
 			   this->pbAsteroid19->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid19->Name = L"pbAsteroid19";
 			   this->pbAsteroid19->Size = System::Drawing::Size(48, 36);
@@ -624,7 +624,7 @@ namespace M15Namespace {
 			   // pbAsteroid4
 			   // 
 			   this->pbAsteroid4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid4.Image")));
-			   this->pbAsteroid4->Location = System::Drawing::Point(557, 684);
+			   this->pbAsteroid4->Location = System::Drawing::Point(590, 682);
 			   this->pbAsteroid4->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid4->Name = L"pbAsteroid4";
 			   this->pbAsteroid4->Size = System::Drawing::Size(94, 78);
@@ -636,7 +636,7 @@ namespace M15Namespace {
 			   // pbAsteroid7
 			   // 
 			   this->pbAsteroid7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid7.Image")));
-			   this->pbAsteroid7->Location = System::Drawing::Point(447, 314);
+			   this->pbAsteroid7->Location = System::Drawing::Point(487, 273);
 			   this->pbAsteroid7->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid7->Name = L"pbAsteroid7";
 			   this->pbAsteroid7->Size = System::Drawing::Size(48, 36);
@@ -648,7 +648,7 @@ namespace M15Namespace {
 			   // pbAsteroid8
 			   // 
 			   this->pbAsteroid8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid8.Image")));
-			   this->pbAsteroid8->Location = System::Drawing::Point(651, 352);
+			   this->pbAsteroid8->Location = System::Drawing::Point(753, 361);
 			   this->pbAsteroid8->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid8->Name = L"pbAsteroid8";
 			   this->pbAsteroid8->Size = System::Drawing::Size(48, 36);
@@ -660,7 +660,7 @@ namespace M15Namespace {
 			   // pbAsteroid1
 			   // 
 			   this->pbAsteroid1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid1.Image")));
-			   this->pbAsteroid1->Location = System::Drawing::Point(524, 236);
+			   this->pbAsteroid1->Location = System::Drawing::Point(618, 252);
 			   this->pbAsteroid1->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid1->Name = L"pbAsteroid1";
 			   this->pbAsteroid1->Size = System::Drawing::Size(98, 70);
@@ -672,7 +672,7 @@ namespace M15Namespace {
 			   // pbAsteroid10
 			   // 
 			   this->pbAsteroid10->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid10.Image")));
-			   this->pbAsteroid10->Location = System::Drawing::Point(585, 447);
+			   this->pbAsteroid10->Location = System::Drawing::Point(618, 476);
 			   this->pbAsteroid10->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid10->Name = L"pbAsteroid10";
 			   this->pbAsteroid10->Size = System::Drawing::Size(48, 36);
@@ -684,7 +684,7 @@ namespace M15Namespace {
 			   // pbAsteroid9
 			   // 
 			   this->pbAsteroid9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid9.Image")));
-			   this->pbAsteroid9->Location = System::Drawing::Point(469, 447);
+			   this->pbAsteroid9->Location = System::Drawing::Point(460, 352);
 			   this->pbAsteroid9->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid9->Name = L"pbAsteroid9";
 			   this->pbAsteroid9->Size = System::Drawing::Size(44, 45);
@@ -696,7 +696,7 @@ namespace M15Namespace {
 			   // pbAsteroid2
 			   // 
 			   this->pbAsteroid2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbAsteroid2.Image")));
-			   this->pbAsteroid2->Location = System::Drawing::Point(497, 338);
+			   this->pbAsteroid2->Location = System::Drawing::Point(581, 353);
 			   this->pbAsteroid2->Margin = System::Windows::Forms::Padding(1);
 			   this->pbAsteroid2->Name = L"pbAsteroid2";
 			   this->pbAsteroid2->Size = System::Drawing::Size(125, 95);
