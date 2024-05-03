@@ -60,6 +60,7 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ textBoxC;
 	private: System::Windows::Forms::Label^ textBoxB;
 	private: System::Windows::Forms::Label^ textBoxA;
+	private: System::Windows::Forms::Label^ lvl1Brief;
 	private: System::Windows::Forms::Button^ btnsafety;
 
 
@@ -117,12 +118,19 @@ namespace M15Namespace {
 			   this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			   this->lvl1Brief = (gcnew System::Windows::Forms::Label());
 			   this->pbObstacle6 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbObstacle4 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbObstacle5 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbObstacle3 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbObstacle2 = (gcnew System::Windows::Forms::PictureBox());
 			   this->pbObstacle1 = (gcnew System::Windows::Forms::PictureBox());
+			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
+			   this->textBoxTFA = (gcnew System::Windows::Forms::Label());
+			   this->textBoxD = (gcnew System::Windows::Forms::Label());
+			   this->textBoxC = (gcnew System::Windows::Forms::Label());
+			   this->textBoxB = (gcnew System::Windows::Forms::Label());
+			   this->textBoxA = (gcnew System::Windows::Forms::Label());
 			   this->MissLabel = (gcnew System::Windows::Forms::Label());
 			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   this->btnsafety = (gcnew System::Windows::Forms::Button());
@@ -146,12 +154,6 @@ namespace M15Namespace {
 			   this->QuestionTransitionTimerHide = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerfinal = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
-			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
-			   this->textBoxTFA = (gcnew System::Windows::Forms::Label());
-			   this->textBoxD = (gcnew System::Windows::Forms::Label());
-			   this->textBoxC = (gcnew System::Windows::Forms::Label());
-			   this->textBoxB = (gcnew System::Windows::Forms::Label());
-			   this->textBoxA = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   this->panelLogin->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbObstacle6))->BeginInit();
@@ -202,14 +204,13 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			   this->panelLogin->Controls->Add(this->lvl1Brief);
 			   this->panelLogin->Controls->Add(this->pbObstacle6);
 			   this->panelLogin->Controls->Add(this->pbObstacle4);
 			   this->panelLogin->Controls->Add(this->pbObstacle5);
 			   this->panelLogin->Controls->Add(this->pbObstacle3);
 			   this->panelLogin->Controls->Add(this->pbObstacle2);
 			   this->panelLogin->Controls->Add(this->pbObstacle1);
-			   this->panelLogin->Controls->Add(this->MissLabel);
-			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->Controls->Add(this->textBoxTFA);
 			   this->panelLogin->Controls->Add(this->textBoxD);
@@ -235,6 +236,16 @@ namespace M15Namespace {
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1603, 885);
 			   this->panelLogin->TabIndex = 12;
+			   // 
+			   // lvl1Brief
+			   // 
+			   this->lvl1Brief->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lvl1Brief->ForeColor = System::Drawing::Color::Black;
+			   this->lvl1Brief->Location = System::Drawing::Point(1650, 264);
+			   this->lvl1Brief->Name = L"lvl1Brief";
+			   this->lvl1Brief->Size = System::Drawing::Size(342, 593);
+			   this->lvl1Brief->TabIndex = 60;
 			   // 
 			   // pbObstacle6
 			   // 
@@ -301,6 +312,91 @@ namespace M15Namespace {
 			   this->pbObstacle1->TabIndex = 50;
 			   this->pbObstacle1->TabStop = false;
 			   this->pbObstacle1->Visible = false;
+			   // 
+			   // textBoxTFB
+			   // 
+			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxTFB->Location = System::Drawing::Point(1322, 605);
+			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFB->Name = L"textBoxTFB";
+			   this->textBoxTFB->Size = System::Drawing::Size(241, 88);
+			   this->textBoxTFB->TabIndex = 59;
+			   this->textBoxTFB->Text = L"TF2";
+			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxTFB->Visible = false;
+			   // 
+			   // textBoxTFA
+			   // 
+			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxTFA->Location = System::Drawing::Point(1322, 348);
+			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFA->Name = L"textBoxTFA";
+			   this->textBoxTFA->Size = System::Drawing::Size(238, 81);
+			   this->textBoxTFA->TabIndex = 58;
+			   this->textBoxTFA->Text = L"TF1";
+			   this->textBoxTFA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxTFA->Visible = false;
+			   // 
+			   // textBoxD
+			   // 
+			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxD->Location = System::Drawing::Point(1322, 706);
+			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxD->Name = L"textBoxD";
+			   this->textBoxD->Size = System::Drawing::Size(300, 120);
+			   this->textBoxD->TabIndex = 57;
+			   this->textBoxD->Text = L"Option D";
+			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxD->Visible = false;
+			   // 
+			   // textBoxC
+			   // 
+			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxC->Location = System::Drawing::Point(1322, 558);
+			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxC->Name = L"textBoxC";
+			   this->textBoxC->Size = System::Drawing::Size(300, 120);
+			   this->textBoxC->TabIndex = 56;
+			   this->textBoxC->Text = L"Option C";
+			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxC->Visible = false;
+			   // 
+			   // textBoxB
+			   // 
+			   this->textBoxB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxB->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxB->Location = System::Drawing::Point(1322, 413);
+			   this->textBoxB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxB->Name = L"textBoxB";
+			   this->textBoxB->Size = System::Drawing::Size(300, 120);
+			   this->textBoxB->TabIndex = 55;
+			   this->textBoxB->Text = L"Option B";
+			   this->textBoxB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxB->Visible = false;
+			   // 
+			   // textBoxA
+			   // 
+			   this->textBoxA->BackColor = System::Drawing::Color::Transparent;
+			   this->textBoxA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxA->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxA->Location = System::Drawing::Point(1322, 248);
+			   this->textBoxA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxA->Name = L"textBoxA";
+			   this->textBoxA->Size = System::Drawing::Size(300, 120);
+			   this->textBoxA->TabIndex = 54;
+			   this->textBoxA->Text = L"Option A";
+			   this->textBoxA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxA->Visible = false;
 			   // 
 			   // MissLabel
 			   // 
@@ -498,91 +594,6 @@ namespace M15Namespace {
 			   this->missTimer->Interval = 500;
 			   this->missTimer->Tick += gcnew System::EventHandler(this, &lvl3Form::missTimer_Tick);
 			   // 
-			   // textBoxTFB
-			   // 
-			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFB->Location = System::Drawing::Point(1322, 605);
-			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxTFB->Name = L"textBoxTFB";
-			   this->textBoxTFB->Size = System::Drawing::Size(241, 88);
-			   this->textBoxTFB->TabIndex = 59;
-			   this->textBoxTFB->Text = L"TF2";
-			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxTFB->Visible = false;
-			   // 
-			   // textBoxTFA
-			   // 
-			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1322, 348);
-			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxTFA->Name = L"textBoxTFA";
-			   this->textBoxTFA->Size = System::Drawing::Size(238, 81);
-			   this->textBoxTFA->TabIndex = 58;
-			   this->textBoxTFA->Text = L"TF1";
-			   this->textBoxTFA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxTFA->Visible = false;
-			   // 
-			   // textBoxD
-			   // 
-			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxD->Location = System::Drawing::Point(1322, 679);
-			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxD->Name = L"textBoxD";
-			   this->textBoxD->Size = System::Drawing::Size(300, 120);
-			   this->textBoxD->TabIndex = 57;
-			   this->textBoxD->Text = L"Option D";
-			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxD->Visible = false;
-			   // 
-			   // textBoxC
-			   // 
-			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxC->Location = System::Drawing::Point(1322, 533);
-			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxC->Name = L"textBoxC";
-			   this->textBoxC->Size = System::Drawing::Size(300, 120);
-			   this->textBoxC->TabIndex = 56;
-			   this->textBoxC->Text = L"Option C";
-			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxC->Visible = false;
-			   // 
-			   // textBoxB
-			   // 
-			   this->textBoxB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxB->Location = System::Drawing::Point(1322, 387);
-			   this->textBoxB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxB->Name = L"textBoxB";
-			   this->textBoxB->Size = System::Drawing::Size(300, 120);
-			   this->textBoxB->TabIndex = 55;
-			   this->textBoxB->Text = L"Option B";
-			   this->textBoxB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxB->Visible = false;
-			   // 
-			   // textBoxA
-			   // 
-			   this->textBoxA->BackColor = System::Drawing::Color::Transparent;
-			   this->textBoxA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxA->Location = System::Drawing::Point(1322, 248);
-			   this->textBoxA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			   this->textBoxA->Name = L"textBoxA";
-			   this->textBoxA->Size = System::Drawing::Size(300, 120);
-			   this->textBoxA->TabIndex = 54;
-			   this->textBoxA->Text = L"Option A";
-			   this->textBoxA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxA->Visible = false;
-			   // 
 			   // lvl3Form
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
@@ -695,6 +706,9 @@ namespace M15Namespace {
 		*/
 		System::Void lvl3Form_Load(System::Object^ sender, System::EventArgs^ e) {
 
+			lvl1Brief->Text = "Level 3 Brief:\n\n• You will be required to answer 10 questions.\n\n• These consist of multiple choice and true/false questions.\n\n• Shoot the bunker you wish to select.\n\n• If an option is obstructed, destroy its obstructions.\n\n• You will be granted 15 seconds per question.\n\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Press Start To Begin>";
+
+
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
 			std::vector<std::string> v;
@@ -773,7 +787,6 @@ namespace M15Namespace {
 			des->addObject(this->pbObstacle5, destroyFuncObstacle);
 			des->addObject(this->pbObstacle6, destroyFuncObstacle);
 			
-
 			ambience->NightForest();
 			music->LevelThreeMusic();
 		}
@@ -785,11 +798,12 @@ namespace M15Namespace {
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 			Point p3 = pbstart->Location;
-			int x = p1.X, y1 = p2.Y, y2 = p3.Y;
+			Point p4 = lvl1Brief->Location;
+			int x1 = p1.X, y1 = p2.Y, y2 = p3.Y, x2 = p4.X;
 
-			if (x <= 40)
+			if (x1 <= 40)
 			{
-				x += 10;
+				x1 += 10;
 			}
 			if (y1 >= 400)
 			{
@@ -799,11 +813,15 @@ namespace M15Namespace {
 			{
 				y2 -= 10;
 			}
+			if (x2 >= 1060)
+			{
+				x2 -= 10;
+			}
 
-			pbGeneralMilitary->Location = Point(x, 230);
+			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
-			pbstart->Location = Point(405, y2);
-
+			pbstart->Location = Point(500, y2);
+			lvl1Brief->Location = Point(x2, 205);
 		}
 
 		/*
@@ -814,12 +832,12 @@ namespace M15Namespace {
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 			Point p3 = pbstart->Location;
+			Point p4 = lvl1Brief->Location;
+			int x1 = p1.X, y1 = p2.Y, y2 = p3.Y, x2 = p4.X;
 
-			int x = p1.X, y1 = p2.Y, y2 = p3.Y;
-
-			if (x >= -325)
+			if (x1 >= -325)
 			{
-				x -= 10;
+				x1 -= 10;
 			}
 			if (y1 <= 900)
 			{
@@ -829,8 +847,12 @@ namespace M15Namespace {
 			{
 				y2 += 10;
 			}
+			if (x2 <= 1650)
+			{
+				x2 += 10;
+			}
 
-			if (!(x >= -325) && !(y1 <= 900) && !(y2 <= 1000))
+			if (!(x1 >= -325) && !(y1 <= 900) && !(y2 <= 1000) && !(x2 <= 1650))
 			{
 				this->Barrier2->Visible = true;
 				this->Barrier->Visible = true;
@@ -876,9 +898,10 @@ namespace M15Namespace {
 
 
 			}
-			pbGeneralMilitary->Location = Point(x, 230);
+			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
-			pbstart->Location = Point(405, y2);
+			pbstart->Location = Point(500, y2);
+			lvl1Brief->Location = Point(x2, 205);
 		}
 
 		/*

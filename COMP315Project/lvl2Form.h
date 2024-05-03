@@ -808,7 +808,7 @@ namespace M15Namespace {
 			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
 			pbstart->Location = Point(500, y2);
-			lvl1Brief->Location = Point(x2, 210);
+			lvl1Brief->Location = Point(x2, 205);
 		}
 
 		/*
@@ -888,7 +888,7 @@ namespace M15Namespace {
 			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
 			pbstart->Location = Point(500, y2);
-			lvl1Brief->Location = Point(x2, 210);
+			lvl1Brief->Location = Point(x2, 205);
 		}
 
 		/*
