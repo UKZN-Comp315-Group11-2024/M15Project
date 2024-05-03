@@ -37,19 +37,25 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ space;
 	private: System::Windows::Forms::TextBox^ ResultTextBox;
 	private: System::Windows::Forms::PictureBox^ playerlevel1;
-	private: System::Windows::Forms::Label^ textBoxA;
-	private: System::Windows::Forms::Label^ textBoxB;
-	private: System::Windows::Forms::Label^ textBoxC;
-	private: System::Windows::Forms::Label^ textBoxD;
-	private: System::Windows::Forms::Label^ textBoxTFA;
+
+
+
+
+
 	private: System::Windows::Forms::Label^ textBoxQuestion;
 	private: System::Windows::Forms::PictureBox^ pbstart;
 	private: System::Windows::Forms::Button^ btnsafety;
-	private: System::Windows::Forms::Label^ textBoxTFB;
+
 	private: System::Windows::Forms::Panel^ panelLogin;
 	private: System::Windows::Forms::Label^ DigitalStopWatch;
 	private: System::Windows::Forms::Label^ MissLabel;
 	private: System::Windows::Forms::Timer^ missTimer;
+	private: System::Windows::Forms::Label^ textBoxTFB;
+	private: System::Windows::Forms::Label^ textBoxTFA;
+	private: System::Windows::Forms::Label^ textBoxD;
+	private: System::Windows::Forms::Label^ textBoxC;
+	private: System::Windows::Forms::Label^ textBoxB;
+	private: System::Windows::Forms::Label^ textBoxA;
 
 
 
@@ -134,19 +140,19 @@ namespace M15Namespace {
 			   this->space = (gcnew System::Windows::Forms::PictureBox());
 			   this->ResultTextBox = (gcnew System::Windows::Forms::TextBox());
 			   this->playerlevel1 = (gcnew System::Windows::Forms::PictureBox());
-			   this->textBoxA = (gcnew System::Windows::Forms::Label());
-			   this->textBoxB = (gcnew System::Windows::Forms::Label());
-			   this->textBoxC = (gcnew System::Windows::Forms::Label());
-			   this->textBoxD = (gcnew System::Windows::Forms::Label());
-			   this->textBoxTFA = (gcnew System::Windows::Forms::Label());
 			   this->textBoxQuestion = (gcnew System::Windows::Forms::Label());
 			   this->pbstart = (gcnew System::Windows::Forms::PictureBox());
 			   this->btnsafety = (gcnew System::Windows::Forms::Button());
-			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
 			   this->MissLabel = (gcnew System::Windows::Forms::Label());
 			   this->DigitalStopWatch = (gcnew System::Windows::Forms::Label());
 			   this->missTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->textBoxTFB = (gcnew System::Windows::Forms::Label());
+			   this->textBoxTFA = (gcnew System::Windows::Forms::Label());
+			   this->textBoxD = (gcnew System::Windows::Forms::Label());
+			   this->textBoxC = (gcnew System::Windows::Forms::Label());
+			   this->textBoxB = (gcnew System::Windows::Forms::Label());
+			   this->textBoxA = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Barrier))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wasd))->BeginInit();
@@ -303,77 +309,6 @@ namespace M15Namespace {
 			   this->playerlevel1->TabStop = false;
 			   this->playerlevel1->Visible = false;
 			   // 
-			   // textBoxA
-			   // 
-			   this->textBoxA->BackColor = System::Drawing::Color::Transparent;
-			   this->textBoxA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxA->Location = System::Drawing::Point(1289, 261);
-			   this->textBoxA->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			   this->textBoxA->Name = L"textBoxA";
-			   this->textBoxA->Size = System::Drawing::Size(300, 120);
-			   this->textBoxA->TabIndex = 37;
-			   this->textBoxA->Text = L"Option A";
-			   this->textBoxA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxA->Visible = false;
-			   // 
-			   // textBoxB
-			   // 
-			   this->textBoxB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxB->Location = System::Drawing::Point(1289, 411);
-			   this->textBoxB->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			   this->textBoxB->Name = L"textBoxB";
-			   this->textBoxB->Size = System::Drawing::Size(300, 120);
-			   this->textBoxB->TabIndex = 38;
-			   this->textBoxB->Text = L"Option B";
-			   this->textBoxB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxB->Visible = false;
-			   // 
-			   // textBoxC
-			   // 
-			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxC->Location = System::Drawing::Point(1289, 531);
-			   this->textBoxC->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			   this->textBoxC->Name = L"textBoxC";
-			   this->textBoxC->Size = System::Drawing::Size(300, 120);
-			   this->textBoxC->TabIndex = 39;
-			   this->textBoxC->Text = L"Option C";
-			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxC->Visible = false;
-			   // 
-			   // textBoxD
-			   // 
-			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxD->Location = System::Drawing::Point(1289, 675);
-			   this->textBoxD->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			   this->textBoxD->Name = L"textBoxD";
-			   this->textBoxD->Size = System::Drawing::Size(300, 120);
-			   this->textBoxD->TabIndex = 40;
-			   this->textBoxD->Text = L"Option D";
-			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxD->Visible = false;
-			   // 
-			   // textBoxTFA
-			   // 
-			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1289, 361);
-			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			   this->textBoxTFA->Name = L"textBoxTFA";
-			   this->textBoxTFA->Size = System::Drawing::Size(239, 81);
-			   this->textBoxTFA->TabIndex = 41;
-			   this->textBoxTFA->Text = L"TF1";
-			   this->textBoxTFA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxTFA->Visible = false;
-			   // 
 			   // textBoxQuestion
 			   // 
 			   this->textBoxQuestion->Font = (gcnew System::Drawing::Font(L"Courier New", 16.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
@@ -413,36 +348,22 @@ namespace M15Namespace {
 			   this->btnsafety->UseVisualStyleBackColor = true;
 			   this->btnsafety->Visible = false;
 			   // 
-			   // textBoxTFB
-			   // 
-			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFB->Location = System::Drawing::Point(1289, 616);
-			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(1, 0, 1, 0);
-			   this->textBoxTFB->Name = L"textBoxTFB";
-			   this->textBoxTFB->Size = System::Drawing::Size(241, 89);
-			   this->textBoxTFB->TabIndex = 42;
-			   this->textBoxTFB->Text = L"TF2";
-			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			   this->textBoxTFB->Visible = false;
-			   // 
 			   // panelLogin
 			   // 
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			   this->panelLogin->Controls->Add(this->MissLabel);
-			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
-			   this->panelLogin->Controls->Add(this->btnsafety);
-			   this->panelLogin->Controls->Add(this->pbstart);
-			   this->panelLogin->Controls->Add(this->textBoxQuestion);
 			   this->panelLogin->Controls->Add(this->textBoxTFA);
 			   this->panelLogin->Controls->Add(this->textBoxD);
 			   this->panelLogin->Controls->Add(this->textBoxC);
 			   this->panelLogin->Controls->Add(this->textBoxB);
 			   this->panelLogin->Controls->Add(this->textBoxA);
+			   this->panelLogin->Controls->Add(this->MissLabel);
+			   this->panelLogin->Controls->Add(this->DigitalStopWatch);
+			   this->panelLogin->Controls->Add(this->btnsafety);
+			   this->panelLogin->Controls->Add(this->pbstart);
+			   this->panelLogin->Controls->Add(this->textBoxQuestion);
 			   this->panelLogin->Controls->Add(this->playerlevel1);
 			   this->panelLogin->Controls->Add(this->ResultTextBox);
 			   this->panelLogin->Controls->Add(this->space);
@@ -491,6 +412,91 @@ namespace M15Namespace {
 			   // 
 			   this->missTimer->Interval = 500;
 			   this->missTimer->Tick += gcnew System::EventHandler(this, &lvl4Form::missTimer_Tick);
+			   // 
+			   // textBoxTFB
+			   // 
+			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxTFB->Location = System::Drawing::Point(1321, 610);
+			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFB->Name = L"textBoxTFB";
+			   this->textBoxTFB->Size = System::Drawing::Size(241, 88);
+			   this->textBoxTFB->TabIndex = 59;
+			   this->textBoxTFB->Text = L"TF2";
+			   this->textBoxTFB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxTFB->Visible = false;
+			   // 
+			   // textBoxTFA
+			   // 
+			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxTFA->Location = System::Drawing::Point(1321, 353);
+			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxTFA->Name = L"textBoxTFA";
+			   this->textBoxTFA->Size = System::Drawing::Size(238, 81);
+			   this->textBoxTFA->TabIndex = 58;
+			   this->textBoxTFA->Text = L"TF1";
+			   this->textBoxTFA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxTFA->Visible = false;
+			   // 
+			   // textBoxD
+			   // 
+			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxD->Location = System::Drawing::Point(1321, 684);
+			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxD->Name = L"textBoxD";
+			   this->textBoxD->Size = System::Drawing::Size(300, 120);
+			   this->textBoxD->TabIndex = 57;
+			   this->textBoxD->Text = L"Option D";
+			   this->textBoxD->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxD->Visible = false;
+			   // 
+			   // textBoxC
+			   // 
+			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxC->Location = System::Drawing::Point(1321, 538);
+			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxC->Name = L"textBoxC";
+			   this->textBoxC->Size = System::Drawing::Size(300, 120);
+			   this->textBoxC->TabIndex = 56;
+			   this->textBoxC->Text = L"Option C";
+			   this->textBoxC->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxC->Visible = false;
+			   // 
+			   // textBoxB
+			   // 
+			   this->textBoxB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxB->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxB->Location = System::Drawing::Point(1321, 392);
+			   this->textBoxB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxB->Name = L"textBoxB";
+			   this->textBoxB->Size = System::Drawing::Size(300, 120);
+			   this->textBoxB->TabIndex = 55;
+			   this->textBoxB->Text = L"Option B";
+			   this->textBoxB->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxB->Visible = false;
+			   // 
+			   // textBoxA
+			   // 
+			   this->textBoxA->BackColor = System::Drawing::Color::Transparent;
+			   this->textBoxA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->textBoxA->ForeColor = System::Drawing::Color::Black;
+			   this->textBoxA->Location = System::Drawing::Point(1321, 253);
+			   this->textBoxA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->textBoxA->Name = L"textBoxA";
+			   this->textBoxA->Size = System::Drawing::Size(300, 120);
+			   this->textBoxA->TabIndex = 54;
+			   this->textBoxA->Text = L"Option A";
+			   this->textBoxA->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   this->textBoxA->Visible = false;
 			   // 
 			   // lvl4Form
 			   // 
@@ -794,11 +800,11 @@ namespace M15Namespace {
 
 			if (LvlMethods->Correct)
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_explode_right.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/meteor_explode_right.png", false);
 			}
 			else
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 215, "assets/Doors/meteor_explode.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 215, "assets/Doors/meteor_explode.png", false);
 			}
 			openedDoor->setVisible(true);
 
@@ -815,7 +821,7 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_1.png", false);
+			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/meteor_1.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
@@ -823,7 +829,7 @@ namespace M15Namespace {
 
 			if (LvlMethods->Correct)
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 800, 455, "assets/Doors/meteor_explode_right.png", false);
+				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 780, 455, "assets/Doors/meteor_explode_right.png", false);
 			}
 			else
 			{
@@ -1472,7 +1478,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
-			std::string windowPrompt = "Level 4 feedback (Final Level - Space)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(LvlMethods->PlayerStats->score) + " Points\n\nOverall time taken: " + std::to_string(LvlMethods->PlayerStats->timeTaken) + " seconds\nOverall score: " + std::to_string(levelScore) + " Points";
+			std::string windowPrompt = "Level 4 feedback (Final Level - Space)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
 
