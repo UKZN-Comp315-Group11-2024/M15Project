@@ -32,7 +32,7 @@ public:
 	int filenumber = 0;
 
 	void detectAndDisplay(cv::Mat frame);
-	void addFace(std::string s);
+	int addFace(std::string s);
 	void dbread(std::vector<cv::Mat>& images, std::vector<int>& labels);
 	void eigenFaceTrainer();
 	std::string FaceRecognitionNew();

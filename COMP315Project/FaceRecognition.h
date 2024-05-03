@@ -720,10 +720,12 @@ namespace M15Namespace {
 
 	//attempts to add user's face. Exceptions are caught.
 	private: System::Void btnokay_Click(System::Object^ sender, System::EventArgs^ e) {
+		int result = -1;
 		if (lblWarning->Text == "Alias available" || lblWarning->Text == "Alias available\n->(Max alias length)") {
 			sound1->MouseClick();
 			if (MessageBox::Show("Please look directly at your webcam. Our AI will now start the webcam, and then take 10 pictures of you instantly, all within 1 second. Thereafter it will process your facial structure. Please wait for all processing to complete before continuing", "", MessageBoxButtons::OKCancel, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::OK)
 			{	
+				btnokay->Enabled = false;
 				this->lblusername->Visible = false;
 				this->txtusername->Visible = false;
 				this->btnokay->Visible = false;
@@ -743,8 +745,22 @@ namespace M15Namespace {
 					sound3->FacialRegocnition();
 					this->txtpretty->Visible = true;
 					std::string s = assignNumber();
-					f->addFace(s);
-					f->eigenFaceTrainer();
+					result = f->addFace(s);
+					if (result == 0) {
+						f->eigenFaceTrainer();
+					}
+					else {
+						MessageBox::Show("The AI was unable to open your camera. Please exit the Face Recognition AI and login with a username instead", "", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						std::ofstream ofs2("textfiles\\communication.txt", std::ofstream::trunc);
+
+						successful = true;
+						if (ofs2.is_open()) {  // Check if the file was successfully opened
+							ofs2 << "-1"; //-1 meaning login should close
+						}
+						ofs2.close();  // Close the file after writing
+						this->Close();
+					}
+					
 
 				}
 				catch (System::Exception^ e) {
@@ -771,12 +787,13 @@ namespace M15Namespace {
 
 				successful = true;
 				if (ofs2.is_open()) {  // Check if the file was successfully opened
-					ofs2 << "-1"; //0 meaning login should close
+					ofs2 << "-1"; //-1 meaning login should close
 				}
 				ofs2.close();  // Close the file after writing
 				this->Close();
 
 		}
+		btnokay->Enabled = true;
 
 	}
 	//to convert username to a number so facerec.cpp can use it. Assigns user next number sequentially.

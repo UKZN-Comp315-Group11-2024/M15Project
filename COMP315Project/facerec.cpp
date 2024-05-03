@@ -98,19 +98,19 @@ void facerec::detectAndDisplay(cv::Mat frame)
 }
 
 //Method to add a face
-void facerec::addFace(std::string s)
+int facerec::addFace(std::string s)
 {
 	name = s;
 
 	cv::VideoCapture capture(0);
 
 	if (!capture.isOpened())
-		return;
+		return -1;
 
 	if (!face_cascade.load("OpenCV\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_alt.xml"))
 	{
 		//std::cout << "error" << std::endl;
-		return;
+		return -1;
 	};
 
 	cv::Mat frame;
@@ -126,7 +126,7 @@ void facerec::addFace(std::string s)
 		if (i == 10)
 		{
 			break;
-			return;
+			return 0;
 
 		}
 
@@ -138,7 +138,7 @@ void facerec::addFace(std::string s)
 		}*/
 	}
 
-	return;
+	return 0;
 }
 
 //method to read in all the existing images
