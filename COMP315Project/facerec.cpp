@@ -24,6 +24,8 @@ The program is now graphical, can identify the user based on their username, and
 the model has had over 1000 confidence that the user is some fixed existing user, for at least 3 seconds. At this point, the loop will break.
 Thereafter, functionality was added to return to the original form*/
 
+
+//Method to detect and display a face. A Mat is basically just a class with 2 attributes: a header, and an n-dimensional matrix, usually used to store pixels
 void facerec::detectAndDisplay(cv::Mat frame)
 {
 	std::vector<cv::Rect> faces;
@@ -86,13 +88,16 @@ void facerec::detectAndDisplay(cv::Mat frame)
 
 	if (!crop.empty())
 	{
-		imshow("detected", crop);
+		imshow("Detection successful", crop);
 	}
-	else
+	else {
 		cv::destroyWindow("detected");
+	}
+
 
 }
 
+//Method to add a face
 void facerec::addFace(std::string s)
 {
 	name = s;
@@ -104,12 +109,11 @@ void facerec::addFace(std::string s)
 
 	if (!face_cascade.load("OpenCV\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_alt.xml"))
 	{
-		std::cout << "error" << std::endl;
+		//std::cout << "error" << std::endl;
 		return;
 	};
 
 	cv::Mat frame;
-	std::cout << "\nCapturing your face 10 times, Press 'C' 10 times keeping your face front of the camera";
 	char key;
 	int i = 0;
 
@@ -121,22 +125,23 @@ void facerec::addFace(std::string s)
 		i++;
 		if (i == 10)
 		{
-			std::cout << "Face Added";
 			break;
+			return;
+
 		}
 
-		int c = cv::waitKey(10);
+		/*int c = cv::waitKey(10);
 
 		if (27 == char(c))
 		{
 			break;
-		}
+		}*/
 	}
 
 	return;
 }
 
-
+//method to read in all the existing images
 void facerec::dbread(std::vector<cv::Mat>& images, std::vector<int>& labels) {
 	std::vector<cv::String> fn;
 	filename = "Faces\\";;
@@ -162,9 +167,9 @@ void facerec::eigenFaceTrainer() {
 	std::vector<cv::Mat> images;
 	std::vector<int> labels;
 	dbread(images, labels);
-	std::cout << "size of the images is " << images.size() << std::endl;
-	std::cout << "size of the labels is " << labels.size() << std::endl;
-	std::cout << "Training begins...." << std::endl;
+	//std::cout << "size of the images is " << images.size() << std::endl;
+	//std::cout << "size of the labels is " << labels.size() << std::endl;
+	//std::cout << "Training begins...." << std::endl;
 
 	//create algorithm eigenface recognizer
 	cv::Ptr<cv::face::EigenFaceRecognizer> model = cv::face::EigenFaceRecognizer::create();
@@ -173,11 +178,12 @@ void facerec::eigenFaceTrainer() {
 	model->train(images, labels);
 	model->save("YML\\eigenface.yml");
 
-	std::cout << "Training finished...." << std::endl;
+	//std::cout << "Training finished...." << std::endl;
 	cv::waitKey(10000);
 }
 
-bool facerec::FaceRecognitionNew() {
+//method to recognize a face
+std::string facerec::FaceRecognitionNew() {
 
 	//load pre-trained data sets
 	cv::Ptr<cv::face::FaceRecognizer>  model = cv::face::FisherFaceRecognizer::create();
@@ -191,16 +197,16 @@ bool facerec::FaceRecognitionNew() {
 	std::string window = "Face recognition AI";
 
 	if (!face_cascade.load("OpenCV\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_alt.xml")) {
-		std::cout << " Error loading file" << std::endl;
-		return false;
+		//std::cout << " Error loading file" << std::endl;
+		return "";
 	}
 
 	cv::VideoCapture cap(0);
 
 	if (!cap.isOpened())
 	{
-		std::cout << "exit" << std::endl;
-		return false;
+		//std::cout << "exit" << std::endl;
+		return "";
 	}
 
 	cv::namedWindow(window, 1);
@@ -218,7 +224,7 @@ bool facerec::FaceRecognitionNew() {
 		cv::Mat original;
 
 		cap >> frame;
-	
+
 		count = count + 1;
 
 		if (!frame.empty()) {
@@ -237,7 +243,7 @@ bool facerec::FaceRecognitionNew() {
 			std::string faceset = std::to_string(faces.size());
 
 			int width = 0, height = 0;
-
+			int oldLabel;
 			for (int i = 0; i < faces.size(); i++)
 			{
 				//region of interest
@@ -254,13 +260,15 @@ bool facerec::FaceRecognitionNew() {
 				int label = -1; double confidence = 0;
 				model->predict(face_resized, label, confidence);
 
-				if (confidence < 1000 || label == 0) {
+				Pname = InttoName(label);
+
+				if ((confidence < 1000) || (label == 0) || (faces.size() != 1) || (label != oldLabel)) {
 					timeStart = std::chrono::high_resolution_clock::now();
 				}
 
-				std::cout << " confidence " << confidence << " Label: " << label << std::endl;
 				conf = confidence;
-				Pname = InttoName(label);
+				oldLabel = label;
+
 
 				//drawing green rectagle in recognize face
 				rectangle(original, face_i, CV_RGB(0, 255, 0), 1);
@@ -272,6 +280,10 @@ bool facerec::FaceRecognitionNew() {
 				//name the person who is in the image
 				putText(original, text, cv::Point(pos_x, pos_y), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(0, 255, 0), 1.0);
 
+			}
+
+			if (faces.size() == 0) {
+				timeStart = std::chrono::high_resolution_clock::now();
 			}
 
 
@@ -287,15 +299,19 @@ bool facerec::FaceRecognitionNew() {
 		timeNow = std::chrono::high_resolution_clock::now();
 		if (std::chrono::duration_cast<std::chrono::seconds>(timeNow - timeStart).count() > 2.5) {
 			cv::destroyAllWindows();
-			return true;
+			return Pname;
 		}
 
-		if (cv::waitKey(30) >= 0) break;
+		if (cv::waitKey(30) >= 0) {
+			//std::cout << "broken";
+			break;
+		}
 	}
 	cv::destroyAllWindows();
-	return false;
+	return "";
 }
 
+//method to convert from an integer to a username (did not come with the original source code)
 std::string facerec::InttoName(int num) {
 	std::string line;
 	std::ifstream file("textfiles/usernameFaceNum.txt");
@@ -316,8 +332,4 @@ std::string facerec::InttoName(int num) {
 
 	}
 	file.close();
-}
-
-void facerec::goToLogin() {
-
 }

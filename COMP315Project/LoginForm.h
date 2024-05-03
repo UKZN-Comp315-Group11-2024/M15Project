@@ -22,9 +22,6 @@ namespace M15Namespace {
 	using namespace System::Drawing;
 	using namespace System::Collections::Generic;
 
-	/// <summary>
-	/// Summary for LoginForm
-	/// </summary>
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -55,9 +52,6 @@ namespace M15Namespace {
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~LoginForm()
 		{
 			if (components)
@@ -91,24 +85,17 @@ namespace M15Namespace {
 
 
 	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
 		int logindots = 0;
 		MusicAndSFX* sound = new MusicAndSFX;
 		List<playerInfo^>^ userlist;
 		bool tutorialWatched = false;
 
 
-		private: System::Windows::Forms::PictureBox^ pbleaderboard;
-		private: System::Windows::Forms::Button^ TutorialButton;
-		
+	private: System::Windows::Forms::PictureBox^ pbleaderboard;
+	private: System::Windows::Forms::Button^ TutorialButton;
+
 
 #pragma region Windows Form Designer generated code
-		   /// <summary>
-		   /// Required method for Designer support - do not modify
-		   /// the contents of this method with the code editor.
-		   /// </summary>
 		   void InitializeComponent(void)
 		   {
 			   this->components = (gcnew System::ComponentModel::Container());
@@ -388,21 +375,8 @@ namespace M15Namespace {
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 
-		// Used to rotate images - might be useful at some point
-		//@archan: plane rotation
-		//@avesh: adapted and edited
-		// Create an image from the picturebox
-		//System::Drawing::Image^ down_img = pictureBox1->Image;
-
-		// Rotate the image
-		//down_img->RotateFlip(System::Drawing::RotateFlipType::Rotate90FlipNone);
-
-		// Set the rotated image to PictureBox
-		//this->pictureBox1->Image = down_img;
 	}
 
-		   //@jaedon: original code
-		   //@avesh: edited and adapted
 	private: bool LoginForm::usernameExists(System::String^ s)
 	{
 		msclr::interop::marshal_context context;
@@ -415,9 +389,6 @@ namespace M15Namespace {
 
 	}
 
-
-		   //@archan: original code
-		   //@avesh: edited and adapted
 	private: System::Void tbSpyName_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		lblWarning->Location = Point(604, 347);
 		//Creates a name for the user incase they're struggling to create one
@@ -462,14 +433,12 @@ namespace M15Namespace {
 
 			}
 
-			//if (username->Length == 10) { //max chars
 			if (!isdigit(username[username->Length - 1])) {  //last char isn't a Number
 
 				username = username->Substring(0, username->Length - 1); //removes last char
 			}
 			else { // last char is a number
 				temp = username[username->Length - 1]; // keeping last digit
-				//cout << temp;
 				isLastCharDigit = true;
 				username = username->Substring(0, username->Length - 1);
 				username = username->Substring(0, username->Length - 1);
@@ -506,7 +475,6 @@ namespace M15Namespace {
 		}
 	}
 
-		   //@avesh: to move to next form after getting an acceptable alias (sound notification)
 	private: System::Void tbSpyName_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::Enter && (lblWarning->Text == "Alias available" || lblWarning->Text == "Alias available\n->(Max alias length)")) {
 			// Show a message to indicate that the next form will be displayed
@@ -534,11 +502,12 @@ namespace M15Namespace {
 		}
 	}
 
-		   //just to scroll the info at the top. uses 2 identical labels
+	//just to scroll the info at the top. uses 2 identical labels
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+
 	private: System::Void timerloginscroll_Tick(System::Object^ sender, System::EventArgs^ e) {
-		int x; //Removed y as it was never used
+		int x;
 		Point p1 = Loginlabelscroll1->Location;
 		Point p2 = labelloginscroll2->Location;
 		x = p1.X;
@@ -586,7 +555,7 @@ namespace M15Namespace {
 	}
 
 
-		   //little elipis animation
+	//little elipis animation
 	private: System::Void starttypingtimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (tbSpyName->Text->Length == 0) {
 
@@ -643,6 +612,7 @@ namespace M15Namespace {
 		this->Close();
 	}
 	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+		sound->MouseClick();
 		if (!tutorialWatched) {
 			if (MessageBox::Show("Are you sure you want to start facial recognition without watching the tutorial?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::Yes)
 			{
@@ -663,6 +633,14 @@ namespace M15Namespace {
 					this->Visible = true;
 				}
 				else if (comm == "0") {
+					lvl1Form^ lvl1form = gcnew lvl1Form();
+					lvl1form->Visible = false;
+					this->Hide();
+					lvl1form->ShowDialog();
+					this->Close();
+				}
+
+				else if (comm == "-1") {
 					this->Close();
 				}
 			}
@@ -710,8 +688,8 @@ namespace M15Namespace {
 		tut->ShowDialog();
 		this->Show();
 	}
-private: System::Void LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	delete sound;
-}
-};
+	private: System::Void LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		delete sound;
+	}
+	};
 }
