@@ -33,10 +33,10 @@ int main(array<String^>^ args) {
 	//BootForm form;
 	//Application::Run(% form);
 
-	LoginForm loginForm;
-	Application::Run(% loginForm);
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
+	//LoginForm loginForm;
+	//Application::Run(% loginForm);
+	lvl1Form lvl1form;
+	Application::Run(% lvl1form);
 
 	//MusicAndSFX *m = new MusicAndSFX();
 	//m->LevelOneMusic();
