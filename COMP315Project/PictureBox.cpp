@@ -59,13 +59,15 @@ void definedPictureBox::pictureBox_Click(System::Object^ sender, System::EventAr
 	MusicAndSFX* BonusSFX = new MusicAndSFX();
 	this->Hide();
 	countClick++;
-	//BonusSounds->MouseClick();
-	//BonusSounds->Laser();
-	BonusSounds->gunshot();
-	//BonusSFX->randomSound("assets\\music\\ES_Human Grunt 15 - SFX Producer.wav",false);
 
-	//delete BonusSounds;
-	
+	if (audioType == "Laser")
+	{
+		BonusSounds->Laser();
+	}
+	else
+	{
+		BonusSounds->gunshot();
+	}
 }
 
 int definedPictureBox::numClicks()
@@ -81,4 +83,9 @@ void definedPictureBox::setSpeed(int speed)
 int definedPictureBox::getSpeed()
 {
 	return speed;
+}
+
+void definedPictureBox::setAudioClickType(String^ audioType)
+{
+	this->audioType = audioType;
 }

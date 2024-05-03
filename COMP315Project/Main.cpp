@@ -64,8 +64,8 @@ int main(array<String^>^ args) {
 		//Application::Run(% bonusLevelThree);
 
 
-		//BonusLevelTwo bnt;
-		//Application::Run(% bnt);
+		BonusLevelTwo bnt;
+		Application::Run(% bnt);
 
 		//BonusLevelFour BNTT;
 		//Application::Run(% BNTT);
@@ -73,10 +73,10 @@ int main(array<String^>^ args) {
 		//lvl2Form lvl2;
 		//Application::Run(% lvl2);
 
-		//lvl3Form lvl3;
-		//Application::Run(% lvl3);
+		//lvl4Form lvl2;
+		//Application::Run(% lvl2);
 
-	FaceRecognition fr;
-	Application::Run(% fr);
+	//FaceRecognition fr;
+	//Application::Run(% fr);
 
 }

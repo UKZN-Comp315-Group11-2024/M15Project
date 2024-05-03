@@ -20,16 +20,12 @@ namespace M15Namespace {
 	/// </summary>
 	public ref class BonusLevelThree : public System::Windows::Forms::Form
 	{
-		
-		MusicAndSFX* ambience = new MusicAndSFX();
-		MusicAndSFX* music = new MusicAndSFX();
-
 	public:
 		BonusLevelThree(void)
 		{
 			InitializeComponent();
 
-		
+
 		}
 
 	protected:
@@ -115,8 +111,6 @@ namespace M15Namespace {
 			this->panelBonusLevel->Name = L"panelBonusLevel";
 			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
 			this->panelBonusLevel->TabIndex = 13;
-			this->panelBonusLevel->Click += gcnew System::EventHandler(this, &BonusLevelThree::panelLogin_Click);
-			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelThree::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
@@ -135,19 +129,19 @@ namespace M15Namespace {
 			this->countdownBar->Name = L"countdownBar";
 			this->countdownBar->Size = System::Drawing::Size(629, 46);
 			this->countdownBar->TabIndex = 12;
-			this->countdownBar->Click += gcnew System::EventHandler(this, &BonusLevelThree::countdownBar_Click);
 			// 
 			// lblMessage1
 			// 
 			this->lblMessage1->AutoSize = true;
-			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 27, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lblMessage1->ForeColor = System::Drawing::Color::Black;
 			this->lblMessage1->Location = System::Drawing::Point(380, 900);
 			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 52);
+			this->lblMessage1->Size = System::Drawing::Size(0, 46);
 			this->lblMessage1->TabIndex = 1;
-			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pbGeneralMilitary
 			// 
@@ -203,257 +197,232 @@ namespace M15Namespace {
 
 		}
 #pragma endregion
-	private: System::Void panelLogin_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	}
+		int countTotal = 0;
+		int targetNum = 0;
 
-		   int countTotal = 0;
+		MusicAndSFX* ambience = new MusicAndSFX();
+		MusicAndSFX* music = new MusicAndSFX();
 
-		   //@aveshr
-		   array<definedPictureBox^>^ buttons = gcnew array<definedPictureBox^>(27);
-		   array<definedPictureBox^>^ boxes = gcnew array<definedPictureBox^>(5);
-	private: System::Void BonusLevelThree_Load(System::Object^ sender, System::EventArgs^ e) {
+		array<definedPictureBox^>^ targets = gcnew array<definedPictureBox^>(27);
+		array<definedPictureBox^>^ boxes = gcnew array<definedPictureBox^>(5);
 
-		Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
-		panelBonusLevel->BackgroundImage = backgroundImage;
+	private:
+		System::Void BonusLevelThree_Load(System::Object^ sender, System::EventArgs^ e) {
 
-		ambience->NightForest();
-		music->bonusLevels();
+			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
+			panelBonusLevel->BackgroundImage = backgroundImage;
 
-		int x_pos, y_pos, x_size, y_size;
-		srand(time(0));
-		for (int i = 0; i < buttons->Length; i++) {
-			delete buttons[i];
+			ambience->NightForest();
+			music->bonusLevels();
 
-			x_pos = rand() % 1050 + 10;
-			y_pos = rand() % 420 + 180;
-			x_size = rand() % 20 + 65;
-			y_size = rand() % 20 + 75;
-			buttons[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, x_pos, y_pos, "assets/BonusLevel/idle.gif", true);
+			int x_pos, y_pos, x_size, y_size;
+			srand(time(0));
+			for (int i = 0; i < targets->Length; i++) {
+				delete targets[i];
 
-			buttons[i]->Text = i.ToString() + "h";
-			buttons[i]->ForeColor = System::Drawing::Color::White;
-			buttons[i]->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+				x_pos = rand() % 1050 + 10;
+				y_pos = rand() % 420 + 180;
+				x_size = rand() % 20 + 65;
+				y_size = rand() % 20 + 75;
+				targets[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, x_pos, y_pos, "assets/BonusLevel/idle.gif", true);
+			}
 
+			for (int i = 0; i < targets->Length; i++) {
+				if (i > 0) {
+					int j = i - 1;
+					while (j >= 0) {
+						if (targets[i] == targets[j])
+						{
+							x_pos = rand() % 1050 + 10;
+							y_pos = rand() % 420 + 180;
+							targets[i]->setLocation(x_pos, y_pos);
+							j = i - 1;
+						}
+						else {
+							j--;
+						}
+					}
+				}
+			}
 
+			int randomTargetX = 0;
+			for (int i = 0; i < boxes->Length; i++)
+			{
+				randomTargetX = rand() % 5 + i * 5;
+				boxes[i] = gcnew definedPictureBox(panelBonusLevel, targets[randomTargetX]->Size.Width, targets[randomTargetX]->Size.Height, targets[randomTargetX]->Location.X, targets[randomTargetX]->Location.Y, "assets/Doors/Box.png", true);
+			}
 
+			lblMessage1->Text = "Welcome To The Third Bonus Level:\n\nA few rogue assassins out of a total of 27\nare trying new defensive strategies.\nThey are taking cover in boxes,\nbreak those first before taking them out.\n\nEliminate the threat!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
+			Transition1->Start();
 		}
 
-		for (int i = 0; i < buttons->Length; i++) {
+		System::Void BonusLevelThree_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+			if (e->KeyCode == Keys::Enter && Transition1->Enabled == true)
+			{
+				Transition1->Stop();
+				Transition1->Enabled = false;
+				Transition2->Start();
+			}
+		}
+
+		System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+			Point p1 = pbGeneralMilitary->Location;
+			Point p2 = lblMessage1->Location;
+			int x = p1.X, y1 = p2.Y;
+
+			if (x <= 40)
+			{
+				x += 6;
+			}
+			if (y1 >= 220)
+			{
+				y1 -= 10;
+			}
+
+			pbGeneralMilitary->Location = Point(x, 245);
+			lblMessage1->Location = Point(380, y1);
+		}
+
+		System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
+			Point p1 = pbGeneralMilitary->Location;
+			Point p2 = lblMessage1->Location;
+
+			int x = p1.X, y1 = p2.Y;
+
+			if (x >= -325)
+			{
+				x -= 15;
+			}
+			if (y1 <= 900)
+			{
+				y1 += 15;
+			}
+
+			if (!(x >= -325) && !(y1 <= 900))
+			{
+				panelBonusLevel->Cursor = gcnew System::Windows::Forms::Cursor("assets/Retical/ShootRetical2.cur");
+				countdown->Start();
+				TargetTimer->Start();
+				Transition2->Enabled = false;
+			}
+			pbGeneralMilitary->Location = Point(x, 245);
+			lblMessage1->Location = Point(380, y1);
+		}
+
+	private:
+		System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+			for (int i = 0; i < boxes->Length; i++)
+			{
+				if (boxes[i]->Location.X == targets[targetNum]->Location.X && boxes[i]->Location.Y == targets[targetNum]->Location.Y) {
+					boxes[i]->BringToFront();
+					boxes[i]->setVisible(true);
+				}
+			}
+			targets[targetNum]->setVisible(true);
+			if (targetNum == targets->Length - 1) {
+				TargetTimer->Stop();
+			}
+			targetNum++;
+		}
+
+		System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 
-			if (i > 0) {
-				int j = i - 1;
-				while (j >= 0) {
-					if (buttons[i] == buttons[j])
+			if (countdownBar->Value < 100) {
+				if (countdownBar->Value + 7 > 100)
+				{
+					countdownBar->Value += (100 - countdownBar->Value);
+				}
+				else
+				{
+					countdownBar->Value = countdownBar->Value + 7;
+				}
+			}
+			else {
+				TargetTimer->Stop();
+				countdown->Stop();
+
+				int  currScore;
+				for (int i = 0; i < targets->Length; i++)
+				{
+					targets[i]->Enabled = false;
+					countTotal += targets[i]->numClicks();
+
+				}
+				std::vector<std::string> lines;
+
+				std::ifstream file("textfiles/PlayerInfo.txt");
+				std::string line;
+				if (file.is_open())
+				{
+					while (getline(file, line))
 					{
-						x_pos = rand() % 1050 + 10;
-						y_pos = rand() % 420 + 180;
-						buttons[i]->setLocation(x_pos, y_pos);
-						j = i - 1;
-					}
-					else {
-						j--;
+						lines.push_back(line);
 					}
 				}
-			}
-		}
+				file.close();
 
-		int randomTargetX = 0;
-		for (int i = 0; i < boxes->Length; i++)
-		{
-			randomTargetX = rand() % 5 + i * 5;
-			std::cout << randomTargetX << std::endl;
-			boxes[i] = gcnew definedPictureBox(panelBonusLevel, buttons[randomTargetX]->Size.Width, buttons[randomTargetX]->Size.Height, buttons[randomTargetX]->Location.X, buttons[randomTargetX]->Location.Y, "assets/Doors/Box.png", true);
+				currScore = stoi(lines[1]);
 
-		}
+				if (countTotal >= 9) {
+					int addToTotal = 0;
+					if (countTotal >= 9 && countTotal < 18)
+					{
+						addToTotal += 50;
+					}
+					else if (countTotal >= 18 && countTotal < 27)
+					{
+						addToTotal += 100;
+					}
+					else if (countTotal == 27)
+					{
+						addToTotal += 150;
+					}
+					lines[1] = std::to_string(stoi(lines[1]) + addToTotal);
 
-		lblMessage1->Text = "Welcome to the third bonus level.\nEnemies may use a box as cover\nBREAK IT!\n\nHint: Use your mouse";
-		Transition1->Start();
-	}
+					std::ofstream outputFile("textfiles/PlayerInfo.txt");
+					outputFile << lines[0] << std::endl;
+					outputFile << lines[1] << std::endl;
+					outputFile << lines[2] << std::endl;
 
-		   //@aveshr
-		   int targetNum = 0;
-	private: System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
-		for (int i = 0; i < boxes->Length; i++)
-		{
-			if (boxes[i]->Location.X == buttons[targetNum]->Location.X && boxes[i]->Location.Y == buttons[targetNum]->Location.Y) {
-				boxes[i]->BringToFront();
-				boxes[i]->setVisible(true);
-			}
-		}
-		buttons[targetNum]->setVisible(true);
-		if (targetNum == buttons->Length - 1) {
-			TargetTimer->Stop();
-		}
-		targetNum++;
-	}
+					outputFile.close();
 
-		   //@aveshr
-	private: System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Point p1 = pbGeneralMilitary->Location;
-		Point p2 = lblMessage1->Location;
+					std::string windowPrompt = "\nBonus Level Three Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
+					String^ unwrapped = gcnew String(windowPrompt.c_str());
+					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
+					window->Visible = false;
+					this->Hide();
+					window->ShowDialog();
 
-		int x = p1.X, y1 = p2.Y;
+					this->Close();
 
-		if (x >= -325)
-		{
-			x -= 15;
-		}
-		if (y1 <= 900)
-		{
-			y1 += 15;
-		}
-
-		// ensuring all stuff leaves screen before showing the player
-		if (!(x >= -325) && !(y1 <= 900))
-		{
-			panelBonusLevel->Cursor = gcnew System::Windows::Forms::Cursor("assets/Retical/ShootRetical2.cur");
-			countdown->Start();
-			TargetTimer->Start();
-			Transition2->Enabled = false;
-		}
-		pbGeneralMilitary->Location = Point(x, 245);
-		lblMessage1->Location = Point(380, y1);
-	}
-		   //@aveshr
-	private: System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
-
-		Point p1 = pbGeneralMilitary->Location;
-		Point p2 = lblMessage1->Location;
-		int x = p1.X, y1 = p2.Y;
-
-		if (x <= 40)
-		{
-			x += 10;
-		}
-		if (y1 >= 400)
-		{
-			y1 -= 10;
-		}
-
-		pbGeneralMilitary->Location = Point(x, 245);
-		lblMessage1->Location = Point(380, y1);
-	}
-		   //@aveshr
-	private: System::Void BonusLevelThree_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		if (e->KeyCode == Keys::Enter)
-		{
-			Transition1->Stop();
-			Transition2->Start();
-		}
-	}
-		   //@aveshr
-	private: System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
-
-
-		if (countdownBar->Value < 100) {
-			if (countdownBar->Value + 7 > 100)
-			{
-				countdownBar->Value += (100 - countdownBar->Value);
-			}
-			else
-			{
-				countdownBar->Value = countdownBar->Value + 7;
-			}
-
-		}
-		else {
-			TargetTimer->Stop();
-			countdown->Stop();
-
-			int  currScore;
-			for (int i = 0; i < buttons->Length; i++)
-			{
-				buttons[i]->Enabled = false;
-				countTotal += buttons[i]->numClicks();
-
-			}
-
-			std::vector<std::string> lines;
-
-			std::ifstream file("textfiles/PlayerInfo.txt");
-			std::string line;
-			if (file.is_open())
-			{
-				while (getline(file, line))
+					//stops background music
+					ambience->StopSound();
+					music->StopSound();
+					delete ambience;
+					delete music;
+				}
+				else
 				{
-					lines.push_back(line);
+					std::string windowPrompt = "\nBonus Level Threes Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
+					String^ unwrapped = gcnew String(windowPrompt.c_str());
+					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
+
+					//stops background music
+					ambience->StopSound();
+					music->StopSound();
+					delete ambience;
+					delete music;
+
+					window->Visible = false;
+					this->Hide();
+					window->ShowDialog();
+
+					this->Close();
 				}
 			}
-			file.close();
-
-			currScore = stoi(lines[1]);
-
-			if (countTotal >= 9) {
-				int addToTotal = 0;
-				if (countTotal >= 9 && countTotal < 18)
-				{
-					addToTotal += 1;
-				}
-				else if (countTotal >= 18 && countTotal < 27)
-				{
-					addToTotal += 2;
-				}
-				else if (countTotal == 27)
-				{
-					addToTotal += 3;
-				}
-				lines[1] = std::to_string(stoi(lines[1]) + addToTotal);
-
-				std::ofstream outputFile("textfiles/PlayerInfo.txt");
-				outputFile << lines[0] << std::endl;
-				outputFile << lines[1] << std::endl;
-				outputFile << lines[2] << std::endl;
-
-				outputFile.close();
-
-				std::string windowPrompt = "\nBonus Level One Feedback (9 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
-				String^ unwrapped = gcnew String(windowPrompt.c_str());
-				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
-				window->Visible = false;
-				this->Hide();
-				window->ShowDialog();
-
-				this->Close();
-
-				//stops background music
-				ambience->StopSound();
-				music->StopSound();
-				delete ambience;
-				delete music;
-			}
-			else
-			{
-				std::string windowPrompt = "\nBonus Level One Feedback (9 Targets = 1 Point)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
-				String^ unwrapped = gcnew String(windowPrompt.c_str());
-				popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
-
-				//stops background music
-				ambience->StopSound();
-				music->StopSound();
-				delete ambience;
-				delete music;
-
-				window->Visible = false;
-				this->Hide();
-				window->ShowDialog();
-
-				this->Close();
-			}
-
-
 		}
-
-
-	}
-	private: System::Void countdownBar_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
-
 	};
-
-
 }

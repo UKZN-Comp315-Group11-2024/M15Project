@@ -24,17 +24,20 @@ namespace M15Namespace {
 	public ref class Leaderboard : public System::Windows::Forms::Form
 	{
 	public:
+		// Constructor for the leaderboard
 		Leaderboard(String^ doIupdate)
 		{
+			// Initialize the leaderboard
 			this->doIupdate = doIupdate;
 			InitializeComponent();
-			//partPlayers = gcnew List<playerInfo^>(players);
 
 		}
 
 	protected:
+		// Destructor for the leaderboard
 		~Leaderboard()
 		{
+			// Delete all leaderboard components
 			if (components)
 			{
 				delete components;
@@ -145,6 +148,7 @@ namespace M15Namespace {
 #pragma endregion
 
 	private:
+		// Creating the players list and the players list that will be parted
 		List <playerInfo^>^ players = gcnew List <playerInfo^>;
 		List <playerInfo^>^ partPlayers = gcnew List <playerInfo^>;
 		String^ doIupdate;
@@ -195,15 +199,17 @@ namespace M15Namespace {
 					break;
 				}
 			}
+			// Insert the new player object into the players and write to the leaderboard.txt
 			msclr::interop::marshal_context context;
 			if (!playerExists)
 			{
-				// Insert the new player object into the players and write to the leaderboard.txt
+				
 				std::ofstream writer(filename2);
-
+				// Reverse the order before inserting the player object and reverse it again to ascend the order
 				players->Reverse();
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 				players->Reverse();
+				// Write every player from the players list into the leaderboard.txt
 				for (int i = 0; i < players->Count; i++) {
 					std::string line = "";
 					std::string username = context.marshal_as<std::string>(players[i]->username);
@@ -215,6 +221,7 @@ namespace M15Namespace {
 				}
 				writer.close();
 			}
+			// Make a copy of the players and update the labels
 			copyPlayers(players);
 			UpdateLabels(players);
 
@@ -225,6 +232,7 @@ namespace M15Namespace {
 			System::IO::StreamReader^ file = gcnew System::IO::StreamReader(msclr::interop::marshal_as<System::String^>("textfiles/Leaderboard.txt"));
 			System::String^ line;
 
+			// Read the text file line by line and separate the username, score and timetaken from each other
 			while ((line = file->ReadLine()) != nullptr) {
 				int score = 0;
 				int time;
@@ -237,15 +245,15 @@ namespace M15Namespace {
 					line = line->Remove(0, pos + 1);
 				}
 				time = System::Int32::Parse(line);
+				// Parse the data into a playerInfo object
 				playerInfo^ p = gcnew playerInfo;
 				p->username = gcnew String(username.c_str());
 				p->score = score;
 				p->timeTaken = time;
-				//players->Add(p);
 				players = customAlgs<playerInfo^>::insertScore(players, p);
 			}
+			// Reverse order of the players to display them in ascending order
 			players->Reverse();
-
 			file->Close();
 		}
 
@@ -262,20 +270,20 @@ namespace M15Namespace {
 				}
 			}
 			remove(filename.c_str());
-			rename("temp.txt", filename.c_str());
+			rename("temp.txt", "PlayerInfo.txt");
 		}
 
 		playerInfo^ player = gcnew playerInfo;
 		// Function to update and draw the labels each time the leaderboard is accessed. 
 		// Creates new labels from scratch and puts them in the appropriate locations
 		void UpdateLabels(List<playerInfo^>^ v) {
-			//Clear previous labels
 			sound->playRandomSound("assets/leaderboardflicker.wav", false);
+			//Clear previous labels
 			ClearLabels();
+			// Keep a count for the number of labels to be printed
 			int i = 1;
 
 			// A label for the scroll instruction
-			
 			Label^ press = gcnew Label();
 			press->AutoSize = true;
 			press->BackColor = System::Drawing::Color::Transparent;
@@ -289,7 +297,7 @@ namespace M15Namespace {
 
 			// Printing each label out to the leaderboard form
 			for each (playerInfo ^ elem in v) {
-
+				// Adjusting the distance from the top for each label
 				int marginTop;
 				if (i == 1) {
 					marginTop = (i * 53) + 62;
@@ -304,6 +312,7 @@ namespace M15Namespace {
 					marginTop = (i * 58) + 62;
 				}
 
+				// Instantiating new label objects for each player object
 				Label^ usernameLabel = gcnew Label();
 				Label^ scoreLabel = gcnew Label();
 				Label^ timeLabel = gcnew Label();
@@ -311,31 +320,26 @@ namespace M15Namespace {
 				if (i < 10) {
 					usernameLabel->AutoSize = true;
 					usernameLabel->BackColor = System::Drawing::Color::Transparent;
-					
+					// If the current player is on the leaderboard, then display their name in red
 					if (elem->username == this->player->username) {
 						usernameLabel->ForeColor = System::Drawing::Color::Red;
 					}
-
+					// Assigning the username to the username label
 					usernameLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
-
-					
-					
-
-
 					usernameLabel->Text = elem->username;
 					usernameLabel->Location = System::Drawing::Point(177, marginTop);
 
+					// Assigning the score to the score label
 					scoreLabel->AutoSize = true;
 					scoreLabel->BackColor = System::Drawing::Color::Transparent;
 					scoreLabel->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 						static_cast<System::Byte>(0)));
 					scoreLabel->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-
 					scoreLabel->Text = gcnew String(elem->score.ToString());
 					scoreLabel->Location = System::Drawing::Point(568, marginTop);
 
-
+					// Assigning the time taken to the timeTaken label
 					timeLabel->Text = gcnew String(elem->timeTaken.ToString()) + " sec";
 					timeLabel->AutoSize = true;
 					timeLabel->BackColor = System::Drawing::Color::Gainsboro;
@@ -343,11 +347,12 @@ namespace M15Namespace {
 						static_cast<System::Byte>(0)));
 					timeLabel->Location = System::Drawing::Point(770, marginTop);
 
+					// Adding the labels to the list of controls
 					this->Controls->Add(usernameLabel);
 					this->Controls->Add(scoreLabel);
 					this->Controls->Add(timeLabel);
 
-
+					// Bring everything in front of the picture boxes
 					usernameLabel->BringToFront();
 					scoreLabel->BringToFront();
 					timeLabel->BringToFront();
@@ -355,6 +360,7 @@ namespace M15Namespace {
 				}
 				i++;
 			}
+			// Stop sound once the labels have been printed
 			sound->randomSound.stop();
 
 		}
@@ -374,6 +380,7 @@ namespace M15Namespace {
 						break;
 					}
 					else {
+						// Check every player that has already been shown
 						bool found = false;
 						for each (playerInfo ^ elem2 in partPlayers) {
 							if (elem == elem2) {
@@ -381,12 +388,14 @@ namespace M15Namespace {
 								break;
 							}
 						}
+						// Remove the player
 						if (found) {
 							partPlayers->Remove(elem);
 							x--;
 						}
 					}
 				}
+				// Update labels to show the next set of players
 				UpdateLabels(partPlayers);
 			}
 		}
@@ -398,52 +407,52 @@ namespace M15Namespace {
 			}
 		}
 
-		// Clears the created labels from memory
+		// Clears the created labels from memory to create new labels
 		void ClearLabels()
 		{
 			this->Controls->Clear();
 
 		}
 
-	// Loading the leaderboard
-	private: 
+		// Loading the leaderboard
+	private:
 		System::Void Leaderboard_Load(System::Object^ sender, System::EventArgs^ e) {
-		msclr::interop::marshal_context context;
-		// Updating the player data from the playerinfo.txt to the leaderboard.txt
-		if (context.marshal_as<std::string>(doIupdate) == "yes") {
-			LoadAllPlayers();
-			LoadCurrentPlayerData("textfiles/PlayerInfo.txt", "textfiles/Leaderboard.txt");
-			UpdateLabels(players);
-		}
-		else {
-			// Update and show all players to screen
-			LoadAllPlayers();
-			copyPlayers(players);
-			UpdateLabels(players);		
-		}
+			msclr::interop::marshal_context context;
+			// Updating the player data from the playerinfo.txt to the leaderboard.txt
+			if (context.marshal_as<std::string>(doIupdate) == "yes") {
+				LoadAllPlayers();
+				LoadCurrentPlayerData("textfiles/PlayerInfo.txt", "textfiles/Leaderboard.txt");
+				UpdateLabels(players);
+			}
+			else {
+				// Update and show all players who have ever played to screen
+				LoadAllPlayers();
+				copyPlayers(players);
+				UpdateLabels(players);
+			}
 
-	}
+		}
 	private: System::Void timerleaderboard_Tick(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-	
-private: System::Void Leaderboard_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	// Exit the leaderboard
-	if (e->KeyCode == Keys::Escape) {
-		this->Close();
-	}
-	// Scroll to the next set of players
-	if (e->KeyCode == Keys::Space) {
-		this->nextPlayers();
-	}
-}
 
-private: System::Void labelloginscroll2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void Leaderboard_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	delete sound;
-}
-};
+	private: System::Void Leaderboard_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		// Exit the leaderboard
+		if (e->KeyCode == Keys::Escape) {
+			this->Close();
+		}
+		// Scroll to the next set of players
+		if (e->KeyCode == Keys::Space) {
+			this->nextPlayers();
+		}
+	}
+
+	private: System::Void labelloginscroll2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Leaderboard_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		delete sound;
+	}
+	};
 }
