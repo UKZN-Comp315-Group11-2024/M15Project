@@ -15,62 +15,41 @@ namespace M15Namespace {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for BonusLevelThree
-	/// </summary>
 	public ref class BonusLevelThree : public System::Windows::Forms::Form
 	{
 	public:
+		//Constructor(Auto Generated)
 		BonusLevelThree(void)
 		{
+			//Initializes components and draws them to the screen
 			InitializeComponent();
-
-
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+		//Destructor(Auto Generated)
+		//Clean up any resources being used.
 		~BonusLevelThree()
 		{
+			//If there are components, destroy them
 			if (components)
 			{
 				delete components;
 			}
 		}
+	//Components(Auto Generated)
 	private: System::Windows::Forms::Panel^ panelBonusLevel;
-	protected:
-
-	protected:
-
 	private: System::Windows::Forms::Label^ lblMessage1;
 	private: System::Windows::Forms::PictureBox^ pbGeneralMilitary;
-
 	private: System::Windows::Forms::Timer^ TargetTimer;
 	private: System::Windows::Forms::Timer^ Transition2;
 	private: System::Windows::Forms::Timer^ Transition1;
 	private: System::Windows::Forms::ProgressBar^ countdownBar;
-
 	private: System::Windows::Forms::Timer^ countdown;
-
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-
-
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
 
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-
-
 #pragma region Windows Form Designer generated code
+		//(Auto Generated):
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
@@ -106,17 +85,18 @@ namespace M15Namespace {
 			this->panelBonusLevel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-11, -25);
-			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4);
+			this->panelBonusLevel->Location = System::Drawing::Point(-9, -20);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
+			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
 			this->panelBonusLevel->TabIndex = 13;
+			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelThree::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(-17, -32);
+			this->pictureBox1->Location = System::Drawing::Point(-14, -26);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(100, 50);
+			this->pictureBox1->Size = System::Drawing::Size(80, 40);
 			this->pictureBox1->TabIndex = 13;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -124,10 +104,10 @@ namespace M15Namespace {
 			// 
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
-			this->countdownBar->Location = System::Drawing::Point(467, 75);
-			this->countdownBar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->countdownBar->Location = System::Drawing::Point(374, 60);
+			this->countdownBar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->countdownBar->Name = L"countdownBar";
-			this->countdownBar->Size = System::Drawing::Size(629, 46);
+			this->countdownBar->Size = System::Drawing::Size(503, 37);
 			this->countdownBar->TabIndex = 12;
 			// 
 			// lblMessage1
@@ -136,10 +116,9 @@ namespace M15Namespace {
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblMessage1->ForeColor = System::Drawing::Color::Black;
-			this->lblMessage1->Location = System::Drawing::Point(380, 900);
-			this->lblMessage1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lblMessage1->Location = System::Drawing::Point(304, 720);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 46);
+			this->lblMessage1->Size = System::Drawing::Size(0, 36);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
@@ -148,10 +127,10 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 245);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 196);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(371, 560);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(297, 448);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -178,11 +157,11 @@ namespace M15Namespace {
 			// 
 			// BonusLevelThree
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1580, 850);
+			this->ClientSize = System::Drawing::Size(1264, 680);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelThree";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -198,24 +177,40 @@ namespace M15Namespace {
 		}
 #pragma endregion
 
+		//Number of targets hit
 		int countTotal = 0;
+		//Number of targets on screen
 		int targetNum = 0;
 
+		//Music objects
 		MusicAndSFX* ambience = new MusicAndSFX();
 		MusicAndSFX* music = new MusicAndSFX();
 
+		//Array of shootable targets
 		array<definedPictureBox^>^ targets = gcnew array<definedPictureBox^>(27);
+		//Array of shootable boxes blocking targets
 		array<definedPictureBox^>^ boxes = gcnew array<definedPictureBox^>(5);
 
 	private:
+
+		/*
+			Loads/instantiates certain UI elements,
+			starts a timer to pull "welcome to the bonus level" message and Graphics to the screen
+			fills the targets array with targets for the player to shoot once enter has been pressed
+			Plays the levels' (background) music
+			waits for enter key
+		*/
 		System::Void BonusLevelThree_Load(System::Object^ sender, System::EventArgs^ e) {
 
+			//sets background
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/Forest.png");
 			panelBonusLevel->BackgroundImage = backgroundImage;
 
+			//Plays sounds
 			ambience->NightForest();
 			music->bonusLevels();
 
+			//Assigns random x and y positions to objects the player shoots
 			int x_pos, y_pos, x_size, y_size;
 			srand(time(0));
 			for (int i = 0; i < targets->Length; i++) {
@@ -228,6 +223,7 @@ namespace M15Namespace {
 				targets[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, x_pos, y_pos, "assets/BonusLevel/idle.gif", true);
 			}
 
+			//checks if any targets have the same position and then re-assigns one of them a new position to be drawn on screen
 			for (int i = 0; i < targets->Length; i++) {
 				if (i > 0) {
 					int j = i - 1;
@@ -246,6 +242,7 @@ namespace M15Namespace {
 				}
 			}
 
+			//Asigns Boxes to Targets at random
 			int randomTargetX = 0;
 			for (int i = 0; i < boxes->Length; i++)
 			{
@@ -253,10 +250,17 @@ namespace M15Namespace {
 				boxes[i] = gcnew definedPictureBox(panelBonusLevel, targets[randomTargetX]->Size.Width, targets[randomTargetX]->Size.Height, targets[randomTargetX]->Location.X, targets[randomTargetX]->Location.Y, "assets/Doors/Box.png", true);
 			}
 
+			//Sets welcome message text
 			lblMessage1->Text = "Welcome To The Third Bonus Level:\n\nA few rogue assassins out of a total of 27\nare trying new defensive strategies.\nThey are taking cover in boxes,\nbreak those first before taking them out.\n\nEliminate the threat!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
+			
+			//Starts the timer
 			Transition1->Start();
 		}
 
+		/*
+		   Listens for when a key is pushed down
+		   stops the first timer and begins the second timer
+		*/
 		System::Void BonusLevelThree_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			if (e->KeyCode == Keys::Enter && Transition1->Enabled == true)
 			{
@@ -266,12 +270,19 @@ namespace M15Namespace {
 			}
 		}
 
+		/*
+		   The first timer
+		   Pulls a picture box and a message smoothly onto the screen
+		*/
 		System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
+			//Position of the Picture box of the general 
 			Point p1 = pbGeneralMilitary->Location;
+			//Message to player's position
 			Point p2 = lblMessage1->Location;
 			int x = p1.X, y1 = p2.Y;
 
+			// updates their positions every tick
 			if (x <= 40)
 			{
 				x += 6;
@@ -281,16 +292,25 @@ namespace M15Namespace {
 				y1 -= 10;
 			}
 
+			//Sets their new positions every tick
 			pbGeneralMilitary->Location = Point(x, 245);
 			lblMessage1->Location = Point(380, y1);
 		}
 
+		/*
+		   The second timer
+		   Removes a picture box and a message smoothly off the screen
+		   Starts a countdown and a target timer, disables transition2 timer
+		   creates a retical as the cursor
+		*/
 		System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
+			//current positions of the message and picture box containing the general
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 
 			int x = p1.X, y1 = p2.Y;
 
+			//updates their positions every tick
 			if (x >= -325)
 			{
 				x -= 15;
@@ -300,36 +320,60 @@ namespace M15Namespace {
 				y1 += 15;
 			}
 
+			//if the message and general are off screen
 			if (!(x >= -325) && !(y1 <= 900))
 			{
+				//sets cursor to retical
 				panelBonusLevel->Cursor = gcnew System::Windows::Forms::Cursor("assets/Retical/ShootRetical2.cur");
+				
+				//starts and disables timers
 				countdown->Start();
 				TargetTimer->Start();
 				Transition2->Enabled = false;
 			}
+
+			//sets their new positions every tick
 			pbGeneralMilitary->Location = Point(x, 245);
 			lblMessage1->Location = Point(380, y1);
 		}
 
 	private:
+
+		/*
+		   Target timer
+		   Pulls shootable targets from the targets array and places them on the screen along with boxes covering certain targets
+		*/
 		System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 			for (int i = 0; i < boxes->Length; i++)
 			{
+				//if the target should have a box ontop of it
 				if (boxes[i]->Location.X == targets[targetNum]->Location.X && boxes[i]->Location.Y == targets[targetNum]->Location.Y) {
+					//places a box ontop of a target
 					boxes[i]->BringToFront();
+					//makes a box visible
 					boxes[i]->setVisible(true);
 				}
 			}
+			//makes a target visible
 			targets[targetNum]->setVisible(true);
+
+			//stops displaying targets if there are too many targets on the screen
 			if (targetNum == targets->Length - 1) {
 				TargetTimer->Stop();
 			}
 			targetNum++;
 		}
 
+		/*
+		   Count down timer
+		   updates countdown bar
+		   when full, updates points and closes the form
+		   provides feedback on a popup form
+
+		*/
 		System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-
+			//updates the count down bar if it is not full
 			if (countdownBar->Value < 100) {
 				if (countdownBar->Value + 7 > 100)
 				{
@@ -344,6 +388,7 @@ namespace M15Namespace {
 				TargetTimer->Stop();
 				countdown->Stop();
 
+				//records the number of targets hit(clicked with the retical(cursor))
 				int  currScore;
 				for (int i = 0; i < targets->Length; i++)
 				{
@@ -351,8 +396,9 @@ namespace M15Namespace {
 					countTotal += targets[i]->numClicks();
 
 				}
-				std::vector<std::string> lines;
 
+				//reads in lines from PlayerInfo.txt into a vector called lines
+				std::vector<std::string> lines;
 				std::ifstream file("textfiles/PlayerInfo.txt");
 				std::string line;
 				if (file.is_open())
@@ -364,9 +410,14 @@ namespace M15Namespace {
 				}
 				file.close();
 
+				//Gets the score before adding points from bonus level
 				currScore = stoi(lines[1]);
 
+				//If the player earned any bonus points, adds them based on how many targets where shot
+				//writes the updated points to the PlayerInfo.txt file
+				//provides feedback to the player on popup form and closes this form
 				if (countTotal >= 9) {
+					//adding points
 					int addToTotal = 0;
 					if (countTotal >= 9 && countTotal < 18)
 					{
@@ -382,6 +433,7 @@ namespace M15Namespace {
 					}
 					lines[1] = std::to_string(stoi(lines[1]) + addToTotal);
 
+					//writing back to file
 					std::ofstream outputFile("textfiles/PlayerInfo.txt");
 					outputFile << lines[0] << std::endl;
 					outputFile << lines[1] << std::endl;
@@ -389,6 +441,7 @@ namespace M15Namespace {
 
 					outputFile.close();
 
+					//Provides player feedback
 					std::string windowPrompt = "\nBonus Level Three Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
@@ -396,6 +449,7 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					//closes this form
 					this->Close();
 
 					//stops background music
@@ -404,8 +458,10 @@ namespace M15Namespace {
 					delete ambience;
 					delete music;
 				}
+				//if no points where earned, provides player feedback on popup form, closes form
 				else
 				{
+					//provide player feedback
 					std::string windowPrompt = "\nBonus Level Threes Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
@@ -420,9 +476,12 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					//closes this form
 					this->Close();
 				}
 			}
 		}
-	};
+	private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+};
 }

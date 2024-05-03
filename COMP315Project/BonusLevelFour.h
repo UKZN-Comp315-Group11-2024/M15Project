@@ -18,14 +18,15 @@ namespace M15Namespace {
 	public ref class BonusLevelFour : public System::Windows::Forms::Form
 	{
 	public:
-		//Constructor
+		//Constructor(Auto Generated)
 		BonusLevelFour(void)
 		{
+			//Initializes components and draws them to the screen
 			InitializeComponent();
 		}
 
 	protected:
-		//Destructor
+		//Destructor(Auto Generated)
 		// Clean up any resources being used.
 		~BonusLevelFour()
 		{
@@ -35,7 +36,7 @@ namespace M15Namespace {
 			}
 		}
 
-	//Components
+	//Components(Auto Generated)
 	private: System::Windows::Forms::Panel^ panelBonusLevel;
 	private: System::Windows::Forms::Label^ lblMessage1;
 	private: System::Windows::Forms::PictureBox^ pbGeneralMilitary;
@@ -48,9 +49,8 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Timer^ TargetMoveTimer;
 	private: System::ComponentModel::IContainer^ components;
 
-	private:
-
 #pragma region Windows Form Designer generated code
+		//(Auto Generated):
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
@@ -185,24 +185,40 @@ namespace M15Namespace {
 		}
 #pragma endregion
 
+		//Number of targets hit
 		int countTotal = 0;
+		//Number of targets on screen
 		int targetNum = 0;
+		//
 		int countNumVisible;
 
+		//Music objects
 		MusicAndSFX* ambience = new MusicAndSFX();
 		MusicAndSFX* music = new MusicAndSFX();
 
+		//Array of shootable targets
 		array<definedPictureBox^>^ targets = gcnew array<definedPictureBox^>(36);
 
 	private:
+
+		/*
+			Loads/instantiates certain UI elements,
+			starts a timer to pull "welcome to the bonus level" message and Graphics to the screen
+			fills the targets array with targets for the player to shoot once enter has been pressed
+			Plays the levels' (background) music
+			waits for enter key
+		*/
 		System::Void BonusLevelFour_Load(System::Object^ sender, System::EventArgs^ e) {
 
+			//sets background
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackground.png");
 			panelBonusLevel->BackgroundImage = backgroundImage;
 
+			//Plays sounds
 			ambience->Space();
 			music->bonusLevels();
 
+			//Assigns random x and y positions to objects the player shoots
 			int x_pos, y_pos, x_size, y_size, speed;
 			srand(time(0));
 			for (int i = 0; i < targets->Length; i++) {
@@ -214,15 +230,24 @@ namespace M15Namespace {
 				y_size = rand() % 50 + 30;
 				targets[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, -100, y_pos, "assets/Doors/PageColorized.png", true);
 
+				//assigns targets speed values
 				speed = rand() % 8 + 5;
 				targets[i]->setSpeed(speed);
 				targets[i]->setAudioClickType("Laser");
 			}
+
+			//Sets welcome message text
 			lblMessage1->Text = "Welcome To The Final Bonus Level:\n\nYour spaceship took a hit which resulted in\nsensitive documents being ejected.\nUnfortunately, we aren't able to retrieve\nthem so you need to destroy them.\n\nObliterate the documents!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
+			
+			//Starts the timer
 			Transition1->Start();
 
 		}
 
+		/*
+		   Listens for when a key is pushed down
+		   stops the first timer and begins the second timer
+		*/
 		System::Void BonusLevelFour_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			if (e->KeyCode == Keys::Enter)
 			{
@@ -231,12 +256,19 @@ namespace M15Namespace {
 			}
 		}
 
+		/*
+		   The first timer
+		   Pulls a picture box and a message smoothly onto the screen
+		*/
 		System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
+			//Position of the Picture box of the general 
 			Point p1 = pbGeneralMilitary->Location;
+			//Message to player's position
 			Point p2 = lblMessage1->Location;
 			int x = p1.X, y1 = p2.Y;
 
+			// updates their positions every tick
 			if (x <= 40)
 			{
 				x += 6;
@@ -246,16 +278,25 @@ namespace M15Namespace {
 				y1 -= 10;
 			}
 
+			//Sets their new positions every tick
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(380, y1);
 		}
 
+		/*
+		   The second timer
+		   Removes a picture box and a message smoothly off the screen
+		   Starts a countdown and a target timer, disables transition2 timer
+		   creates a retical as the cursor
+		*/
 		System::Void Transition2_Tick(System::Object^ sender, System::EventArgs^ e) {
+			//current positions of the message and picture box containing the general
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 
 			int x = p1.X, y1 = p2.Y;
 
+			//updates their positions every tick
 			if (x >= -325)
 			{
 				x -= 15;
@@ -265,24 +306,38 @@ namespace M15Namespace {
 				y1 += 15;
 			}
 
+			//if the message and general are off screen
 			if (!(x >= -325) && !(y1 <= 900))
 			{
+				//sets cursor to retical
 				panelBonusLevel->Cursor = gcnew System::Windows::Forms::Cursor("assets/Retical/ShootRetical2.cur");
+				
+				//starts and disables timers
 				countdown->Start();
 				TargetTimer->Start();
 				TargetMoveTimer->Start();
 				Transition2->Enabled = false;
 			}
+
+			//sets their new positions every tick
 			pbGeneralMilitary->Location = Point(x, 230);
 			lblMessage1->Location = Point(380, y1);
 		}
 
 
 	private:
+
+		/*
+		   Target timer
+		   Pulls shootable targets from the targets array and places them on the screen along with boxes covering certain targets
+		*/
 		System::Void TargetTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 			if (!(countNumVisible >= 5))
 			{
+				//makes a target visible
 				targets[targetNum]->setVisible(true);
+
+				//stops displaying targets if there are too many targets on the screen
 				if (targetNum == targets->Length - 1) {
 					TargetTimer->Stop();
 				}
@@ -291,6 +346,7 @@ namespace M15Namespace {
 
 		}
 
+		//updates a targets position
 		void update()
 		{
 			countNumVisible = 0;
@@ -308,13 +364,21 @@ namespace M15Namespace {
 			}
 		}
 
-
+		//Timer that allows targets to move
 		System::Void TargetMoveTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 			update();
 		}
 
+		/*
+		   Count down timer
+		   updates countdown bar
+		   when full, updates points and closes the form
+		   provides feedback on a popup form
+
+		*/
 		System::Void countdown_Tick(System::Object^ sender, System::EventArgs^ e) {
 			int countTotalNotVisible = 0;
+			//gets the number of invisible targets
 			for (int i = 0; i < targets->Length; i++)
 			{
 				if (targets[i]->Visible == false)
@@ -323,6 +387,7 @@ namespace M15Namespace {
 				}
 			}
 
+			//updates the count down bar if it is not full and the number of invisibale targets doesnt equal 36
 			if (countdownBar->Value < 100 && countTotalNotVisible != 36) {
 
 				if (countdownBar->Value + 3 > 100)
@@ -343,6 +408,7 @@ namespace M15Namespace {
 				TargetTimer->Stop();
 				countdown->Stop();
 
+				//records the number of targets hit(clicked with the retical(cursor))
 				int  currScore;
 				for (int i = 0; i < targets->Length; i++)
 				{
@@ -351,8 +417,8 @@ namespace M15Namespace {
 
 				}
 
+				//reads in lines from PlayerInfo.txt into a vector called lines
 				std::vector<std::string> lines;
-
 				std::ifstream file("textfiles/PlayerInfo.txt");
 				std::string line;
 				if (file.is_open())
@@ -364,9 +430,14 @@ namespace M15Namespace {
 				}
 				file.close();
 
+				//Gets the score before adding points from bonus level
 				currScore = stoi(lines[1]);
 
+				//If the player earned any bonus points, adds them based on how many targets where shot
+				//writes the updated points to the PlayerInfo.txt file
+				//provides feedback to the player on popup form and closes this form
 				if (countTotal >= 12) {
+					//adding points
 					int addToTotal = 0;
 					if (countTotal >= 12 && countTotal < 24)
 					{
@@ -382,6 +453,7 @@ namespace M15Namespace {
 					}
 					lines[1] = std::to_string(stoi(lines[1]) + addToTotal);
 
+					//writing back to file
 					std::ofstream outputFile("textfiles/PlayerInfo.txt");
 					outputFile << lines[0] << std::endl;
 					outputFile << lines[1] << std::endl;
@@ -389,6 +461,7 @@ namespace M15Namespace {
 
 					outputFile.close();
 
+					//Provides player feedback
 					std::string windowPrompt = "\nFinal Bonus Level Feedback (12 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
@@ -396,6 +469,7 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					//closes this form
 					this->Close();
 
 					//stops background music
@@ -404,8 +478,10 @@ namespace M15Namespace {
 					delete ambience;
 					delete music;
 				}
+				//if no points where earned, provides player feedback on popup form, closes form
 				else
 				{
+					//provide player feedback
 					std::string windowPrompt = "\nFinal Bonus Level Feedback (12 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
@@ -420,6 +496,7 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					//closes this form
 					this->Close();
 				}
 			}

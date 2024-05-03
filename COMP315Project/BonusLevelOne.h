@@ -181,7 +181,6 @@ namespace M15Namespace {
 
 		}
 #pragma endregion
-	private:
 
 		//Number of targets hit
 		int countTotal = 0;
@@ -272,7 +271,7 @@ namespace M15Namespace {
 		*/
 		System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-			//Picture box of general's position
+			//Position of the Picture box of the general 
 			Point p1 = pbGeneralMilitary->Location;
 			//Message to player's position
 			Point p2 = lblMessage1->Location;
@@ -440,11 +439,13 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					//closes this form
 					this->Close();
 				}
 				//if no points where earned, provides player feedback on popup form, closes form
 				else
 				{
+					//provide player feedback
 					std::string windowPrompt = "\nBonus Level One Feedback (7 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
@@ -459,6 +460,7 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					//closes this form
 					this->Close();
 				}
 			}
