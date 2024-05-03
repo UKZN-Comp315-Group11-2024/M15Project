@@ -203,7 +203,7 @@ namespace M15Namespace {
 			msclr::interop::marshal_context context;
 			if (!playerExists)
 			{
-				
+
 				std::ofstream writer(filename2);
 				// Reverse the order before inserting the player object and reverse it again to ascend the order
 				players->Reverse();

@@ -1425,5 +1425,5 @@ namespace M15Namespace {
 				panelLogin->Focus();
 			}
 		}
-};
+	};
 }
