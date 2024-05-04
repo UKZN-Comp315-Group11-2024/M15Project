@@ -1455,7 +1455,7 @@ namespace M15Namespace {
 			{
 				move_up = true;
 				is_w_up = false;
-				//soundImpact->ThrusterSound();
+				
 			}
 			if (e->KeyCode == Keys::A)
 			{
@@ -1465,13 +1465,13 @@ namespace M15Namespace {
 				isleft = true;
 				move_left = true;
 				is_a_up = false;
-				//soundImpact->ThrusterSound();
+				
 			}
 			if (e->KeyCode == Keys::S)
 			{
 				move_down = true;
 				is_s_up = false;
-				//soundImpact->ThrusterSound();
+				
 			}
 			if (e->KeyCode == Keys::D)
 			{
@@ -1481,7 +1481,7 @@ namespace M15Namespace {
 				isleft = false;
 				move_right = true;
 				is_d_up = false;
-				//soundImpact->ThrusterSound();
+				
 			}
 		}
 
@@ -1531,7 +1531,7 @@ namespace M15Namespace {
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
 
-				//soundImpact->Thrusters.stop();
+				
 			}
 		}
 

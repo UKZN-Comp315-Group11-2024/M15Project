@@ -99,7 +99,7 @@ void MusicAndSFX::BulletImpact() {
 
 void MusicAndSFX::ThrusterSound() {
 
-	if (!Thrusters.openFromFile("assets\\music\\NewThrusterSFX.wav")) {  //opens music file
+	if (!Thrusters.openFromFile("assets\\music\\TheVeryFinalThrusterSound.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
 	Thrusters.play();
