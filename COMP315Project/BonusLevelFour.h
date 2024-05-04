@@ -86,19 +86,19 @@ namespace M15Namespace {
 			this->panelBonusLevel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
-			this->panelBonusLevel->Location = System::Drawing::Point(-10, -20);
+			this->panelBonusLevel->Location = System::Drawing::Point(-12, -25);
 			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(2);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
-			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
+			this->panelBonusLevel->Size = System::Drawing::Size(1600, 900);
 			this->panelBonusLevel->TabIndex = 13;
 			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelFour::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(-14, -26);
+			this->pictureBox1->Location = System::Drawing::Point(-18, -32);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(80, 40);
+			this->pictureBox1->Size = System::Drawing::Size(100, 50);
 			this->pictureBox1->TabIndex = 13;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -106,10 +106,10 @@ namespace M15Namespace {
 			// 
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
-			this->countdownBar->Location = System::Drawing::Point(374, 60);
+			this->countdownBar->Location = System::Drawing::Point(468, 75);
 			this->countdownBar->Margin = System::Windows::Forms::Padding(2);
 			this->countdownBar->Name = L"countdownBar";
-			this->countdownBar->Size = System::Drawing::Size(502, 38);
+			this->countdownBar->Size = System::Drawing::Size(628, 48);
 			this->countdownBar->TabIndex = 12;
 			// 
 			// lblMessage1
@@ -117,10 +117,10 @@ namespace M15Namespace {
 			this->lblMessage1->AutoSize = true;
 			this->lblMessage1->Font = (gcnew System::Drawing::Font(L"Courier New", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblMessage1->Location = System::Drawing::Point(304, 720);
+			this->lblMessage1->Location = System::Drawing::Point(380, 900);
 			this->lblMessage1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblMessage1->Name = L"lblMessage1";
-			this->lblMessage1->Size = System::Drawing::Size(0, 36);
+			this->lblMessage1->Size = System::Drawing::Size(0, 46);
 			this->lblMessage1->TabIndex = 1;
 			this->lblMessage1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
@@ -129,10 +129,10 @@ namespace M15Namespace {
 			this->pbGeneralMilitary->BackColor = System::Drawing::Color::Transparent;
 			this->pbGeneralMilitary->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->pbGeneralMilitary->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGeneralMilitary.Image")));
-			this->pbGeneralMilitary->Location = System::Drawing::Point(-260, 230);
+			this->pbGeneralMilitary->Location = System::Drawing::Point(-325, 288);
 			this->pbGeneralMilitary->Margin = System::Windows::Forms::Padding(0);
 			this->pbGeneralMilitary->Name = L"pbGeneralMilitary";
-			this->pbGeneralMilitary->Size = System::Drawing::Size(298, 448);
+			this->pbGeneralMilitary->Size = System::Drawing::Size(372, 560);
 			this->pbGeneralMilitary->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pbGeneralMilitary->TabIndex = 11;
 			this->pbGeneralMilitary->TabStop = false;
@@ -164,9 +164,9 @@ namespace M15Namespace {
 			// 
 			// BonusLevelFour
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(96, 96);
+			this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
-			this->ClientSize = System::Drawing::Size(1264, 680);
+			this->ClientSize = System::Drawing::Size(1580, 850);
 			this->Controls->Add(this->panelBonusLevel);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(2);
@@ -213,7 +213,7 @@ namespace M15Namespace {
 		System::Void BonusLevelFour_Load(System::Object^ sender, System::EventArgs^ e) {
 
 			// Sets background image
-			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackgroundDark.png");
+			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/spaceBackgroundNoStars.png");
 			panelBonusLevel->BackgroundImage = backgroundImage;
 
 			// Plays (background) music
@@ -229,7 +229,7 @@ namespace M15Namespace {
 				x_pos = rand() % 1050 + 10;
 				y_pos = rand() % 420 + 180;
 				x_size = rand() % 50 + 60;
-				y_size = rand() % 50 + 30;
+				y_size = rand() % 50 + 40;
 				targets[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, -100, y_pos, "assets/Doors/PageColorized.png", true);
 
 				// Assigns targets' speed values
@@ -239,7 +239,7 @@ namespace M15Namespace {
 			}
 
 			// Sets welcome message text
-			lblMessage1->Text = "Welcome To The Final Bonus Level:\n\nYour spaceship took a hit which resulted in\nsensitive documents being ejected.\nUnfortunately, we aren't able to retrieve\nthem so you need to destroy them.\n\nObliterate the documents!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
+			lblMessage1->Text = "Welcome To The Final Bonus Level:\n\nYour spaceship took a hit which resulted in\n36 sensitive documents being ejected.\nUnfortunately, we aren't able to retrieve\nthem so you need to destroy them.\n\nObliterate the documents!!\n\nHint: Aim with your mouse\nand shoot with left-click\n\n<Press Enter To Start>";
 			
 			// Starts the first transition timer
 			Transition1->Start();
@@ -256,8 +256,6 @@ namespace M15Namespace {
 				Transition1->Stop();
 				Transition1->Enabled = false;
 				Transition2->Start();
-				Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackground.png");
-				panelBonusLevel->BackgroundImage = backgroundImage;
 			}
 		}
 
@@ -322,6 +320,8 @@ namespace M15Namespace {
 				TargetTimer->Start();
 				TargetMoveTimer->Start();
 				Transition2->Enabled = false;
+				Image^ backgroundImage = Image::FromFile("assets/Backgrounds/spaceBackground2.png");
+				panelBonusLevel->BackgroundImage = backgroundImage;
 			}
 
 			// Sets their new position
