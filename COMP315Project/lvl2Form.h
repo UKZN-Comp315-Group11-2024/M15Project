@@ -321,7 +321,7 @@ namespace M15Namespace {
 			   this->textBoxTFB->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFB->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFB->Location = System::Drawing::Point(1238, 596);
+			   this->textBoxTFB->Location = System::Drawing::Point(1275, 623);
 			   this->textBoxTFB->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxTFB->Name = L"textBoxTFB";
 			   this->textBoxTFB->Size = System::Drawing::Size(241, 88);
@@ -335,7 +335,7 @@ namespace M15Namespace {
 			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1238, 339);
+			   this->textBoxTFA->Location = System::Drawing::Point(1275, 346);
 			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxTFA->Name = L"textBoxTFA";
 			   this->textBoxTFA->Size = System::Drawing::Size(238, 81);
@@ -349,7 +349,7 @@ namespace M15Namespace {
 			   this->textBoxD->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxD->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxD->Location = System::Drawing::Point(1238, 703);
+			   this->textBoxD->Location = System::Drawing::Point(1238, 693);
 			   this->textBoxD->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxD->Name = L"textBoxD";
 			   this->textBoxD->Size = System::Drawing::Size(300, 120);
@@ -363,7 +363,7 @@ namespace M15Namespace {
 			   this->textBoxC->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxC->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxC->Location = System::Drawing::Point(1238, 552);
+			   this->textBoxC->Location = System::Drawing::Point(1238, 525);
 			   this->textBoxC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxC->Name = L"textBoxC";
 			   this->textBoxC->Size = System::Drawing::Size(300, 120);
@@ -1237,7 +1237,7 @@ namespace M15Namespace {
 			{
 				playerlevel1->Left += -5;
 			}
-			if (move_down && playerlevel1->Top < 600)
+			if (move_down && playerlevel1->Top < 575)
 			{
 				playerlevel1->Top += 5;
 			}
