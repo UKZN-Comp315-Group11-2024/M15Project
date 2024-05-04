@@ -1204,6 +1204,8 @@ namespace M15Namespace {
 			{
 				this->btnsafety->Location = Point(308, 0);
 				this->btnsafety->Size = System::Drawing::Size(653, 693);
+				delete this->pictureBoxTF1;
+				delete this->pictureBoxTF2;
 				doFinalCheck("T");
 			}
 			else
@@ -1235,6 +1237,8 @@ namespace M15Namespace {
 			{
 				this->btnsafety->Location = Point(308, 0);
 				this->btnsafety->Size = System::Drawing::Size(653, 693);
+				delete this->pictureBoxTF1;
+				delete this->pictureBoxTF2;
 				doFinalCheck("F");
 			}
 			else
