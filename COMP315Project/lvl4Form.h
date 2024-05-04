@@ -1530,8 +1530,6 @@ namespace M15Namespace {
 					playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\spaceship.png");
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
-
-				
 			}
 		}
 
@@ -1645,11 +1643,6 @@ namespace M15Namespace {
 				soundAnswer->IncorrectAnswer();
 				soundImpact->BulletImpact();
 			}
-
-
-
-
-
 		}
 
 		/*
