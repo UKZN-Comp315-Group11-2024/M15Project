@@ -8,7 +8,7 @@
 
 LoadQuestion::LoadQuestion(int levelNum) {
     
-    //
+    //ensures that the options are shuffled correctly for each question
     customAlgs<String^>::srandom();
 
     //int value representing the level
@@ -27,6 +27,7 @@ LoadQuestion::LoadQuestion(int levelNum) {
             currentQuestion->QuestionType = sline->Substring(0, pos);
             sline = sline->Remove(0, pos + 1);
             if (currentQuestion->QuestionType == "0") {
+                //Multiple choice
                 pos = sline->IndexOf('$');
                 currentQuestion->question = sline->Substring(0, pos);   
                 sline = sline->Remove(0, pos + 1); 
@@ -65,6 +66,7 @@ LoadQuestion::LoadQuestion(int levelNum) {
                 
             }
             else {
+                //true false
                 pos = sline->IndexOf('$');
                 currentQuestion->question = sline->Substring(0, pos);   
                 sline = sline->Remove(0, pos + 1); 
@@ -97,7 +99,7 @@ LoadQuestion::LoadQuestion(int levelNum) {
     }
 
     myfile->Close();
-
+    //Ensures that 8 mcq questions and 2 true false questions are picked
     levelQuestions = customAlgs<Question^>::chooseRandomMfromN(mcqQuestions, 8);
     tempTFvector = customAlgs<Question^>::chooseRandomMfromN(tfQuestions, 2);
 
