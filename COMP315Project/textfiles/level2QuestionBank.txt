@@ -18,7 +18,7 @@ LEVEL 2 QUESTIONS
 0$In spy terminology, what does the term "blowback" refer to?$A covert operation that goes wrong and results in unintended consequences$A signal used to trigger a predetermined action$A communication intercepted by enemy intelligence$A clandestine meeting between agents
 0$What is the name of an anonymous female person$Jane Doe$Mary Sue$Jessica White$Richard Roe
 0$When on an infiltration mission, what is a common objective for a spy?$To gather intelligence$To engage in direct combat$To establish diplomatic relations$To conduct propaganda efforts
-1$True or False: Spies can disquise themselves using face masks just like in the Mission Impossible series.$True$False
-1$True or False: A soldier undercover must blend in seamlessly with their surroundings.$True$False
-1$True or False: Maintaining discipline and composure is crucial for a soldier in undercover operations.$True$False
-1$True or False: MI6, the British intelligence agency, is commonly known as "Secret Intelligence Service (SIS)".$True$False
+1$True/False: Spies can disquise themselves using face masks just like in the Mission Impossible series.$True$False
+1$True/False: A soldier undercover must blend in seamlessly with their surroundings.$True$False
+1$True/False: Maintaining discipline and composure is crucial for a soldier in undercover operations.$True$False
+1$True/False: MI6, the British intelligence agency, is commonly known as "Secret Intelligence Service (SIS)".$True$False

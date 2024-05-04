@@ -10,8 +10,6 @@ LEVEL 4 QUESTIONS
 0$How do spies maintain secrecy during space missions?$Implement counter-surveillance techniques.$Share detailed plans on open channels.$Implement distractive counter-measures.$Cover your face and body.
 0$How do spies maintain cover identities?$Maintain consistent behavior.$Change appearances frequently.$Forge implausible documents.$Use variating accents.
 0$How can a spy use planetary movement during a mission?$Use gravitational assists for fuel efficiency.$Align movements with planetary positions for cover.$Hide behind planets to avoid detection.$Use planetary movement for camouflage.
-1$Spies often undergo psychological training to cope with the mental challenges of long missions.$True.$False.
-1$Spies in space missions are allowed to communicate freely with space stations about objectives.$False.$True.
 0$What tv show primarily features the use of wormhole technology to explore the cosmos?$Stargate$Star Wars$Star Trek$Starhunter
 0$If a spy is spotted by an alien species what should they do?$Initiate first response protocols.$Fly to the nearest star to burn all evidence.$Open fire.$Ask the aliens for information pertaining to their mission.
 0$How should a spy keep themselves entertained on long journeys?$By using the spaceship's entertainment facilities.$By taking joyrides using advanced manoeuvres.$By calling family and friends back home.$By contacting other spies to ask about their day. 
@@ -20,5 +18,7 @@ LEVEL 4 QUESTIONS
 0$If an unidentified object is approaching the spaceship, what should a spy do?$Avoid at all costs.$Shoot it down.$Broadcast a message asking it to identify itself.$Wait for it to get closer for visual confirmation.
 0$How many personal items are spies allowed to bring with them on missions?$None.$Any amount as long as the weight is under 1kg.$10$25
 0$If a spy gets sick in space what should they do?$Take broad-spectrum antibiotics.$Identify the illness using tests.$Take a few days off to rest.$Return back to Earth.
-1$Spies are encouraged to use wormholes for long-distance travel.$False$True
-1$Spies are made aware of all restocking bases located on other planets before their mission.$True$False
+1$True/False: Spies often undergo psychological training to cope with the mental challenges of long missions.$True$False
+1$True/False: Spies in space missions are allowed to communicate freely with space stations about objectives.$False$True
+1$True/False: Spies are encouraged to use wormholes for long-distance travel.$False$True
+1$True/False: Spies are made aware of all restocking bases located on other planets before their mission.$True$False

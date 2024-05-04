@@ -56,8 +56,8 @@ int main(array<String^>^ args) {
 	//BonusLevelThree bonusLevelThree;
 	//Application::Run(% bonusLevelThree);
 
-	BonusLevelFour BNTT;
-	Application::Run(% BNTT);
+	//BonusLevelFour BNTT;
+	//Application::Run(% BNTT);
 
 	//FaceRecognition fr;
 	//Application::Run(% fr);
