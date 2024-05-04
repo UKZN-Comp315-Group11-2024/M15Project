@@ -915,6 +915,8 @@ namespace M15Namespace {
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
+				this->btnsafety->Location = Point(308, 0);
+				this->btnsafety->Size = System::Drawing::Size(653, 693);
 				doFinalCheck("T");
 			}
 			else
@@ -944,6 +946,8 @@ namespace M15Namespace {
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
+				this->btnsafety->Location = Point(308, 0);
+				this->btnsafety->Size = System::Drawing::Size(653, 693);
 				doFinalCheck("F");
 			}
 			else
@@ -1074,7 +1078,10 @@ namespace M15Namespace {
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
-			ambience->playRandomSound("assets\\music\\ouch.wav", false);
+			if (LvlMethods->QuestionsCompleted != 10) {
+				ambience->playRandomSound("assets\\music\\ouch.wav", false);
+			}
+			
 		}
 
 		/*
