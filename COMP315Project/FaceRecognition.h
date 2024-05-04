@@ -533,6 +533,7 @@ namespace M15Namespace {
 		sound1->MouseClick();
 		if (MessageBox::Show("The AI is about to commence facial recognition. Please look directly at the webcam and ensure there is no one else around you.", "", MessageBoxButtons::OKCancel, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::OK)
 		{
+			btnokay->Enabled = false;
 			try {
 				state = "recognizing";
 				std::string s = f->FaceRecognitionNew();
@@ -542,19 +543,16 @@ namespace M15Namespace {
 					this->txtpretty->Visible = true;
 					txtpretty->Text = "Facial Recognition Successful";
 					successful = true;
-					PlaySound(NULL, NULL, 0);
-					sound1->playRandomSound("assets\\boom.wav", false);
-					sound1->FacialRegocnition();
 					timerexit->Start();
 				}
 				else {
 					MessageBox::Show("The AI could not recognize you. Make sure you are close enough to the camera.", "", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					btnokay->Enabled = true;
 				}
 			}
 			catch (System::Exception^ e) {
 				MessageBox::Show("The AI is grumpy today and doesn't feel like recognizing (We're too scared of her to do anything about it). Try logging in with a username instead.", "", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
-
 		}
 	}
 
@@ -563,6 +561,7 @@ namespace M15Namespace {
 		sound1->MouseClick();
 		if (MessageBox::Show("The AI is about to commence facial recognition. Please look directly at the webcam and ensure there is no one else around you.", "", MessageBoxButtons::OKCancel, MessageBoxIcon::Information) == System::Windows::Forms::DialogResult::OK)
 		{
+			btnokay->Enabled = false;
 			try {
 				state = "recognizing";
 				std::string s = f->FaceRecognitionNew();
@@ -576,6 +575,7 @@ namespace M15Namespace {
 				}
 				else {
 					MessageBox::Show("The AI could not recognize you. Make sure you are close enough to the camera.", "", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					btnokay->Enabled = true;
 				}
 			}
 			catch (System::Exception^ e) {
