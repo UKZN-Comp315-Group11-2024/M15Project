@@ -629,6 +629,7 @@ namespace M15Namespace {
 
 		array<definedPictureBox^>^ pictureBoxArray;
 
+		// Linking objects to functions which will be called when the corresponding image is destoyed(shot)
 		Destructible^ des = gcnew Destructible;
 		Destructible::DestroyFunction^ destroyFuncA = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyA);
 		Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl2Form::destroyB);
@@ -689,6 +690,7 @@ namespace M15Namespace {
 			Loads/instantiates certain UI elements
 			Creates and displays the "Welcome to level 2" pop up,
 			Initalizes the player info object with info from PlayerInfo.txt
+			Adds destructible objects to the destructible list
 			Plays the levels' (background) music
 		*/
 		System::Void lvl2Form_Load(System::Object^ sender, System::EventArgs^ e) {
