@@ -642,6 +642,7 @@ namespace M15Namespace {
 		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/runleft.gif");
 		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/shoot.gif");
 
+		//?
 		bool isleft;
 		bool canshoot = false;
 		bool lvlcomplete = false;
@@ -675,6 +676,7 @@ namespace M15Namespace {
 
 			lvl1Brief->Text = "Level 1 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the door that does not lead to your death, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 20 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
+			// Gets player info
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
 			std::vector<std::string> v;
@@ -707,6 +709,7 @@ namespace M15Namespace {
 
 			this->player = p;
 
+			// Display intro message using using timer
 			msclr::interop::marshal_context context;
 			std::string windowPrompt = "Welcome to the first level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die ;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
@@ -722,6 +725,7 @@ namespace M15Namespace {
 
 			playerlevel1->ImageLocation = "assets/PlayerMove/idle.gif";
 
+			//?
 			bullet = gcnew definedPictureBox(panelLogin, 8, 4, playerlevel1->Location.X, playerlevel1->Location.Y, "assets/Bullets/9.png", false);
 			bullet->Hide();
 
@@ -745,10 +749,11 @@ namespace M15Namespace {
 
 			des->addObject(this->btnsafety, destroyFuncSafety);
 			
-
+			// Sound effects
 			ambience->OfficeNoise();
 			music->LevelOneMusic();
 
+			// Adding destructible objects
 			des->addObject(pbObstacle1, destroyFuncObstacle);
 			des->addObject(pbObstacle2, destroyFuncObstacle);
 			des->addObject(pbObstacle3, destroyFuncObstacle);
@@ -768,12 +773,14 @@ namespace M15Namespace {
 			Moves the military general and start button onto the screen
 		*/
 		System::Void Transition1_Tick(System::Object^ sender, System::EventArgs^ e) {
+			//Graphics location
 			Point p1 = pbGeneralMilitary->Location;
 			Point p2 = lblMessage1->Location;
 			Point p3 = pbstart->Location;
 			Point p4 = lvl1Brief->Location;
 			int x1 = p1.X, y1 = p2.Y, y2 = p3.Y, x2 = p4.X;
 
+			// Updates x and y values every tick 
 			if (x1 <= 40)
 			{
 				x1 += 10;
@@ -791,6 +798,7 @@ namespace M15Namespace {
 				x2 -= 10;
 			}
 
+			// Sets the new locations for the graphics every tick
 			pbGeneralMilitary->Location = Point(x1, 230);
 			lblMessage1->Location = Point(395, y1);
 			pbstart->Location = Point(500, y2);
@@ -827,7 +835,7 @@ namespace M15Namespace {
 
 			if (!(x1 >= -325) && !(y1 <= 900) && !(y2 <= 1000) && !(x2 <= 1650))
 			{
-
+				// Positioning various graphics for the beginning of the game-play
 				this->Barrier->Visible = true;
 				this->progressBarLevel1->Visible = true;
 				this->playerlevel1->Visible = true;
@@ -897,12 +905,15 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
+			// Re-display option after it is destroyed
 			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 780, 175, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxTF1, destroyFuncTF1);
 
+			// Processes the chosen option given by the player
 			LvlMethods->QuestionAnswered(0);
 
+			// If the answer was correct, display the appropriate graphic
 			if (LvlMethods->Correct)
 			{
 				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door.png", false);
@@ -913,6 +924,7 @@ namespace M15Namespace {
 			}
 			openedDoor->setVisible(true);
 
+			// If the level is over, do the final check else transition to the next question
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
 				this->btnsafety->Location = Point(308, 0);
@@ -1085,7 +1097,7 @@ namespace M15Namespace {
 		}
 
 		/*
-			Function called when destroying an obstacle
+			Function called when destroying an obstacle, plays sound
 		*/
 		void destroyObstacle() {
 			
@@ -1096,12 +1108,15 @@ namespace M15Namespace {
 			Changes the text of the options to indicate if their chosen answer is correct (green) or incorrect (red)
 		*/
 		void changeLabelColors() {
+			// All text colours set to red
 			textBoxA->ForeColor = System::Drawing::Color::Red;
 			textBoxB->ForeColor = System::Drawing::Color::Red;
 			textBoxC->ForeColor = System::Drawing::Color::Red;
 			textBoxD->ForeColor = System::Drawing::Color::Red;
 			textBoxTFA->ForeColor = System::Drawing::Color::Red;
 			textBoxTFB->ForeColor = System::Drawing::Color::Red;
+			
+		    // Changes the colour of the correct option to green
 			if (LvlMethods->CorrectOptionInt == 0) {
 				textBoxA->ForeColor = System::Drawing::Color::Green;
 				textBoxTFA->ForeColor = System::Drawing::Color::Green;
@@ -1128,6 +1143,7 @@ namespace M15Namespace {
 		*/
 		System::Void lvl1Form_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 			e->SuppressKeyPress = true;
+			// If the player is allowed to shoot and is facing the correct direction, play shoot animation(i.e. start timer)
 			if (LvlMethods->DisableControls != true) {
 
 				if (e->KeyCode == Keys::Space && canshoot)
@@ -1309,6 +1325,7 @@ namespace M15Namespace {
 		*/
 		System::Void QuestionTransitionTimerShow_Tick(System::Object^ sender, System::EventArgs^ e) {
 
+			//Disable player controls, depending on if the player is correct or not, display appropriate graphics
 			LvlMethods->DisableControls = true;
 			if (LvlMethods->Correct) {
 				LvlMethods->Correct = false;
@@ -1395,6 +1412,7 @@ namespace M15Namespace {
 			this->progressBarLevel1->Increment(1);
 			LvlMethods->PlayerStats->timeTaken = ticks / 100;
 			ticks++;
+			// Updates a displayed timer
 			DigitalStopWatch->Text = "Total time: " + System::Convert::ToString(LvlMethods->PlayerStats->timeTaken);
 			if (this->progressBarLevel1->Value == this->progressBarLevel1->Maximum)
 			{
@@ -1407,6 +1425,7 @@ namespace M15Namespace {
 				else {
 					currentFeedbackLogoNum++;
 					LvlMethods->QuestionCompleted();
+					// Special case for if he timer runs out on the last mcq question
 					if (LvlMethods->QuestionsCompleted == 8) {
 						pictureBoxA->setLocation(870, pictureBoxA->Location.Y);
 						pictureBoxB->setLocation(870, pictureBoxA->Location.Y);
@@ -1450,6 +1469,7 @@ namespace M15Namespace {
 			Ensures that feedback is provided for the final question (question 10) before moving to the end of level screen
 		*/
 		void doFinalCheck(std::string str) {
+			// Disable timers
 			this->shootTimer->Enabled = false;
 			this->timeranimation->Enabled = false;
 			this->timerProgress->Enabled = false;
@@ -1460,6 +1480,7 @@ namespace M15Namespace {
 			this->Transition2->Enabled = false;
 			this->BulletTimer->Enabled = false;
 
+			//Displays appropriate graphics if correct and if not
 			if (LvlMethods->Correct)
 			{
 				LvlMethods->Correct = false;
@@ -1529,6 +1550,7 @@ namespace M15Namespace {
 			timerfinal->Enabled = false;
 			timerfinal->Stop();
 
+			// Disabling timers
 			this->shootTimer->Enabled = false;
 			this->timeranimation->Enabled = false;
 			this->timerProgress->Enabled = false;
@@ -1539,6 +1561,7 @@ namespace M15Namespace {
 			this->Transition2->Enabled = false;
 			this->BulletTimer->Enabled = false;
 
+			// Stopping sound
 			soundAnswer->StopSound();
 			ambience->StopSound();
 			music->StopSound();
@@ -1549,6 +1572,7 @@ namespace M15Namespace {
 			delete soundImpact;
 			delete music;
 
+			// Updating player stats
 			int levelTimeTaken = LvlMethods->PlayerStats->timeTaken;
 			int levelScore = LvlMethods->PlayerStats->score;
 
@@ -1565,6 +1589,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
+			// Displaying player stats
 			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points\nPlease proceed to the first bonus level.";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
@@ -1574,6 +1599,7 @@ namespace M15Namespace {
 
 			window->ShowDialog();
 
+			// Begin bonus level
 			BonusLevelOne^ bonus1 = gcnew BonusLevelOne();
 			this->Hide();
 			bonus1->ShowDialog();
