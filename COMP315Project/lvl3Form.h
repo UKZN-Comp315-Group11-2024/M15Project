@@ -1560,7 +1560,6 @@ namespace M15Namespace {
 			}
 			else if (str == "F")
 			{
-				std::cout << "plz" << std::endl;
 				openedDoor->BringToFront();
 
 				if (LvlMethods->Correct)
@@ -1570,7 +1569,6 @@ namespace M15Namespace {
 				}
 				else
 				{
-					std::cout << "plz" << std::endl;
 					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 740, 455, "assets/Doors/bunker_opened_wrong.png", false);
 				}
 				openedDoor->setVisible(true);
