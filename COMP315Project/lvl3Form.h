@@ -274,7 +274,7 @@ namespace M15Namespace {
 			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
 			   this->pbObstacle5->Location = System::Drawing::Point(797, 492);
 			   this->pbObstacle5->Name = L"pbObstacle5";
-			   this->pbObstacle5->Size = System::Drawing::Size(92, 125);
+			   this->pbObstacle5->Size = System::Drawing::Size(128, 82);
 			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle5->TabIndex = 53;
 			   this->pbObstacle5->TabStop = false;
