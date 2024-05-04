@@ -35,7 +35,7 @@ int main(array<String^>^ args) {
 
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
-	lvl4Form lvl1form;
+	lvl1Form lvl1form;
 	Application::Run(% lvl1form);
 
 	//MusicAndSFX *m = new MusicAndSFX();

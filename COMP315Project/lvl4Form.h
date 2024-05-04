@@ -988,7 +988,7 @@ namespace M15Namespace {
 			msclr::interop::marshal_context context;
 			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
-			popup^ window = gcnew popup(unwrapped, 0, 0, "");
+			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
 			this->Hide();
 			window->ShowDialog();
