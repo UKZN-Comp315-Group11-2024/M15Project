@@ -118,6 +118,7 @@ namespace M15Namespace {
 			   this->panelBoot->Name = L"panelBoot";
 			   this->panelBoot->Size = System::Drawing::Size(1280, 720);
 			   this->panelBoot->TabIndex = 3;
+			   this->panelBoot->MouseHover += gcnew System::EventHandler(this, &BootForm::panelBoot_MouseHover);
 			   // 
 			   // buttonVideo
 			   // 
@@ -132,6 +133,7 @@ namespace M15Namespace {
 			   this->buttonVideo->TabIndex = 4;
 			   this->buttonVideo->UseVisualStyleBackColor = false;
 			   this->buttonVideo->Click += gcnew System::EventHandler(this, &BootForm::buttonVideo_Click_1);
+			   this->buttonVideo->MouseHover += gcnew System::EventHandler(this, &BootForm::buttonVideo_MouseHover);
 			   // 
 			   // borderPictureBox
 			   // 
@@ -209,6 +211,7 @@ namespace M15Namespace {
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			   this->ClientSize = System::Drawing::Size(1264, 681);
 			   this->Controls->Add(this->panelBoot);
+			   this->Cursor = System::Windows::Forms::Cursors::Arrow;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			   this->MaximizeBox = false;
 			   this->Name = L"BootForm";
@@ -364,5 +367,11 @@ namespace M15Namespace {
 	}
 
 
-	};
+private: System::Void buttonVideo_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+	this->Cursor = System::Windows::Forms::Cursors::Hand;
+}
+private: System::Void panelBoot_MouseHover(System::Object^ sender, System::EventArgs^ e) {
+	this->Cursor = System::Windows::Forms::Cursors::Default;
+}
+};
 }

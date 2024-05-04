@@ -101,7 +101,6 @@ namespace M15Namespace {
 			   this->components = (gcnew System::ComponentModel::Container());
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			   this->panelLogin = (gcnew System::Windows::Forms::Panel());
-			   this->pictureboxlockgif = (gcnew System::Windows::Forms::PictureBox());
 			   this->TutorialButton = (gcnew System::Windows::Forms::Button());
 			   this->pbleaderboard = (gcnew System::Windows::Forms::PictureBox());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
@@ -115,15 +114,16 @@ namespace M15Namespace {
 			   this->lblWarning = (gcnew System::Windows::Forms::Label());
 			   this->lblSuggestor = (gcnew System::Windows::Forms::Label());
 			   this->lblSpyName = (gcnew System::Windows::Forms::Label());
+			   this->pictureboxlockgif = (gcnew System::Windows::Forms::PictureBox());
 			   this->timerloginscroll = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->starttypingtimer = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->timerlockgif = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->panelLogin->SuspendLayout();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxlockgif))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbleaderboard))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxlockgif))->BeginInit();
 			   this->SuspendLayout();
 			   // 
 			   // panelLogin
@@ -131,6 +131,7 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			   this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			   this->panelLogin->Controls->Add(this->TutorialButton);
 			   this->panelLogin->Controls->Add(this->pbleaderboard);
 			   this->panelLogin->Controls->Add(this->label2);
@@ -144,26 +145,12 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->lblWarning);
 			   this->panelLogin->Controls->Add(this->lblSuggestor);
 			   this->panelLogin->Controls->Add(this->lblSpyName);
-			   this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(-8, -20);
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1280, 720);
 			   this->panelLogin->TabIndex = 3;
 			   this->panelLogin->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &LoginForm::panelLogin_Paint);
-			   // 
-			   // pictureboxlockgif
-			   // 
-			   this->pictureboxlockgif->BackColor = System::Drawing::Color::Black;
-			   this->pictureboxlockgif->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureboxlockgif.Image")));
-			   this->pictureboxlockgif->Location = System::Drawing::Point(-276, -238);
-			   this->pictureboxlockgif->Name = L"pictureboxlockgif";
-			   this->pictureboxlockgif->Size = System::Drawing::Size(1846, 1066);
-			   this->pictureboxlockgif->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			   this->pictureboxlockgif->TabIndex = 9;
-			   this->pictureboxlockgif->TabStop = false;
-			   this->pictureboxlockgif->Visible = false;
-			   this->pictureboxlockgif->Click += gcnew System::EventHandler(this, &LoginForm::pictureboxlockgif_Click);
 			   // 
 			   // TutorialButton
 			   // 
@@ -329,6 +316,19 @@ namespace M15Namespace {
 			   this->lblSpyName->Text = L"Alias:";
 			   this->lblSpyName->Click += gcnew System::EventHandler(this, &LoginForm::lblSpyName_Click);
 			   // 
+			   // pictureboxlockgif
+			   // 
+			   this->pictureboxlockgif->BackColor = System::Drawing::Color::Black;
+			   this->pictureboxlockgif->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureboxlockgif.Image")));
+			   this->pictureboxlockgif->Location = System::Drawing::Point(-276, -238);
+			   this->pictureboxlockgif->Name = L"pictureboxlockgif";
+			   this->pictureboxlockgif->Size = System::Drawing::Size(1846, 1066);
+			   this->pictureboxlockgif->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			   this->pictureboxlockgif->TabIndex = 9;
+			   this->pictureboxlockgif->TabStop = false;
+			   this->pictureboxlockgif->Visible = false;
+			   this->pictureboxlockgif->Click += gcnew System::EventHandler(this, &LoginForm::pictureboxlockgif_Click);
+			   // 
 			   // timerloginscroll
 			   // 
 			   this->timerloginscroll->Enabled = true;
@@ -363,11 +363,11 @@ namespace M15Namespace {
 			   this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			   this->panelLogin->ResumeLayout(false);
 			   this->panelLogin->PerformLayout();
-			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxlockgif))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbleaderboard))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxlockgif))->EndInit();
 			   this->ResumeLayout(false);
 
 		   }
