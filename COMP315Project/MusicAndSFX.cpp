@@ -6,9 +6,9 @@
 MusicAndSFX::MusicAndSFX() {
 	sound.setVolume(70); // sets sound effect volume
 	Background.setVolume(70);//sets background sounds volume
-	music.setVolume(50); //sets music volume
+	music.setVolume(60); //sets music volume
 	randomSound.setVolume(100);
-	Thrusters.setVolume(50);
+	Thrusters.setVolume(30);
 }
 
 MusicAndSFX::~MusicAndSFX() {
@@ -97,7 +97,7 @@ void MusicAndSFX::BulletImpact() {
 
 }
 
-void MusicAndSFX::Thruster() {
+void MusicAndSFX::ThrusterSound() {
 
 	if (!sound.openFromFile("assets\\music\\ES_Rocket Booster 9 - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
@@ -209,6 +209,7 @@ void MusicAndSFX::StopSound() { //stops music if sent boolean value true
 	music.stop();
 	Background.stop();
 	sound.stop();	
+	Thrusters.stop();
 }
 
 void MusicAndSFX::playRandomSound(std::string path, bool loop) {

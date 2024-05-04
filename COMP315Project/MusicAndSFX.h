@@ -33,7 +33,7 @@ public:
 	void Forest();
 	void NightForest();
 	void Space();
-	void Thruster();
+	void ThrusterSound();
 
 
 	void StopSound();
