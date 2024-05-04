@@ -636,6 +636,7 @@ namespace M15Namespace {
 		MusicAndSFX* soundImpact = new MusicAndSFX();
 		MusicAndSFX* ambience = new MusicAndSFX();
 		MusicAndSFX* music = new MusicAndSFX();
+		MusicAndSFX* destroy = new MusicAndSFX();
 
 		array<definedPictureBox^>^ pictureBoxArray;
 
@@ -1109,7 +1110,7 @@ namespace M15Namespace {
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
 			if (LvlMethods->QuestionsCompleted != 10) {
-				ambience->playRandomSound("assets\\music\\ouch.wav", false);
+				ambience->playRandomSound("assets\\music\\ES_Human Grunt 15 - SFX Producer.wav", false);
 			}
 			
 			des->addObject(pbSafety, destroyFuncSafety);
@@ -1117,7 +1118,7 @@ namespace M15Namespace {
 
 		void destroyRandomObject() {
 			bullet == pbRandObject1;
-			soundImpact->playRandomSound("assets\\music\\ES_Explosion Grenade 3 - SFX Producer.wav", false);
+			destroy->playRandomSound("assets\\music\\ES_Explosion Grenade 3 - SFX Producer.wav", false);
 		}
 
 		/*
@@ -1583,11 +1584,13 @@ namespace M15Namespace {
 			ambience->StopSound();
 			music->StopSound();
 			soundImpact->StopSound();
+			destroy->StopSound();
 
 			delete soundAnswer;
 			delete ambience;
 			delete soundImpact;
 			delete music;
+			delete destroy;
 
 			int levelTimeTaken = LvlMethods->PlayerStats->timeTaken;
 			int levelScore = LvlMethods->PlayerStats->score;
