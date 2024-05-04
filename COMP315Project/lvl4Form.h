@@ -274,7 +274,7 @@ namespace M15Namespace {
 			   // 
 			   this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
 			   this->Barrier->Location = System::Drawing::Point(320, 224);
-			   this->Barrier->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Barrier->Margin = System::Windows::Forms::Padding(4);
 			   this->Barrier->Name = L"Barrier";
 			   this->Barrier->Size = System::Drawing::Size(69, 656);
 			   this->Barrier->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -314,7 +314,7 @@ namespace M15Namespace {
 			   this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			   this->progressBarLevel1->ForeColor = System::Drawing::Color::DarkOrange;
 			   this->progressBarLevel1->Location = System::Drawing::Point(904, 31);
-			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->progressBarLevel1->Maximum = 1200;
 			   this->progressBarLevel1->Name = L"progressBarLevel1";
 			   this->progressBarLevel1->Size = System::Drawing::Size(562, 62);
@@ -349,7 +349,7 @@ namespace M15Namespace {
 			   // 
 			   this->playerlevel1->ImageLocation = L"assets/PlayerMove/spaceship.png";
 			   this->playerlevel1->Location = System::Drawing::Point(61, 491);
-			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->playerlevel1->Name = L"playerlevel1";
 			   this->playerlevel1->Size = System::Drawing::Size(121, 80);
 			   this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -377,7 +377,7 @@ namespace M15Namespace {
 			   // 
 			   this->pbstart->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbstart.Image")));
 			   this->pbstart->Location = System::Drawing::Point(500, 875);
-			   this->pbstart->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pbstart->Margin = System::Windows::Forms::Padding(4);
 			   this->pbstart->Name = L"pbstart";
 			   this->pbstart->Size = System::Drawing::Size(311, 311);
 			   this->pbstart->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -389,7 +389,7 @@ namespace M15Namespace {
 			   // 
 			   this->btnsafety->ForeColor = System::Drawing::Color::Transparent;
 			   this->btnsafety->Location = System::Drawing::Point(1549, 4);
-			   this->btnsafety->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->btnsafety->Margin = System::Windows::Forms::Padding(4);
 			   this->btnsafety->Name = L"btnsafety";
 			   this->btnsafety->Size = System::Drawing::Size(145, 824);
 			   this->btnsafety->TabIndex = 45;
@@ -442,7 +442,7 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->Barrier);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(0, 0);
-			   this->panelLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1540, 852);
 			   this->panelLogin->TabIndex = 12;
@@ -815,7 +815,7 @@ namespace M15Namespace {
 			   this->Controls->Add(this->panelLogin);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			   this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->Name = L"lvl4Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			   this->Text = L"Level 4 of 4";
@@ -936,9 +936,10 @@ namespace M15Namespace {
 		System::Void lvl4Form_Load(System::Object^ sender, System::EventArgs^ e) {
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/spaceblackrectangle.png");
 			panelLogin->BackgroundImage = backgroundImage;
+
 			this->ClientSize = System::Drawing::Size(1232, 682);
 
-			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor with the corresponding answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback provided immediately.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
+			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor that contains confetti, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
@@ -973,7 +974,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nWhere, as we are sure you know, no one can hear you scream :D \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe;)";
+			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nWhere, as we are sure you know, no one can hear you scream :D \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe ;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
@@ -1201,6 +1202,10 @@ namespace M15Namespace {
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
+				this->btnsafety->Location = Point(308, 0);
+				this->btnsafety->Size = System::Drawing::Size(653, 693);
+				delete this->pictureBoxTF1;
+				delete this->pictureBoxTF2;
 				doFinalCheck("T");
 			}
 			else
@@ -1230,6 +1235,10 @@ namespace M15Namespace {
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
+				this->btnsafety->Location = Point(308, 0);
+				this->btnsafety->Size = System::Drawing::Size(653, 693);
+				delete this->pictureBoxTF1;
+				delete this->pictureBoxTF2;
 				doFinalCheck("F");
 			}
 			else
@@ -1366,7 +1375,10 @@ namespace M15Namespace {
 			pbSafety = gcnew definedPictureBox(panelLogin, 116, 659, 1239, 3, "assets/Barrier.gif", false);
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
-			ambience->playRandomSound("assets\\music\\ouch.wav", false);
+			if (LvlMethods->QuestionsCompleted != 10) {
+				ambience->playRandomSound("assets\\music\\ouch.wav", false);
+			}
+			
 		}
 
 		//Asteroids

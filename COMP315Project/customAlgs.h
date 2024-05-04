@@ -163,7 +163,7 @@ public:
 				result->Add(e);
 			}
 			else {
-				int random = rand() % (v->Count - 1);
+				int random = rand() % (v->Count);
 				E e = v[random];
 				v->RemoveRange(random, 1);
 				result->Add(e);
