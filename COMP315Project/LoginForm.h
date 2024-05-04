@@ -604,7 +604,6 @@ namespace M15Namespace {
 		msclr::interop::marshal_context context;
 		ofs << context.marshal_as<std::string>(player->username) << "\n" << player->score << "\n" << player->timeTaken;
 		ofs.close();
-
 		lvl1Form^ lvl1form = gcnew lvl1Form();
 		lvl1form->Visible = false;
 		this->Hide();

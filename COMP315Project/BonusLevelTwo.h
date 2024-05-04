@@ -6,6 +6,7 @@
 #include "LoadQuestion.h"
 #include "PictureBox.h"
 #include "MusicAndSFX.h"
+#include "lvl3Form.h"
 
 namespace M15Namespace {
 
@@ -90,11 +91,12 @@ namespace M15Namespace {
 			this->panelBonusLevel->Name = L"panelBonusLevel";
 			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
 			this->panelBonusLevel->TabIndex = 13;
+			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelTwo::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Location = System::Drawing::Point(-14, -26);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(80, 40);
 			this->pictureBox1->TabIndex = 13;
@@ -105,7 +107,7 @@ namespace M15Namespace {
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
 			this->countdownBar->Location = System::Drawing::Point(374, 60);
-			this->countdownBar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->countdownBar->Margin = System::Windows::Forms::Padding(2);
 			this->countdownBar->Name = L"countdownBar";
 			this->countdownBar->Size = System::Drawing::Size(503, 37);
 			this->countdownBar->TabIndex = 12;
@@ -161,11 +163,13 @@ namespace M15Namespace {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->ClientSize = System::Drawing::Size(1264, 680);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelTwo";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"BonusLevelTwo";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &BonusLevelTwo::BonusLevelTwo_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &BonusLevelTwo::BonusLevelTwo_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelTwo::BonusLevelTwo_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
@@ -176,7 +180,8 @@ namespace M15Namespace {
 
 		}
 #pragma endregion
-    
+		bool levelcomplete = false;
+
 		//Number of targets hit
 		int countTotal = 0;
 		//Number of targets on screen
@@ -363,6 +368,7 @@ namespace M15Namespace {
 				}
 			}
 			else {
+				this->levelcomplete = true;
 				TargetTimer->Stop();
 				countdown->Stop();
 
@@ -372,6 +378,7 @@ namespace M15Namespace {
 				{
 					buttons[i]->Enabled = false;
 					countTotal += buttons[i]->numClicks();
+					delete buttons[i]->BonusSounds;
 
 				}
 
@@ -419,6 +426,12 @@ namespace M15Namespace {
 
 					outputFile.close();
 
+					//stops background music
+					ambience->StopSound();
+					music->StopSound();
+					delete ambience;
+					delete music;
+
 					//Provides player feedback
 					std::string windowPrompt = "\nBonus Level Two Feedback (10 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
@@ -427,14 +440,12 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
-					//closes this form
+					lvl3Form^ lvl3form = gcnew lvl3Form();
+					this->Hide();
+					lvl3form->ShowDialog();
 					this->Close();
 
-					//stops background music
-					ambience->StopSound();
-					music->StopSound();
-					delete ambience;
-					delete music;
+
 				}
 				//if no points where earned, provides player feedback on popup form, closes form
 				else
@@ -455,10 +466,24 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
-					//closes this form
+
+					lvl3Form^ lvl3form = gcnew lvl3Form();
+					this->Hide();
+					lvl3form->ShowDialog();
 					this->Close();
 				}
 			}
 		}
+private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+private: System::Void BonusLevelTwo_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	if (!levelcomplete) {
+		if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
+		{
+			e->Cancel = true;
+			panelBonusLevel->Focus();
+		}
+	}
+}
 };
 }

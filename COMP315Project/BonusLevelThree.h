@@ -6,6 +6,7 @@
 #include "LoadQuestion.h"
 #include "PictureBox.h"
 #include "MusicAndSFX.h"
+#include "lvl4Form.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -93,7 +94,7 @@ namespace M15Namespace {
 			// pictureBox1
 			// 
 			this->pictureBox1->Location = System::Drawing::Point(-14, -26);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(80, 40);
 			this->pictureBox1->TabIndex = 13;
@@ -104,7 +105,7 @@ namespace M15Namespace {
 			this->countdownBar->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->countdownBar->ForeColor = System::Drawing::Color::Red;
 			this->countdownBar->Location = System::Drawing::Point(374, 60);
-			this->countdownBar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->countdownBar->Margin = System::Windows::Forms::Padding(2);
 			this->countdownBar->Name = L"countdownBar";
 			this->countdownBar->Size = System::Drawing::Size(503, 37);
 			this->countdownBar->TabIndex = 12;
@@ -160,11 +161,13 @@ namespace M15Namespace {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->ClientSize = System::Drawing::Size(1264, 680);
 			this->Controls->Add(this->panelBonusLevel);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelThree";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"BonusLevelThree";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &BonusLevelThree::BonusLevelThree_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &BonusLevelThree::BonusLevelThree_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelThree::BonusLevelThree_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
@@ -175,6 +178,7 @@ namespace M15Namespace {
 
 		}
 #pragma endregion
+		bool levelcomplete = false;
 
 		//Number of targets hit
 		int countTotal = 0;
@@ -386,13 +390,14 @@ namespace M15Namespace {
 			else {
 				TargetTimer->Stop();
 				countdown->Stop();
-
+				levelcomplete = true;
 				//records the number of targets hit(clicked with the retical(cursor))
 				int  currScore;
 				for (int i = 0; i < targets->Length; i++)
 				{
 					targets[i]->Enabled = false;
 					countTotal += targets[i]->numClicks();
+					delete targets[i]->BonusSounds;
 
 				}
 
@@ -440,6 +445,12 @@ namespace M15Namespace {
 
 					outputFile.close();
 
+					//stops background music
+					ambience->StopSound();
+					music->StopSound();
+					delete ambience;
+					delete music;
+
 					//Provides player feedback
 					std::string windowPrompt = "\nBonus Level Three Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
@@ -448,18 +459,16 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
-					//closes this form
+					lvl4Form^ lvl4form = gcnew lvl4Form();
+					this->Hide();
+					lvl4form->ShowDialog();
 					this->Close();
 
-					//stops background music
-					ambience->StopSound();
-					music->StopSound();
-					delete ambience;
-					delete music;
+
 				}
 				//if no points where earned, provides player feedback on popup form, closes form
 				else
-				{
+				{	
 					//provide player feedback
 					std::string windowPrompt = "\nBonus Level Threes Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
@@ -475,10 +484,23 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
-					//closes this form
+
+					lvl4Form^ lvl4form = gcnew lvl4Form();
+					this->Hide();
+					lvl4form->ShowDialog();
 					this->Close();
 				}
 			}
 		}
+private: System::Void BonusLevelThree_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	if (!levelcomplete) {
+		if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
+		{
+			e->Cancel = true;
+			panelBonusLevel->Focus();
+		}
+	}
+	
+}
 };
 }

@@ -20,6 +20,8 @@ definedPictureBox::definedPictureBox() {
 	Constructor
 	takes in parent, x size, y size, x position, y position, image location, a bool for if its clickable or not
 */
+
+
 definedPictureBox::definedPictureBox(Panel^ panelBonusLevel, int x_size, int y_size,int x_pos, int y_pos, String^ imageLocation, bool clickable)
 {
 	this->Parent = panelBonusLevel;
@@ -30,8 +32,11 @@ definedPictureBox::definedPictureBox(Panel^ panelBonusLevel, int x_size, int y_s
 	if (clickable)
 	{
 		this->Click += gcnew System::EventHandler(this, &definedPictureBox::pictureBox_Click);
+		this->BonusSounds = new MusicAndSFX();
 	}
 	this->Visible = false;
+
+
 }
 
 void definedPictureBox::setLocation(const int& x, const int& y) {
@@ -55,8 +60,6 @@ bool definedPictureBox::operator ==(definedPictureBox^ b1) {
 
 
 void definedPictureBox::pictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
-	MusicAndSFX* BonusSounds = new MusicAndSFX();
-	MusicAndSFX* BonusSFX = new MusicAndSFX();
 	this->Hide();
 	countClick++;
 

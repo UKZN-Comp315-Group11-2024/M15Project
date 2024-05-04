@@ -12,6 +12,8 @@
 #include "Destructible.h"
 #include "PictureBox.h"
 #include "MusicAndSFX.h"
+#include "BonusLevelTwo.h"
+
 namespace M15Namespace {
 
 	using namespace System;
@@ -676,6 +678,7 @@ namespace M15Namespace {
 		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\runleft.gif");
 		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\shoot.gif");
 
+		bool lvlcomplete = false;
 		bool isleft;
 		bool canshoot = false;
 
@@ -1509,6 +1512,7 @@ namespace M15Namespace {
 		*/
 		void displayEndLvlScreen()
 		{
+			this->lvlcomplete = true;
 			timerfinal->Enabled = false;
 			timerfinal->Stop();
 
@@ -1556,8 +1560,12 @@ namespace M15Namespace {
 
 			window->Visible = false;
 			this->Hide();
-
 			window->ShowDialog();
+
+
+			BonusLevelTwo^ bonus2 = gcnew BonusLevelTwo();
+			this->Hide();
+			bonus2->ShowDialog();
 
 			this->Close();
 		}
@@ -1569,11 +1577,14 @@ namespace M15Namespace {
 			No: Closes the confirmation prompt (Game stays open)
 		*/
 		System::Void lvl2Form_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-			if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
-			{
-				e->Cancel = true;
-				panelLogin->Focus();
+			if (!lvlcomplete) {
+				if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
+				{
+					e->Cancel = true;
+					panelLogin->Focus();
+				}
 			}
+
 		}
 };
 }

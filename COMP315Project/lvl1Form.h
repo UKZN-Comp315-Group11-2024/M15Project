@@ -12,6 +12,7 @@
 #include "Destructible.h"
 #include "PictureBox.h"
 #include "MusicAndSFX.h"
+#include "BonusLevelOne.h"
 namespace M15Namespace {
 
 	using namespace System;
@@ -634,6 +635,7 @@ namespace M15Namespace {
 
 		bool isleft;
 		bool canshoot = false;
+		bool lvlcomplete = false;
 
 		bool move_up = false;
 		bool move_left = false;
@@ -1441,7 +1443,8 @@ namespace M15Namespace {
 			Creates and displays the end of level screen (pop up) that displays feedback for the overall score and time taken for the current player
 		*/
 		void displayEndLvlScreen()
-		{
+		{	
+			lvlcomplete = true;
 			timerfinal->Enabled = false;
 			timerfinal->Stop();
 
@@ -1490,6 +1493,9 @@ namespace M15Namespace {
 
 			window->ShowDialog();
 
+			BonusLevelOne^ bonus1 = gcnew BonusLevelOne();
+			this->Hide();
+			bonus1->ShowDialog();
 			this->Close();
 		}
 
@@ -1500,11 +1506,14 @@ namespace M15Namespace {
 			No: Closes the confirmation prompt (Game stays open)
 		*/
 		System::Void lvl1Form_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-			if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
-			{
-				e->Cancel = true;
-				panelLogin->Focus();
+			if (!lvlcomplete) {
+				if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
+				{
+					e->Cancel = true;
+					panelLogin->Focus();
+				}
 			}
+			
 		}
 	private: System::Void panelLogin_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}

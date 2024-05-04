@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include "MusicAndSFX.h"
 using namespace System;
 using namespace System::ComponentModel;
 using namespace System::Collections;
@@ -9,6 +10,8 @@ using namespace System::Drawing;
 
 ref class definedPictureBox : public PictureBox {
 public:
+	MusicAndSFX* BonusSounds;
+
 	definedPictureBox();
 	definedPictureBox(Panel^ panelBonusLevel, int x_size, int y_size, int x_pos, int y_pos, String^ imageLocation, bool clickable);
 

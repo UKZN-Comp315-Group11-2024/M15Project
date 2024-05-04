@@ -6,6 +6,8 @@
 #include "LoadQuestion.h"
 #include "PictureBox.h"
 #include "MusicAndSFX.h"
+#include "Leaderboard.h"
+
 namespace M15Namespace {
 
 	using namespace System;
@@ -85,7 +87,7 @@ namespace M15Namespace {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
 			this->panelBonusLevel->Location = System::Drawing::Point(-10, -20);
-			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(2);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
 			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
 			this->panelBonusLevel->TabIndex = 13;
@@ -165,11 +167,13 @@ namespace M15Namespace {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			this->ClientSize = System::Drawing::Size(1264, 680);
 			this->Controls->Add(this->panelBonusLevel);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
 			this->Name = L"BonusLevelFour";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"BonusLevelFour";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &BonusLevelFour::BonusLevelFour_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &BonusLevelFour::BonusLevelFour_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelFour::BonusLevelFour_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
@@ -180,6 +184,7 @@ namespace M15Namespace {
 
 		}
 #pragma endregion
+		bool levelcomplete = false;
 
 		// Number of targets hit
 		int countTotal = 0;
@@ -207,7 +212,7 @@ namespace M15Namespace {
 		System::Void BonusLevelFour_Load(System::Object^ sender, System::EventArgs^ e) {
 
 			// Sets background image
-			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackground.png");
+			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackgroundDark.png");
 			panelBonusLevel->BackgroundImage = backgroundImage;
 
 			// Plays (background) music
@@ -250,6 +255,8 @@ namespace M15Namespace {
 				Transition1->Stop();
 				Transition1->Enabled = false;
 				Transition2->Start();
+				Image^ backgroundImage = Image::FromFile("assets/Backgrounds/SpaceBackground.png");
+				panelBonusLevel->BackgroundImage = backgroundImage;
 			}
 		}
 
@@ -402,13 +409,14 @@ namespace M15Namespace {
 
 				TargetTimer->Stop();
 				countdown->Stop();
-
+				levelcomplete = true;
 				// Counts the number of targets hit (Clicked on with the retical(cursor))
 				int  currScore;
 				for (int i = 0; i < targets->Length; i++)
 				{
 					targets[i]->Enabled = false;
 					countTotal += targets[i]->numClicks();
+					delete targets[i]->BonusSounds;
 
 				}
 
@@ -460,23 +468,28 @@ namespace M15Namespace {
 					std::string windowPrompt = "\nFinal Bonus Level Feedback (12 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
-					window->Visible = false;
-					this->Hide();
-					window->ShowDialog();
-
-					//closes this form
-					this->Close();
 
 					// Stops (all) background music
 					ambience->StopSound();
 					music->StopSound();
 					delete ambience;
 					delete music;
+
+					window->Visible = false;
+					this->Hide();
+					window->ShowDialog();
+
+					Leaderboard^ leaderboard = gcnew Leaderboard("yes");
+					this->Hide();
+					leaderboard->ShowDialog();
+					this->Close();
+
+
 				}
 				// If no points were earned then the players' score is not updated
 				else
 				{
-					// Providing player feedback on the binus level
+					// Providing player feedback on the bonus level
 					std::string windowPrompt = "\nFinal Bonus Level Feedback (12 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
@@ -491,12 +504,24 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
-					//closes this form
+					Leaderboard^ leaderboard = gcnew Leaderboard("yes");
+					this->Hide();
+					leaderboard->ShowDialog();
 					this->Close();
 				}
 			}
 		}
-	};
+	private: System::Void BonusLevelFour_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		if (!levelcomplete) {
+			if (MessageBox::Show("Are you sure you want to eliminate yourself?", "", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::No)
+			{
+				e->Cancel = true;
+				panelBonusLevel->Focus();
+			}
+		}
+		
+	}
+};
 
 
 }

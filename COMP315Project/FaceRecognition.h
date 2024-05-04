@@ -394,11 +394,6 @@ namespace M15Namespace {
 
 	//clean up resources when form closed
 	private: System::Void FaceRecognition_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		delete f;
-		delete sound1;
-		delete sound2;
-		delete sound3;
-
 		timerfacerec->Stop();
 		timerentrance->Stop();
 		timerexit->Stop();
@@ -411,6 +406,12 @@ namespace M15Namespace {
 			}
 			ofs.close();  // Close the file after writing
 		}
+
+		delete sound1;
+		delete sound2;
+		delete sound3;
+		delete f;
+
 	}
 
 	//back button depends on state of form
@@ -859,6 +860,7 @@ namespace M15Namespace {
 				ofs2 << "0"; //0 meaning login should close
 			}
 			ofs2.close();  // Close the file after writing
+			successful = true;
 			this->Close();
 
 			this->timerexit->Stop();
