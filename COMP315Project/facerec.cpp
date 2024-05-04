@@ -109,7 +109,6 @@ int facerec::addFace(std::string s)
 
 	if (!face_cascade.load("OpenCV\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_alt.xml"))
 	{
-		//std::cout << "error" << std::endl;
 		return -1;
 	};
 
@@ -167,9 +166,6 @@ void facerec::eigenFaceTrainer() {
 	std::vector<cv::Mat> images;
 	std::vector<int> labels;
 	dbread(images, labels);
-	//std::cout << "size of the images is " << images.size() << std::endl;
-	//std::cout << "size of the labels is " << labels.size() << std::endl;
-	//std::cout << "Training begins...." << std::endl;
 
 	//create algorithm eigenface recognizer
 	cv::Ptr<cv::face::EigenFaceRecognizer> model = cv::face::EigenFaceRecognizer::create();
@@ -178,7 +174,6 @@ void facerec::eigenFaceTrainer() {
 	model->train(images, labels);
 	model->save("YML\\eigenface.yml");
 
-	//std::cout << "Training finished...." << std::endl;
 	cv::waitKey(10000);
 }
 
@@ -197,7 +192,6 @@ std::string facerec::FaceRecognitionNew() {
 	std::string window = "Face recognition AI";
 
 	if (!face_cascade.load("OpenCV\\build\\install\\etc\\haarcascades\\haarcascade_frontalface_alt.xml")) {
-		//std::cout << " Error loading file" << std::endl;
 		return "";
 	}
 
@@ -205,7 +199,6 @@ std::string facerec::FaceRecognitionNew() {
 
 	if (!cap.isOpened())
 	{
-		//std::cout << "exit" << std::endl;
 		return "";
 	}
 
@@ -303,7 +296,6 @@ std::string facerec::FaceRecognitionNew() {
 		}
 
 		if (cv::waitKey(30) >= 0) {
-			//std::cout << "broken";
 			break;
 		}
 	}

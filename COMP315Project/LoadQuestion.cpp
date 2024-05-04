@@ -110,8 +110,6 @@ LoadQuestion::LoadQuestion(int levelNum) {
     for each (Question ^ q in levelQuestions) {
         displayQuestions->Enqueue(q);
     }
-
-    printQuestions();
 }
 
 //method that's useful for debugging
