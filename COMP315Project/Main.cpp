@@ -44,8 +44,8 @@ int main(array<String^>^ args) {
 	//lvl3Form lvl3;
 	//Application::Run(% lvl3);
 
-	lvl4Form lvl4;
-	Application::Run(% lvl4);
+	//lvl4Form lvl4;
+	//Application::Run(% lvl4);
 
 	//BonusLevelOne bonusLevelOne;
 	//Application::Run(% bonusLevelOne);

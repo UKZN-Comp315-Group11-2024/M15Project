@@ -674,7 +674,7 @@ namespace M15Namespace {
 		System::Void lvl1Form_Load(System::Object^ sender, System::EventArgs^ e) {
 			this->ClientSize = System::Drawing::Size(1232, 682);
 
-			lvl1Brief->Text = "Level 1 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the door that does not lead to your death, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 20 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
+			lvl1Brief->Text = "Level 1 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the door that does not lead to your death, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 20 seconds per question.\n\n• Missing a target adds 10sec to your timer!\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 			// Gets player info
 			std::ifstream file("textfiles/PlayerInfo.txt");

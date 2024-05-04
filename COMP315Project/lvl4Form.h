@@ -939,7 +939,7 @@ namespace M15Namespace {
 
 			this->ClientSize = System::Drawing::Size(1232, 682);
 
-			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor that contains confetti, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
+			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor that contains confetti, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Missing a target adds 10sec to your timer!\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
