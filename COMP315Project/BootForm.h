@@ -11,7 +11,7 @@
 #include "LoginForm.h"
 
 namespace M15Namespace {
-
+	// Components
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -19,40 +19,36 @@ namespace M15Namespace {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Summary for BootForm
-	/// </summary>
 	public ref class BootForm : public System::Windows::Forms::Form
 	{
 	public:
+
+		// Constructor
 		BootForm(void)
 		{
 			PlaySound(TEXT("assets\\tensemusic.wav"), NULL, SND_FILENAME | SND_ASYNC);  //music can be found here https://pixabay.com/music/beats-dark-cinematic-ambient-beat-173058/
+			
+			// Initializes graphical components
 			InitializeComponent();
+			
 			timerfade->Start();
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+	
+		// estructor
 		~BootForm()
 		{
+			//if there are any components, delete them
 			if (components)
 			{
 				delete components;
 			}
 		}
 
-	protected:
-
-
-
-
 	private: System::Windows::Forms::Panel^ panelBoot;
 	private: System::Windows::Forms::Button^ buttonVideo;
 
-	protected:
 
 	private: System::Windows::Forms::PictureBox^ loadingPictureBox;
 	private: System::Windows::Forms::Label^ loadingLabel;
@@ -63,27 +59,13 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ bgpicturebox3;
 	private: System::Windows::Forms::Label^ label1;
 
-
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
 
-	protected:
-
-	protected:
-
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		bool videoPlayed = false;
+	private: bool videoPlayed = false;
+	
 	private: System::Windows::Forms::Timer^ timerfade;
 
-
-		   int parity = 0;
+		     int parity = 0;
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -245,6 +227,9 @@ namespace M15Namespace {
 		   }
 #pragma endregion
 
+		   /*
+		      Playes a video
+		   */
 	private: System::Void buttonVideo_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		if (!this->videoPlayed) {
 			PlaySound(NULL, NULL, 0);								//get rid of existing sound and play video
