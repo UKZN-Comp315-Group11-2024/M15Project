@@ -24,18 +24,13 @@ namespace M15Namespace {
 
 	public ref class lvl1Form : public System::Windows::Forms::Form
 	{
-
+	// Components
 	private: System::Windows::Forms::Timer^ BulletTimer;
 	private: System::Windows::Forms::Timer^ QuestionTransitionTimerShow;
 
 	private: System::Windows::Forms::Timer^ QuestionTransitionTimerHide;
 	private: System::Windows::Forms::PictureBox^ playerlevel1;
 	private: System::Windows::Forms::PictureBox^ Barrier;
-
-
-
-
-
 
 	private: System::Windows::Forms::Label^ textBoxQuestion;
 	private: System::Windows::Forms::Timer^ timerfinal;
@@ -54,28 +49,28 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ pbObstacle1;
 	private: System::Windows::Forms::PictureBox^ pbObstacle6;
 
-
 	private: System::Windows::Forms::PictureBox^ pbObstacle5;
 
 	private: System::Windows::Forms::PictureBox^ pbObstacle4;
 
 	private: System::Windows::Forms::PictureBox^ pbObstacle3;
 
-
-
-
 	private: System::Windows::Forms::Button^ btnsafety;
-
 
 	public:
 
+		// Constructor
 		lvl1Form()
 		{
+			// Initializes graphical components
 			InitializeComponent();
 
 			this->KeyPreview = true;
 
+			// Instantiating LevelMethods, used to access methods useful for every level
 			this->LvlMethods = gcnew LevelMethods(1);
+
+			// passing necessary components to LevelMethods insatnce
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
 			this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
@@ -84,14 +79,17 @@ namespace M15Namespace {
 		}
 
 	protected:
+
+		// Destructor
 		~lvl1Form()
 		{
+			//if there are any components, delete them
 			if (components)
 			{
 				delete components;
 			}
 		}
-
+	// Components
 	private: System::ComponentModel::IContainer^ components;
 	private: System::Windows::Forms::Timer^ Transition1;
 	private: System::Windows::Forms::PictureBox^ pbGeneralMilitary;
@@ -106,7 +104,6 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ wasd;
 	private: System::Windows::Forms::PictureBox^ space;
 	private: System::Windows::Forms::Timer^ shootTimer;
-
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -603,6 +600,7 @@ namespace M15Namespace {
 		// Player object
 		playerInfo^ player;
 
+		// Level Methods object
 		LevelMethods^ LvlMethods;
 
 		// Music objects
@@ -613,6 +611,7 @@ namespace M15Namespace {
 
 		array<definedPictureBox^>^ pictureBoxArray;
 
+		// Destructible objects
 		Destructible^ des = gcnew Destructible;
 		Destructible::DestroyFunction^ destroyFuncA = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyA);
 		Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl1Form::destroyB);
@@ -636,8 +635,9 @@ namespace M15Namespace {
 		definedPictureBox^ pbSafety;
 
 		String^ projectDirectory = Application::StartupPath;
-		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/idle.gif");
 
+		// Player animations
+		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/idle.gif");
 		String^ playerRunRightGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/run.gif");
 		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/runleft.gif");
 		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets/PlayerMove/shoot.gif");
@@ -646,6 +646,7 @@ namespace M15Namespace {
 		bool canshoot = false;
 		bool lvlcomplete = false;
 
+		// Player animation variables:
 		bool move_up = false;
 		bool move_left = false;
 		bool move_down = false;
@@ -707,7 +708,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+			std::string windowPrompt = "Welcome to the first level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
@@ -1557,7 +1558,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
-			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
+			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points\nPlease proceed to the first bonus level.";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 

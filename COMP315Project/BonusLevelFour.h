@@ -91,6 +91,7 @@ namespace M15Namespace {
 			this->panelBonusLevel->Name = L"panelBonusLevel";
 			this->panelBonusLevel->Size = System::Drawing::Size(1280, 720);
 			this->panelBonusLevel->TabIndex = 13;
+			this->panelBonusLevel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BonusLevelFour::panelBonusLevel_Paint);
 			// 
 			// pictureBox1
 			// 
@@ -479,6 +480,11 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					std::string window2Prompt = "\nThe simulation is now complete. You may see how you fared on the leaderboard. If you did not place in the top 3... let us just say you should make sure your affairs are in order;)";
+					String^ unwrapped2 = gcnew String(window2Prompt.c_str());
+					popup^ window2 = gcnew popup(unwrapped2, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
+					window2->ShowDialog();
+
 					Leaderboard^ leaderboard = gcnew Leaderboard("yes");
 					this->Hide();
 					leaderboard->ShowDialog();
@@ -504,6 +510,11 @@ namespace M15Namespace {
 					this->Hide();
 					window->ShowDialog();
 
+					std::string window2Prompt = "\nThe simulation is now complete. You may see how you fared on the leaderboard. If you did not place in the top 3... let us just say you should make sure your affairs are in order;)";
+					String^ unwrapped2 = gcnew String(window2Prompt.c_str());
+					popup^ window2 = gcnew popup(unwrapped2, 0, 0, "assets/Backgrounds/SpaceBackgroundDark.png");
+					window2->ShowDialog();
+
 					Leaderboard^ leaderboard = gcnew Leaderboard("yes");
 					this->Hide();
 					leaderboard->ShowDialog();
@@ -521,6 +532,8 @@ namespace M15Namespace {
 		}
 		
 	}
+private: System::Void panelBonusLevel_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
 };
 
 

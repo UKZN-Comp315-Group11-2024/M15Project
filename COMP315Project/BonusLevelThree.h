@@ -452,7 +452,7 @@ namespace M15Namespace {
 					delete music;
 
 					//Provides player feedback
-					std::string windowPrompt = "\nBonus Level Three Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!";
+					std::string windowPrompt = "\nBonus Level Three Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!\n Please proceed to level 4";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
 					window->Visible = false;
@@ -470,7 +470,7 @@ namespace M15Namespace {
 				else
 				{	
 					//provide player feedback
-					std::string windowPrompt = "\nBonus Level Threes Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".";
+					std::string windowPrompt = "\nBonus Level Threes Feedback (9 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + std::to_string(currScore) + "\n\nBetter luck next time, " + lines[0] + ".\nPlease proceed to level 4.";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
 
