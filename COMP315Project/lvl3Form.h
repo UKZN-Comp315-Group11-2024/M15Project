@@ -1130,7 +1130,7 @@ namespace M15Namespace {
 		}
 
 		void destroyObstacle(){
-
+			soundImpact->playRandomSound("assets\\music\\ES_Explosion Grenade 3 - SFX Producer.wav", false);
 
 		}
 

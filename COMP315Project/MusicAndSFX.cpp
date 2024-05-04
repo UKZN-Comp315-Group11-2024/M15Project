@@ -99,10 +99,12 @@ void MusicAndSFX::BulletImpact() {
 
 void MusicAndSFX::ThrusterSound() {
 
-	if (!sound.openFromFile("assets\\music\\ES_Rocket Booster 9 - SFX Producer.wav")) {  //opens music file
+	if (!Thrusters.openFromFile("assets\\music\\ES_Rocket Booster 9 - SFX Producer.wav")) {  //opens music file
 		std::cout << "could not open music file" << std::endl;
 	}
-	sound.play();
+	Thrusters.play();
+
+	Thrusters.setLoop(true); //loops music file
 
 
 }
