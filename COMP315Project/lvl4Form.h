@@ -869,6 +869,7 @@ namespace M15Namespace {
 		MusicAndSFX* soundImpact = new MusicAndSFX();
 		MusicAndSFX* ambience = new MusicAndSFX();
 		MusicAndSFX* music = new MusicAndSFX();
+		MusicAndSFX* destroy = new MusicAndSFX();
 
 		array<definedPictureBox^>^ pictureBoxArray;
 
@@ -1376,14 +1377,14 @@ namespace M15Namespace {
 			pbSafety->Hide();
 			des->addObject(pbSafety, destroyFuncSafety);
 			if (LvlMethods->QuestionsCompleted != 10) {
-				ambience->playRandomSound("assets\\music\\ouch.wav", false);
+				ambience->playRandomSound("assets\\music\\ES_Human Grunt 15 - SFX Producer.wav", false);
 			}
 			
 		}
 
 		//Asteroids
 		void destroyObstacle(){
-			soundImpact->playRandomSound("assets\\music\\ES_Explosion Space 1 - SFX Producer.wav", false);
+			destroy->playRandomSound("assets\\music\\ES_Explosion Space 1 - SFX Producer.wav", false);
 		}
 
 		/*
@@ -1454,7 +1455,7 @@ namespace M15Namespace {
 			{
 				move_up = true;
 				is_w_up = false;
-				soundImpact->ThrusterSound();
+				//soundImpact->ThrusterSound();
 			}
 			if (e->KeyCode == Keys::A)
 			{
@@ -1464,13 +1465,13 @@ namespace M15Namespace {
 				isleft = true;
 				move_left = true;
 				is_a_up = false;
-				soundImpact->ThrusterSound();
+				//soundImpact->ThrusterSound();
 			}
 			if (e->KeyCode == Keys::S)
 			{
 				move_down = true;
 				is_s_up = false;
-				soundImpact->ThrusterSound();
+				//soundImpact->ThrusterSound();
 			}
 			if (e->KeyCode == Keys::D)
 			{
@@ -1480,7 +1481,7 @@ namespace M15Namespace {
 				isleft = false;
 				move_right = true;
 				is_d_up = false;
-				soundImpact->ThrusterSound();
+				//soundImpact->ThrusterSound();
 			}
 		}
 
@@ -1530,7 +1531,7 @@ namespace M15Namespace {
 				}
 				playerlevel1->ImageLocation = playerIdleGifPath;
 
-				soundImpact->Thrusters.stop();
+				//soundImpact->Thrusters.stop();
 			}
 		}
 
@@ -1856,6 +1857,7 @@ namespace M15Namespace {
 			ambience->StopSound();
 			music->StopSound();
 			soundImpact->StopSound();
+			destroy->StopSound();
 
 			int levelTimeTaken = LvlMethods->PlayerStats->timeTaken;
 			int levelScore = LvlMethods->PlayerStats->score;
@@ -1886,6 +1888,7 @@ namespace M15Namespace {
 			delete ambience;
 			delete soundImpact;
 			delete music;
+			delete destroy;
 
 			BonusLevelFour^ bonus4 = gcnew BonusLevelFour();
 			this->Hide();
