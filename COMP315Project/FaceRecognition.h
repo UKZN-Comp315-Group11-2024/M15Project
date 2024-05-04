@@ -659,6 +659,15 @@ namespace M15Namespace {
 		wchar_t temp = ' '; //Windows uses widechars, conversion between wide chars and chars can cause weird side effects
 		//So make sure to use wchar whenever working with System::String
 
+		//make sure the $ character doesn't appear cause that would break the game
+		if (username->Length > 0) {
+			if (username->Contains("$")) {
+				int i = username->IndexOf("$");
+				username = username->Substring(0, i) + username->Substring(i + 1, username->Length - i - 1);
+				txtusername->Text = username;
+			}
+		}
+
 		if (username->Length < 3) {
 			lblWarning->Text = "Too Short";
 			lblWarning->Location = Point(133, 510);

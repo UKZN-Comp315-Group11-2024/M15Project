@@ -131,7 +131,6 @@ namespace M15Namespace {
 			   this->panelLogin->BackColor = System::Drawing::Color::Transparent;
 			   this->panelLogin->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelLogin.BackgroundImage")));
 			   this->panelLogin->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			   this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			   this->panelLogin->Controls->Add(this->TutorialButton);
 			   this->panelLogin->Controls->Add(this->pbleaderboard);
 			   this->panelLogin->Controls->Add(this->label2);
@@ -145,6 +144,7 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->lblWarning);
 			   this->panelLogin->Controls->Add(this->lblSuggestor);
 			   this->panelLogin->Controls->Add(this->lblSpyName);
+			   this->panelLogin->Controls->Add(this->pictureboxlockgif);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(-8, -20);
 			   this->panelLogin->Name = L"panelLogin";
@@ -399,6 +399,16 @@ namespace M15Namespace {
 		bool isLastCharDigit = false;
 		wchar_t temp = ' '; //Windows uses widechars, conversion between wide chars and chars can cause weird side effects
 		//So make sure to use wchar whenever working with System::String
+
+		//make sure the $ character doesn't appear cause that would break the game
+		if (username->Length > 0) {
+			if (username->Contains("$")) {
+				int i = username->IndexOf("$");
+				username = username->Substring(0, i) + username->Substring(i + 1, username->Length - i - 1);
+				tbSpyName->Text = username;
+			}
+		}
+		
 
 		if (username->Length < 3) {
 			lblWarning->Text = "Too Short";
