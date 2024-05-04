@@ -936,9 +936,10 @@ namespace M15Namespace {
 		System::Void lvl4Form_Load(System::Object^ sender, System::EventArgs^ e) {
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/spaceblackrectangle.png");
 			panelLogin->BackgroundImage = backgroundImage;
+
 			this->ClientSize = System::Drawing::Size(1232, 682);
 
-			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor with the corresponding answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback provided immediately.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
+			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor that contains confetti, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
@@ -973,7 +974,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nWhere, as we are sure you know, no one can hear you scream :D \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe;)";
+			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nWhere, as we are sure you know, no one can hear you scream :D \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe ;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;

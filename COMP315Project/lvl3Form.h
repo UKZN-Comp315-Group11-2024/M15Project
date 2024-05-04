@@ -717,9 +717,7 @@ namespace M15Namespace {
 		System::Void lvl3Form_Load(System::Object^ sender, System::EventArgs^ e) {
 			this->ClientSize = System::Drawing::Size(1232, 682);
 
-
-			lvl1Brief->Text = "Level 3 Brief:\n\n• You will be required to answer 10 questions.\n• These consist of multiple choice and true/false questions.\n• Shoot the bunker you wish to select.\n• If a bunker is obstructed, destroy its obstructions.\n• You will be granted 15 seconds per question.\n• Feedback on a question will be provided immediately after.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
-
+			lvl1Brief->Text = "Level 3 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the bunker that does not lead to your death, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 15 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
@@ -754,7 +752,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the third level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place in the M15 jungle. \nSo... try not to get eaten by a lion or something. \nOh yeah and y'know... \n\nTry not to die in any other way too;)";
+			std::string windowPrompt = "Welcome to the third level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place in the M15 jungle. \nSo... try not to get eaten by a lion or something. \nOh yeah and y'know... \n\nTry not to die in any other way too ;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
