@@ -29,11 +29,11 @@ int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	BootForm form;
-	Application::Run(% form);
+	//BootForm form;
+	//Application::Run(% form);
 
-	//LoginForm loginForm;
-	//Application::Run(% loginForm);
+	LoginForm loginForm;
+	Application::Run(% loginForm);
 
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);

@@ -74,6 +74,7 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Label^ lblpretty;
 	private: System::Windows::Forms::TextBox^ txtpretty;
 	private: System::Windows::Forms::Timer^ timerentrance;
+	private: System::Windows::Forms::Label^ lbladdface;
 	private: System::Windows::Forms::Timer^ timerexit;
 		   
 
@@ -100,6 +101,7 @@ namespace M15Namespace {
 			   this->timerexit = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->txtpretty = (gcnew System::Windows::Forms::TextBox());
 			   this->timerentrance = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->lbladdface = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureboxbigface))->BeginInit();
@@ -308,6 +310,18 @@ namespace M15Namespace {
 			   this->timerentrance->Interval = 3000;
 			   this->timerentrance->Tick += gcnew System::EventHandler(this, &FaceRecognition::timerentrance_Tick);
 			   // 
+			   // lbladdface
+			   // 
+			   this->lbladdface->AutoSize = true;
+			   this->lbladdface->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->lbladdface->ForeColor = System::Drawing::Color::Red;
+			   this->lbladdface->Location = System::Drawing::Point(155, 628);
+			   this->lbladdface->Name = L"lbladdface";
+			   this->lbladdface->Size = System::Drawing::Size(830, 31);
+			   this->lbladdface->TabIndex = 16;
+			   this->lbladdface->Text = L"Note: Adding a face requires an application restart";
+			   // 
 			   // FaceRecognition
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -315,6 +329,7 @@ namespace M15Namespace {
 			   this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			   this->ClientSize = System::Drawing::Size(1264, 681);
 			   this->Controls->Add(this->pictureboxbigface);
+			   this->Controls->Add(this->lbladdface);
 			   this->Controls->Add(this->txtpretty);
 			   this->Controls->Add(this->lblpretty);
 			   this->Controls->Add(this->lblWarning);
@@ -352,6 +367,7 @@ namespace M15Namespace {
 		sound1->playRandomSound("assets\\boom.wav", false);
 		this->txtpretty->BringToFront();
 		this->timerentrance->Start();
+		this->lbladdface->Visible = false;
 		txtpretty->Visible = true;
 		txtpretty->Text = "Welcome to M15's Facial Recognition AI";
 		pictureboxbigface->Visible = true;
@@ -735,6 +751,7 @@ namespace M15Namespace {
 				try {
 					this->lblrecognize1->Visible = false;
 					this->lblrecognize2->Visible = false;
+					this->lbladdface->Visible = false;
 					this->lbladd1->Visible = false;
 					this->lbladd2->Visible = false;
 					this->pictureBox1->Visible = false;
@@ -775,6 +792,7 @@ namespace M15Namespace {
 			MessageBox::Show("Facial processing complete. Please restart the application to login with facial recognition.", "", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->lblrecognize1->Visible = true;
 				this->lblrecognize2->Visible = true;
+				this->lbladdface->Visible = true;
 				this->lbladd1->Visible = true;
 				this->lbladd2->Visible = true;
 				this->pictureBox1->Visible = true;
@@ -885,6 +903,7 @@ namespace M15Namespace {
 
 		this->lblrecognize1->Visible = true;
 		this->lblrecognize2->Visible = true;
+		this->lbladdface->Visible = true;
 		this->lbladd2->Visible = true;
 		this->lbladd1->Visible = true;
 		this->pictureBox1->Visible = true;
