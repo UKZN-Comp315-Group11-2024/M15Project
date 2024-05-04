@@ -25,7 +25,7 @@ namespace M15Namespace {
 
 	public ref class lvl4Form : public System::Windows::Forms::Form
 	{
-
+	// Components
 	private: System::Windows::Forms::Timer^ BulletTimer;
 	private: System::Windows::Forms::Timer^ QuestionTransitionTimerShow;
 
@@ -39,10 +39,6 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ space;
 
 	private: System::Windows::Forms::PictureBox^ playerlevel1;
-
-
-
-
 
 	private: System::Windows::Forms::Label^ textBoxQuestion;
 	private: System::Windows::Forms::PictureBox^ pbstart;
@@ -64,63 +60,45 @@ namespace M15Namespace {
 	private: System::Windows::Forms::PictureBox^ pbAsteroid16;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid19;
 
-
-
-
 	private: System::Windows::Forms::PictureBox^ pbAsteroid4;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid7;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid8;
 
-
-
 	private: System::Windows::Forms::PictureBox^ pbAsteroid1;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid10;
-
 
 	private: System::Windows::Forms::PictureBox^ pbAsteroid9;
 
 	private: System::Windows::Forms::PictureBox^ pbAsteroid2;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid14;
 
-
 	private: System::Windows::Forms::PictureBox^ pbAsteroid13;
 
 	private: System::Windows::Forms::PictureBox^ pbAsteroid11;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid18;
 
-
 	private: System::Windows::Forms::PictureBox^ pbAsteroid6;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid12;
 	private: System::Windows::Forms::PictureBox^ pbAsteroid17;
 
-
-
 	private: System::Windows::Forms::PictureBox^ pbAsteroid5;
-
-
-
-
-
-
-
-
-
 
 	private: System::Windows::Forms::Timer^ timerfinal;
 
-
-
-
-
 	public:
-
+		
+		// Constructor
 		lvl4Form()
 		{
+			// Initializes graphical components
 			InitializeComponent();
 
 			this->KeyPreview = true;
 
+			// Instantiating LevelMethods, used to access methods useful for every level
 			this->LvlMethods = gcnew LevelMethods(4);
+
+			// passing necessary components to LevelMethods insatnce
 			this->LvlMethods->SetQuestionComponents(textBoxQuestion, textBoxA, textBoxB, textBoxC, textBoxD, textBoxTFA, textBoxTFB);
 			this->LvlMethods->SetProgressBarComponent(progressBarLevel1);
 			this->LvlMethods->SetProgressBarTimerComponent(timerProgress);
@@ -129,29 +107,29 @@ namespace M15Namespace {
 		}
 
 	protected:
+
+		// Destructor
 		~lvl4Form()
 		{
+			//if there are any components, delete them
 			if (components)
 			{
 				delete components;
 			}
 		}
 
+	// Components
 	private: System::ComponentModel::IContainer^ components;
 	private: System::Windows::Forms::Timer^ Transition1;
 
-
 	private: System::Windows::Forms::Timer^ Transition2;
-
 
 	private: System::Windows::Forms::Timer^ timerProgress;
 	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
 	private: System::Windows::Forms::Timer^ movePlayerTimer;
 	private: System::Windows::Forms::Timer^ timeranimation;
 
-
 	private: System::Windows::Forms::Timer^ shootTimer;
-
 
 #pragma region Windows Form Designer generated code
 		   /// <summary>
@@ -883,6 +861,7 @@ namespace M15Namespace {
 		// Player object
 		playerInfo^ player;
 
+		// Level Methods object
 		LevelMethods^ LvlMethods;
 
 		// Music objects
@@ -893,6 +872,7 @@ namespace M15Namespace {
 
 		array<definedPictureBox^>^ pictureBoxArray;
 
+		// Destructible objects
 		Destructible^ des = gcnew Destructible;
 		Destructible::DestroyFunction^ destroyFuncA = gcnew Destructible::DestroyFunction(this, &lvl4Form::destroyA);
 		Destructible::DestroyFunction^ destroyFuncB = gcnew Destructible::DestroyFunction(this, &lvl4Form::destroyB);
@@ -916,8 +896,9 @@ namespace M15Namespace {
 		definedPictureBox^ pbSafety;
 
 		String^ projectDirectory = Application::StartupPath;
-		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\spaceship.png");
 
+		// Player animations
+		String^ playerIdleGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\spaceship.png");
 		String^ playerRunRightGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\spaceship_boost.gif");
 		String^ playerRunLeftGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\spaceship_boost_left.gif");
 		String^ playerShootGifPath = System::IO::Path::Combine(projectDirectory, "assets\\PlayerMove\\spaceship.png");
@@ -926,6 +907,7 @@ namespace M15Namespace {
 		bool isleft;
 		bool canshoot = false;
 
+		// Player animation variables:
 		bool move_up = false;
 		bool move_left = false;
 		bool move_down = false;
@@ -947,16 +929,17 @@ namespace M15Namespace {
 	private:
 		/*
 			Loads/instantiates certain UI elements
-			Creates and displays the "Welcome to level 1" pop up,
+			Creates and displays the "Welcome to level 4" pop up,
 			Initalizes the player info object with info from PlayerInfo.txt
 			Plays the levels' (background) music
 		*/
 		System::Void lvl4Form_Load(System::Object^ sender, System::EventArgs^ e) {
 			Image^ backgroundImage = Image::FromFile("assets/Backgrounds/spaceblackrectangle.png");
 			panelLogin->BackgroundImage = backgroundImage;
+
 			this->ClientSize = System::Drawing::Size(1232, 682);
 
-			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor with the corresponding answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback provided immediately.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
+			lvl1Brief->Text = "Level 4 Brief:\n\n• 10 questions.\n\n• Multiple choice and true/false questions.\n\n• Shoot the meteor that contains confetti, i.e. The correct answer.\n\n• Destroy any obstructions.\n\n• 12 seconds per question.\n\n• Feedback will be provided as you answer.\n\nAll The Best Soldier!!\n\n<Click Start To Begin>";
 
 			std::ifstream file("textfiles/PlayerInfo.txt");
 			std::string line;
@@ -991,7 +974,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nWhere, as we are sure you know, no one can hear you scream :D \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe;)";
+			std::string windowPrompt = "Welcome to the final mission, " + context.marshal_as<std::string>(this->player->username) + ". This level simulation takes place in space. \nWhere, as we are sure you know, no one can hear you scream :D \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\ndon't forget to breathe ;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
