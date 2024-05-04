@@ -32,8 +32,8 @@ int main(array<String^>^ args) {
 	//BootForm form;
 	//Application::Run(% form);
 
-	//LoginForm loginForm;
-	//Application::Run(% loginForm);
+	LoginForm loginForm;
+	Application::Run(% loginForm);
 
 	//lvl1Form lvl1form;
 	//Application::Run(% lvl1form);
@@ -41,11 +41,11 @@ int main(array<String^>^ args) {
 	//lvl2Form lvl2;
 	//Application::Run(% lvl2);
 
-	lvl3Form lvl3;
-	Application::Run(% lvl3);
+	//lvl3Form lvl3;
+	//Application::Run(% lvl3);
 
-	lvl4Form lvl4;
-	Application::Run(% lvl4);
+	//lvl4Form lvl4;
+	//Application::Run(% lvl4);
 
 	//BonusLevelOne bonusLevelOne;
 	//Application::Run(% bonusLevelOne);

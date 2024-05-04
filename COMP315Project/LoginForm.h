@@ -662,6 +662,14 @@ namespace M15Namespace {
 				this->Visible = true;
 			}
 			else if (comm == "0") {
+				lvl1Form^ lvl1form = gcnew lvl1Form();
+				lvl1form->Visible = false;
+				this->Hide();
+				lvl1form->ShowDialog();
+				this->Close();
+			}
+
+			else if (comm == "-1") {
 				this->Close();
 			}
 		}
