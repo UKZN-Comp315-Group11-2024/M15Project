@@ -277,7 +277,7 @@ namespace M15Namespace {
 			   this->pbObstacle5->Location = System::Drawing::Point(638, 394);
 			   this->pbObstacle5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->pbObstacle5->Name = L"pbObstacle5";
-			   this->pbObstacle5->Size = System::Drawing::Size(74, 100);
+			   this->pbObstacle5->Size = System::Drawing::Size(128, 82);
 			   this->pbObstacle5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle5->TabIndex = 53;
 			   this->pbObstacle5->TabStop = false;
@@ -754,7 +754,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the third level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place in the M15 jungle. \nSo... try not to get eaten by a lion or something. \nOh yeah and y'know... \n\nTry not to die in any other way too;)";
+			std::string windowPrompt = "Welcome to the third level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place in the M15 jungle. \nSo... try not to get eaten by a lion or something. \nOh yeah and y'know... \n\nTry not to die in any other way too;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
@@ -1554,7 +1554,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
-			std::string windowPrompt = "Level 3 of 4 feedback (Jungle)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
+			std::string windowPrompt = "Level 3 of 4 feedback (Jungle)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points.\nPlease proceed to bonus level 3.";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/ForestDark.png");
 

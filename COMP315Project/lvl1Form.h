@@ -226,7 +226,7 @@ namespace M15Namespace {
 			   this->panelLogin->Controls->Add(this->textBoxTFB);
 			   this->panelLogin->ForeColor = System::Drawing::Color::White;
 			   this->panelLogin->Location = System::Drawing::Point(0, 0);
-			   this->panelLogin->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->panelLogin->Margin = System::Windows::Forms::Padding(4);
 			   this->panelLogin->Name = L"panelLogin";
 			   this->panelLogin->Size = System::Drawing::Size(1540, 852);
 			   this->panelLogin->TabIndex = 12;
@@ -235,10 +235,10 @@ namespace M15Namespace {
 			   // pbObstacle6
 			   // 
 			   this->pbObstacle6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle6.Image")));
-			   this->pbObstacle6->Location = System::Drawing::Point(838, 236);
+			   this->pbObstacle6->Location = System::Drawing::Point(516, 688);
 			   this->pbObstacle6->Margin = System::Windows::Forms::Padding(2);
 			   this->pbObstacle6->Name = L"pbObstacle6";
-			   this->pbObstacle6->Size = System::Drawing::Size(66, 92);
+			   this->pbObstacle6->Size = System::Drawing::Size(76, 94);
 			   this->pbObstacle6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle6->TabIndex = 60;
 			   this->pbObstacle6->TabStop = false;
@@ -246,7 +246,7 @@ namespace M15Namespace {
 			   // pbObstacle5
 			   // 
 			   this->pbObstacle5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle5.Image")));
-			   this->pbObstacle5->Location = System::Drawing::Point(488, 238);
+			   this->pbObstacle5->Location = System::Drawing::Point(695, 354);
 			   this->pbObstacle5->Margin = System::Windows::Forms::Padding(2);
 			   this->pbObstacle5->Name = L"pbObstacle5";
 			   this->pbObstacle5->Size = System::Drawing::Size(76, 94);
@@ -268,10 +268,10 @@ namespace M15Namespace {
 			   // pbObstacle3
 			   // 
 			   this->pbObstacle3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle3.Image")));
-			   this->pbObstacle3->Location = System::Drawing::Point(750, 228);
+			   this->pbObstacle3->Location = System::Drawing::Point(567, 451);
 			   this->pbObstacle3->Margin = System::Windows::Forms::Padding(2);
 			   this->pbObstacle3->Name = L"pbObstacle3";
-			   this->pbObstacle3->Size = System::Drawing::Size(100, 112);
+			   this->pbObstacle3->Size = System::Drawing::Size(76, 94);
 			   this->pbObstacle3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle3->TabIndex = 57;
 			   this->pbObstacle3->TabStop = false;
@@ -279,10 +279,10 @@ namespace M15Namespace {
 			   // pbObstacle2
 			   // 
 			   this->pbObstacle2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle2.Image")));
-			   this->pbObstacle2->Location = System::Drawing::Point(568, 236);
+			   this->pbObstacle2->Location = System::Drawing::Point(469, 234);
 			   this->pbObstacle2->Margin = System::Windows::Forms::Padding(2);
 			   this->pbObstacle2->Name = L"pbObstacle2";
-			   this->pbObstacle2->Size = System::Drawing::Size(79, 96);
+			   this->pbObstacle2->Size = System::Drawing::Size(146, 130);
 			   this->pbObstacle2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle2->TabIndex = 56;
 			   this->pbObstacle2->TabStop = false;
@@ -290,10 +290,10 @@ namespace M15Namespace {
 			   // pbObstacle1
 			   // 
 			   this->pbObstacle1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbObstacle1.Image")));
-			   this->pbObstacle1->Location = System::Drawing::Point(651, 228);
+			   this->pbObstacle1->Location = System::Drawing::Point(625, 549);
 			   this->pbObstacle1->Margin = System::Windows::Forms::Padding(2);
 			   this->pbObstacle1->Name = L"pbObstacle1";
-			   this->pbObstacle1->Size = System::Drawing::Size(95, 118);
+			   this->pbObstacle1->Size = System::Drawing::Size(146, 130);
 			   this->pbObstacle1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbObstacle1->TabIndex = 55;
 			   this->pbObstacle1->TabStop = false;
@@ -385,7 +385,7 @@ namespace M15Namespace {
 			   // 
 			   this->btnsafety->ForeColor = System::Drawing::Color::Transparent;
 			   this->btnsafety->Location = System::Drawing::Point(1515, 0);
-			   this->btnsafety->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->btnsafety->Margin = System::Windows::Forms::Padding(4);
 			   this->btnsafety->Name = L"btnsafety";
 			   this->btnsafety->Size = System::Drawing::Size(145, 866);
 			   this->btnsafety->TabIndex = 45;
@@ -397,7 +397,7 @@ namespace M15Namespace {
 			   // 
 			   this->pbstart->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbstart.Image")));
 			   this->pbstart->Location = System::Drawing::Point(500, 875);
-			   this->pbstart->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->pbstart->Margin = System::Windows::Forms::Padding(4);
 			   this->pbstart->Name = L"pbstart";
 			   this->pbstart->Size = System::Drawing::Size(280, 280);
 			   this->pbstart->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -424,7 +424,7 @@ namespace M15Namespace {
 			   // 
 			   this->playerlevel1->ImageLocation = L"assets/PlayerMove/idle.gif";
 			   this->playerlevel1->Location = System::Drawing::Point(130, 494);
-			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->playerlevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->playerlevel1->Name = L"playerlevel1";
 			   this->playerlevel1->Size = System::Drawing::Size(188, 105);
 			   this->playerlevel1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -463,7 +463,7 @@ namespace M15Namespace {
 			   this->progressBarLevel1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			   this->progressBarLevel1->ForeColor = System::Drawing::Color::DarkOrange;
 			   this->progressBarLevel1->Location = System::Drawing::Point(902, 12);
-			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->progressBarLevel1->Margin = System::Windows::Forms::Padding(4);
 			   this->progressBarLevel1->Maximum = 2000;
 			   this->progressBarLevel1->Name = L"progressBarLevel1";
 			   this->progressBarLevel1->Size = System::Drawing::Size(551, 61);
@@ -474,7 +474,7 @@ namespace M15Namespace {
 			   // 
 			   this->Barrier->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Barrier.Image")));
 			   this->Barrier->Location = System::Drawing::Point(352, 236);
-			   this->Barrier->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Barrier->Margin = System::Windows::Forms::Padding(4);
 			   this->Barrier->Name = L"Barrier";
 			   this->Barrier->Size = System::Drawing::Size(25, 909);
 			   this->Barrier->TabIndex = 36;
@@ -566,7 +566,7 @@ namespace M15Namespace {
 			   this->DoubleBuffered = true;
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			   this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
 			   this->Name = L"lvl1Form";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -708,7 +708,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the first level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+			std::string windowPrompt = "Welcome to the first level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place inside the M15 office headquarters. \nShould be a piece of cake for a top notch spy such as yourself. \nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
@@ -1495,7 +1495,7 @@ namespace M15Namespace {
 			writer << this->player->timeTaken;
 			writer.close();
 
-			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
+			std::string windowPrompt = "Level 1 of 4 feedback (Office)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points\nPlease proceed to the first bonus level.";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/PurpleOfficeBackgroundDark.png");
 

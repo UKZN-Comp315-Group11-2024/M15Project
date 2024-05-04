@@ -237,7 +237,7 @@ namespace M15Namespace {
 			   this->pbRandObject6->Location = System::Drawing::Point(645, 420);
 			   this->pbRandObject6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			   this->pbRandObject6->Name = L"pbRandObject6";
-			   this->pbRandObject6->Size = System::Drawing::Size(74, 100);
+			   this->pbRandObject6->Size = System::Drawing::Size(119, 79);
 			   this->pbRandObject6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbRandObject6->TabIndex = 61;
 			   this->pbRandObject6->TabStop = false;
@@ -258,10 +258,9 @@ namespace M15Namespace {
 			   // pbRandObject4
 			   // 
 			   this->pbRandObject4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbRandObject4.Image")));
-			   this->pbRandObject4->Location = System::Drawing::Point(378, 386);
-			   this->pbRandObject4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			   this->pbRandObject4->Location = System::Drawing::Point(432, 503);
 			   this->pbRandObject4->Name = L"pbRandObject4";
-			   this->pbRandObject4->Size = System::Drawing::Size(217, 190);
+			   this->pbRandObject4->Size = System::Drawing::Size(271, 147);
 			   this->pbRandObject4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pbRandObject4->TabIndex = 51;
 			   this->pbRandObject4->TabStop = false;
@@ -730,7 +729,7 @@ namespace M15Namespace {
 			this->player = p;
 
 			msclr::interop::marshal_context context;
-			std::string windowPrompt = "Welcome to the second level, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place on the M15 testing grounds. \nThe targets are a bit smaller now. If you miss one?\nWell, that's 10 seconds added to your time!\nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
+			std::string windowPrompt = "Welcome to the second level of the simulation, " + context.marshal_as<std::string>(this->player->username) + ". This level takes place on the M15 testing grounds. \nThe targets are a bit smaller now. If you miss one?\nWell, that's 10 seconds added to your time! (as fun as it is we should not be shooting bystanders)\nOh, and " + context.marshal_as<std::string>(this->player->username) + "... \n\nTry not to die;)";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/level_transition_background.png");
 			window->Visible = false;
@@ -1526,7 +1525,7 @@ namespace M15Namespace {
 			writer.close();
 
 
-			std::string windowPrompt = "Level 2 of 4 feedback (Testing grounds)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points";
+			std::string windowPrompt = "Level 2 of 4 feedback (Testing grounds)\n\nNumber of correct answers: " + std::to_string(LvlMethods->PlayerStats->CorrectAnswers) + "\nTime Taken: " + std::to_string(levelTimeTaken) + " seconds\nScore: " + std::to_string(levelScore) + " Points\n\nOverall time taken: " + std::to_string(this->player->timeTaken) + " seconds\nOverall score: " + std::to_string(this->player->score) + " Points. \nPlease proceed to bonus level 2.";
 			String^ unwrapped = gcnew String(windowPrompt.c_str());
 			popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/battlefieldDark.png");
 
