@@ -679,7 +679,7 @@ namespace M15Namespace {
 	}
 	private: System::Void pbleaderboard_Click(System::Object^ sender, System::EventArgs^ e) {
 		sound->playRandomSound("assets\\Mouse Click Sound Effect.wav", false);
-		Leaderboard^ leaderboard = gcnew Leaderboard("yes");
+		Leaderboard^ leaderboard = gcnew Leaderboard("no");
 		leaderboard->Visible = false;
 		this->Hide();
 		leaderboard->ShowDialog();
