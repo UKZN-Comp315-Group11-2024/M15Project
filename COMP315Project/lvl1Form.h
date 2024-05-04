@@ -489,7 +489,7 @@ namespace M15Namespace {
 			   this->textBoxTFA->Font = (gcnew System::Drawing::Font(L"Courier New", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->textBoxTFA->ForeColor = System::Drawing::Color::Black;
-			   this->textBoxTFA->Location = System::Drawing::Point(1257, 354);
+			   this->textBoxTFA->Location = System::Drawing::Point(1257, 340);
 			   this->textBoxTFA->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			   this->textBoxTFA->Name = L"textBoxTFA";
 			   this->textBoxTFA->Size = System::Drawing::Size(238, 81);
@@ -895,14 +895,23 @@ namespace M15Namespace {
 		void destroyTF1()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
 
 			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 100, 240, 780, 175, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxTF1, destroyFuncTF1);
 
 			LvlMethods->QuestionAnswered(0);
+
+			if (LvlMethods->Correct)
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door.png", false);
+			}
+			else
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door_wrong.png", false);
+			}
+			openedDoor->setVisible(true);
+
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
 				doFinalCheck("T");
@@ -915,14 +924,23 @@ namespace M15Namespace {
 		void destroyTF2()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 415, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
 
 			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 100, 240, 780, 415, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxTF2, destroyFuncTF2);
 
 			LvlMethods->QuestionAnswered(1);
+
+			if (LvlMethods->Correct)
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 415, "assets/Doors/opened_door.png", false);
+			}
+			else
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 415, "assets/Doors/opened_door_wrong.png", false);
+			}
+			openedDoor->setVisible(true);
+
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
 				doFinalCheck("F");
@@ -935,15 +953,23 @@ namespace M15Namespace {
 		void destroyA()
 		{
 			changeLabelColors();
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 175, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
-
 
 			pictureBoxA = gcnew definedPictureBox(panelLogin, 100, 120, 840, 175, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxA, destroyFuncA);
 
 			LvlMethods->QuestionAnswered(0);
+
+			if (LvlMethods->Correct)
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 175, "assets/Doors/opened_door.png", false);
+			}
+			else
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 175, "assets/Doors/opened_door_wrong.png", false);
+			}
+			openedDoor->setVisible(true);
+
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
 				doFinalCheck("A");
@@ -957,14 +983,21 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 295, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
-
 			pictureBoxB = gcnew definedPictureBox(panelLogin, 100, 120, 840, 295, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxB, destroyFuncB);
 
 			LvlMethods->QuestionAnswered(1);
+
+			if (LvlMethods->Correct)
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 295, "assets/Doors/opened_door.png", false);
+			}
+			else
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 295, "assets/Doors/opened_door_wrong.png", false);
+			}
+			openedDoor->setVisible(true);
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
@@ -979,14 +1012,21 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 415, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
-
 			pictureBoxC = gcnew definedPictureBox(panelLogin, 100, 120, 840, 415, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxC, destroyFuncC);
 
 			LvlMethods->QuestionAnswered(2);
+
+			if (LvlMethods->Correct)
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 415, "assets/Doors/opened_door.png", false);
+			}
+			else
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 415, "assets/Doors/opened_door_wrong.png", false);
+			}
+			openedDoor->setVisible(true);
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
@@ -1001,13 +1041,20 @@ namespace M15Namespace {
 		{
 			changeLabelColors();
 
-			openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 535, "assets/Doors/opened_door.png", false);
-			openedDoor->setVisible(true);
-
 			pictureBoxD = gcnew definedPictureBox(panelLogin, 100, 120, 840, 535, "assets/Doors/closed_door.png", false);
 
 			des->addObject(pictureBoxD, destroyFuncD);
 			LvlMethods->QuestionAnswered(3);
+
+			if (LvlMethods->Correct)
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 535, "assets/Doors/opened_door.png", false);
+			}
+			else
+			{
+				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 30, 120, 840, 535, "assets/Doors/opened_door_wrong.png", false);
+			}
+			openedDoor->setVisible(true);
 
 			if (LvlMethods->QuestionsCompleted == 10)
 			{
@@ -1432,15 +1479,31 @@ namespace M15Namespace {
 			}
 			if (str == "T")
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door.png", false);
 				openedDoor->BringToFront();
+
+				if (LvlMethods->Correct)
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door.png", false);
+				}
+				else
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 175, "assets/Doors/opened_door_wrong.png", false);
+				}
 				openedDoor->setVisible(true);
 			}
 			else if (str == "F")
 			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 415, "assets/Doors/opened_door.png", false);
-				openedDoor->setVisible(true);
 				openedDoor->BringToFront();
+
+				if (LvlMethods->Correct)
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 415, "assets/Doors/opened_door.png", false);
+				}
+				else
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 100 + 60, 240, 780, 415, "assets/Doors/opened_door_wrong.png", false);
+				}
+				openedDoor->setVisible(true);
 			}
 
 			timerfinal->Enabled = true;
