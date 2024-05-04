@@ -6,9 +6,10 @@
 
 class MusicAndSFX {
 public:
-	sf::Music sound; // @jaedon: changed this to Music since the other one didn't seem to work
-	sf::Music Background; //object that streams sound directly from source file
-	sf::Music music;//object that streams sound directly from source file
+	// Music objects
+	sf::Music sound;
+	sf::Music Background;
+	sf::Music music;
 	sf::Music randomSound;
 	sf::Music Thrusters;
 
@@ -33,14 +34,9 @@ public:
 	void Forest();
 	void NightForest();
 	void Space();
-	void ThrusterSound();
-
 
 	void StopSound();
 	void playRandomSound(std::string path, bool loop);
-
-
-
 };
 
 
