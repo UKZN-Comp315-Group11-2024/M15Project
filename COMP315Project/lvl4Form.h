@@ -1182,70 +1182,76 @@ namespace M15Namespace {
 			Checks if the final question has been answered to which it will start the process of displaying the end of level screen
 		*/
 		void destroyTF1()
-		{
-			changeLabelColors();
+		{	
+				changeLabelColors();
 
-			pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 750, 215, "assets/Doors/meteor_1.png", false);
+				pictureBoxTF1 = gcnew definedPictureBox(panelLogin, 225, 200, 750, 215, "assets/Doors/meteor_1.png", false);
 
-			des->addObject(pictureBoxTF1, destroyFuncTF1);
+				des->addObject(pictureBoxTF1, destroyFuncTF1);
 
-			LvlMethods->QuestionAnswered(0);
+				LvlMethods->QuestionAnswered(0);
 
-			if (LvlMethods->Correct)
-			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 215, "assets/Doors/meteor_explode_right.png", false);
-			}
-			else
-			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 215, "assets/Doors/meteor_explode.png", false);
-			}
-			openedDoor->setVisible(true);
+				if (LvlMethods->Correct)
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 215, "assets/Doors/meteor_explode_right.png", false);
+				}
+				else
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 215, "assets/Doors/meteor_explode.png", false);
+				}
+				openedDoor->setVisible(true);
 
-			if (LvlMethods->QuestionsCompleted == 10)
-			{
-				this->btnsafety->Location = Point(308, 0);
-				this->btnsafety->Size = System::Drawing::Size(653, 693);
-				delete this->pictureBoxTF1;
-				delete this->pictureBoxTF2;
-				doFinalCheck("T");
-			}
-			else
-			{
-				QuestionTransitionTimerShow->Start();
-			}
+				if (LvlMethods->QuestionsCompleted == 10)
+				{
+					this->btnsafety->Location = Point(308, 0);
+					this->btnsafety->Size = System::Drawing::Size(653, 693);
+					pictureBoxTF1->Visible = false;
+					pictureBoxTF2->Visible = false;
+					delete this->pictureBoxTF1;
+					delete this->pictureBoxTF2;
+					doFinalCheck("T");
+				}
+				else
+				{
+					QuestionTransitionTimerShow->Start();
+				}
+
 		}
 		void destroyTF2()
 		{
-			changeLabelColors();
+				changeLabelColors();
 
-			pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 750, 455, "assets/Doors/meteor_1.png", false);
+				pictureBoxTF2 = gcnew definedPictureBox(panelLogin, 225, 200, 750, 455, "assets/Doors/meteor_1.png", false);
 
-			des->addObject(pictureBoxTF2, destroyFuncTF2);
+				des->addObject(pictureBoxTF2, destroyFuncTF2);
 
-			LvlMethods->QuestionAnswered(1);
+				LvlMethods->QuestionAnswered(1);
 
-			if (LvlMethods->Correct)
-			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 455, "assets/Doors/meteor_explode_right.png", false);
-			}
-			else
-			{
-				openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 455, "assets/Doors/meteor_explode.png", false);
-			}
-			openedDoor->setVisible(true);
+				if (LvlMethods->Correct)
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 455, "assets/Doors/meteor_explode_right.png", false);
+				}
+				else
+				{
+					openedDoor = gcnew definedPictureBox(panelLogin, 225, 200, 750, 455, "assets/Doors/meteor_explode.png", false);
+				}
+				openedDoor->setVisible(true);
 
-			if (LvlMethods->QuestionsCompleted == 10)
-			{
-				this->btnsafety->Location = Point(308, 0);
-				this->btnsafety->Size = System::Drawing::Size(653, 693);
-				delete this->pictureBoxTF1;
-				delete this->pictureBoxTF2;
-				doFinalCheck("F");
-			}
-			else
-			{
-				QuestionTransitionTimerShow->Start();
-			}
+				if (LvlMethods->QuestionsCompleted == 10)
+				{
+					this->btnsafety->Location = Point(308, 0);
+					this->btnsafety->Size = System::Drawing::Size(653, 693);
+					pictureBoxTF1->Visible = false;
+					pictureBoxTF2->Visible = false;
+					delete this->pictureBoxTF1;
+					delete this->pictureBoxTF2;
+					doFinalCheck("F");
+				}
+				else
+				{
+					QuestionTransitionTimerShow->Start();
+				}
+			
 		}
 		void destroyA()
 		{
@@ -1578,7 +1584,7 @@ namespace M15Namespace {
 		/*
 			Only allows the bullet to spawn when it's in sync with the shoot animation
 		*/
-		System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+		System::Void shootTimer_Tick(System::Object^ sender, System::EventArgs^ e) {		
 			if (countSpacePress == 0) {
 				playerlevel1->ImageLocation = playerShootGifPath;
 				movePlayerTimer->Stop();
@@ -1589,9 +1595,10 @@ namespace M15Namespace {
 				movePlayerTimer->Start();
 				countSpacePress = 0;
 				shootTimer->Stop();
-
-				addBullet(10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 28);
-				BulletTimer->Start();
+				if (LvlMethods->QuestionsCompleted < 10) {
+					addBullet(10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 28);
+					BulletTimer->Start();
+				}
 			}
 
 		}

@@ -29,8 +29,8 @@ int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	//BootForm form;
-	//Application::Run(% form);
+	BootForm form;
+	Application::Run(% form);
 
 	//LoginForm loginForm;
 	//Application::Run(% loginForm);
@@ -47,8 +47,8 @@ int main(array<String^>^ args) {
 	//lvl4Form lvl4;
 	//Application::Run(% lvl4);
 
-	BonusLevelOne bonusLevelOne;
-	Application::Run(% bonusLevelOne);
+	//BonusLevelOne bonusLevelOne;
+	//Application::Run(% bonusLevelOne);
 
 	//BonusLevelTwo bnt;
 	//Application::Run(% bnt);

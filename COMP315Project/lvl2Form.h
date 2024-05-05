@@ -944,6 +944,10 @@ namespace M15Namespace {
 			{
 				this->btnsafety->Location = Point(308, 0);
 				this->btnsafety->Size = System::Drawing::Size(653, 693);
+				pictureBoxTF1->Visible = false;
+				pictureBoxTF2->Visible = false;
+				delete this->pictureBoxTF1;
+				delete this->pictureBoxTF2;
 				doFinalCheck("T");
 			}
 			else
@@ -975,6 +979,10 @@ namespace M15Namespace {
 			{
 				this->btnsafety->Location = Point(308, 0);
 				this->btnsafety->Size = System::Drawing::Size(653, 693);
+				pictureBoxTF1->Visible = false;
+				pictureBoxTF2->Visible = false;
+				delete this->pictureBoxTF1;
+				delete this->pictureBoxTF2;
 				doFinalCheck("F");
 			}
 			else
@@ -1319,9 +1327,11 @@ namespace M15Namespace {
 				movePlayerTimer->Start();
 				countSpacePress = 0;
 				shootTimer->Stop();
+				if (LvlMethods->QuestionsCompleted < 10) {
+					addBullet(10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 19);
+					BulletTimer->Start();
+				}
 
-				addBullet(10, 0, playerlevel1->Location.X + 80, playerlevel1->Location.Y + 19);
-				BulletTimer->Start();
 			}
 
 		}
