@@ -433,7 +433,7 @@ namespace M15Namespace {
 					delete music;
 
 					//Provides player feedback
-					std::string windowPrompt = "\nBonus Level Two Feedback (10 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!\n Please proceed to level 3.";
+					std::string windowPrompt = "\nBonus Level Two Feedback (10 Targets = 50 Points)\n\nTargets eliminated: " + std::to_string(countTotal) + "\nPrevious Score: " + std::to_string(currScore) + "\nNew Score: " + lines[1] + "\n\nWell done, " + lines[0] + "!\nPlease proceed to level 3.";
 					String^ unwrapped = gcnew String(windowPrompt.c_str());
 					popup^ window = gcnew popup(unwrapped, 0, 0, "assets/Backgrounds/battlefieldDark.png");
 					window->Visible = false;

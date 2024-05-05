@@ -220,7 +220,7 @@ namespace M15Namespace {
 				targets[i] = gcnew definedPictureBox(panelBonusLevel, x_size, y_size, -100, y_pos, "assets/Doors/PageColorized.png", true);
 
 				// Assigns targets' speed values
-				speed = rand() % 8 + 5;
+				speed = rand() % 8 + 4;
 				targets[i]->setSpeed(speed);
 				targets[i]->setAudioClickType("Laser");
 			}
