@@ -49,7 +49,7 @@ namespace M15Namespace {
 	private: System::Windows::Forms::Timer^ Transition1;
 	private: System::Windows::Forms::ProgressBar^ countdownBar;
 	private: System::Windows::Forms::Timer^ countdown;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 	private: System::ComponentModel::IContainer^ components;
 
 #pragma region Windows Form Designer generated code
@@ -63,7 +63,6 @@ namespace M15Namespace {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(BonusLevelOne::typeid));
 			this->panelBonusLevel = (gcnew System::Windows::Forms::Panel());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->countdownBar = (gcnew System::Windows::Forms::ProgressBar());
 			this->lblMessage1 = (gcnew System::Windows::Forms::Label());
 			this->pbGeneralMilitary = (gcnew System::Windows::Forms::PictureBox());
@@ -72,7 +71,6 @@ namespace M15Namespace {
 			this->Transition1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->countdown = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panelBonusLevel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -81,7 +79,6 @@ namespace M15Namespace {
 			this->panelBonusLevel->BackColor = System::Drawing::Color::Transparent;
 			this->panelBonusLevel->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panelBonusLevel.BackgroundImage")));
 			this->panelBonusLevel->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->panelBonusLevel->Controls->Add(this->pictureBox1);
 			this->panelBonusLevel->Controls->Add(this->countdownBar);
 			this->panelBonusLevel->Controls->Add(this->lblMessage1);
 			this->panelBonusLevel->Controls->Add(this->pbGeneralMilitary);
@@ -90,19 +87,10 @@ namespace M15Namespace {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->panelBonusLevel->ForeColor = System::Drawing::Color::White;
 			this->panelBonusLevel->Location = System::Drawing::Point(0, 0);
-			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->panelBonusLevel->Margin = System::Windows::Forms::Padding(4);
 			this->panelBonusLevel->Name = L"panelBonusLevel";
 			this->panelBonusLevel->Size = System::Drawing::Size(1540, 852);
 			this->panelBonusLevel->TabIndex = 13;
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Location = System::Drawing::Point(-18, -32);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(100, 50);
-			this->pictureBox1->TabIndex = 13;
-			this->pictureBox1->TabStop = false;
 			// 
 			// countdownBar
 			// 
@@ -179,7 +167,6 @@ namespace M15Namespace {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &BonusLevelOne::BonusLevelOne_KeyDown);
 			this->panelBonusLevel->ResumeLayout(false);
 			this->panelBonusLevel->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGeneralMilitary))->EndInit();
 			this->ResumeLayout(false);
 
