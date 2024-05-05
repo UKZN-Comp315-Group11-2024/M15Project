@@ -245,7 +245,7 @@ namespace M15Namespace {
 			   this->lblSuggestor->Font = (gcnew System::Drawing::Font(L"Courier New", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lblSuggestor->ForeColor = System::Drawing::Color::White;
-			   this->lblSuggestor->Location = System::Drawing::Point(432, 612);
+			   this->lblSuggestor->Location = System::Drawing::Point(460, 582);
 			   this->lblSuggestor->Name = L"lblSuggestor";
 			   this->lblSuggestor->Size = System::Drawing::Size(0, 31);
 			   this->lblSuggestor->TabIndex = 11;
