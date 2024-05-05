@@ -19,50 +19,26 @@
 #include "BonusLevelTwo.h"
 #include "BonusLevelThree.h"
 #include "BonusLevelFour.h"
-
+ 
 using namespace System;
 using namespace M15Namespace;
 using namespace System::Windows::Forms;
 
 
-int main(array<String^>^ args) {
-	Application::EnableVisualStyles();
-	Application::SetCompatibleTextRenderingDefault(false);
+[STAThreadAttribute]
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    try {
+        Application::EnableVisualStyles();
+        Application::SetCompatibleTextRenderingDefault(false);
 
-	//BootForm form;
-	//Application::Run(% form);
+        BootForm form;
+        Application::Run(% form);
 
-	LoginForm loginForm;
-	Application::Run(% loginForm);
-
-	//lvl1Form lvl1form;
-	//Application::Run(% lvl1form);
-
-	//lvl2Form lvl2;
-	//Application::Run(% lvl2);
-
-	//lvl3Form lvl3;
-	//Application::Run(% lvl3);
-
-	//lvl4Form lvl4;
-	//Application::Run(% lvl4);
-
-	//BonusLevelOne bonusLevelOne;
-	//Application::Run(% bonusLevelOne);
-
-	//BonusLevelTwo bnt;
-	//Application::Run(% bnt);
-
-	//BonusLevelThree bonusLevelThree;
-	//Application::Run(% bonusLevelThree);
-	
-	//BonusLevelFour blf;
-	//Application::Run(% blf);
-
-	//BonusLevelFour BNTT;
-	//Application::Run(% BNTT);
-
-	//FaceRecognition fr;
-	//Application::Run(% fr);
-
+        return 0;
+    }
+    catch (Exception^ ex) {
+        // Handle any uncaught exceptions here
+        MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+        return -1;
+    }
 }
