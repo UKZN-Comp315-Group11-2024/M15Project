@@ -208,6 +208,8 @@
   <ItemGroup>
     <Text Include="textfiles\UsersAlphabetical.txt" />
     <Text Include="textfiles\communicaton.txt" />
+    <Text Include="textfiles\facialRecOutput.txt" />
+    <Text Include="textfiles\usernameFaceNum.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\Downloads\bin\openal32.dll">
